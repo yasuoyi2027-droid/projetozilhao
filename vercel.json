@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/api/create-payment.php", "destination": "/api/create-payment" },
+    { "source": "/api/get-payment.php", "destination": "/api/get-payment" },
+    { "source": "/api/webhook.php", "destination": "/api/webhook" },
+    { "source": "/api/proxy/hikerapi.php", "destination": "/api/proxy/hikerapi" },
+    { "source": "/api/proxy/image-proxy.php", "destination": "/api/proxy/image-proxy" },
+    { "source": "/api/proxy/instagram.php", "destination": "/api/proxy/instagram" },
+    { "source": "/api/proxy/leads.php", "destination": "/api/proxy/leads" }
+  ]
+}
