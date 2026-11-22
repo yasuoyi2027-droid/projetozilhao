@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<title>Finalizar compra | GhostSpy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- UTMify -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  data-utmify-pixel-id="JG4C8dwPMZYNSiowwBkflBN2t2zUKyaMMMD0"
+  async defer></script>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1693031462523056');
+fbq('track', 'PageView');
+fbq('track', 'InitiateCheckout');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#0E82F8; --accent2:#0D54A3; --bg:#F8FAFC; --card:#FFFFFF;
+  --text:#0F172A; --muted:#64748B; --border:#E2E8F0; --success:#10B981; --error:#EF4444;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:420px;margin:0 auto;padding:24px 16px 48px}
+.logo{display:flex;justify-content:center;margin-bottom:20px}
+.logo img{width:120px;height:auto;object-fit:contain}
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:24px 22px;box-shadow:0 10px 30px rgba(15,23,42,0.06)}
+.title{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin:0 0 6px;text-align:center}
+.sub{color:var(--muted);text-align:center;margin:0 0 20px;font-size:14px}
+.price{text-align:center;margin:0 0 22px}
+.price .old{color:var(--muted);text-decoration:line-through;font-size:14px;margin-bottom:4px}
+.price .now{font-size:34px;font-weight:800;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.mbway-banner{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:14px;margin-bottom:18px}
+.mbway-banner .m-logo{flex:0 0 72px;width:72px;height:44px;object-fit:contain;display:block}
+.mbway-banner strong{display:block;font-weight:700;font-size:15px;margin-bottom:2px;color:var(--text)}
+.mbway-banner small{color:var(--muted);font-size:12px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.field input{width:100%;border:1.5px solid var(--border);background:#fff;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s}
+.field input:focus{border-color:var(--accent)}
+.phone-row{display:flex;gap:8px}
+.phone-row input[name=country_code]{flex:0 0 72px;text-align:center}
+.phone-row input[name=phone]{flex:1}
+.btn{appearance:none;border:none;cursor:pointer;width:100%;padding:16px;border-radius:14px;font-family:inherit;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));letter-spacing:.02em;transition:transform .15s,box-shadow .15s;margin-top:4px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(14,130,248,.3)}
+.btn:disabled{opacity:.55;cursor:wait;transform:none;box-shadow:none}
+.notes{color:var(--muted);font-size:12px;text-align:center;margin-top:14px}
+.notes b{color:var(--text)}
+.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:12px;font-size:13px;margin-bottom:12px}
+.hidden{display:none}
+/* Pending screen */
+.pending{text-align:center}
+.spinner{width:56px;height:56px;border:4px solid #E2E8F0;border-top-color:var(--accent);border-radius:50%;margin:8px auto 18px;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.countdown{font-weight:800;font-size:32px;letter-spacing:-0.02em;margin:8px 0 4px}
+.countdown.danger{color:var(--error)}
+.success{text-align:center}
+.success .tick{width:72px;height:72px;border-radius:50%;background:var(--success);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:12px}
+.secure{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:12px;margin-top:14px}
+.secure svg{width:14px;height:14px}
+/* Order bump — layout em grid para a checkbox e textos ficarem alinhados sem overflow do badge. */
+.bump{position:relative;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;border:2px dashed #F59E0B;background:linear-gradient(180deg,#FFFBEB 0%,#FEF3C7 100%);border-radius:14px;padding:18px 14px 14px;margin:18px 0 4px;cursor:pointer;transition:all .18s ease;user-select:none}
+.bump:hover{border-color:#D97706}
+.bump.on{border-color:#10B981;border-style:solid;background:linear-gradient(180deg,#ECFDF5 0%,#D1FAE5 100%)}
+.bump input[type=checkbox]{grid-column:1;grid-row:1 / span 3;justify-self:center;align-self:start;margin-top:2px;width:22px;height:22px;accent-color:#10B981;cursor:pointer}
+.bump-badge{position:absolute;top:-10px;left:12px;background:#F59E0B;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 10px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.bump.on .bump-badge{background:#10B981}
+.bump-title{grid-column:2;font-weight:800;font-size:14px;color:var(--text);margin:0 0 3px;line-height:1.25}
+.bump-desc{grid-column:2;color:var(--muted);font-size:12px;margin:0 0 6px;line-height:1.35}
+.bump-price{grid-column:2;font-size:13px;font-weight:700;color:#D97706;line-height:1.35}
+.bump.on .bump-price{color:#059669}
+.bump-price s{color:var(--muted);font-weight:500;margin-right:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">
+    <img src="/images/logos/ghostspy-logo.png" alt="GhostSpy" onerror="this.style.display='none'" />
+  </div>
+
+  <!-- ETAPA 1: Formulário MB WAY -->
+  <div class="card" id="step-form">
+    <h1 class="title">Finalizar compra</h1>
+    <p class="sub">Pagamento instantâneo por <b>MB WAY</b></p>
+
+    <div class="price">
+      <div class="old" id="old-price">De €59,90</div>
+      <div class="now" id="now-price">€9,90</div>
+    </div>
+
+    <div class="mbway-banner">
+      <img class="m-logo" src="/images/logos/mbway.png" alt="MB WAY" />
+      <span>
+        <strong>MB WAY</strong>
+        <small>Confirmação instantânea na app do seu banco</small>
+      </span>
+    </div>
+
+    <form id="pay-form" autocomplete="on" novalidate>
+      <div class="field">
+        <label>Número MB WAY</label>
+        <div class="phone-row">
+          <input name="country_code" value="351" maxlength="3" inputmode="numeric" aria-label="Indicativo" />
+          <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="9" minlength="9" placeholder="912 345 678" autocomplete="tel-national" required />
+        </div>
+      </div>
+
+      <label class="bump" id="bump-multi">
+        <span class="bump-badge">Oferta única</span>
+        <input type="checkbox" id="bump-cb" />
+        <div class="bump-title">➕ Analisar mais 3 perfis — amigo próximo, ex, colega suspeito</div>
+        <p class="bump-desc">Pelo preço de 1, investigue até 3 perfis extra. Só disponível agora, nunca mais aparece.</p>
+        <div class="bump-price"><s>€55,80</s> por apenas <b>+€14,90</b> (economize €40,90)</div>
+      </label>
+
+      <div class="err hidden" id="err-box"></div>
+
+      <button type="submit" class="btn" id="submit-btn">Pagar com MB WAY</button>
+
+      <p class="notes">
+        <b>30 dias de garantia incondicional</b>
+      </p>
+      <div class="secure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
+        Pagamento seguro · SSL
+      </div>
+    </form>
+  </div>
+
+  <!-- ETAPA 2: MBWay pendente -->
+  <div class="card hidden" id="step-mbway-pending">
+    <div class="pending">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1 class="title">Confirme no telemóvel</h1>
+      <p class="sub">Abra a app <b>MB WAY</b> e confirme o pagamento.</p>
+      <div class="countdown" id="mbway-countdown">5:00</div>
+      <p class="notes">Tem 5 minutos para confirmar. A página atualiza automaticamente.</p>
+    </div>
+  </div>
+
+  <!-- ETAPA 4: Sucesso -->
+  <div class="card hidden" id="step-success">
+    <div class="success">
+      <div class="tick">✓</div>
+      <h1 class="title">Pagamento confirmado!</h1>
+      <p class="sub">Acesso imediato ao app liberado.</p>
+      <p class="notes">O seu acesso VIP já está ativo. A abrir o painel…</p>
+    </div>
+  </div>
+
+  <!-- ETAPA 5: Expirou -->
+  <div class="card hidden" id="step-expired">
+    <h1 class="title" style="color:var(--error)">Pagamento expirou</h1>
+    <p class="sub">A sessão expirou. Pode tentar novamente.</p>
+    <button type="button" class="btn" onclick="location.reload()">Tentar outra vez</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ---- Estado ------------------------------------------------------------
+  var currentPaymentId = null;
+  var pollTimer = null;
+  var countdownTimer = null;
+
+  // ---- UI helpers --------------------------------------------------------
+  function $(id){ return document.getElementById(id); }
+  function show(id){ $(id).classList.remove('hidden'); }
+  function hide(id){ $(id).classList.add('hidden'); }
+  function setStep(step){
+    ['step-form','step-mbway-pending','step-success','step-expired']
+      .forEach(function(s){ hide(s); });
+    show(step);
+  }
+  function showErr(msg){
+    var el = $('err-box');
+    el.textContent = msg;
+    el.classList.remove('hidden');
+  }
+  function hideErr(){ $('err-box').classList.add('hidden'); }
+
+  // ---- UTMs do URL (lidos uma vez) ---------------------------------------
+  function readUtms(){
+    try {
+      var p = new URLSearchParams(location.search);
+      var out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src','sck'].forEach(function(k){
+        var v = p.get(k);
+        if (v) out[k] = v;
+      });
+      // Fallback: ler do localStorage (o site principal guarda-as)
+      try {
+        var stored = JSON.parse(localStorage.getItem('utm_params') || 'null');
+        if (stored && typeof stored === 'object'){
+          Object.keys(stored).forEach(function(k){
+            if (!out[k] && stored[k]) out[k] = stored[k];
+          });
+        }
+      } catch(_){}
+      return out;
+    } catch(_) { return {}; }
+  }
+
+  // ---- Submissão ---------------------------------------------------------
+  $('pay-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    hideErr();
+
+    var phone = (document.querySelector('[name=phone]').value || '').replace(/\D+/g,'');
+    if (phone.length !== 9){
+      showErr('Número MB WAY tem de ter 9 dígitos.');
+      return;
+    }
+    var countryCode = (document.querySelector('[name=country_code]').value || '351').replace(/\D+/g,'') || '351';
+
+    // Sem captura de nome/email — identifica o cliente pelo número MB WAY.
+    var phoneId = countryCode + phone;
+    var name  = 'Cliente ' + phone.substring(0, 3) + '***';
+    var email = 'mbway' + phoneId + '@ghostspy.site';
+
+    // Cookies do Meta Pixel (para enviar ao backend e matchar no CAPI).
+    function getCookie(name){
+      try {
+        var m = document.cookie.match('(?:^|;\\s*)' + name + '=([^;]+)');
+        return m ? decodeURIComponent(m[1]) : null;
+      } catch(_){ return null; }
+    }
+
+    var bumpOn = !!$('bump-cb').checked;
+    var discountOn = !!window.__discountOn;
+    var sku = discountOn ? 'core_discount' : (bumpOn ? 'core_bump' : 'core');
+
+    var body = {
+      sku: sku,
+      phone: phone,
+      country_code: countryCode,
+      payer: { name: name, email: email, phone: '+' + countryCode + phone },
+      tracking: readUtms(),
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+    };
+
+    // Guarda dados para uso nos upsells (telefone + dados pessoais).
+    try {
+      sessionStorage.setItem('checkout_phone', phone);
+      sessionStorage.setItem('checkout_country_code', countryCode);
+      sessionStorage.setItem('checkout_name', name);
+      sessionStorage.setItem('checkout_email', email);
+      sessionStorage.setItem('checkout_bump', bumpOn ? '1' : '0');
+    } catch(_){}
+
+    var btn = $('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'A processar...';
+
+    fetch('/api/create-payment.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    .then(function(r){
+      return r.json().then(function(j){ return { status: r.status, body: j }; });
+    })
+    .then(function(res){
+      btn.disabled = false;
+      btn.textContent = 'Pagar com MB WAY';
+
+      if (res.status >= 400){
+        var msg = (res.body && res.body.message)
+          || (res.body && res.body.gateway && res.body.gateway.message)
+          || 'Erro no pagamento. Verifique os dados e tente de novo.';
+        showErr(msg);
+        return;
+      }
+
+      var data = (res.body && res.body.data) || {};
+      currentPaymentId = data.id;
+      if (!currentPaymentId){
+        showErr('Resposta inválida do gateway.');
+        return;
+      }
+
+      sessionStorage.setItem('checkout_email', email);
+
+      setStep('step-mbway-pending');
+      startMbwayCountdown(data.expires_at);
+      startPolling();
+    })
+    .catch(function(err){
+      btn.disabled = false;
+      btn.textContent = 'Pagar com MB WAY';
+      showErr('Ocorreu um erro de ligação. Tente novamente.');
+      console.error(err);
+    });
+  });
+
+  // ---- Polling ao backend -----------------------------------------------
+  function startPolling(){
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = setInterval(function(){
+      if (!currentPaymentId) return;
+      fetch('/api/get-payment.php?id=' + encodeURIComponent(currentPaymentId), { cache: 'no-store' })
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+          var status = res && res.status;
+          if (status === 'paid'){
+            onPaid();
+          } else if (status === 'expired' || status === 'refunded'){
+            onExpired();
+          }
+        })
+        .catch(function(){ /* silêncio; tenta de novo */ });
+    }, 3000);
+  }
+  function stopPolling(){
+    if (pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+  }
+
+  function onPaid(){
+    stopPolling();
+    stopCountdown();
+
+    // Meta Pixel Purchase + dataLayer. eventID = payment_id para dedupe com CAPI (server).
+    try {
+      var bumpOn = sessionStorage.getItem('checkout_bump') === '1';
+      var discountOn = !!window.__discountOn;
+      var price = discountOn ? 9.90 : (bumpOn ? 24.80 : 9.90);
+      var contentName = discountOn ? 'GhostSpy VIP (Oferta Especial)' : (bumpOn ? 'GhostSpy VIP + Multi-Perfil' : 'GhostSpy VIP');
+      var contentId   = discountOn ? 'ghostspy-vip-discount' : (bumpOn ? 'ghostspy-vip-multi' : 'ghostspy-vip');
+      if (window.fbq) {
+        fbq('track', 'Purchase', {
+          value: price,
+          currency: 'EUR',
+          content_name: contentName,
+          content_ids: [contentId],
+          content_type: 'product'
+        }, { eventID: currentPaymentId });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase',
+        payment_id: currentPaymentId,
+        value: price,
+        currency: 'EUR',
+        content_name: contentName,
+        content_ids: [contentId],
+        content_type: 'product',
+      });
+    } catch(_){}
+
+    // Redireciona para o primeiro upsell (Blindagem). O pid do core vai como parent_id.
+    try {
+      sessionStorage.setItem('checkout_core_paid_id', currentPaymentId);
+      location.replace('/upsell-blindagem/?pid=' + encodeURIComponent(currentPaymentId));
+    } catch(_){
+      setStep('step-success');
+    }
+  }
+  function onExpired(){
+    stopPolling();
+    stopCountdown();
+    setStep('step-expired');
+  }
+
+  // ---- Countdown MB WAY --------------------------------------------------
+  function startMbwayCountdown(expiresAtIso){
+    stopCountdown();
+    var expiresAt = expiresAtIso ? Date.parse(expiresAtIso) : (Date.now() + 5*60*1000);
+    function tick(){
+      var ms = expiresAt - Date.now();
+      if (ms <= 0){
+        $('mbway-countdown').textContent = '0:00';
+        onExpired();
+        return;
+      }
+      var s = Math.floor(ms/1000);
+      var m = Math.floor(s/60);
+      var ss = String(s%60).padStart(2,'0');
+      var el = $('mbway-countdown');
+      el.textContent = m + ':' + ss;
+      el.classList.toggle('danger', s < 60);
+    }
+    tick();
+    countdownTimer = setInterval(tick, 1000);
+  }
+  function stopCountdown(){
+    if (countdownTimer){ clearInterval(countdownTimer); countdownTimer = null; }
+  }
+
+  // ---- Preços da query (?price=17.90&old=59.90) --------------------------
+  (function hydratePrice(){
+    var p = new URLSearchParams(location.search);
+    if (p.get('price')) $('now-price').textContent = '€' + p.get('price').replace('.',',');
+    if (p.get('old'))   $('old-price').textContent = 'De €' + p.get('old').replace('.',',');
+  })();
+
+  // ---- Order bump: atualiza preço e visual ao alternar o checkbox --------
+  (function bumpToggle(){
+    var basePrice = 9.90;
+    var bumpPrice = 14.90;
+    var cb  = $('bump-cb');
+    var box = $('bump-multi');
+    var nowEl = $('now-price');
+    function render(){
+      var on = cb.checked;
+      box.classList.toggle('on', on);
+      var total = (on ? basePrice + bumpPrice : basePrice).toFixed(2).replace('.', ',');
+      nowEl.textContent = '€' + total;
+    }
+    cb.addEventListener('change', render);
+    box.addEventListener('click', function(ev){
+      if (ev.target.tagName !== 'INPUT'){ cb.checked = !cb.checked; render(); }
+    });
+    render();
+  })();
+
+  // ---- Input masking: só dígitos nos campos de MB WAY --------------------
+  (function maskPhoneInputs(){
+    function digitsOnly(el, max){
+      el.addEventListener('input', function(){
+        var v = (el.value || '').replace(/\D+/g, '');
+        if (max) v = v.slice(0, max);
+        if (v !== el.value) el.value = v;
+      });
+      // Bloqueia colar valores com caracteres não-numéricos.
+      el.addEventListener('paste', function(ev){
+        try {
+          var text = (ev.clipboardData || window.clipboardData).getData('text') || '';
+          var clean = text.replace(/\D+/g, '');
+          if (clean !== text){
+            ev.preventDefault();
+            var v = ((el.value || '') + clean).replace(/\D+/g, '');
+            if (max) v = v.slice(0, max);
+            el.value = v;
+          }
+        } catch(_){}
+      });
+    }
+    digitsOnly(document.querySelector('[name=phone]'), 9);
+    digitsOnly(document.querySelector('[name=country_code]'), 3);
+  })();
+
+  // ---- Back-redirect: aplica desconto €9,90 ao clicar voltar ------------
+  function applyDiscount(){
+    if (window.__discountOn) return;
+    window.__discountOn = true;
+    // Preco core cai para 14,90 (desativa o bump para simplificar).
+    var cb = $('bump-cb');
+    if (cb && cb.checked) cb.checked = false;
+    try { sessionStorage.setItem('checkout_bump', '0'); } catch(_){}
+    $('now-price').textContent = '€9,90';
+    var old = $('old-price'); if (old) old.textContent = 'De €9,90';
+    // Esconde o bump.
+    var bump = $('bump-multi'); if (bump) bump.style.display = 'none';
+    // Banner de desconto no topo do card.
+    if (!document.getElementById('discount-banner')){
+      var b = document.createElement('div');
+      b.id = 'discount-banner';
+      b.style.cssText = 'background:linear-gradient(135deg,#DC2626,#991B1B);color:#fff;text-align:center;padding:12px;font-size:13px;font-weight:800;border-radius:12px;margin-bottom:14px;box-shadow:0 10px 24px rgba(220,38,38,.35);letter-spacing:.02em';
+      b.innerHTML = '🔥 <b>ULTIMA CHANCE DE GARANTIR €9,90</b><br><span style="font-size:11px;font-weight:600;opacity:.9">Esta tela não volta nesta sessão</span>';
+      var wrap = document.querySelector('.wrap');
+      var firstCard = wrap.querySelector('.card');
+      wrap.insertBefore(b, firstCard);
+    }
+    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Core', value:9.90, currency:'EUR'}); } catch(_){}
+  }
+
+  (function armBackRedirect(){
+    try {
+      history.pushState({ghostspy:'armed'}, '', location.href);
+      window.addEventListener('popstate', function(){
+        if (window.__discountOn) return;
+        var qs = location.search ? (location.search + '&') : '?';
+        history.pushState({ghostspy:'discount'}, '', location.pathname + qs + 'discount=1' + location.hash);
+        applyDiscount();
+      });
+      if ((new URLSearchParams(location.search).get('discount') === '1' || new URLSearchParams(location.search).get('backredirect') === '1')) applyDiscount();
+    } catch(_){}
+  })();
+})();
+</script>
+</body>
+</html>

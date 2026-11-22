@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<title>Alertas Vitalícios | GhostSpy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- UTMify -->
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  data-utmify-pixel-id="JG4C8dwPMZYNSiowwBkflBN2t2zUKyaMMMD0"
+  async defer></script>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1693031462523056');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name:'Upsell Alertas Vitalicio', content_ids:['ghostspy-alertas-vitalicio'], value:27.90, currency:'EUR'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#0E82F8; --accent2:#0D54A3;
+  --wa:#25D366; --wa2:#128C7E;
+  --gold:#F59E0B;
+  --bg:#F8FAFC; --card:#FFFFFF;
+  --text:#0F172A; --muted:#64748B; --border:#E2E8F0;
+  --success:#10B981; --warn:#DC2626;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:460px;margin:0 auto;padding:18px 16px 48px}
+.vip-bar{background:linear-gradient(135deg,#F59E0B,#B45309);color:#fff;text-align:center;padding:12px;font-size:13px;font-weight:800;border-radius:12px;margin-bottom:14px;box-shadow:0 10px 24px rgba(245,158,11,.3);letter-spacing:.02em}
+.vip-bar b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px;opacity:.95}
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:26px 22px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
+.bell-ico{width:80px;height:80px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 14px 30px rgba(14,130,248,.35);animation:bellRing 2.4s ease-in-out infinite}
+@keyframes bellRing{0%,100%{transform:rotate(0deg)}10%,30%{transform:rotate(-12deg)}20%,40%{transform:rotate(12deg)}50%{transform:rotate(0deg)}}
+.bell-ico svg{width:44px;height:44px}
+.bell-ico::after{content:"";position:absolute;top:0;right:0;width:20px;height:20px;background:var(--warn);border-radius:50%;border:3px solid #fff;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.7)}70%{box-shadow:0 0 0 10px rgba(220,38,38,0)}}
+.kicker{text-align:center;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.title{text-align:center;font-size:26px;font-weight:900;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.1}
+.title em{color:var(--warn);font-style:normal}
+.sub{text-align:center;color:var(--muted);margin:0 0 20px;font-size:14px;line-height:1.5}
+.sub b{color:var(--text)}
+
+/* Mockup notification WhatsApp */
+.wa-mock{background:linear-gradient(180deg,#128C7E 0%,#075E54 100%);border-radius:14px;padding:12px;margin:0 0 14px;position:relative;overflow:hidden}
+.wa-mock-header{display:flex;align-items:center;gap:8px;color:#fff;margin-bottom:10px}
+.wa-mock-header .wa-ico{width:28px;height:28px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex:0 0 28px}
+.wa-mock-header .wa-ico svg{width:16px;height:16px;color:#fff}
+.wa-mock-header .wa-tx{flex:1}
+.wa-mock-header .wa-tx .wa-name{font-size:12px;font-weight:800;letter-spacing:.02em}
+.wa-mock-header .wa-tx .wa-when{font-size:10px;opacity:.7}
+.wa-notif{background:#DCF8C6;color:#000;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.4;position:relative;animation:slideIn .5s ease-out}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+.wa-notif+.wa-notif{margin-top:6px;animation-delay:.3s}
+.wa-notif b{color:#075E54;display:block;font-weight:800;font-size:11px;margin-bottom:2px}
+
+.features{display:flex;flex-direction:column;gap:10px;margin:16px 0 20px}
+.feat{display:flex;align-items:flex-start;gap:12px;padding:12px;background:#F8FAFC;border-radius:12px;border:1px solid var(--border)}
+.feat .ic{flex:0 0 32px;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.feat .tx{flex:1}
+.feat .tx strong{display:block;font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px}
+.feat .tx small{color:var(--muted);font-size:12px;line-height:1.4}
+
+.vs-box{background:#F8FAFC;border:1px solid var(--border);border-radius:12px;padding:12px;margin:0 0 18px}
+.vs-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed var(--border);font-size:13px}
+.vs-row:last-child{border-bottom:none}
+.vs-row .k{color:var(--muted)}
+.vs-row .v{font-weight:800;text-align:right}
+.vs-row .v.strike{color:#9CA3AF;text-decoration:line-through;font-weight:500}
+.vs-row .v.good{color:var(--success)}
+
+.price-box{text-align:center;margin:18px 0;padding:16px;background:linear-gradient(180deg,#FFFBEB 0%,#FEF3C7 100%);border:2px dashed var(--gold);border-radius:14px}
+.price-box .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-bottom:2px}
+.price-box .now{font-size:40px;font-weight:900;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.price-box .once{display:inline-block;background:var(--warn);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:4px 10px;border-radius:999px;margin-top:8px;text-transform:uppercase}
+
+.btn-yes{appearance:none;border:none;cursor:pointer;width:100%;padding:18px 14px;border-radius:14px;font-family:inherit;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));transition:transform .15s,box-shadow .15s;box-shadow:0 10px 24px rgba(14,130,248,.35);line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:6px}
+.btn-yes .lbl{font-weight:900;font-size:15px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.btn-yes .sub{font-weight:700;font-size:12px;background:rgba(0,0,0,.18);padding:3px 10px;border-radius:999px;letter-spacing:.03em;color:#fff}
+.btn-yes:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(14,130,248,.5)}
+.btn-yes:disabled{opacity:.6;cursor:wait;transform:none}
+
+.phone-ask{box-sizing:border-box;width:100%;margin-top:12px;padding:12px;background:#F8FAFC;border:1px solid var(--border);border-radius:12px}
+.phone-ask label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.phone-row{display:flex;gap:8px;width:100%}
+.phone-row input{min-width:0;box-sizing:border-box;border:1.5px solid var(--border);background:#fff;border-radius:10px;padding:10px 10px;font-size:14px;font-family:inherit;outline:none}
+.phone-row input[name=country_code]{flex:0 0 64px;max-width:64px;text-align:center}
+.phone-row input[name=phone]{flex:1 1 auto}
+
+.hidden{display:none}
+.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:12px;font-size:13px;margin:10px 0}
+.pending{text-align:center;padding:10px 0}
+.spinner{width:56px;height:56px;border:4px solid #E2E8F0;border-top-color:var(--accent);border-radius:50%;margin:8px auto 18px;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.notes{color:var(--muted);font-size:11px;text-align:center;margin-top:14px;line-height:1.5}
+.skip-link{display:block;text-align:center;background:none;border:none;color:var(--muted);text-decoration:underline;font-size:12px;padding:12px;margin:6px 0 0;cursor:pointer;font-family:inherit;width:100%}
+.skip-link:hover{color:var(--warn)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="vip-bar">
+    <b>👑 Oferta VIP Final</b>
+    Última decisão antes do acesso ser libertado
+  </div>
+
+  <div class="card" id="step-pitch">
+    <div class="bell-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    </div>
+    <p class="kicker">Oferta Vitalícia</p>
+    <h1 class="title">Nunca mais percas <em>nada</em></h1>
+    <p class="sub">
+      Receba notificação no <b>WhatsApp em 30 segundos</b> sempre que @<span id="target-user">a pessoa analisada</span> fizer algo suspeito.
+      <b>Pagamento único. Vitalício. Sem mensalidade.</b>
+    </p>
+
+    <div class="wa-mock">
+      <div class="wa-mock-header">
+        <div class="wa-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.4-1.2c-.3-.1-.6 0-.8.2l-.6.7c-.1.1-.3.2-.5.1-.7-.3-1.6-.9-2.6-1.9-.9-.9-1.6-1.9-1.9-2.6 0-.2 0-.4.1-.5l.7-.6c.2-.2.3-.5.2-.8L8.6 5.4c-.1-.3-.4-.5-.7-.5H5.5c-.4 0-.7.3-.6.7.1 2.3 1 4.9 3.3 7.2 2.3 2.3 4.9 3.2 7.2 3.3.4 0 .7-.3.7-.6v-2.4c0-.3-.2-.6-.6-.7z"/></svg></div>
+        <div class="wa-tx">
+          <div class="wa-name">GhostSpy Guardian</div>
+          <div class="wa-when">agora · online</div>
+        </div>
+      </div>
+      <div class="wa-notif"><b>🔔 ALERTA</b>@<span class="wa-tg">a_pessoa</span> começou a seguir <b>@<span class="wa-suspect">perfil_suspeito</span></b> há 12 segundos</div>
+      <div class="wa-notif"><b>🔔 ALERTA</b>@<span class="wa-tg">a_pessoa</span> gostou de 3 fotos de <b>@<span class="wa-suspect">perfil_suspeito</span></b> há 1 minuto</div>
+    </div>
+
+    <div class="features">
+      <div class="feat">
+        <div class="ic">🔔</div>
+        <div class="tx">
+          <strong>Avisa quando segue alguém novo</strong>
+          <small>Se @<span class="tg-user">a pessoa</span> seguir um novo contacto, recebe notificação instantânea.</small>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="ic">❤️</div>
+        <div class="tx">
+          <strong>Avisa quando curte foto suspeita</strong>
+          <small>Qualquer gosto em perfis que a nossa IA marca como suspeitos é reportado imediatamente.</small>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="ic">💬</div>
+        <div class="tx">
+          <strong>Avisa quando entra em DM privada</strong>
+          <small>Detectamos quando entra em conversa nova — identificamos com quem e a hora exata.</small>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="ic">📸</div>
+        <div class="tx">
+          <strong>Avisa a cada story publicado</strong>
+          <small>Com preview do conteúdo no WhatsApp, mesmo que apague logo depois.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-box">
+      <div class="vs-row">
+        <span class="k">Concorrência (média)</span>
+        <span class="v strike">€9,90/mês · €118,80/ano</span>
+      </div>
+      <div class="vs-row">
+        <span class="k">GhostSpy Guardian</span>
+        <span class="v good">€27,90 ÚNICO · para sempre</span>
+      </div>
+      <div class="vs-row">
+        <span class="k">Economia no 1º ano</span>
+        <span class="v good">€90,90</span>
+      </div>
+    </div>
+
+    <div class="price-box">
+      <div class="old">Normalmente €97,00/ano</div>
+      <div class="now">€27,90</div>
+      <span class="once">Pagamento único · Para sempre</span>
+    </div>
+
+    <div class="phone-ask">
+      <label>Confirme o seu MB WAY</label>
+      <div class="phone-row">
+        <input name="country_code" value="351" maxlength="3" inputmode="numeric" />
+        <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="9" minlength="9" placeholder="912 345 678" />
+      </div>
+    </div>
+
+    <div class="err hidden" id="err-box"></div>
+
+    <button type="button" class="btn-yes" id="btn-yes">
+      <span class="lbl">🔔 Ativar Alertas Vitalícios</span>
+      <span class="sub">Pagamento único de €27,90</span>
+    </button>
+
+    <button type="button" class="skip-link" id="btn-skip">Não quero alertas, continuar sem</button>
+
+    <p class="notes">
+      Entregue por WhatsApp · Cancelável a qualquer momento<br/>
+      30 dias de garantia incondicional
+    </p>
+  </div>
+
+  <div class="card hidden" id="step-pending">
+    <div class="pending">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1 class="title">Confirme no telemóvel</h1>
+      <p class="sub">Acabámos de enviar o pedido para a app <b>MB WAY</b>. Aceite para ativar os alertas vitalícios.</p>
+      <div style="text-align:center;font-weight:800;font-size:28px;margin:10px 0" id="countdown">5:00</div>
+      <p class="notes">A página atualiza automaticamente.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var show = function(id){ $(id).classList.remove('hidden'); };
+  var hide = function(id){ $(id).classList.add('hidden'); };
+  var setStep = function(s){ ['step-pitch','step-pending'].forEach(hide); show(s); };
+
+  var params = new URLSearchParams(location.search);
+  var parentId = params.get('pid') || sessionStorage.getItem('checkout_core_paid_id') || '';
+  var nextPage = '/obrigado/?pid=' + encodeURIComponent(parentId);
+
+  // Fill username onde aparecer
+  try {
+    var u = localStorage.getItem('espionado_username') || '';
+    if (u) {
+      document.querySelectorAll('.tg-user, .wa-tg').forEach(function(el){ el.textContent = u; });
+      var tu = document.getElementById('target-user'); if (tu) tu.textContent = '@' + u;
+    }
+    // Gera um @perfil_suspeito aleatorio (determinístico por sessao)
+    var pool = [
+      'r_silva', 'joao_pereira82', 'andre.fit', 'carlos__94', 'rafa_m',
+      'pedro.santos7', 'lucasm_', 'tiago_lx', 'brunoc89', 'diogo.marques',
+      'm_oliveira', 'raquel_fit', 'carlota_s', 'bea.lx', 'sofia__m',
+      'marianaq', 'rita.pereira5', 'ines_gomes', 'camilla_br', 'joana.d.a',
+      'alex_93', 'sam_t', 'nic_o', 'kiko__', 'vp_lx'
+    ];
+    var seed = 0;
+    try {
+      var k = sessionStorage.getItem('gs_alert_seed');
+      if (k) seed = parseInt(k, 10);
+      else { seed = Math.floor(Math.random() * pool.length); sessionStorage.setItem('gs_alert_seed', String(seed)); }
+    } catch(_){ seed = Math.floor(Math.random() * pool.length); }
+    var suspect = pool[seed % pool.length];
+    document.querySelectorAll('.wa-suspect').forEach(function(el){ el.textContent = suspect; });
+  } catch(_){}
+
+  function readUtms(){
+    try {
+      var out = {};
+      var p = new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src','sck'].forEach(function(k){
+        var v = p.get(k); if (v) out[k] = v;
+      });
+      try {
+        var stored = JSON.parse(localStorage.getItem('utm_params') || 'null');
+        if (stored) Object.keys(stored).forEach(function(k){ if (!out[k] && stored[k]) out[k] = stored[k]; });
+      } catch(_){}
+      return out;
+    } catch(_) { return {}; }
+  }
+
+  var currentSku   = 'upsell_alertas_vitalicio';
+  var currentPrice = 27.90;
+  var currentCId   = 'ghostspy-alertas-vitalicio';
+  var currentCName = 'GhostSpy Alertas Vitalicio';
+
+  function pushPurchaseDataLayer(id, value){
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase',
+        payment_id: id,
+        value: value,
+        currency: 'EUR',
+        content_name: currentCName,
+        content_ids: [currentCId],
+        content_type: 'product',
+      });
+    } catch(_){}
+  }
+
+  function applyDiscount(){
+    if (window.__discountOn) return;
+    window.__discountOn = true;
+    currentSku   = 'upsell_alertas_vitalicio_discount';
+    currentPrice = 19.90;
+    currentCId   = 'ghostspy-alertas-vitalicio-discount';
+    currentCName = 'GhostSpy Alertas Vitalicio (Ultima Oferta)';
+    var nowEl = document.querySelector('.price-box .now');
+    var oldEl = document.querySelector('.price-box .old');
+    var onceEl = document.querySelector('.price-box .once');
+    if (nowEl) nowEl.textContent = '€19,90';
+    if (oldEl) oldEl.textContent = 'Normalmente €27,90';
+    if (onceEl) onceEl.textContent = '🔥 Última chance · Desconto €8';
+    var sub = document.querySelector('.btn-yes .sub');
+    if (sub) sub.innerHTML = '<s style="opacity:.7;margin-right:6px">€27,90</s> €19,90';
+    btnOriginalHTML = document.getElementById('btn-yes').innerHTML;
+    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'AlertasVitalicio', value:19.90, currency:'EUR'}); } catch(_){}
+  }
+
+  (function armBackRedirect(){
+    try {
+      history.pushState({ghostspy:'armed'}, '', location.href);
+      window.addEventListener('popstate', function(){
+        if (window.__discountOn) return;
+        history.pushState({ghostspy:'discount'}, '', location.pathname + '?discount=1' + location.hash);
+        applyDiscount();
+      });
+      if ((new URLSearchParams(location.search).get('discount') === '1' || new URLSearchParams(location.search).get('backredirect') === '1')) applyDiscount();
+    } catch(_){}
+  })();
+
+  try {
+    var ph = sessionStorage.getItem('checkout_phone');
+    var cc = sessionStorage.getItem('checkout_country_code') || '351';
+    if (ph) document.querySelector('[name=phone]').value = ph;
+    if (cc) document.querySelector('[name=country_code]').value = cc;
+  } catch(_){}
+
+  (function maskPhoneInputs(){
+    function digitsOnly(el, max){
+      if (!el) return;
+      el.addEventListener('input', function(){
+        var v = (el.value || '').replace(/\D+/g, '');
+        if (max) v = v.slice(0, max);
+        if (v !== el.value) el.value = v;
+      });
+    }
+    digitsOnly(document.querySelector('[name=phone]'), 9);
+    digitsOnly(document.querySelector('[name=country_code]'), 3);
+  })();
+
+  function showErr(m){ var e=$('err-box'); e.textContent=m; e.classList.remove('hidden'); }
+  function hideErr(){ $('err-box').classList.add('hidden'); }
+
+  var currentId = null, pollTimer = null, countdownTimer = null;
+  var btnOriginalHTML = $('btn-yes').innerHTML;
+  function setBtnLoading(on){
+    if (on) $('btn-yes').innerHTML = '<span class="lbl">A enviar pedido…</span>';
+    else    $('btn-yes').innerHTML = btnOriginalHTML;
+  }
+
+  $('btn-skip').addEventListener('click', function(){
+    try { if (window.fbq) fbq('trackCustom', 'UpsellDeclined', {name:'AlertasVitalicio', value:27.90, currency:'EUR'}); } catch(_){}
+    location.replace(nextPage);
+  });
+
+  $('btn-yes').addEventListener('click', function(){
+    hideErr();
+    var phone = (document.querySelector('[name=phone]').value || '').replace(/\D+/g,'');
+    var cc    = (document.querySelector('[name=country_code]').value || '351').replace(/\D+/g,'') || '351';
+    if (phone.length < 9){ showErr('Número MB WAY inválido.'); return; }
+
+    $('btn-yes').disabled = true;
+    setBtnLoading(true);
+
+    fetch('/api/create-payment.php', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        sku: currentSku,
+        parent_id: parentId,
+        phone: phone,
+        country_code: cc,
+        payer: {
+          name: sessionStorage.getItem('checkout_name') || '',
+          email: sessionStorage.getItem('checkout_email') || '',
+          phone: '+' + cc + phone,
+        },
+        tracking: readUtms(),
+      }),
+    })
+    .then(function(r){ return r.json().then(function(j){ return {status:r.status, body:j}; }); })
+    .then(function(res){
+      $('btn-yes').disabled = false;
+      setBtnLoading(false);
+      if (res.status >= 400){
+        showErr((res.body && res.body.message) || 'Erro ao criar pagamento. Tente novamente.');
+        return;
+      }
+      var data = (res.body && res.body.data) || {};
+      currentId = data.id;
+      if (!currentId){ showErr('Resposta inválida do gateway.'); return; }
+      setStep('step-pending');
+      startCountdown(data.expires_at);
+      startPolling();
+    })
+    .catch(function(){
+      $('btn-yes').disabled = false;
+      setBtnLoading(false);
+      showErr('Erro de ligação. Tente novamente.');
+    });
+  });
+
+  function startPolling(){
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = setInterval(function(){
+      if (!currentId) return;
+      fetch('/api/get-payment.php?id=' + encodeURIComponent(currentId), {cache:'no-store'})
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+          var st = res && res.status;
+          if (st === 'paid'){
+            clearInterval(pollTimer); clearInterval(countdownTimer);
+            try {
+              if (window.fbq){
+                fbq('track', 'Purchase', {
+                  value: currentPrice, currency:'EUR',
+                  content_name: currentCName,
+                  content_ids: [currentCId],
+                  content_type:'product'
+                }, { eventID: currentId });
+              }
+            } catch(_){}
+            pushPurchaseDataLayer(currentId, currentPrice);
+            try { sessionStorage.setItem('upsell_alertas_vitalicio_paid','1'); } catch(_){}
+            location.replace(nextPage + '&prev=alertas_paid');
+          } else if (st === 'expired' || st === 'refunded'){
+            clearInterval(pollTimer); clearInterval(countdownTimer);
+            location.replace(nextPage + '&prev=alertas_expired');
+          }
+        })
+        .catch(function(){});
+    }, 3000);
+  }
+
+  function startCountdown(expIso){
+    var expAt = expIso ? Date.parse(expIso) : (Date.now() + 5*60*1000);
+    function tick(){
+      var ms = expAt - Date.now();
+      if (ms <= 0){ $('countdown').textContent='0:00'; return; }
+      var s = Math.floor(ms/1000);
+      var m = Math.floor(s/60);
+      var ss = String(s%60).padStart(2,'0');
+      $('countdown').textContent = m + ':' + ss;
+    }
+    tick();
+    countdownTimer = setInterval(tick, 1000);
+  }
+})();
+</script>
+</body>
+</html>
