@@ -11,7 +11,6 @@
 // }
 const alfaiaboemia = require('./_lib/alfaiaboemia');
 const storage = require('./_lib/storage');
-const utmify = require('./_lib/utmify');
 
 const SKUS = {
   core: { id: 'ghostspy-vip', name: 'GhostSpy Acesso VIP', price: 9.9 },
@@ -158,29 +157,6 @@ module.exports = async function handler(req, res) {
           events: [],
         });
 
-        try {
-          if (utmify.isConfigured()) {
-            const customer = {
-              name: payerOut.name || `Cliente ${phone.slice(0, 3)}***`,
-              email: payerOut.email || '',
-              phone: '+' + (body.country_code || '351') + phone,
-              document: payerOut.document || null,
-              ip: userContext.ip || null,
-            };
-            const r = await utmify.sendOrder({
-              orderId: String(data.id),
-              status: 'waiting_payment',
-              priceInCents: Math.round(amount * 100),
-              productId: skuData.id,
-              productName: skuData.name,
-              customer,
-              tracking: trackOut,
-            });
-            console.log('UTMify waiting_payment status=' + r.status);
-          }
-        } catch (e) {
-          console.error('UTMify create failed:', e.message);
-        }
       } catch (e) {
         console.error('storage save failed:', e.message);
       }

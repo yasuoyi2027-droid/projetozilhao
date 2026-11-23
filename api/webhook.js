@@ -4,7 +4,6 @@ const crypto = require('crypto');
 const storage = require('./_lib/storage');
 const metaCapi = require('./_lib/metaCapi');
 const tiktokCapi = require('./_lib/tiktokCapi');
-const utmify = require('./_lib/utmify');
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -110,41 +109,6 @@ async function onPaymentPaid(data) {
     console.error('TikTok CAPI failed:', e.message);
   }
 
-  // UTMify — marca o pedido como paid.
-  try {
-    if (utmify.isConfigured() && paymentId) {
-      const l = await loadLocal();
-      const created = l.created || {};
-      const tracking = created.tracking || {};
-      const ctx = l.user_context || {};
-      const sku = l.sku || 'core';
-      const mapped = SKU_MAP[sku] || { id: 'ghostspy-vip', name: 'GhostSpy VIP' };
-
-      const createdAt = created.created_at
-        ? new Date(created.created_at).toISOString().replace('T', ' ').slice(0, 19)
-        : new Date().toISOString().replace('T', ' ').slice(0, 19);
-
-      const r = await utmify.sendOrder({
-        orderId: String(paymentId),
-        status: 'paid',
-        priceInCents: Math.round((Number(amount) || 0) * 100),
-        productId: mapped.id,
-        productName: mapped.name,
-        customer: {
-          name: (data.payer || {}).name || 'Cliente MB WAY',
-          email: (data.payer || {}).email || '',
-          phone: (data.payer || {}).phone || '',
-          ip: ctx.ip || null,
-        },
-        tracking,
-        createdAt,
-        approvedAt: new Date().toISOString().replace('T', ' ').slice(0, 19),
-      });
-      console.log('UTMify paid status=' + r.status);
-    }
-  } catch (e) {
-    console.error('UTMify paid failed:', e.message);
-  }
 }
 
 async function handler(req, res) {
