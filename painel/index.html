@@ -16,28 +16,69 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding:20px 16px 56px}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important} }
+.wrap{max-width:640px;margin:0 auto;padding:20px 16px 56px;position:relative}
+
+/* ---- Fundo animado (apenas visível atrás do login) ---- */
+.bg-blobs{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.bg-blobs span{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;animation:float 16s ease-in-out infinite}
+.bg-blobs span:nth-child(1){width:320px;height:320px;background:#0E82F8;top:-80px;left:-80px;animation-duration:18s}
+.bg-blobs span:nth-child(2){width:280px;height:280px;background:#7C3AED;top:40%;right:-100px;animation-duration:22s;animation-delay:-4s}
+.bg-blobs span:nth-child(3){width:240px;height:240px;background:#10B981;bottom:-100px;left:20%;animation-duration:20s;animation-delay:-9s}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(30px,-40px) scale(1.1)}
+  66%{transform:translate(-25px,25px) scale(.95)}
+}
 
 /* ---- Topbar ---- */
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;animation:dropIn .5s ease-out}
 .logo{font-weight:800;font-size:18px;letter-spacing:-0.02em}
 .logo span{color:var(--accent)}
-.logout{font-size:12.5px;color:var(--muted);text-decoration:none;font-weight:700;background:none;padding:8px 14px;border-radius:10px;border:1px solid var(--border)}
+.logout{font-size:12.5px;color:var(--muted);text-decoration:none;font-weight:700;background:none;padding:8px 14px;border-radius:10px;border:1px solid var(--border);transition:background .15s,color .15s,transform .15s}
 .logout:hover{background:#fff;color:var(--text)}
+.logout:active{transform:scale(.95)}
 
 /* ---- Cards ---- */
-.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px 20px;box-shadow:0 1px 2px rgba(15,23,42,0.04);margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px 20px;box-shadow:0 1px 2px rgba(15,23,42,0.04);margin-bottom:14px;animation:cardIn .5s cubic-bezier(.16,1,.3,1) both}
 .title{font-size:19px;font-weight:800;letter-spacing:-0.02em;margin:0 0 14px}
+
+@keyframes dropIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* ---- Logo com glow pulsante (tela de login) ---- */
+.login-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 22px;animation:dropIn .5s ease-out}
+.login-logo .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(14,130,248,.5);animation:glow 2.4s ease-in-out infinite}
+.login-logo .mark svg{width:24px;height:24px;color:#fff}
+.login-logo .word{font-weight:800;font-size:22px;letter-spacing:-0.02em}
+.login-logo .word span{color:var(--accent)}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(14,130,248,.45)}
+  50%{box-shadow:0 0 0 14px rgba(14,130,248,0)}
+}
 
 /* ---- Login form ---- */
 label{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:14px 0 6px}
-input{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-family:inherit;outline:none;transition:border-color .15s;background:#fff;color:var(--text)}
-input:focus{border-color:var(--accent)}
+.field{position:relative}
+input{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s,box-shadow .2s,transform .15s;background:#fff;color:var(--text)}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(14,130,248,.12)}
+input.shake{animation:shake .4s}
 button{cursor:pointer;border:none;font-family:inherit}
-.btn{display:block;width:100%;padding:15px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:800;font-size:14.5px;letter-spacing:.03em;text-transform:uppercase;margin-top:18px;box-shadow:0 10px 24px rgba(14,130,248,.3)}
-.btn:disabled{opacity:.6;cursor:default}
-.btn:active{transform:translateY(1px)}
-.err{background:#FEF2F2;border:1px solid #FCA5A5;color:#B91C1C;padding:10px 12px;border-radius:10px;font-size:13.5px;margin-top:14px;display:none}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:15px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:800;font-size:14.5px;letter-spacing:.03em;text-transform:uppercase;margin-top:18px;box-shadow:0 10px 24px rgba(14,130,248,.3);transition:transform .15s,box-shadow .15s}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 14px 28px rgba(14,130,248,.4)}
+.btn:disabled{opacity:.75;cursor:default}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.spinner{width:15px;height:15px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .7s linear infinite;display:none}
+.btn.loading .spinner{display:inline-block}
+.btn.loading .btn-label{opacity:.85}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shake{
+  10%,90%{transform:translateX(-1px)}
+  20%,80%{transform:translateX(2px)}
+  30%,50%,70%{transform:translateX(-4px)}
+  40%,60%{transform:translateX(4px)}
+}
+.err{background:#FEF2F2;border:1px solid #FCA5A5;color:#B91C1C;padding:10px 12px;border-radius:10px;font-size:13.5px;margin-top:14px;display:none;animation:cardIn .3s ease-out}
 .login-sub{color:var(--muted);font-size:13.5px;margin:-8px 0 0}
 
 /* ---- Profile header ---- */
@@ -58,12 +99,33 @@ button{cursor:pointer;border:none;font-family:inherit}
 #setup-row button{white-space:nowrap;padding:0 18px;border-radius:12px;background:var(--text);color:#fff;font-weight:700;font-size:13.5px}
 .setup-hint{color:var(--muted);font-size:13px;margin:10px 0 0;line-height:1.5}
 
+/* ---- Avatar com anel pulsante ---- */
+.avatar{position:relative}
+.avatar::after{content:'';position:absolute;inset:-4px;border-radius:18px;border:2px solid var(--accent);opacity:0;animation:ring 2.2s ease-out infinite}
+@keyframes ring{
+  0%{opacity:.6;transform:scale(.9)}
+  100%{opacity:0;transform:scale(1.25)}
+}
+
+/* ---- Risk meter ---- */
+.risk-wrap{margin-top:16px}
+.risk-top{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:6px}
+.risk-top b{color:var(--text);font-size:12.5px}
+.risk-track{height:8px;border-radius:999px;background:#EEF2F7;overflow:hidden}
+.risk-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#F59E0B,#EF4444);width:0%;transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+
 /* ---- Stat grid ---- */
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
-.stat{background:#F8FAFC;border:1px solid var(--border);border-radius:14px;padding:14px 12px;text-align:center}
-.stat .icon{width:30px;height:30px;margin:0 auto 8px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.stat{background:#F8FAFC;border:1px solid var(--border);border-radius:14px;padding:14px 12px;text-align:center;opacity:0;transform:translateY(14px);animation:statIn .5s cubic-bezier(.16,1,.3,1) forwards;transition:transform .2s,box-shadow .2s,border-color .2s}
+.stat:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(15,23,42,.08);border-color:#CBD5E1}
+.stat:nth-child(1){animation-delay:.05s}
+.stat:nth-child(2){animation-delay:.15s}
+.stat:nth-child(3){animation-delay:.25s}
+@keyframes statIn{to{opacity:1;transform:translateY(0)}}
+.stat .icon{width:30px;height:30px;margin:0 auto 8px;border-radius:9px;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.stat:hover .icon{transform:scale(1.12) rotate(-4deg)}
 .stat .icon svg{width:16px;height:16px}
-.stat .num{font-size:21px;font-weight:800;letter-spacing:-0.02em;line-height:1}
+.stat .num{font-size:21px;font-weight:800;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums}
 .stat .lbl{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-top:5px;line-height:1.3}
 .stat.c-msg .icon{background:#EFF6FF;color:var(--accent)}
 .stat.c-fol .icon{background:#FDF2F8;color:#DB2777}
@@ -71,8 +133,10 @@ button{cursor:pointer;border:none;font-family:inherit}
 
 /* ---- Suspicious contacts ---- */
 h3.section{font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
-.contact{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.contact{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);opacity:0;transform:translateX(-10px);animation:slideIn .4s cubic-bezier(.16,1,.3,1) forwards;transition:background .15s}
+.contact:hover{background:#F8FAFC;margin:0 -8px;padding:11px 8px;border-radius:10px}
 .contact:last-child{border-bottom:none}
+@keyframes slideIn{to{opacity:1;transform:translateX(0)}}
 .c-avatar{width:36px;height:36px;border-radius:50%;background:#E2E8F0;color:var(--text);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:0 0 auto}
 .c-body{flex:1;min-width:0}
 .c-name{font-weight:700;font-size:14px}
@@ -90,30 +154,46 @@ h3.section{font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.0
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:460px}
 th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.03em}
+tbody tr{opacity:0;transform:translateY(8px);animation:statIn .4s ease-out forwards}
+tbody tr:hover{background:#F8FAFC}
 td.u-cell{display:flex;align-items:center;gap:8px}
 .mini-avatar{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .plan-badge{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#EFF6FF;color:var(--accent2);white-space:nowrap}
 
+/* ---- Skeleton de carregamento ---- */
+.skeleton{background:linear-gradient(90deg,#EEF2F7 25%,#F8FAFC 37%,#EEF2F7 63%);background-size:400% 100%;animation:shimmer 1.4s ease-in-out infinite;border-radius:8px}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:0 0}}
+
 .hidden{display:none !important}
-.footer-note{text-align:center;color:var(--muted);font-size:11.5px;margin-top:18px;line-height:1.6}
+.footer-note{text-align:center;color:var(--muted);font-size:11.5px;margin-top:18px;line-height:1.6;animation:dropIn .6s ease-out}
 </style>
 </head>
 <body>
+<div class="bg-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="wrap">
   <div class="topbar">
     <div class="logo">Ghost<span>Spy</span></div>
     <button id="logout-btn" class="logout hidden">Sair</button>
   </div>
 
-  <div id="view-login" class="card">
-    <h1 class="title">Entrar no painel</h1>
-    <p class="login-sub">Use o utilizador e palavra-passe enviados após a sua compra.</p>
-    <label>Utilizador</label>
-    <input id="login-username" type="text" autocomplete="username" placeholder="o seu utilizador" />
-    <label>Palavra-passe</label>
-    <input id="login-password" type="password" autocomplete="current-password" placeholder="a sua palavra-passe" />
-    <button id="login-btn" class="btn">Entrar</button>
-    <div id="login-err" class="err"></div>
+  <div id="view-login">
+    <div class="login-logo">
+      <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></div>
+      <div class="word">Ghost<span>Spy</span></div>
+    </div>
+    <div class="card">
+      <h1 class="title">Entrar no painel</h1>
+      <p class="login-sub">Use o utilizador e palavra-passe enviados após a sua compra.</p>
+      <label>Utilizador</label>
+      <div class="field"><input id="login-username" type="text" autocomplete="username" placeholder="o seu utilizador" /></div>
+      <label>Palavra-passe</label>
+      <div class="field"><input id="login-password" type="password" autocomplete="current-password" placeholder="a sua palavra-passe" /></div>
+      <button id="login-btn" class="btn">
+        <span class="spinner"></span>
+        <span class="btn-label">Entrar</span>
+      </button>
+      <div id="login-err" class="err"></div>
+    </div>
   </div>
 
   <div id="view-dashboard" class="hidden">
@@ -139,6 +219,11 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       </div>
 
       <div id="monitor-wrap" class="hidden">
+        <div class="risk-wrap">
+          <div class="risk-top"><span>Nível de atenção</span><b id="risk-label">—</b></div>
+          <div class="risk-track"><div class="risk-fill" id="risk-fill"></div></div>
+        </div>
+
         <div class="stat-grid">
           <div class="stat c-msg">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
@@ -190,6 +275,21 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     return (str[0] || '?').toUpperCase();
   }
 
+  function countUp(el, target, suffix){
+    suffix = suffix || '';
+    var start = 0;
+    var duration = 700;
+    var startTime = null;
+    function step(ts){
+      if (!startTime) startTime = ts;
+      var progress = Math.min(1, (ts - startTime) / duration);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(start + (target - start) * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   function showLogin(){
     $('view-login').classList.remove('hidden');
     $('view-dashboard').classList.add('hidden');
@@ -234,14 +334,22 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     $('p-avatar').textContent = initials(m.target_username);
 
     $('m-lastseen').textContent = fmtMinutes(m.last_seen_minutes_ago);
-    $('m-messages').textContent = m.new_messages;
-    $('m-followers').textContent = m.new_followers;
+    countUp($('m-messages'), m.new_messages);
+    countUp($('m-followers'), m.new_followers);
+
+    var riskScore = Math.min(100, (m.new_messages * 4) + (m.new_followers * 3) + (m.suspicious_contacts || []).length * 8);
+    var riskLabel = riskScore >= 66 ? 'Alto' : riskScore >= 33 ? 'Médio' : 'Baixo';
+    $('risk-label').textContent = riskLabel;
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ $('risk-fill').style.width = riskScore + '%'; });
+    });
 
     var list = $('contacts-list');
     list.innerHTML = '';
-    (m.suspicious_contacts || []).forEach(function(c){
+    (m.suspicious_contacts || []).forEach(function(c, i){
       var row = document.createElement('div');
       row.className = 'contact';
+      row.style.animationDelay = (i * 0.08) + 's';
       var tagClass = TAG_CLASS[c.tag] || 't-other';
       row.innerHTML =
         '<div class="c-avatar">' + initials(c.name) + '</div>' +
@@ -271,8 +379,9 @@ td.u-cell{display:flex;align-items:center;gap:8px}
           $('admin-count').textContent = data.customers.length;
           var tbody = $('admin-rows');
           tbody.innerHTML = '';
-          data.customers.forEach(function(c){
+          data.customers.forEach(function(c, i){
             var tr = document.createElement('tr');
+            tr.style.animationDelay = (i * 0.06) + 's';
             var planLabel = (c.sku || '—').replace('core_discount', 'VIP (oferta)').replace('core_bump', 'VIP + Multi').replace('core', 'VIP');
             tr.innerHTML =
               '<td class="u-cell"><span class="mini-avatar">' + initials(c.username) + '</span>' + c.username + '</td>' +
@@ -291,6 +400,21 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       });
   }
 
+  function shakeFields(){
+    [$('login-username'), $('login-password')].forEach(function(el){
+      el.classList.remove('shake');
+      void el.offsetWidth;
+      el.classList.add('shake');
+    });
+  }
+
+  function setLoginLoading(on){
+    var btn = $('login-btn');
+    btn.disabled = on;
+    btn.classList.toggle('loading', on);
+    btn.querySelector('.btn-label').textContent = on ? 'A entrar...' : 'Entrar';
+  }
+
   $('login-btn').addEventListener('click', function(){
     var username = $('login-username').value.trim();
     var password = $('login-password').value;
@@ -299,11 +423,10 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     if (!username || !password){
       err.textContent = 'Preencha utilizador e palavra-passe.';
       err.style.display = 'block';
+      shakeFields();
       return;
     }
-    var btn = $('login-btn');
-    btn.disabled = true;
-    btn.textContent = 'A entrar...';
+    setLoginLoading(true);
 
     fetch('/api/login', {
       method: 'POST',
@@ -312,21 +435,21 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     })
       .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, body: j }; }); })
       .then(function(res){
-        btn.disabled = false;
-        btn.textContent = 'Entrar';
         if (!res.ok){
+          setLoginLoading(false);
           err.textContent = 'Utilizador ou palavra-passe inválidos.';
           err.style.display = 'block';
+          shakeFields();
           return;
         }
         localStorage.setItem(TOKEN_KEY, res.body.token);
         loadPanel();
       })
       .catch(function(){
-        btn.disabled = false;
-        btn.textContent = 'Entrar';
+        setLoginLoading(false);
         err.textContent = 'Erro de ligação. Tente novamente.';
         err.style.display = 'block';
+        shakeFields();
       });
   });
 
