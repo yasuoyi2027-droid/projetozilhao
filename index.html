@@ -297,6 +297,60 @@
       })();
     </script>
     <!-- End Age Gate GhostSpy -->
+    <!-- Rodapé legal GhostSpy (dados da empresa + políticas), exibido apenas na home.
+         Injetado via JS pelo mesmo motivo do Age Gate: a hidratação do React Router
+         descarta do body qualquer nó estático fora da árvore do app. -->
+    <style>
+      #ghost-legal-footer{font-family:Inter,system-ui,-apple-system,sans-serif;background:#F1F5FF;border-top:1px solid #DCE8FB;padding:28px 16px 32px;color:#334155;font-size:12.5px;line-height:1.7}
+      #ghost-legal-footer .glf-wrap{max-width:720px;margin:0 auto}
+      #ghost-legal-footer .glf-company{margin:0 0 14px;color:#0F172A;font-weight:700;font-size:13.5px}
+      #ghost-legal-footer .glf-company span{font-weight:400;color:#475569}
+      #ghost-legal-footer .glf-links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px;padding:0;list-style:none}
+      #ghost-legal-footer .glf-links a{color:#0E82F8;text-decoration:none;font-weight:600}
+      #ghost-legal-footer .glf-links a:hover{text-decoration:underline}
+      #ghost-legal-footer .glf-copy{color:#64748B}
+    </style>
+    <script>
+      (function () {
+        var FOOTER_HTML = [
+          '<div id="ghost-legal-footer">',
+          '  <div class="glf-wrap">',
+          '    <p class="glf-company">GhostSpy — Jordana Frade <span>· NIF 246990120 · Travessa de Além Rio, 50, 4780-460 Santo Tirso, Porto, Portugal</span></p>',
+          '    <ul class="glf-links">',
+          '      <li><a href="/sobre-nos">Sobre Nós</a></li>',
+          '      <li><a href="/contato">Contato</a></li>',
+          '      <li><a href="/politica-de-privacidade">Política de Privacidade</a></li>',
+          '      <li><a href="/termos-de-uso">Termos de Uso</a></li>',
+          '      <li><a href="/trocas-e-devolucoes">Trocas e Devoluções</a></li>',
+          '      <li><a href="/politica-de-entrega">Entrega</a></li>',
+          '      <li><a href="/politica-de-reembolso">Reembolso</a></li>',
+          '    </ul>',
+          '    <p class="glf-copy">Tel: <a href="tel:+351252837400" style="color:inherit">+351 252 837 400</a> · E-mail: <a href="mailto:suporte@ghostemail.com" style="color:inherit">suporte@ghostemail.com</a> · Preços em Euro (EUR).</p>',
+          '  </div>',
+          '</div>'
+        ].join('\n');
+
+        var footer = null, fmo = null;
+        function buildFooter() {
+          var host = document.createElement('div');
+          host.innerHTML = FOOTER_HTML;
+          footer = host.firstElementChild;
+          document.body.appendChild(footer);
+        }
+        function destroyFooter() {
+          if (footer) { footer.remove(); footer = null; }
+        }
+        function syncFooter() {
+          var onHome = !!document.querySelector('.ghost-home-scope');
+          if (onHome && !footer) buildFooter();
+          else if (!onHome && footer) destroyFooter();
+        }
+        syncFooter();
+        fmo = new MutationObserver(syncFooter);
+        fmo.observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
+    <!-- End Rodapé legal GhostSpy -->
     <!-- Google Tag Manager (noscript) -->
     <!-- TODO: substituir __GTM_ID__ pelo ID novo -->
     <noscript
