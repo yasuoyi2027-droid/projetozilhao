@@ -3,6 +3,7 @@
 const crypto = require('crypto');
 const storage = require('./_lib/storage');
 const metaCapi = require('./_lib/metaCapi');
+const tiktokCapi = require('./_lib/tiktokCapi');
 const utmify = require('./_lib/utmify');
 
 function readRawBody(req) {
@@ -76,6 +77,37 @@ async function onPaymentPaid(data) {
     }
   } catch (e) {
     console.error('Meta CAPI failed:', e.message);
+  }
+
+  // ---- TikTok Events API: CompletePayment event ---------------------------
+  try {
+    if (tiktokCapi.isConfigured() && paymentId) {
+      const l = await loadLocal();
+      const created = l.created || {};
+      const ctx = l.user_context || {};
+      const sku = l.sku || 'core';
+      const mapped = SKU_MAP[sku] || { id: 'ghostspy-vip', name: process.env.PRODUCT_NAME || 'GhostSpy VIP' };
+
+      const event = tiktokCapi.buildPurchase({
+        eventId: paymentId,
+        value: Number(amount) || 0,
+        currency: data.currency || 'EUR',
+        email: payerEmail,
+        phone: payerPhone,
+        clientIp: ctx.ip || null,
+        userAgent: ctx.user_agent || null,
+        ttclid: ctx.ttclid || null,
+        ttp: ctx.ttp || null,
+        sourceUrl: ctx.source_url || null,
+        productName: mapped.name,
+        productId: mapped.id,
+      });
+
+      const res = await tiktokCapi.send([event]);
+      console.log('TikTok CAPI CompletePayment status=' + res.status);
+    }
+  } catch (e) {
+    console.error('TikTok CAPI failed:', e.message);
   }
 
   // UTMify — marca o pedido como paid.

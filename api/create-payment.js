@@ -143,6 +143,8 @@ module.exports = async function handler(req, res) {
           user_agent: req.headers['user-agent'] || null,
           fbp: input.fbp || (req.cookies && req.cookies._fbp) || null,
           fbc: input.fbc || (req.cookies && req.cookies._fbc) || null,
+          ttclid: input.ttclid || (req.cookies && req.cookies.ttclid) || null,
+          ttp: input.ttp || (req.cookies && req.cookies._ttp) || null,
           source_url: req.headers['referer'] || null,
         };
 
