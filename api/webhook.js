@@ -4,6 +4,10 @@ const crypto = require('crypto');
 const storage = require('./_lib/storage');
 const metaCapi = require('./_lib/metaCapi');
 const tiktokCapi = require('./_lib/tiktokCapi');
+const auth = require('./_lib/auth');
+const accounts = require('./_lib/accounts');
+
+const CORE_SKUS = ['core', 'core_bump', 'core_discount'];
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -109,6 +113,36 @@ async function onPaymentPaid(data) {
     console.error('TikTok CAPI failed:', e.message);
   }
 
+  // ---- Painel do cliente: gera conta (login/senha) na compra core -------
+  try {
+    const l = await loadLocal();
+    const sku = l.sku || 'core';
+    if (paymentId && CORE_SKUS.includes(sku) && !l.account) {
+      const created = l.created || {};
+      const username = auth.genUsername(payerEmail || created.phone || paymentId);
+      const password = auth.genPassword(8);
+      const account = {
+        id: paymentId,
+        role: 'customer',
+        username,
+        password_hash: auth.hashPassword(password),
+        target_username: created.target_username || null,
+        name: (created.payer || {}).name || null,
+        email: payerEmail,
+        sku,
+        created_at: new Date().toISOString(),
+      };
+      await accounts.saveAccount(paymentId, account);
+      await accounts.saveUsernameIndex(username, paymentId);
+      await accounts.addToIndex(paymentId);
+
+      l.account = { username, password };
+      await storage.save(paymentId, l);
+      console.log('Painel: conta criada username=' + username);
+    }
+  } catch (e) {
+    console.error('Painel account creation failed:', e.message);
+  }
 }
 
 async function handler(req, res) {

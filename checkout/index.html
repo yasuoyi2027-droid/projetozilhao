@@ -244,6 +244,15 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     var discountOn = !!window.__discountOn;
     var sku = discountOn ? 'core_discount' : (bumpOn ? 'core_bump' : 'core');
 
+    // Perfil do Instagram que está a ser "analisado" no funil (usado no painel pós-compra).
+    function getTargetUsername(){
+      try {
+        var stored = JSON.parse(localStorage.getItem('instagram_profile') || '{}');
+        var u = stored.username || localStorage.getItem('espionado_username') || '';
+        return String(u).replace(/^@+/, '').trim() || null;
+      } catch(_){ return null; }
+    }
+
     var body = {
       sku: sku,
       phone: phone,
@@ -252,6 +261,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       tracking: readUtms(),
       fbp: getCookie('_fbp'),
       fbc: getCookie('_fbc'),
+      target_username: getTargetUsername(),
     };
 
     // Guarda dados para uso nos upsells (telefone + dados pessoais).

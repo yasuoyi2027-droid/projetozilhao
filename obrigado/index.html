@@ -62,6 +62,11 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .step .tx b{color:var(--text)}
 .notes{color:var(--muted);font-size:12px;text-align:center;margin-top:22px;line-height:1.5}
 .notes b{color:var(--text)}
+.creds{text-align:left;background:#EFF6FF;border:1px solid #DCE8FB;border-radius:14px;padding:14px 16px;margin:18px 0}
+.creds h3{font-size:12.5px;font-weight:800;color:var(--accent2);letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px}
+.creds .line{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:4px 0}
+.creds .line b{font-family:ui-monospace,monospace;letter-spacing:.02em}
+.creds p{font-size:11.5px;color:var(--muted);margin:8px 0 0}
 </style>
 </head>
 <body>
@@ -71,7 +76,14 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     <h1 class="title">Está tudo pronto!</h1>
     <p class="sub">Compra confirmada. O seu acesso VIP está activo neste dispositivo.</p>
 
-    <a href="/feed" class="enter-btn">Entrar no painel agora →</a>
+    <div id="creds-box" class="creds" style="display:none">
+      <h3>O seu acesso ao painel</h3>
+      <div class="line"><span>Utilizador</span><b id="creds-user">—</b></div>
+      <div class="line"><span>Palavra-passe</span><b id="creds-pass">—</b></div>
+      <p>Guarde estes dados — vai precisar deles para entrar novamente no painel.</p>
+    </div>
+
+    <a id="enter-btn" href="/painel" class="enter-btn">Entrar no painel agora →</a>
 
     <div class="summary">
       <h3>Resumo da sua compra</h3>
@@ -121,6 +133,24 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 (function(){
   'use strict';
   var p = new URLSearchParams(location.search);
+
+  // Busca o login/senha gerados automaticamente na compra (via ?pid=<payment_id>).
+  (function loadCredentials(){
+    var pid = p.get('pid') || sessionStorage.getItem('checkout_core_paid_id');
+    if (!pid) return;
+    fetch('/api/get-credentials?id=' + encodeURIComponent(pid), { cache: 'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(creds){
+        if (!creds || !creds.username) return;
+        document.getElementById('creds-user').textContent = creds.username;
+        document.getElementById('creds-pass').textContent = creds.password;
+        document.getElementById('creds-box').style.display = 'block';
+        var enterBtn = document.getElementById('enter-btn');
+        enterBtn.href = '/painel?u=' + encodeURIComponent(creds.username) + '&p=' + encodeURIComponent(creds.password);
+      })
+      .catch(function(){});
+  })();
+
   var bumpOn = sessionStorage.getItem('checkout_bump') === '1';
   if (bumpOn){
     var r = document.getElementById('row-bump');

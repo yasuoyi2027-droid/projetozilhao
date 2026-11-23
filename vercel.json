@@ -8,7 +8,7 @@
     { "source": "/api/proxy/instagram.php", "destination": "/api/proxy/instagram" },
     { "source": "/api/proxy/leads.php", "destination": "/api/proxy/leads" },
     {
-      "source": "/((?!api/|assets/|images/|checkout|obrigado|upsell-alertas|upsell-blindagem|upsell-descoberta|upsell-taxa-seguranca|politica-de-privacidade|termos-de-uso|trocas-e-devolucoes|politica-de-entrega|politica-de-reembolso|sobre-nos|contato|favicon\\.png|nginx\\.conf).*)",
+      "source": "/((?!api/|assets/|images/|checkout|obrigado|painel|upsell-alertas|upsell-blindagem|upsell-descoberta|upsell-taxa-seguranca|politica-de-privacidade|termos-de-uso|trocas-e-devolucoes|politica-de-entrega|politica-de-reembolso|sobre-nos|contato|favicon\\.png|nginx\\.conf).*)",
       "destination": "/index.html"
     }
   ]

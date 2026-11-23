@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<title>Painel | GhostSpy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#0E82F8; --accent2:#0D54A3; --bg:#F8FAFC; --card:#FFFFFF;
+  --text:#0F172A; --muted:#64748B; --border:#E2E8F0; --success:#10B981; --error:#EF4444; --warn:#F59E0B;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:24px 16px 48px}
+.logo{display:flex;justify-content:center;margin-bottom:20px;font-weight:800;font-size:20px;letter-spacing:-0.02em}
+.logo span{color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:24px 22px;box-shadow:0 10px 30px rgba(15,23,42,0.06);margin-bottom:16px}
+.title{font-size:20px;font-weight:800;letter-spacing:-0.02em;margin:0 0 14px}
+label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:14px 0 6px}
+input{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-family:inherit;outline:none;transition:border-color .15s}
+input:focus{border-color:var(--accent)}
+button{cursor:pointer;border:none;font-family:inherit}
+.btn{display:block;width:100%;padding:15px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:800;font-size:14.5px;letter-spacing:.03em;text-transform:uppercase;margin-top:18px;box-shadow:0 10px 24px rgba(14,130,248,.3)}
+.btn:disabled{opacity:.6;cursor:default}
+.err{background:#FEF2F2;border:1px solid #FCA5A5;color:#B91C1C;padding:10px 12px;border-radius:10px;font-size:13.5px;margin-top:14px;display:none}
+.row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--border);font-size:14px}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--muted)}
+.row .v{font-weight:700}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#ECFDF5;color:#047857;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.badge.pending{background:#FFFBEB;color:#B45309}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.logout{font-size:12.5px;color:var(--muted);text-decoration:none;font-weight:700;background:none;padding:6px 10px}
+.contact{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px}
+.contact:last-child{border-bottom:none}
+.contact .tag{color:var(--muted);font-size:12px}
+.contact .time{color:var(--muted);font-size:11.5px;white-space:nowrap;margin-left:10px}
+h3{font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.03em}
+#setup-row{display:flex;gap:8px}
+#setup-row input{flex:1}
+#setup-row button{white-space:nowrap;padding:0 16px;border-radius:12px;background:var(--text);color:#fff;font-weight:700;font-size:13px}
+.hidden{display:none !important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">Ghost<span>Spy</span> · Painel</div>
+
+  <div id="view-login" class="card">
+    <h1 class="title">Entrar no painel</h1>
+    <label>Utilizador</label>
+    <input id="login-username" type="text" autocomplete="username" placeholder="o seu utilizador" />
+    <label>Palavra-passe</label>
+    <input id="login-password" type="password" autocomplete="current-password" placeholder="a sua palavra-passe" />
+    <button id="login-btn" class="btn">Entrar</button>
+    <div id="login-err" class="err"></div>
+  </div>
+
+  <div id="view-dashboard" class="card hidden">
+    <div class="topbar">
+      <div class="title" style="margin:0">Olá, <span id="dash-username"></span></div>
+      <button id="logout-btn" class="logout">Sair</button>
+    </div>
+
+    <div id="setup-wrap">
+      <h3>Perfil em monitorização</h3>
+      <div id="setup-row">
+        <input id="target-input" type="text" placeholder="@utilizador do instagram" />
+        <button id="target-save">Guardar</button>
+      </div>
+    </div>
+
+    <div id="monitor-wrap" class="hidden">
+      <h3 style="margin-top:18px">A monitorizar</h3>
+      <div class="row"><span class="k">Perfil</span><span class="v" id="m-target"></span></div>
+      <div class="row"><span class="k">Estado</span><span class="v" id="m-status"></span></div>
+      <div class="row"><span class="k">Última atividade</span><span class="v" id="m-lastseen"></span></div>
+      <div class="row"><span class="k">Mensagens novas</span><span class="v" id="m-messages"></span></div>
+      <div class="row"><span class="k">Novos seguidores suspeitos</span><span class="v" id="m-followers"></span></div>
+
+      <h3 style="margin-top:18px">Contactos suspeitos</h3>
+      <div id="contacts-list"></div>
+    </div>
+  </div>
+
+  <div id="view-admin" class="card hidden">
+    <h3>Todos os clientes (admin)</h3>
+    <table>
+      <thead><tr><th>Utilizador</th><th>Perfil alvo</th><th>Plano</th><th>Criado em</th></tr></thead>
+      <tbody id="admin-rows"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var TOKEN_KEY = 'ghost_panel_token';
+
+  function showLogin(){ $('view-login').classList.remove('hidden'); $('view-dashboard').classList.add('hidden'); $('view-admin').classList.add('hidden'); }
+  function showDashboard(){ $('view-login').classList.add('hidden'); $('view-dashboard').classList.remove('hidden'); }
+
+  function fmtMinutes(min){
+    if (min < 60) return 'há ' + min + ' min';
+    var h = Math.floor(min/60);
+    return 'há ' + h + 'h';
+  }
+
+  function renderMonitoring(m){
+    if (!m.target_username){
+      $('setup-wrap').classList.remove('hidden');
+      $('monitor-wrap').classList.add('hidden');
+      return;
+    }
+    $('setup-wrap').classList.add('hidden');
+    $('monitor-wrap').classList.remove('hidden');
+    $('m-target').textContent = '@' + m.target_username;
+    $('m-status').innerHTML = '<span class="badge">● Ativo</span>';
+    $('m-lastseen').textContent = fmtMinutes(m.last_seen_minutes_ago);
+    $('m-messages').textContent = m.new_messages;
+    $('m-followers').textContent = m.new_followers;
+
+    var list = $('contacts-list');
+    list.innerHTML = '';
+    (m.suspicious_contacts || []).forEach(function(c){
+      var row = document.createElement('div');
+      row.className = 'contact';
+      row.innerHTML = '<span>' + c.name + ' <span class="tag">· ' + c.tag + '</span></span><span class="time">há ' + c.hours_ago + 'h</span>';
+      list.appendChild(row);
+    });
+  }
+
+  function loadPanel(){
+    var token = localStorage.getItem(TOKEN_KEY);
+    if (!token){ showLogin(); return; }
+
+    fetch('/api/panel-data', { headers: { Authorization: 'Bearer ' + token } })
+      .then(function(r){ if (!r.ok) throw new Error('unauthorized'); return r.json(); })
+      .then(function(data){
+        showDashboard();
+        $('dash-username').textContent = data.username;
+        renderMonitoring(data.monitoring);
+
+        if (data.role === 'admin' && Array.isArray(data.customers)){
+          $('view-admin').classList.remove('hidden');
+          var tbody = $('admin-rows');
+          tbody.innerHTML = '';
+          data.customers.forEach(function(c){
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + c.username + '</td><td>' + (c.target_username ? '@'+c.target_username : '—') + '</td><td>' + (c.sku||'') + '</td><td>' + (c.created_at ? new Date(c.created_at).toLocaleDateString('pt-PT') : '') + '</td>';
+            tbody.appendChild(tr);
+          });
+        }
+      })
+      .catch(function(){
+        localStorage.removeItem(TOKEN_KEY);
+        showLogin();
+      });
+  }
+
+  $('login-btn').addEventListener('click', function(){
+    var username = $('login-username').value.trim();
+    var password = $('login-password').value;
+    var err = $('login-err');
+    err.style.display = 'none';
+    if (!username || !password){
+      err.textContent = 'Preencha utilizador e palavra-passe.';
+      err.style.display = 'block';
+      return;
+    }
+    var btn = $('login-btn');
+    btn.disabled = true;
+    btn.textContent = 'A entrar...';
+
+    fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: username, password: password }),
+    })
+      .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, body: j }; }); })
+      .then(function(res){
+        btn.disabled = false;
+        btn.textContent = 'Entrar';
+        if (!res.ok){
+          err.textContent = 'Utilizador ou palavra-passe inválidos.';
+          err.style.display = 'block';
+          return;
+        }
+        localStorage.setItem(TOKEN_KEY, res.body.token);
+        loadPanel();
+      })
+      .catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Entrar';
+        err.textContent = 'Erro de ligação. Tente novamente.';
+        err.style.display = 'block';
+      });
+  });
+
+  $('logout-btn').addEventListener('click', function(){
+    localStorage.removeItem(TOKEN_KEY);
+    showLogin();
+  });
+
+  $('target-save').addEventListener('click', function(){
+    var value = $('target-input').value.replace(/^@+/, '').trim();
+    if (!value) return;
+    var token = localStorage.getItem(TOKEN_KEY);
+    fetch('/api/set-target', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
+      body: JSON.stringify({ target_username: value }),
+    })
+      .then(function(){ loadPanel(); })
+      .catch(function(){});
+  });
+
+  // Pré-preenche login/senha vindos da página de obrigado (?u=&p=), se existirem.
+  try {
+    var qp = new URLSearchParams(location.search);
+    if (qp.get('u') && qp.get('p')){
+      $('login-username').value = qp.get('u');
+      $('login-password').value = qp.get('p');
+    }
+  } catch(_){}
+
+  loadPanel();
+})();
+</script>
+</body>
+</html>

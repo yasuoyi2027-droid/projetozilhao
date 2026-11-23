@@ -147,12 +147,20 @@ module.exports = async function handler(req, res) {
           source_url: req.headers['referer'] || null,
         };
 
+        var targetUsername = typeof input.target_username === 'string' ? input.target_username.replace(/^@+/, '').trim().slice(0, 60) || null : null;
+        if (!targetUsername && parentId) {
+          try {
+            const local = await loadParent();
+            targetUsername = ((local.created || {}).target_username) || null;
+          } catch (e) {}
+        }
+
         await storage.save(data.id, {
           id: data.id,
           status: data.status || 'pending',
           sku,
           parent_id: parentId || null,
-          created: Object.assign({}, data, { tracking: trackOut, phone }),
+          created: Object.assign({}, data, { tracking: trackOut, phone, target_username: targetUsername }),
           user_context: userContext,
           events: [],
         });
