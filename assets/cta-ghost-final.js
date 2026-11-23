@@ -32,12 +32,12 @@ function te({ }) {
   return [
     {
       title:
-        "GhostSpy | Aceder Agora",
+        "GhostSpy | Uzyskaj Dostęp",
     },
     {
       name: "description",
       content:
-        "Descubra como o GhostSpy analisa perfis no Instagram e mostra gostos, conversas e atividades de forma 100% anónima.",
+        "Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo.",
     },
     {
       name: "keywords",
@@ -127,10 +127,10 @@ const X = 600 * 1e3,
       }, []),
       t.useEffect(() => {
         const a = [
-          { text: "Saudades de ontem à noite 🔥", isSent: !1 },
-          { text: "Também... quando nos vemos de novo?", isSent: !0 },
-          { text: "Hoje às 23h, no sítio do costume? 😏", isSent: !1 },
-          { text: "Perfeito. Apaga depois de ler 🤫", isSent: !0 },
+          { text: "Tęsknię za wczorajszą nocą 🔥", isSent: !1 },
+          { text: "A tak... kiedy się znowu zobaczymy?", isSent: !0 },
+          { text: "Dziś o 23:00, w zwykłym miejscu? 😏", isSent: !1 },
+          { text: "Idealnie. Usuń po przeczytaniu 🤫", isSent: !0 },
         ];
         let i = !0;
         const r = [],
@@ -206,28 +206,28 @@ const X = 600 * 1e3,
       O = t.useMemo(() => ae(o), [o]),
       $ = [
         {
-          q: "A ferramenta funciona mesmo?",
-          a: "Sim! O GhostSpy utiliza tecnologia avançada para aceder aos dados do Instagram de forma completamente invisível. Milhares de utilizadores já confirmaram a eficácia da ferramenta.",
+          q: "Czy to narzędzie naprawdę działa?",
+          a: "Tak! GhostSpy wykorzystuje zaawansowaną technologię, aby uzyskać dostęp do danych z Instagrama w sposób całkowicie niewidoczny. Tysiące użytkowników już potwierdziło skuteczność tego narzędzia.",
         },
         {
-          q: "A pessoa vai saber que analisei o perfil dela?",
-          a: "Não! O acesso é 100% invisível. A pessoa não recebe qualquer notificação e não há rastos de que visualizou o perfil dela.",
+          q: "Czy ta osoba dowie się, że analizowałem jej profil?",
+          a: "Nie! Dostęp jest w 100% niewidoczny. Osoba nie otrzymuje żadnego powiadomienia i nie ma żadnych śladów, że przeglądałeś jej profil.",
         },
         {
-          q: "Funciona em perfis privados?",
-          a: "Sim! O GhostSpy funciona em qualquer tipo de perfil, incluindo perfis privados, contas verificadas e perfis comerciais.",
+          q: "Działa na profilach prywatnych?",
+          a: "Tak! GhostSpy działa na każdym typie profilu, w tym na profilach prywatnych, zweryfikowanych kontach i profilach biznesowych.",
         },
         {
-          q: "Preciso de instalar alguma coisa?",
-          a: "Não! O GhostSpy funciona totalmente na nuvem. Só precisa de aceder pelo navegador, sem transferir nem instalar nada no seu dispositivo.",
+          q: "Czy muszę coś instalować?",
+          a: "Nie! GhostSpy działa całkowicie w chmurze. Wystarczy wejść przez przeglądarkę, bez pobierania czy instalowania czegokolwiek na urządzeniu.",
         },
         {
-          q: "Como funciona a garantia?",
-          a: "Oferecemos garantia de 30 dias. Se não ficar satisfeito, devolvemos 100% do seu dinheiro, sem perguntas.",
+          q: "Jak działa gwarancja?",
+          a: "Oferujemy 30-dniową gwarancję. Jeśli nie będziesz zadowolony, zwrócimy 100% Twoich pieniędzy, bez pytań.",
         },
         {
-          q: "Quanto tempo tenho acesso?",
-          a: "O acesso é vitalício! Depois de adquirido, pode usar a ferramenta para sempre, sem mensalidades nem renovações.",
+          q: "Jak długo mam dostęp?",
+          a: "Dostęp jest dożywotni! Po zakupie możesz używać narzędzia na zawsze, bez abonamentów i odnowień.",
         },
       ],
       F = [
@@ -235,7 +235,7 @@ const X = 600 * 1e3,
           name: "joaopires_pt",
           time: "3h",
           avatar: "/images/avatars/avatar-depoimento-1.jpg",
-          text: "Achei que era aldrabice mas testei na mesma. Paguei e em 3 min recebi o acesso. Estava tudo lá: directs, fotos que ele apagava, até a localização funcionou. Valeu cada cêntimo.",
+          text: "Myślałam, że to oszustwo, ale i tak przetestowałam. Zapłaciłam i w 3 minuty dostałam dostęp. Wszystko było tam: DM-y, zdjęcia, które usuwał, nawet lokalizacja działała. Warte każdego grosza.",
         },
         {
           name: "ritamartins_34",
@@ -247,7 +247,7 @@ const X = 600 * 1e3,
           name: "carlos_mendes",
           time: "1d",
           avatar: "/images/avatars/avatar-depoimento-3.jpg",
-          text: "Na versão completa testei com o @ do meu namorado e vi imensa coisa. Localização, fotos escondidas, até conversas apagadas. Foi exatamente como mostraram.",
+          text: "W pełnej wersji przetestowałam z @ mojego chłopaka i zobaczyłam ogrom rzeczy. Lokalizacja, skrywane zdjęcia, nawet usunięte rozmowy. Było tak, jak pokazywali.",
         },
       ],
       D = [
@@ -271,13 +271,13 @@ const X = 600 * 1e3,
                   children: [
                     e.jsx("strong", {
                       style: { fontWeight: 900 },
-                      children: "Finalize a sua compra agora!",
+                      children: "Dokończ zakup teraz!",
                     }),
                     e.jsx("br", {}),
                     e.jsx("span", {
                       style: { display: "inline-block", marginTop: "3px" },
                       children:
-                        "Não saia nem recarregue esta página, a análise não pode ser feita novamente.",
+                        "Nie wychodź i nie odświeżaj tej strony, analizy nie można powtórzyć.",
                     }),
                   ],
                 })
@@ -286,7 +286,7 @@ const X = 600 * 1e3,
                     e.jsxs("strong", {
                       style: { fontWeight: 900 },
                       children: [
-                        "Finalize a sua compra em",
+                        "Dokończ zakup w",
                         " ",
                         e.jsx("span", { id: "countdown", children: E }),
                       ],
@@ -295,7 +295,7 @@ const X = 600 * 1e3,
                     e.jsxs("span", {
                       style: { display: "inline-block", marginTop: "3px" },
                       children: [
-                        "Quando o cronómetro chegar a zero, nunca mais será possível aceder ao Instagram de ",
+                        "Gdy licznik dojdzie do zera, nigdy więcej nie będzie można uzyskać dostępu do Instagrama ",
                         l,
                         ".",
                       ],
@@ -316,7 +316,7 @@ const X = 600 * 1e3,
                 className: "cta-timer-button",
                 onClick: B,
                 style: { whiteSpace: "nowrap" },
-                children: ["Desbloquear", e.jsx("br", {}), "Acesso Agora"],
+                children: ["Desbloquear", e.jsx("br", {}), "Uzyskaj Dostęp Teraz"],
               }),
             }),
           ],
@@ -329,19 +329,19 @@ const X = 600 * 1e3,
               children: [
                 e.jsx("img", {
                   src: "/images/logos/ghostspy-logo.png?v=20261103-blue",
-                  alt: "GhostSpy Logo",
+                  alt: "Logo GhostSpy",
                 }),
                 e.jsxs("h1", {
                   className: "cta-main-title",
                   children: [
-                    "A maior ferramenta",
+                    "Największe narzędzie",
                     e.jsx("br", {}),
-                    "de ",
+                    "do ",
                     e.jsx("span", {
                       className: "cta-gradient",
-                      children: "Investigação",
+                      children: "śledzenia",
                     }),
-                    " de Portugal",
+                    " w Polsce",
                   ],
                 }),
               ],
@@ -378,7 +378,7 @@ const X = 600 * 1e3,
                       children: [
                         e.jsx("h2", {
                           className: "cta-profile-card-username",
-                          children: n?.full_name || o || "Pessoa Investigada",
+                          children: n?.full_name || o || "Osoba Analizowana",
                         }),
                         e.jsxs("p", {
                           className: "cta-profile-card-name",
@@ -397,7 +397,7 @@ const X = 600 * 1e3,
                                 }),
                                 e.jsxs("span", {
                                   className: "cta-profile-card-stat-label",
-                                  children: [" ", "publicações"],
+                                  children: [" ", "publikacji"],
                                 }),
                               ],
                             }),
@@ -410,7 +410,7 @@ const X = 600 * 1e3,
                                 }),
                                 e.jsxs("span", {
                                   className: "cta-profile-card-stat-label",
-                                  children: [" ", "seguidores"],
+                                  children: [" ", "obserwujących"],
                                 }),
                               ],
                             }),
@@ -423,7 +423,7 @@ const X = 600 * 1e3,
                                 }),
                                 e.jsxs("span", {
                                   className: "cta-profile-card-stat-label",
-                                  children: [" ", "a seguir"],
+                                  children: [" ", "obserwowanych"],
                                 }),
                               ],
                             }),
@@ -447,14 +447,14 @@ const X = 600 * 1e3,
                 children: [
                   e.jsx("strong", {
                     className: "cta-badge-title",
-                    children: "Análise 100% concluída!",
+                    children: "Analiza zakończona w 100%!",
                   }),
                   " ",
                   "🥳",
                   e.jsx("br", {}),
                   e.jsx("span", {
                     className: "cta-badge-line-1",
-                    children: "Adquira o seu acesso VIP e tenha",
+                    children: "Zdobądź dostęp VIP i uzyskaj",
                   }),
                   e.jsx("br", {}),
                   e.jsx("span", {
@@ -504,14 +504,14 @@ const X = 600 * 1e3,
                             }),
                             e.jsxs("h3", {
                               className: "cta-feature-title",
-                              children: ["Veja Conteúdos de ", l],
+                              children: ["Zobacz treści ", l],
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            "Veja todos os conteúdos recebidos e",
+                            "Zobacz wszystkie otrzymane treści i",
                             e.jsx("br", {}),
                             "enviados, incluindo itens apagados.",
                           ],
@@ -532,7 +532,7 @@ const X = 600 * 1e3,
                                 cursor: "pointer",
                               }
                               : { cursor: "pointer" },
-                            onClick: () => g("Ver mídia bloqueada"),
+                            onClick: () => g("Zobacz zablokowane media"),
                             children: [
                               e.jsx("img", {
                                 src: s.src,
@@ -612,18 +612,18 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("h3", {
                               className: "cta-feature-title",
-                              children: "Localização em tempo real",
+                              children: "Lokalizacja w czasie rzeczywistym",
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            "Veja onde ",
+                            "Zobacz, gdzie ",
                             l,
-                            " está agora e",
+                            " jest teraz i",
                             e.jsx("br", {}),
-                            "os últimos locais por onde passou.",
+                            "ostatnie miejsca, w których była/był.",
                           ],
                         }),
                       ],
@@ -661,7 +661,7 @@ const X = 600 * 1e3,
                             children: [
                               e.jsx("div", {
                                 className: "cta-location-name",
-                                children: "Localização Atual",
+                                children: "Aktualna Lokalizacja",
                               }),
                               e.jsxs("p", {
                                 className: "cta-profile-card-name",
@@ -671,7 +671,7 @@ const X = 600 * 1e3,
                                 type: "button",
                                 className: "cta-message-system-btn",
                                 onClick: () =>
-                                  g("Ver localização em tempo real"),
+                                  g("Zobacz lokalizację w czasie rzeczywistym"),
                                 children: "Ver",
                               }),
                             ],
@@ -712,18 +712,18 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("h3", {
                               className: "cta-feature-title",
-                              children: "Stories e posts ocultos",
+                              children: "Ukryte relacje i posty",
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            'Veja stories de "Melhores Amigos" e',
+                            'Zobacz relacje z "Najlepszych Przyjaciół" i',
                             e.jsx("br", {}),
-                            "publicações que ",
+                            "publikacje, które ",
                             l,
-                            " escondeu de si.",
+                            " skrył/a przed Tobą.",
                           ],
                         }),
                       ],
@@ -734,7 +734,7 @@ const X = 600 * 1e3,
                         e.jsxs("div", {
                           className: "cta-story-item",
                           "data-image": "cf1.png",
-                          onClick: () => g("Ver conteúdo restrito"),
+                          onClick: () => g("Zobacz treść ograniczoną"),
                           style: { cursor: "pointer" },
                           children: [
                             e.jsxs("svg", {
@@ -761,14 +761,14 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("p", {
                               className: "cta-story-text",
-                              children: "Conteúdo restrito",
+                              children: "Treść ograniczona",
                             }),
                           ],
                         }),
                         e.jsxs("div", {
                           className: "cta-story-item",
                           "data-image": "cf2.png",
-                          onClick: () => g("Ver conteúdo restrito"),
+                          onClick: () => g("Zobacz treść ograniczoną"),
                           style: { cursor: "pointer" },
                           children: [
                             e.jsxs("svg", {
@@ -795,7 +795,7 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("p", {
                               className: "cta-story-text",
-                              children: "Conteúdo restrito",
+                              children: "Treść ograniczona",
                             }),
                           ],
                         }),
@@ -827,17 +827,17 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("h3", {
                               className: "cta-feature-title",
-                              children: "Mensagens do Direct",
+                              children: "Wiadomości Direct",
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            "Veja literalmente todas as mensagens de",
+                            "Zobacz dosłownie wszystkie wiadomości od",
                             e.jsx("br", {}),
                             l,
-                            ", incluindo mensagens temporárias.",
+                            ", w tym wiadomości tymczasowe.",
                           ],
                         }),
                       ],
@@ -992,7 +992,7 @@ const X = 600 * 1e3,
                   className: "cta-tool-logo cta-tool-logo-big",
                   children: e.jsx("img", {
                     src: "/images/logos/ghostspy-logo.png?v=20261103-blue",
-                    alt: "GhostSpy Logo",
+                    alt: "Logo GhostSpy",
                   }),
                 }),
                 e.jsxs("div", {
@@ -1041,9 +1041,9 @@ const X = 600 * 1e3,
                             className: "cta-pricing-note-track",
                             children: [
                               [
-                                "Pagamento único",
-                                "Acesso imediato",
-                                "Pagamento seguro",
+                                "Jednorazowa płatność",
+                                "Natychmiastowy dostęp",
+                                "Bezpieczna płatność",
                                 "30 dias de garantia",
                               ].map((s, a) =>
                                 e.jsxs(
@@ -1071,9 +1071,9 @@ const X = 600 * 1e3,
                                 ),
                               ),
                               [
-                                "Pagamento único",
-                                "Acesso imediato",
-                                "Pagamento seguro",
+                                "Jednorazowa płatność",
+                                "Natychmiastowy dostęp",
+                                "Bezpieczna płatność",
                                 "30 dias de garantia",
                               ].map((s, a) =>
                                 e.jsxs(
@@ -1125,7 +1125,7 @@ const X = 600 * 1e3,
                           }),
                         }),
                         e.jsxs("span", {
-                          children: ["Todas as mensagens do direct de ", l],
+                          children: ["Wszystkie wiadomości Direct od ", l],
                         }),
                       ],
                     }),
@@ -1145,7 +1145,7 @@ const X = 600 * 1e3,
                         }),
                         e.jsx("span", {
                           children:
-                            "Todas as fotos sem censura (incluindo apagadas)",
+                            "Wszystkie zdjęcia bez cenzury (w tym usunięte)",
                         }),
                       ],
                     }),
@@ -1165,7 +1165,7 @@ const X = 600 * 1e3,
                         }),
                         e.jsx("span", {
                           children:
-                            "Localização em tempo real e locais onde esteve",
+                            "Lokalizacja w czasie rzeczywistym i miejsca, w których była/był",
                         }),
                       ],
                     }),
@@ -1185,9 +1185,9 @@ const X = 600 * 1e3,
                         }),
                         e.jsxs("span", {
                           children: [
-                            "Alerta sempre que ",
+                            "Alert zawsze, gdy ",
                             l,
-                            " interagir com alguém",
+                            " wejdzie w interakcję z kimś",
                           ],
                         }),
                       ],
@@ -1234,11 +1234,11 @@ const X = 600 * 1e3,
                   children: [
                     e.jsx("span", {
                       className: "cta-pricing-cta-main",
-                      children: "Aceder a tudo agora mesmo",
+                      children: "Uzyskaj dostęp do wszystkiego już teraz",
                     }),
                     e.jsx("span", {
                       className: "cta-pricing-cta-sub",
-                      children: "Acesso libertado em menos de 2 minutos",
+                      children: "Dostęp odblokowany w mniej niż 2 minuty",
                     }),
                   ],
                 }),
@@ -1264,7 +1264,7 @@ const X = 600 * 1e3,
                 e.jsxs("h2", {
                   className: "cta-testimonials-title",
                   children: [
-                    "Veja o que dizem as pessoas",
+                    "Zobacz, co mówią ludzie",
                     e.jsx("br", {}),
                     "que usam o ",
                     e.jsx("span", {
@@ -1363,9 +1363,9 @@ const X = 600 * 1e3,
                 }),
                 e.jsxs("span", {
                   children: [
-                    "As informações acedidas são ",
-                    e.jsx("strong", { children: "extremamente sensíveis" }),
-                    ". Use com responsabilidade.",
+                    "Uzyskane informacje są ",
+                    e.jsx("strong", { children: "wyjątkowo wrażliwe" }),
+                    ". Używaj z odpowiedzialnością.",
                   ],
                 }),
               ],
@@ -1375,7 +1375,7 @@ const X = 600 * 1e3,
               children: [
                 e.jsx("h2", {
                   className: "cta-faq-new-title",
-                  children: "Perguntas Frequentes",
+                  children: "Często Zadawane Pytania",
                 }),
                 e.jsx("div", {
                   className: "cta-faq-new-list",
@@ -1424,12 +1424,12 @@ const X = 600 * 1e3,
                         d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
                       }),
                     }),
-                    "Garantia de 30 Dias",
+                    "30-dniowa Gwarancja",
                   ],
                 }),
                 e.jsx("p", {
                   children:
-                    "Teste sem risco! Se não gostar ou por algum motivo não se adaptar, devolvemos 100% do seu dinheiro.",
+                    "Przetestuj bez ryzyka! Jeśli nie spodoba Ci się lub z jakiegoś powodu nie będzie Ci odpowiadać, zwrócimy 100% Twoich pieniędzy.",
                 }),
               ],
             }),

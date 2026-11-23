@@ -44,18 +44,18 @@
   const SLIDES = [
     {
       src: "/images/screenshots/fotoblur1.jpg",
-      title: "Rastreamento de conversas privadas",
-      caption: "IA cruzando conteúdos sensíveis e mensagens apagadas.",
+      title: "Śledzenie prywatnych rozmów",
+      caption: "AI analizuje wrażliwe treści i usunięte wiadomości.",
     },
     {
       src: "/images/screenshots/chat2.nudes1.png",
-      title: "Análise de mídias ocultas",
-      caption: "Arquivos privados encontrados e classificados por prioridade.",
+      title: "Analiza ukrytych mediów",
+      caption: "Znalezione pliki prywatne sklasyfikowane według priorytetu.",
     },
     {
       src: "/images/screenshots/fundomaps.png",
-      title: "Verificação de locais suspeitos",
-      caption: "Comparando check-ins, horários e padrões de deslocamento.",
+      title: "Weryfikacja podejrzanych lokalizacji",
+      caption: "Porównywanie zameldowań, godzin i wzorców przemieszczania się.",
     },
   ];
 
@@ -1014,26 +1014,26 @@
 
   function getSpyButton() {
     return Array.from(document.querySelectorAll("button")).find((button) =>
-      readText(button).includes("analisar agora"),
+      readText(button).includes("analizuj teraz"),
     );
   }
 
   function getConfirmButton() {
     if (
       !document.body ||
-      !document.body.innerText.includes("Confirme o Instagram")
+      !document.body.innerText.includes("Potwierdź konto Instagram")
     ) {
       return null;
     }
     return Array.from(document.querySelectorAll("button")).find(
-      (button) => readText(button) === "confirmar",
+      (button) => readText(button) === "potwierdź",
     );
   }
 
   function getUsernameInputVisible() {
     return Array.from(document.querySelectorAll("input")).find((input) =>
       normalizeText(input.getAttribute("placeholder")).includes(
-        "nomedoconjuge_10",
+        "nazwa_partnera_10",
       ),
     );
   }
@@ -1303,34 +1303,34 @@
         data.goals || ["dm", "media", "location", "feed"],
       );
       return {
-        title: "O que você quer descobrir?",
+        title: "Co chcesz odkryć?",
         subtitle:
-          "O sistema já deixou tudo pronto. Escolha quais áreas você quer liberar primeiro na análise desse Instagram.",
+          "System jest już przygotowany. Wybierz, które obszary chcesz odblokować najpierw w analizie tego Instagrama.",
         body: `
                     <div class="ghostspy-ext-option-grid" data-quiz-options>
                         ${[
             [
               "dm",
-              "Mensagens apagadas e DMs do Instagram",
-              "Conversas ocultas, mensagens removidas e sinais suspeitos.",
+              "Usunięte wiadomości i DM z Instagrama",
+              "Ukryte rozmowy, usunięte wiadomości i podejrzane sygnały.",
               QUIZ_ICONS.dm,
             ],
             [
               "media",
-              "Fotos e vídeos privados",
-              "Mídias sensíveis detectadas em trocas recentes.",
+              "Prywatne zdjęcia i filmy",
+              "Wrażliwe media wykryte w ostatnich wymianach.",
               QUIZ_ICONS.media,
             ],
             [
               "location",
-              "Localizações suspeitas",
-              "Check-ins e deslocamentos que merecem atenção.",
+              "Podejrzane lokalizacje",
+              "Zameldowania i przemieszczenia, które zasługują na uwagę.",
               QUIZ_ICONS.location,
             ],
             [
               "feed",
-              "Feed, Stories e interações",
-              "Stories ocultos, curtidas e comportamento no perfil.",
+              "Feed, relacje i interakcje",
+              "Ukryte relacje, polubienia i zachowanie na profilu.",
               QUIZ_ICONS.feed,
             ],
           ]
@@ -1349,7 +1349,7 @@
             .join("")}
                     </div>
                     <div class="ghostspy-ext-actions">
-                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_1'});">Confirmar e avançar</button>
+                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_1'});">Potwierdź i przejdź dalej</button>
                     </div>
                 `,
         afterRender(container) {
@@ -1376,29 +1376,29 @@
     if (step === 2) {
       const gender = data.gender || "homem";
       return {
-        title: "Quem você quer analisar?",
+        title: "Kogo chcesz przeanalizować?",
         subtitle:
-          "Isso ajuda a personalizar a sequência de verificação e o tipo de alerta mostrado no relatório.",
+          "To pomaga dostosować sekwencję weryfikacji i typ alertu widoczny w raporcie.",
         body: `
                     <div class="ghostspy-ext-option-grid">
                         <button type="button" class="ghostspy-ext-option ${gender === "homem" ? "active" : ""}" data-quiz-gender="homem" aria-pressed="${gender === "homem" ? "true" : "false"}">
                             <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.male}</span>
                             <span class="ghostspy-ext-option-content">
-                                <span class="ghostspy-ext-option-label">Homem</span>
-                                <small>Mensagens, mídias e locais filtrados para perfis masculinos.</small>
+                                <span class="ghostspy-ext-option-label">Mężczyzna</span>
+                                <small>Wiadomości, media i lokalizacje filtrowane dla profili męskich.</small>
                             </span>
                         </button>
                         <button type="button" class="ghostspy-ext-option ${gender === "mulher" ? "active" : ""}" data-quiz-gender="mulher" aria-pressed="${gender === "mulher" ? "true" : "false"}">
                             <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.female}</span>
                             <span class="ghostspy-ext-option-content">
-                                <span class="ghostspy-ext-option-label">Mulher</span>
-                                <small>Fluxo ajustado para perfis femininos e interações associadas.</small>
+                                <span class="ghostspy-ext-option-label">Kobieta</span>
+                                <small>Przebieg dopasowany do profili kobiecych i powiązanych interakcji.</small>
                             </span>
                         </button>
                     </div>
                     <div class="ghostspy-ext-actions">
-                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>Voltar</button>
-                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_2'});">Continuar</button>
+                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>Wstecz</button>
+                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_2'});">Kontynuuj</button>
                     </div>
                 `,
         afterRender(container) {
@@ -1417,29 +1417,29 @@
 
     const invisible = data.invisible || "sim";
     return {
-      title: "Ativar modo invisível?",
+      title: "Włączyć tryb niewidzialny?",
       subtitle:
-        "Com o modo invisível, a análise fica mais discreta e a experiência prioriza alertas silenciosos no relatório.",
+        "W trybie niewidzialnym analiza jest bardziej dyskretna, a raport priorytetyzuje ciche alerty.",
       body: `
                 <div class="ghostspy-ext-option-grid">
                     <button type="button" class="ghostspy-ext-option ${invisible === "sim" ? "active" : ""}" data-quiz-invisible="sim" aria-pressed="${invisible === "sim" ? "true" : "false"}">
                         <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.eyeOff}</span>
                         <span class="ghostspy-ext-option-content">
-                            <span class="ghostspy-ext-option-label">Sim, quero análise 100% invisível</span>
-                            <small>Esconde rastros visuais e prioriza alertas silenciosos.</small>
+                            <span class="ghostspy-ext-option-label">Tak, chcę 100% niewidzialną analizę</span>
+                            <small>Skrywa widoczne śledy i priorytetyzuje ciche alerty.</small>
                         </span>
                     </button>
                     <button type="button" class="ghostspy-ext-option ${invisible === "nao" ? "active" : ""}" data-quiz-invisible="nao" aria-pressed="${invisible === "nao" ? "true" : "false"}">
                         <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.eye}</span>
                         <span class="ghostspy-ext-option-content">
-                            <span class="ghostspy-ext-option-label">Não precisa</span>
-                            <small>Segue com a configuração padrão do relatório.</small>
+                            <span class="ghostspy-ext-option-label">Nie trzeba</span>
+                            <small>Pozostaje domyślna konfiguracja raportu.</small>
                         </span>
                     </button>
                 </div>
                 <div class="ghostspy-ext-actions">
-                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>Voltar</button>
-                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-finish onclick="window.dataLayer.push({'event': 'quiz_next_3'});">Começar análise</button>
+                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>Wstecz</button>
+                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-finish onclick="window.dataLayer.push({'event': 'quiz_next_3'});">Zacznij analizę</button>
                 </div>
             `,
       afterRender(container) {
@@ -1470,8 +1470,8 @@
                             <img src="/images/logos/logo-vert-transparente.png?v=20261103" alt="GhostSpy Logo" />
                         </div>
                         <div class="ghostspy-ext-progress">
-                            <span>Etapa ${step} de 3</span>
-                            <span>Pré-análise</span>
+                            <span>Etap ${step} z 3</span>
+                            <span>Analiza wstępna</span>
                         </div>
                         <div class="ghostspy-ext-progress-bar">
                             <div class="ghostspy-ext-progress-fill" style="width: ${step * 33.333}%;"></div>
@@ -1571,11 +1571,11 @@
       DEFAULT_VSL_EMBED_BASE,
     );
     const statusMessages = [
-      "Estabelecendo conexão segura com o perfil analisado...",
-      "Sincronizando histórico do Direct e mídias privadas...",
-      "Aplicando IA para detectar padrões suspeitos...",
-      "Indexando mensagens, arquivos e localizações relevantes...",
-      "Finalizando a prévia segura do relatório...",
+      "Nawiązywanie bezpiecznego połączenia z analizowanym profilem...",
+      "Synchronizowanie historii DM i prywatnych mediów...",
+      "Stosowanie AI do wykrywania podejrzanych wzorców...",
+      "Indeksowanie wiadomości, plików i istotnych lokalizacji...",
+      "Finalizowanie bezpiecznego podglądu raportu...",
     ];
 
     activeVslEl = document.createElement("div");
@@ -1584,9 +1584,9 @@
             <div class="ghostspy-ext-shell">
                 <div class="ghostspy-ext-card">
                     <div class="ghostspy-ext-pad">
-                        <div class="ghostspy-ext-pill">${QUIZ_ICONS.live}<span>ANÁLISE EM TEMPO REAL</span></div>
-                        <h2 class="ghostspy-ext-title">Assista à análise enquanto o perfil é processado</h2>
-                        <p class="ghostspy-ext-subtitle">Estamos cruzando mensagens, mídias privadas e localizações do perfil <strong>@${profile.username}</strong> para montar a próxima etapa do acesso.</p>
+                        <div class="ghostspy-ext-pill">${QUIZ_ICONS.live}<span>ANALIZA W CZASIE RZECZYWISTYM</span></div>
+                        <h2 class="ghostspy-ext-title">Obejrzyj analizę podczas przetwarzania profilu</h2>
+                        <p class="ghostspy-ext-subtitle">Analizujemy wiadomości, prywatne media i lokalizacje profilu <strong>@${profile.username}</strong>, aby przygotować kolejny etap dostępu.</p>
                         <div class="ghostspy-ext-video-frame">
                             ${renderVslMedia()}
                             <div class="ghostspy-ext-video-overlay${hasRealVslMedia ? " ghostspy-ext-hidden" : ""}">
@@ -1614,7 +1614,7 @@
                             </div>
                             <div class="ghostspy-ext-profile-main">
                                 <h3>@${profile.username}</h3>
-                                <p>Perfil protegido • análise confidencial ativada</p>
+                                <p>Profil chroniony • poufna analiza aktywowana</p>
                                 <div class="ghostspy-ext-metrics">
                                     ${formatCount(profile.posts, "posts")}
                                     ${formatCount(profile.followers, "seguidores")}
@@ -1835,8 +1835,8 @@
             phaseRatio >= 1
               ? phase.result
               : phaseRatio > 0
-                ? `Analisando... ${Math.floor(phaseRatio * 100)}%`
-                : "Aguardando analise...";
+                ? `Analizowanie... ${Math.floor(phaseRatio * 100)}%`
+                : "Oczekiwanie na analizę...";
         }
         if (card && phaseRatio >= 1) {
           card.classList.add("complete");
@@ -1845,14 +1845,14 @@
 
       if (progress >= 28) {
         messagesEl.textContent =
-          "41 conversas sensíveis identificadas e classificadas.";
+          "41 wrażliwych rozmów zidentyfikowanych i sklasyfikowanych.";
       }
       if (progress >= 54) {
-        mediaEl.textContent = "9 mídias privadas encontradas e validadas.";
+        mediaEl.textContent = "9 prywatnych plików znalezionych i zweryfikowanych.";
       }
       if (progress >= 76) {
         locationsEl.textContent =
-          "3 pontos suspeitos cruzados com horários de atividade.";
+          "3 podejrzane punkty skrzyżowane z godzinami aktywności.";
       }
 
       if (progress >= 100) {
@@ -1863,7 +1863,7 @@
           topContinueButton.classList.remove("ghostspy-ext-hidden");
         continueButton.classList.remove("ghostspy-ext-hidden");
         statusText.textContent =
-          "Analise concluida. Clique no botao para liberar a proxima etapa.";
+          "Analiza zakończona. Kliknij przycisk, aby odblokować następny etap.";
       }
     }, 1000);
   }
@@ -1921,10 +1921,10 @@
         if (Date.now() < suppressVslUntil) return;
         if (location.pathname !== "/" && location.pathname !== "/index.html")
           return;
-        if (readText(button) !== "confirmar") return;
+        if (readText(button) !== "potwierdź") return;
         if (
           !document.body ||
-          !document.body.innerText.includes("Confirme o Instagram")
+          !document.body.innerText.includes("Potwierdź konto Instagram")
         )
           return;
 

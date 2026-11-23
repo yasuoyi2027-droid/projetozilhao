@@ -239,7 +239,7 @@ function pe({ visible: n }) {
               color: "#475569",
               whiteSpace: "nowrap",
             },
-            children: "Sem Senha",
+            children: "Bez Hasła",
           }),
         ],
       }),
@@ -270,7 +270,7 @@ function pe({ visible: n }) {
               color: "#475569",
               whiteSpace: "nowrap",
             },
-            children: "Teste Grátis",
+            children: "Testuj Bezpłatnie",
           }),
         ],
       }),
@@ -292,20 +292,20 @@ function V(n) {
     ? r.length < 5
       ? {
         valid: !1,
-        error: "O nome de usuário deve ter pelo menos 5 caracteres!",
+        error: "Nazwa użytkownika musi mieć co najmniej 5 znaków!",
       }
       : /^[a-zA-Z0-9_.-]+$/.test(r)
         ? /[a-zA-Z]/.test(r)
           ? { valid: !0 }
           : {
             valid: !1,
-            error: "O nome de usuário deve conter pelo menos 1 letra!",
+            error: "Nazwa użytkownika musi zawierać co najmniej 1 literę!",
           }
         : {
           valid: !1,
-          error: "O nome de usuário só pode conter letras, números, _, . e -",
+          error: "Nazwa użytkownika może zawierać tylko litery, cyfry, _, . i -",
         }
-    : { valid: !1, error: "Digite um nome de usuário válido!" };
+    : { valid: !1, error: "Wpisz prawidłową nazwę użytkownika!" };
 }
 function K(n) {
   return n
@@ -318,13 +318,13 @@ function K(n) {
 }
 function ge() {
   return [
-    "domingo",
-    "segunda-feira",
-    "terça-feira",
-    "quarta-feira",
-    "quinta-feira",
-    "sexta-feira",
-    "sábado",
+    "niedziela",
+    "poniedziałek",
+    "wtorek",
+    "środa",
+    "czwartek",
+    "piątek",
+    "sobota",
   ][new Date().getDay()];
 }
 function he({ visible: n, initialValue: r = 81455 }) {
@@ -377,7 +377,7 @@ function he({ visible: n, initialValue: r = 81455 }) {
             target: "_blank",
             rel: "noopener",
             style: { color: "#0E82F8", textDecoration: "none" },
-            children: "Política de Privacidade",
+            children: "Polityka Prywatności",
           }),
           " · ",
           e.jsx("a", {
@@ -567,7 +567,7 @@ function ye({
       (I(!0),
         a(!1),
         k(
-          'Digite o nome de usuário da pessoa a ser analisada, sem o arroba "@"',
+          'Wpisz nazwę użytkownika osoby, którą chcesz przeanalizować, bez znaku "@"',
         ));
     }, []),
     g = '<span class="typing-cursor">|</span>',
@@ -819,7 +819,7 @@ function ve({ isOpen: n, onClose: r, onConfirm: o, profile: y }) {
                         children: [
                           e.jsx("img", {
                             src: y.profile_pic_url,
-                            alt: "Foto de perfil",
+                            alt: "Zdjęcie profilowe",
                             className: "w-full h-full object-cover",
                             onLoad: () => f(!0),
                             onError: () => {
@@ -1130,7 +1130,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                         letterSpacing: "1px",
                         fontSize: "12px",
                       },
-                      placeholder: "Senha",
+                      placeholder: "Hasło",
                       type: "text",
                       value: M(b),
                     }),
@@ -1148,7 +1148,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                         "absolute top-full left-0 right-0 pt-1 text-center",
                       children: e.jsx("p", {
                         className: "text-xs text-red-500 animate-fade-in",
-                        children: "A senha que você inseriu está incorreta.",
+                        children: "Wprowadzone hasło jest nieprawidłowe.",
                       }),
                     }),
                   ],
@@ -1218,7 +1218,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                             style: { color: "#0F172A" },
                             children:
                               i === "testing"
-                                ? "Quebrando criptografia da conta"
+                                ? "Łamanie szyfrowania konta"
                                 : i === "redirecting"
                                   ? "A carregar o feed do Instagram"
                                   : "Criptografia quebrada com sucesso!",
@@ -1230,8 +1230,8 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                               i === "testing"
                                 ? `${y.login.testingPassword}...`
                                 : i === "redirecting"
-                                  ? "Redirecionando para o perfil..."
-                                  : "Acesso liberado à conta!",
+                                  ? "Przekierowywanie do profilu..."
+                                  : "Dostęp do konta odblokowany!",
                           }),
                         ],
                       }),
@@ -1305,7 +1305,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
               children: [
                 e.jsx("span", {
                   className: "text-sm text-gray-400",
-                  children: "Não tem uma conta?",
+                  children: "Nie masz konta?",
                 }),
                 e.jsx("a", {
                   href: "#",
@@ -1675,7 +1675,7 @@ function we({ isOpen: n, onClose: r }) {
   const [o, y] = t.useState("intro"),
     [b, N] = t.useState(!1),
     f = t.useRef(null),
-    h = W("Tutorial rápido....", 50, n && o === "intro"),
+    h = W("Szybki samouczek....", 50, n && o === "intro"),
     i = W(
       `Veja como pegar o nome de usuário
 do seu cônjuge corretamente....`,
@@ -1683,17 +1683,17 @@ do seu cônjuge corretamente....`,
       h.done,
     ),
     c = W(
-      "1º passo: Abra o aplicativo do seu instagram e entre no perfil do seu cônjuge....",
+      "1. krok: Otwórz aplikację Instagram i wejdź na profil swojego partnera/partnerki....",
       40,
       o === "step1",
     ),
     j = W(
-      "2º passo: Pegue o nome de usuário que vai aparecer no topo do perfil do seu cônjuge, ao lado da setinha de voltar....",
+      "2. krok: Skopiuj nazwę użytkownika, która pojawi się na górze profilu Twojego partnera/partnerki, przy strzałce powrotu....",
       40,
       o === "step2",
     ),
     d = W(
-      "Atenção: Não confunda com o nome do perfil, não é esse nome que usamos no GhostSpy!",
+      "Uwaga: Nie mylić z nazwą profilu, to nie jest ta nazwa, którą używamy w GhostSpy!",
       40,
       o === "step3",
     ),
@@ -1702,7 +1702,7 @@ do seu cônjuge corretamente....`,
       40,
       o === "step4",
     ),
-    a = W("Boa sorte pra você e use com moderação! 😉", 40, o === "step5"),
+    a = W("Powodzenia i używaj z umiarem! 😉", 40, o === "step5"),
     m = t.useCallback(() => {
       y((u) => {
         const _ = [
@@ -2029,7 +2029,7 @@ const Le = Z(function () {
             ) {
               if (
                 (i(
-                  `Você já pesquisou o perfil <strong>@${S.previousUsername}</strong>. Limite de 1 pesquisa por dispositivo atingido.`,
+                  `Już wyszukałeś/aś profil <strong>@${S.previousUsername}</strong>. Osiągnięto limit 1 wyszukiwania na urządzenie.`,
                 ),
                   f(!1),
                   p(!0),
@@ -2052,7 +2052,7 @@ const Le = Z(function () {
             console.warn("IP status check failed, continuing:", S);
           }
         const s = await ne(g);
-        if (!s) throw new Error("Perfil não encontrado");
+        if (!s) throw new Error("Profil nie znaleziony");
         const l = {
           username: s.username,
           full_name: s.full_name || "",
@@ -2068,17 +2068,17 @@ const Le = Z(function () {
         };
         (x(l), b("confirm"));
       } catch (s) {
-        const l = s instanceof Error ? s.message : "Erro desconhecido";
-        l.includes("não encontrado") || l.includes("404") || l.includes("500")
+        const l = s instanceof Error ? s.message : "Nieznany błąd";
+        l.includes("nie znaleziony") || l.includes("404") || l.includes("500")
           ? i(
-            'Usuário não encontrado. Verifique se o nome de usuário está correto. <a href="#" style="color: #38BDF8; text-decoration: underline;">Dúvidas? Clique aqui</a>',
+            'Użytkownik nie znaleziony. Sprawdź, czy nazwa użytkownika jest prawidłowa. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>',
           )
           : l.includes("timeout") || l.includes("abort")
             ? i(
-              'Tempo esgotado. Por favor, tente novamente. <a href="#" style="color: #38BDF8; text-decoration: underline;">Dúvidas? Clique aqui</a>',
+              'Przekroczono czas. Spróbuj ponownie. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>',
             )
             : i(
-              `Erro ao buscar perfil: ${l}. <a href="#" style="color: #38BDF8; text-decoration: underline;">Dúvidas? Clique aqui</a>`,
+              `Błąd podczas wyszukiwania profilu: ${l}. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>`,
             );
       } finally {
         f(!1);

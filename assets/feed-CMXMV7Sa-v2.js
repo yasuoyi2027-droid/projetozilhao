@@ -1213,7 +1213,7 @@ function Ye({ }) {
     {
       name: "description",
       content:
-        "Descubra como espionar um perfil no Instagram e ver curtidas, seguidores e atividades de forma simples. Analise interações e descubra o que acontece no perfil.",
+        "Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.",
     },
     {
       name: "keywords",
@@ -2059,7 +2059,7 @@ const Ge = Se(function () {
                     flex: 1,
                   },
                   children: [
-                    "Você viu todas as publicações disponíveis na prévia grátis, seja membro VIP para ver todos os posts.",
+                    "Zobaczyłeś/aś wszystkie publikacje dostępne w darmowej wersji próbnej, zostań członkiem VIP, aby zobaczyć wszystkie posty.",
                     " ",
                     e.jsx("span", {
                       onClick: () => {
@@ -2086,7 +2086,7 @@ const Ge = Se(function () {
                       "flex flex-col items-center justify-center py-12 gap-4",
                     children: e.jsx("p", {
                       className: "text-gray-400 text-sm",
-                      children: "Nenhuma publicação encontrada",
+                      children: "Nie znaleziono żadnej publikacji",
                     }),
                   })
                   : e.jsxs(e.Fragment, {

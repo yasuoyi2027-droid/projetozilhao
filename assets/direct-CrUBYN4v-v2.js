@@ -354,7 +354,7 @@ function X({ title: t, artist: i }) {
               children: [
                 e.jsx("title", {
                   children:
-                    "Ícone representando ondas sonoras com três barras verticais que mudam de altura de maneira pulsante",
+                    "Ikona przedstawiająca fale dźwiękowe z trzema wertykalnymi słupkami, które pulsująco zmieniają wysokość",
                 }),
                 e.jsx("rect", {
                   height: "30",
@@ -1019,7 +1019,7 @@ function ge({ }) {
     {
       name: "description",
       content:
-        "Descubra como espionar um perfil no Instagram e ver curtidas, seguidores e atividades de forma simples. Analise interações e descubra o que acontece no perfil.",
+        "Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.",
     },
     {
       name: "keywords",
@@ -1064,12 +1064,12 @@ function ne(t) {
 function oe(t, i) {
   const s = [],
     r = [
-      "Conte as novidades",
-      "Preguiça Hoje 🥱🥱",
-      "O vontde fudê a 3 😈",
+      "Opowiedz nowości",
+      "Lenistwo Dzisiaj 🥱🥱",
+      "Chęć na trójkącik 😈",
       re(),
-      "alguém?? #tedio",
-      "Já não aguento mais!",
+      "ktoś?? #nuda",
+      "Już nie mogę wytrzymać!",
       "👀",
     ],
     c = [
@@ -1139,7 +1139,7 @@ function oe(t, i) {
         displayName: "Swi*******",
         profilePic: "/images/screenshots/StorySwing.png",
         hasStory: !0,
-        label: "O vontde fudê a 3 😈",
+        label: "Chęć na trójkącik 😈",
       }));
   });
   let h = null;
@@ -1239,7 +1239,7 @@ function le(t, i) {
     "🔥🔥",
     "Enviado",
     "Enviado segunda-feira",
-    "Delícia você 😈 😈",
+    "Pyszny/a jesteś 😈 😈",
     "Curtiu sua mensagem",
     "Enviado quinta-feira",
     "Ah sim entendi",

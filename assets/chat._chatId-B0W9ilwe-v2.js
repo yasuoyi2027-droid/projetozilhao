@@ -20,13 +20,13 @@ const Ve = {
             id: "1",
             type: "date",
             direction: "system",
-            content: "3 dias atrás, 11:12",
+            content: "3 dni temu, 11:12",
         },
         {
             id: "2",
             type: "text",
             direction: "received",
-            content: "Oi minha delícia",
+            content: "Hej, kochanie",
         },
         {
             id: "3",
@@ -82,7 +82,7 @@ const Ve = {
             direction: "sent",
             content: "Oii bb",
             replyTo: "Amor",
-            replyLabel: "Você respondeu",
+            replyLabel: "Odpowiedziałeś/aś",
         },
         {
             id: "17",
@@ -117,7 +117,7 @@ const Ve = {
             direction: "received",
             content: "Não",
             replyTo: "Na sua prima?",
-            replyLabel: "respondeu a você",
+            replyLabel: "odpowiedział(a) Tobie",
         },
         {
             id: "25",
@@ -168,7 +168,7 @@ const Ve = {
                 direction: "system",
                 callType: "video",
                 callStatus: "normal",
-                content: "Chamada de vídeo",
+                content: "Rozmowa wideo",
                 callTimeId: "callTime1",
             },
             {
@@ -177,7 +177,7 @@ const Ve = {
                 direction: "system",
                 callType: "video",
                 callStatus: "missed",
-                content: "Ligação de vídeo perdida",
+                content: "Nieodebrana rozmowa wideo",
             },
             { id: "3", type: "text", direction: "sent", content: "Net tá ruim" },
             { id: "4", type: "text", direction: "sent", content: "To no 4G" },
@@ -188,7 +188,7 @@ const Ve = {
                 direction: "system",
                 callType: "video",
                 callStatus: "normal",
-                content: "Chamada de vídeo",
+                content: "Rozmowa wideo",
                 callTimeId: "callTime2",
             },
             {
@@ -197,14 +197,14 @@ const Ve = {
                 direction: "system",
                 callType: "video",
                 callStatus: "ended",
-                content: "Ligação de vídeo encerrada",
+                content: "Rozmowa wideo zakończona",
                 callTimeId: "callTime3",
             },
             {
                 id: "8",
                 type: "text",
                 direction: "sent",
-                content: "Delíciaaaaaaaaaaaa",
+                content: "Pysznieeeeeeeeee",
             },
             { id: "9", type: "text", direction: "sent", content: "🤤🤤🤤" },
             {
@@ -266,7 +266,7 @@ const Ve = {
                 id: "21",
                 type: "text",
                 direction: "sent",
-                content: "Não aguento mais tá chegando",
+                content: "Nie mogę się już doczekać, już jadę",
             },
             {
                 id: "22",
@@ -278,13 +278,13 @@ const Ve = {
                 id: "23",
                 type: "text",
                 direction: "sent",
-                content: "Não aguento mais",
+                content: "Nie mogę się doczekać",
             },
             {
                 id: "24",
                 type: "text",
                 direction: "sent",
-                content: "Não amnda mais nada blz",
+                content: "Nic więcej się nie dzieje ok",
                 reaction: "👍🏻",
             },
         ],
@@ -326,7 +326,7 @@ const Ve = {
                 id: "5",
                 type: "text",
                 direction: "received",
-                content: "É um desperdício jogar fora tudo isso",
+                content: "To szkoda wyrzucać to wszystko",
             },
             {
                 id: "6",
@@ -376,7 +376,7 @@ const Ve = {
                 id: "13",
                 type: "text",
                 direction: "received",
-                content: "Mais hj faz um mês do nosso último beijo",
+                content: "Dziś mija miesiąc od naszego ostatniego pocałunku",
             },
             {
                 id: "14",
@@ -389,7 +389,7 @@ const Ve = {
                 id: "15",
                 type: "date",
                 direction: "system",
-                content: "2 dias atrás, 18:45",
+                content: "2 dni temu, 18:45",
             },
             {
                 id: "16",
@@ -419,7 +419,7 @@ const Ve = {
                 id: "21",
                 type: "text",
                 direction: "received",
-                content: "Porque não me responde mais?????",
+                content: "Czemu już mi nie odpisujesz?????",
             },
             {
                 id: "22",
@@ -449,7 +449,7 @@ const Ve = {
                 id: "5",
                 type: "date",
                 direction: "system",
-                content: "2 dias atrás, 09:31",
+                content: "2 dni temu, 09:31",
             },
             {
                 id: "6",
@@ -469,7 +469,7 @@ const Ve = {
                 id: "9",
                 type: "text",
                 direction: "sent",
-                content: "Perdão pelo desafo",
+                content: "Przepraszam za to",
             },
             {
                 id: "10",
@@ -685,7 +685,7 @@ function Ge() {
 }
 function Xe() {
     return e.jsxs("svg", {
-        "aria-label": "Ligação de áudio",
+        "aria-label": "Rozmowa głosowa",
         fill: "currentColor",
         height: "24",
         role: "img",
@@ -693,7 +693,7 @@ function Xe() {
         width: "24",
         style: { filter: "brightness(0) invert(1)" },
         children: [
-            e.jsx("title", { children: "Ligação de áudio" }),
+            e.jsx("title", { children: "Rozmowa głosowa" }),
             e.jsx("path", {
                 d: "M18.227 22.912c-4.913 0-9.286-3.627-11.486-5.828C4.486 14.83.731 10.291.921 5.231a3.289 3.289 0 0 1 .908-2.138 17.116 17.116 0 0 1 1.865-1.71 2.307 2.307 0 0 1 3.004.174 13.283 13.283 0 0 1 3.658 5.325 2.551 2.551 0 0 1-.19 1.941l-.455.853a.463.463 0 0 0-.024.387 7.57 7.57 0 0 0 4.077 4.075.455.455 0 0 0 .386-.024l.853-.455a2.548 2.548 0 0 1 1.94-.19 13.278 13.278 0 0 1 5.326 3.658 2.309 2.309 0 0 1 .174 3.003 17.319 17.319 0 0 1-1.71 1.866 3.29 3.29 0 0 1-2.138.91 10.27 10.27 0 0 1-.368.006Zm-13.144-20a.27.27 0 0 0-.167.054A15.121 15.121 0 0 0 3.28 4.47a1.289 1.289 0 0 0-.36.836c-.161 4.301 3.21 8.34 5.235 10.364s6.06 5.403 10.366 5.236a1.284 1.284 0 0 0 .835-.36 15.217 15.217 0 0 0 1.504-1.637.324.324 0 0 0-.047-.41 11.62 11.62 0 0 0-4.457-3.119.545.545 0 0 0-.411.044l-.854.455a2.452 2.452 0 0 1-2.071.116 9.571 9.571 0 0 1-5.189-5.188 2.457 2.457 0 0 1 .115-2.071l.456-.855a.544.544 0 0 0 .043-.41 11.629 11.629 0 0 0-3.118-4.458.36.36 0 0 0-.244-.1Z",
             }),
@@ -702,7 +702,7 @@ function Xe() {
 }
 function Ye() {
     return e.jsxs("svg", {
-        "aria-label": "Ligação de vídeo",
+        "aria-label": "Rozmowa wideo",
         fill: "currentColor",
         height: "24",
         role: "img",
@@ -710,7 +710,7 @@ function Ye() {
         width: "24",
         style: { filter: "brightness(0) invert(1)" },
         children: [
-            e.jsx("title", { children: "Ligação de vídeo" }),
+            e.jsx("title", { children: "Rozmowa wideo" }),
             e.jsx("rect", {
                 fill: "none",
                 height: "18",
@@ -963,8 +963,8 @@ function it({
                         className: "image-fullscreen-subtext",
                         children:
                             u === "blocked"
-                                ? "Para liberar fotos e vídeos censurados, é necessário ser membro VIP"
-                                : "Esta imagem pode apresentar conteúdo de nudez e atividade sexual explícita",
+                                ? "Aby odblokować ocenzurowane zdjęcia i filmy, musisz być członkiem VIP"
+                                : "Ten obraz może zawierać nagość i wyraźne treści seksualne",
                     }),
                 ],
             }),
@@ -1062,7 +1062,7 @@ function nt({
             e.jsx("button", {
                 type: "button",
                 className: `audio-recebido-play-btn ${Y ? "listened" : ""}`,
-                "aria-label": u ? "Pausar áudio" : "Reproduzir áudio",
+                "aria-label": u ? "Wstrzymaj audio" : "Odtwórz audio",
                 onClick: se,
                 children: e.jsx("i", {
                     className: `fas ${u ? "fa-pause" : "fa-play"}`,
@@ -1103,18 +1103,18 @@ function nt({
                             setTimeout(() => {
                                 (R("failed"),
                                     setTimeout(() => {
-                                        c("Transcrever áudio");
+                                        c("Transkrybuj audio");
                                     }, 300));
                             }, 1500));
                 },
                 style: { cursor: S === "idle" ? "pointer" : "default" },
                 children: [
-                    S === "idle" && "Ver transcrição",
+                    S === "idle" && "Zobacz transkrypcję",
                     S === "transcribing" && "Transcrevendo...",
                     S === "failed" &&
                     e.jsxs(e.Fragment, {
                         children: [
-                            "Não foi possível transcrever a mensagem.",
+                            "Nie udało się transkrybować wiadomości.",
                             e.jsx("br", {}),
                             "Requer acesso VIP",
                         ],
@@ -1535,7 +1535,7 @@ const ct = {
             id: "bh8",
             direction: "sent",
             type: "text",
-            content: "Vem cá então ",
+            content: "To wpadnij wtedy ",
             blurredPart: "** ** * ** ****",
         },
         {
@@ -1578,7 +1578,7 @@ const ct = {
             id: "bh4",
             direction: "received",
             type: "text",
-            content: "Vamo fazer ligação ",
+            content: "Zrobimy połączenie ",
             blurredPart: "** ** ** **",
         },
         { id: "bh5", direction: "sent", type: "text", content: "Agoraaa??" },
@@ -1859,7 +1859,7 @@ function lt({ msg: t }) {
                             e.jsx("button", {
                                 type: "button",
                                 className: "audio-recebido-play-btn",
-                                "aria-label": "Reproduzir áudio",
+                                "aria-label": "Odtwórz audio",
                                 disabled: !0,
                                 children: e.jsx("i", { className: "fas fa-play" }),
                             }),
@@ -2016,7 +2016,7 @@ function ut({ config: t }) {
                     "quarta feira",
                     "quinta feira",
                     "sexta feira",
-                    "sábado",
+                    "sobota",
                 ][o.getDay()],
                 A = new Date();
             A.setDate(A.getDate() - 27);
@@ -2275,7 +2275,7 @@ function ut({ config: t }) {
                                     e.jsx("button", {
                                         type: "button",
                                         className: "chat-avatar-btn",
-                                        "aria-label": "Avatar do usuário",
+                                        "aria-label": "Awatar użytkownika",
                                         children: e.jsx("span", {
                                             className: "chat-avatar-gradient",
                                             children: e.jsx("span", {
@@ -2315,13 +2315,13 @@ function ut({ config: t }) {
                             e.jsx("button", {
                                 type: "button",
                                 className: "header-icon-btn",
-                                onClick: () => L("Ligação de áudio"),
+                                onClick: () => L("Rozmowa głosowa"),
                                 children: e.jsx(Xe, {}),
                             }),
                             e.jsx("button", {
                                 type: "button",
                                 className: "header-icon-btn",
-                                onClick: () => L("Ligação de vídeo"),
+                                onClick: () => L("Rozmowa wideo"),
                                 children: e.jsx(Ye, {}),
                             }),
                         ],
@@ -2441,7 +2441,7 @@ function ut({ config: t }) {
                                     children: [
                                         e.jsx("div", {
                                             className: "input-action-icon",
-                                            onClick: () => L("Enviar áudio"),
+                                            onClick: () => L("Wyślij audio"),
                                             children: e.jsxs("svg", {
                                                 "aria-label": "Clipe de voz",
                                                 className: "input-icon-img",
@@ -2496,7 +2496,7 @@ function ut({ config: t }) {
                                             className: "input-action-icon",
                                             onClick: () => L("Enviar foto"),
                                             children: e.jsxs("svg", {
-                                                "aria-label": "Adicionar foto ou vídeo",
+                                                "aria-label": "Dodaj zdjęcie lub film",
                                                 className: "input-icon-img",
                                                 fill: "currentColor",
                                                 height: "22",
@@ -2505,7 +2505,7 @@ function ut({ config: t }) {
                                                 width: "22",
                                                 children: [
                                                     e.jsx("title", {
-                                                        children: "Adicionar foto ou vídeo",
+                                                        children: "Dodaj zdjęcie lub film",
                                                     }),
                                                     e.jsx("path", {
                                                         d: "M6.549 5.013A1.557 1.557 0 1 0 8.106 6.57a1.557 1.557 0 0 0-1.557-1.557Z",
@@ -2801,7 +2801,7 @@ function ut({ config: t }) {
                                     strokeWidth: "2",
                                 }),
                             }),
-                            "Excluir pra você",
+                            "Usuń dla siebie",
                         ],
                     }),
                     e.jsxs("div", {
@@ -2895,7 +2895,7 @@ function gt({ params: t }) {
         {
             name: "description",
             content:
-                "Descubra como espionar um perfil no Instagram e ver curtidas, seguidores e atividades de forma simples. Analise interações e descubra o que acontece no perfil.",
+                "Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.",
         },
         {
             name: "keywords",

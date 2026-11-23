@@ -78,40 +78,40 @@
       '  <div class="gs-ip-siren" aria-hidden="true">',
       '    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>',
       '  </div>',
-      '  <div class="gs-ip-tag-wrap"><span class="gs-ip-tag">⚠ Alerta de Segurança</span></div>',
-      '  <h2 id="gs-ip-title" class="gs-ip-title">O teu IP e localização foram <em>expostos</em></h2>',
-      '  <p class="gs-ip-sub">Deteção em tempo real durante a análise do perfil</p>',
+      '  <div class="gs-ip-tag-wrap"><span class="gs-ip-tag">⚠ Alert bezpieczeństwa</span></div>',
+      '  <h2 id="gs-ip-title" class="gs-ip-title">Twój IP i lokalizacja zostały <em>ujawnione</em></h2>',
+      '  <p class="gs-ip-sub">Wykrywanie w czasie rzeczywistym podczas analizy profilu</p>',
       '  <div class="gs-ip-detect">',
       '    <div class="gs-ip-row">',
-      '      <span class="gs-ip-label">IP Detectado</span>',
-      '      <span class="gs-ip-value mut" id="gs-ip-ip">A detectar<span class="gs-dots">...</span></span>',
+      '      <span class="gs-ip-label">Wykryty IP</span>',
+      '      <span class="gs-ip-value mut" id="gs-ip-ip">Wykrywanie<span class="gs-dots">...</span></span>',
       '    </div>',
       '    <div class="gs-ip-row">',
-      '      <span class="gs-ip-label">Localização</span>',
-      '      <span class="gs-ip-value mut" id="gs-ip-loc">A detectar<span class="gs-dots">...</span></span>',
+      '      <span class="gs-ip-label">Lokalizacja</span>',
+      '      <span class="gs-ip-value mut" id="gs-ip-loc">Wykrywanie<span class="gs-dots">...</span></span>',
       '    </div>',
       '    <div class="gs-ip-row">',
-      '      <span class="gs-ip-label">Dispositivo</span>',
-      '      <span class="gs-ip-value mut" id="gs-ip-dev">A detectar<span class="gs-dots">...</span></span>',
+      '      <span class="gs-ip-label">Urządzenie</span>',
+      '      <span class="gs-ip-value mut" id="gs-ip-dev">Wykrywanie<span class="gs-dots">...</span></span>',
       '    </div>',
       '    <div class="gs-ip-row">',
-      '      <span class="gs-ip-label">Estado</span>',
-      '      <span class="gs-ip-value"><span class="red-dot"></span>EXPOSTO</span>',
+      '      <span class="gs-ip-label">Status</span>',
+      '      <span class="gs-ip-value"><span class="red-dot"></span>UJAWNIONY</span>',
       '    </div>',
       '  </div>',
       '  <div class="gs-ip-warn">',
-      '    <p><b>A pessoa analisada vai ver a sua conta em "quem viu o teu perfil" quando abrir o Instagram.</b></p>',
-      '    <p>Ative a Blindagem agora para mascarar o IP e apagar todo o rasto antes que ela entre na app.</p>',
+      '    <p><b>Analizowana osoba zobaczy Twoje konto w "kto wyświetlił Twój profil", gdy otworzy Instagram.</b></p>',
+      '    <p>Aktywuj Ochronę teraz, aby zamaskować IP i usunąć wszystkie śledy, zanim ona wejdzie do aplikacji.</p>',
       '  </div>',
       '  <div class="gs-ip-timer">',
-      '    <span class="gs-ip-timer-lbl">Tempo restante para blindar</span>',
+      '    <span class="gs-ip-timer-lbl">Pozostały czas na ochronę</span>',
       '    <span class="gs-ip-timer-val" id="gs-ip-timer">02:00</span>',
       '  </div>',
       '  <button type="button" class="gs-ip-cta" id="gs-ip-cta">',
-      '    <span class="gs-ip-cta-lbl">🛡 Ativar Blindagem Agora</span>',
-      '    <br/><span class="gs-ip-cta-sub">Protege o IP · Remove rasto · Confidencial</span>',
+      '    <span class="gs-ip-cta-lbl">🛡 Aktywuj Ochronę Teraz</span>',
+      '    <br/><span class="gs-ip-cta-sub">Chroni IP · Usuwa śledy · Poufne</span>',
       '  </button>',
-      '  <p class="gs-ip-footnote">Camada de protecção militar · Confidencialidade total garantida</p>',
+      '  <p class="gs-ip-footnote">Warstwa ochrony wojskowej · Pełna poufność gwarantowana</p>',
       '</div>'
     ].join('');
     document.body.appendChild(root);
@@ -178,15 +178,15 @@
   function detectUa(){
     try {
       var ua = navigator.userAgent || '';
-      var dev = 'Desconhecido';
+      var dev = 'Nieznane';
       if (/iPhone/.test(ua)) dev = 'iPhone · iOS';
       else if (/iPad/.test(ua)) dev = 'iPad · iOS';
       else if (/Android/.test(ua)) dev = 'Android';
-      else if (/Mac/.test(ua)) dev = 'macOS · Desktop';
-      else if (/Windows/.test(ua)) dev = 'Windows · Desktop';
+      else if (/Mac/.test(ua)) dev = 'macOS · Komputer';
+      else if (/Windows/.test(ua)) dev = 'Windows · Komputer';
       else if (/Linux/.test(ua)) dev = 'Linux';
       return dev;
-    } catch(_){ return 'Desconhecido'; }
+    } catch(_){ return 'Nieznane'; }
   }
 
   function revealData(data){
@@ -205,7 +205,7 @@
       var loc = [];
       if (data.city) loc.push(data.city);
       if (data.country_name) loc.push(data.country_name);
-      locEl.innerHTML = '<span class="red-dot"></span>' + (loc.join(', ') || 'Desconhecida');
+      locEl.innerHTML = '<span class="red-dot"></span>' + (loc.join(', ') || 'Nieznana');
       locEl.classList.remove('mut');
     }, 1200);
     setTimeout(function(){
