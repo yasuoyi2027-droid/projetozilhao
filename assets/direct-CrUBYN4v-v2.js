@@ -1015,7 +1015,7 @@ function ae({
 }
 function ge({ }) {
   return [
-    { title: "GhostSpy | Acesse Agora" },
+    { title: "GhostSpy | Uzyskaj Dostęp Teraz" },
     {
       name: "description",
       content:
@@ -1024,7 +1024,7 @@ function ge({ }) {
     {
       name: "keywords",
       content:
-        "ghostspy, ghost spy, ghostspy website, espionar instagram, ver curtidas instagram, espionar cônjuge instagram, ver atividades instagram, espionar perfil instagram",
+        "ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
     },
   ];
 }

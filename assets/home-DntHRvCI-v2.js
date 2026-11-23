@@ -1908,17 +1908,17 @@ function Ee({ }) {
   return [
     {
       title:
-        "GhostSpy | Acesse Agora",
+        "GhostSpy | Uzyskaj Dostęp Teraz",
     },
     {
       name: "description",
       content:
-        "Descubra como o GhostSpy analisa perfis no Instagram e mostra curtidas, conversas e atividades de forma 100% anônima. Acesse ghostspy.website.",
+        "Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo. Wejdź na ghostspy.website.",
     },
     {
       name: "keywords",
       content:
-        "ghostspy, ghost spy, ghostspy website, espionar instagram, ver curtidas instagram, ver atividades instagram, rastrear instagram",
+        "ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
     },
   ];
 }
