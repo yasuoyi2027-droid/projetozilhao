@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="pt-PT">
 <head>
+<script>
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(_){}
+window.scrollTo(0, 0);
+</script>
 <meta charset="utf-8" />
 <title>Painel | GhostSpy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -250,7 +254,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   </div>
 </div>
 
-<div class="app-shell">
+<div class="app-shell hidden" id="app-shell">
   <aside class="sidebar">
     <div class="s-logo"><img src="/images/logos/ghostspy-logo.png" alt="GhostSpy" /></div>
     <nav class="s-nav">
@@ -419,6 +423,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   function showLogin(){
     window.scrollTo(0, 0);
     $('view-login').classList.remove('hidden');
+    $('app-shell').classList.add('hidden');
     $('view-dashboard').classList.add('hidden');
     $('view-admin').classList.add('hidden');
     $('logout-btn').classList.add('hidden');
@@ -428,6 +433,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   function showDashboard(){
     window.scrollTo(0, 0);
     $('view-login').classList.add('hidden');
+    $('app-shell').classList.remove('hidden');
     $('view-dashboard').classList.remove('hidden');
     $('logout-btn').classList.remove('hidden');
     $('dash-footer').classList.remove('hidden');
