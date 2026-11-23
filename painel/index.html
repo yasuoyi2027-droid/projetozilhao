@@ -406,6 +406,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
 <script>
 (function(){
   'use strict';
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(_){}
   var $ = function(id){ return document.getElementById(id); };
   var TOKEN_KEY = 'ghost_panel_token';
   var DAY_LABELS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
@@ -428,6 +429,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   }
 
   function showLogin(){
+    window.scrollTo(0, 0);
     $('view-login').classList.remove('hidden');
     $('view-dashboard').classList.add('hidden');
     $('view-admin').classList.add('hidden');
@@ -436,6 +438,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     $('bottom-nav').classList.add('hidden');
   }
   function showDashboard(){
+    window.scrollTo(0, 0);
     $('view-login').classList.add('hidden');
     $('view-dashboard').classList.remove('hidden');
     $('logout-btn').classList.remove('hidden');
