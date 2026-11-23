@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="pt-PT">
+<html lang="pl">
 <head>
 <meta charset="utf-8" />
-<title>Obrigado! | GhostSpy</title>
+<title>Dziękujemy! | GhostSpy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/png" href="/favicon.png" />
@@ -73,58 +73,58 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 <div class="wrap">
   <div class="card">
     <div class="tick" aria-hidden="true">✓</div>
-    <h1 class="title">Está tudo pronto!</h1>
-    <p class="sub">Compra confirmada. O seu acesso VIP está activo neste dispositivo.</p>
+    <h1 class="title">Wszystko gotowe!</h1>
+    <p class="sub">Zakup potwierdzony. Twój dostęp VIP jest aktywny na tym urządzeniu.</p>
 
     <div id="creds-box" class="creds" style="display:none">
-      <h3>O seu acesso ao painel</h3>
-      <div class="line"><span>Utilizador</span><b id="creds-user">—</b></div>
-      <div class="line"><span>Palavra-passe</span><b id="creds-pass">—</b></div>
-      <p>Guarde estes dados — vai precisar deles para entrar novamente no painel.</p>
+      <h3>Twój dostęp do panelu</h3>
+      <div class="line"><span>Login</span><b id="creds-user">—</b></div>
+      <div class="line"><span>Hasło</span><b id="creds-pass">—</b></div>
+      <p>Zapisz te dane — będą potrzebne przy kolejnym logowaniu do panelu.</p>
     </div>
 
-    <a id="enter-btn" href="/painel" class="enter-btn">Entrar no painel agora →</a>
+    <a id="enter-btn" href="/painel" class="enter-btn">Przejdź do panelu →</a>
 
     <div class="summary">
-      <h3>Resumo da sua compra</h3>
+      <h3>Podsumowanie zakupu</h3>
       <ul id="summary-list">
         <li>
-          <span class="name">GhostSpy Acesso VIP</span>
-          <span class="value">✓ Entregue</span>
+          <span class="name">GhostSpy Dostęp VIP</span>
+          <span class="value">✓ Dostarczono</span>
         </li>
         <li class="off" id="row-bump">
-          <span class="name">+ Análise de 3 perfis extra</span>
+          <span class="name">+ Analiza 3 dodatkowych profili</span>
           <span class="value">—</span>
         </li>
         <li class="off" id="row-blindagem">
-          <span class="name">Blindagem de Confidencialidade</span>
+          <span class="name">Ochrona Poufności</span>
           <span class="value">—</span>
         </li>
         <li class="off" id="row-descoberta">
-          <span class="name">Relatório de Evento Suspeito</span>
+          <span class="name">Raport Podejrzanego Zdarzenia</span>
           <span class="value">—</span>
         </li>
       </ul>
     </div>
 
     <div class="steps">
-      <h3>Como funciona agora</h3>
+      <h3>Jak to teraz działa</h3>
       <div class="step">
         <div class="num">1</div>
-        <div class="tx"><b>Acesso imediato</b> — o painel já está desbloqueado neste dispositivo. Toque em <b>Entrar no painel</b> acima.</div>
+        <div class="tx"><b>Natychmiastowy dostęp</b> — panel jest już odblokowany na tym urządzeniu. Kliknij <b>Przejdź do panelu</b> powyżej.</div>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <div class="tx">Veja <b>interações, mensagens, seguidores suspeitos</b> e toda a atividade do perfil analisado.</div>
+        <div class="tx">Zobacz <b>interakcje, wiadomości, podejrzanych obserwujących</b> i całą aktywność analizowanego profilu.</div>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <div class="tx">Precisa de ajuda? Contacte-nos no <b>suporte@ghostspy.site</b> — resposta em até 2h.</div>
+        <div class="tx">Potrzebujesz pomocy? Napisz do nas na <b>suporte@ghostspy.site</b> — odpowiedź w ciągu 2h.</div>
       </div>
     </div>
 
     <p class="notes">
-      30 dias de garantia incondicional · Suporte <b>suporte@ghostspy.site</b>
+      30 dni gwarancji bezwarunkowej · Wsparcie <b>suporte@ghostspy.site</b>
     </p>
   </div>
 </div>
@@ -155,7 +155,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   if (bumpOn){
     var r = document.getElementById('row-bump');
     r.classList.remove('off');
-    r.querySelector('.value').textContent = '✓ Entregue';
+    r.querySelector('.value').textContent = '✓ Dostarczono';
     r.querySelector('.value').style.color = '#10B981';
   }
 
@@ -165,7 +165,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     var r = document.getElementById(rowId);
     if (!r) return;
     r.classList.remove('off');
-    r.querySelector('.value').textContent = '✓ Entregue';
+    r.querySelector('.value').textContent = '✓ Dostarczono';
     r.querySelector('.value').style.color = '#10B981';
   }
   // Marca de acordo com localStorage persistente (as páginas de upsell podem deixar bandeiras).
@@ -184,16 +184,16 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 </script>
 <footer style="max-width:420px;margin:24px auto 0;padding:16px 10px 0;border-top:1px solid #E2E8F0;text-align:center;font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#94A3B8">
   GhostSpy — Jordana Frade · NIF 246990120<br/>
-  Travessa de Além Rio, 50, 4780-460 Santo Tirso, Porto, Portugal<br/>
+  Travessa de Além Rio 50, 4780-460 Santo Tirso, Porto, Portugalia<br/>
   Tel: <a href="tel:+351252837400" style="color:#94A3B8">+351 252 837 400</a> ·
   <a href="mailto:suporte@ghostemail.com" style="color:#94A3B8">suporte@ghostemail.com</a><br/>
-  <a href="/politica-de-privacidade" style="color:#94A3B8">Privacidade</a> ·
-  <a href="/termos-de-uso" style="color:#94A3B8">Termos</a> ·
-  <a href="/trocas-e-devolucoes" style="color:#94A3B8">Trocas e Devoluções</a> ·
-  <a href="/politica-de-entrega" style="color:#94A3B8">Entrega</a> ·
-  <a href="/politica-de-reembolso" style="color:#94A3B8">Reembolso</a> ·
-  <a href="/sobre-nos" style="color:#94A3B8">Sobre Nós</a> ·
-  <a href="/contato" style="color:#94A3B8">Contato</a>
+  <a href="/politica-de-privacidade" style="color:#94A3B8">Prywatność</a> ·
+  <a href="/termos-de-uso" style="color:#94A3B8">Regulamin</a> ·
+  <a href="/trocas-e-devolucoes" style="color:#94A3B8">Zwroty i wymiany</a> ·
+  <a href="/politica-de-entrega" style="color:#94A3B8">Dostawa</a> ·
+  <a href="/politica-de-reembolso" style="color:#94A3B8">Zwrot pieniędzy</a> ·
+  <a href="/sobre-nos" style="color:#94A3B8">O nas</a> ·
+  <a href="/contato" style="color:#94A3B8">Kontakt</a>
 </footer>
 </body>
 </html>

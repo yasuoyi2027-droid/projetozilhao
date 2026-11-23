@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="pt-PT">
+<html lang="pl">
 <head>
 <script>
 try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(_){}
 window.scrollTo(0, 0);
 </script>
 <meta charset="utf-8" />
-<title>Painel | GhostSpy</title>
+<title>Panel | GhostSpy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/png" href="/favicon.png" />
@@ -222,34 +222,34 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   </div>
 
   <div class="glass">
-    <h1>Entrar no painel</h1>
-    <p class="login-sub">Use o utilizador e palavra-passe enviados por e-mail após a sua compra.</p>
+    <h1>Zaloguj się do panelu</h1>
+    <p class="login-sub">Użyj loginu i hasła wysłanych e-mailem po zakupie.</p>
 
-    <label>Utilizador</label>
+    <label>Login</label>
     <div class="field">
       <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      <input id="login-username" type="text" autocomplete="username" placeholder="o seu utilizador" />
+      <input id="login-username" type="text" autocomplete="username" placeholder="Twój login" />
     </div>
 
-    <label>Palavra-passe</label>
+    <label>Hasło</label>
     <div class="field">
       <svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-      <input id="login-password" type="password" autocomplete="current-password" placeholder="a sua palavra-passe" />
-      <button type="button" id="toggle-pw" class="toggle-pw" aria-label="Mostrar palavra-passe">
+      <input id="login-password" type="password" autocomplete="current-password" placeholder="Twoje hasło" />
+      <button type="button" id="toggle-pw" class="toggle-pw" aria-label="Pokaż hasło">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
     </div>
 
     <button id="login-btn" class="btn">
       <span class="spinner"></span>
-      <span class="btn-label">Entrar</span>
+      <span class="btn-label">Zaloguj się</span>
     </button>
     <div id="login-err" class="err"></div>
 
     <div class="trust-row">
-      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Dados encriptados</div>
-      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg>Acesso imediato</div>
-      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte 24/7</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Szyfrowane dane</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg>Natychmiastowy dostęp</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Wsparcie 24/7</div>
     </div>
   </div>
 </div>
@@ -260,25 +260,25 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     <nav class="s-nav">
       <a href="#sec-overview" class="s-link nav-link active" data-target="sec-overview">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        Visão geral
+        Przegląd
       </a>
       <a href="#sec-contacts" class="s-link nav-link" data-target="sec-contacts">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Contactos
+        Kontakty
       </a>
       <a href="#sec-settings" class="s-link nav-link" data-target="sec-settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        Definições
+        Ustawienia
       </a>
       <a href="#view-admin" class="s-link nav-link hidden" data-target="view-admin" id="nav-admin">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Clientes
+        Klienci
       </a>
     </nav>
     <div class="s-foot">
       <button id="logout-btn-desktop" class="s-link" style="color:rgba(255,255,255,.6)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-        Sair
+        Wyloguj
       </button>
     </div>
   </aside>
@@ -287,7 +287,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
 <div class="wrap">
   <div class="topbar">
     <div class="logo">Ghost<span>Spy</span></div>
-    <button id="logout-btn" class="logout hidden">Sair</button>
+    <button id="logout-btn" class="logout hidden">Wyloguj</button>
   </div>
 
   <div id="view-dashboard" class="hidden">
@@ -295,27 +295,27 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       <div class="profile-head">
         <div class="avatar" id="p-avatar">?</div>
         <div class="profile-info">
-          <div class="who">Conta</div>
+          <div class="who">Konto</div>
           <div class="name" id="dash-username">—</div>
-          <div class="sub-badges"><span class="mini-badge" id="p-plan">Plano VIP</span></div>
+          <div class="sub-badges"><span class="mini-badge" id="p-plan">Plan VIP</span></div>
         </div>
-        <div id="p-live" class="live pending"><span class="dot"></span><span id="p-live-text">Por configurar</span></div>
+        <div id="p-live" class="live pending"><span class="dot"></span><span id="p-live-text">Do skonfigurowania</span></div>
       </div>
 
       <div id="setup-wrap" class="hidden">
         <div id="sec-settings" style="margin-top:18px;scroll-margin-top:24px">
-          <label style="margin-top:0">Perfil do Instagram a monitorizar</label>
+          <label style="margin-top:0">Profil na Instagramie do monitorowania</label>
           <div id="setup-row">
-            <input id="target-input" type="text" placeholder="@utilizador do instagram" />
-            <button id="target-save">Guardar</button>
+            <input id="target-input" type="text" placeholder="@użytkownik na Instagramie" />
+            <button id="target-save">Zapisz</button>
           </div>
-          <p class="setup-hint">Defina o perfil que quer acompanhar — os dados de atividade ficam disponíveis logo a seguir.</p>
+          <p class="setup-hint">Ustaw profil, który chcesz obserwować — dane aktywności będą dostępne od razu potem.</p>
         </div>
       </div>
 
       <div id="monitor-wrap" class="hidden">
         <div class="risk-wrap">
-          <div class="risk-top"><span>Nível de atenção</span><b id="risk-label">—</b></div>
+          <div class="risk-top"><span>Poziom uwagi</span><b id="risk-label">—</b></div>
           <div class="risk-track"><div class="risk-fill" id="risk-fill"></div></div>
         </div>
 
@@ -323,35 +323,35 @@ td.u-cell{display:flex;align-items:center;gap:8px}
           <div class="stat c-msg">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
             <div class="num" id="m-messages">0</div>
-            <div class="lbl">Mensagens</div>
+            <div class="lbl">Wiadomości</div>
           </div>
           <div class="stat c-fol">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <div class="num" id="m-followers">0</div>
-            <div class="lbl">Seguidores</div>
+            <div class="lbl">Obserwujący</div>
           </div>
           <div class="stat c-story">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.2"/></svg></div>
             <div class="num" id="m-stories">0</div>
-            <div class="lbl">Stories vistos</div>
+            <div class="lbl">Obejrzane relacje</div>
           </div>
           <div class="stat c-time">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <div class="num" id="m-lastseen" style="font-size:13.5px">—</div>
-            <div class="lbl">Últ. atividade</div>
+            <div class="lbl">Ost. aktywność</div>
           </div>
         </div>
 
         <div class="card chart-card" style="margin-top:18px;padding:16px 14px;border-color:#EEF2F7">
           <div class="chart-top">
-            <h3 class="section" style="margin:0">Atividade — últimos 7 dias</h3>
-            <span class="chart-total">Total <b id="chart-total">0</b></span>
+            <h3 class="section" style="margin:0">Aktywność — ostatnie 7 dni</h3>
+            <span class="chart-total">Razem <b id="chart-total">0</b></span>
           </div>
           <div class="bars" id="chart-bars"></div>
         </div>
 
         <div id="sec-contacts" style="scroll-margin-top:24px">
-          <h3 class="section" style="margin-top:22px">Contactos suspeitos</h3>
+          <h3 class="section" style="margin-top:22px">Podejrzane kontakty</h3>
           <div id="contacts-list"></div>
         </div>
       </div>
@@ -360,18 +360,18 @@ td.u-cell{display:flex;align-items:center;gap:8px}
 
   <div id="view-admin" class="card hidden" style="scroll-margin-top:24px">
     <div class="admin-top">
-      <h3 class="section" style="margin:0">Todos os clientes</h3>
+      <h3 class="section" style="margin:0">Wszyscy klienci</h3>
       <span class="admin-count" id="admin-count">0</span>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Utilizador</th><th>Perfil alvo</th><th>Plano</th><th>Criado em</th></tr></thead>
+        <thead><tr><th>Login</th><th>Profil docelowy</th><th>Plan</th><th>Utworzono</th></tr></thead>
         <tbody id="admin-rows"></tbody>
       </table>
     </div>
   </div>
 
-  <p class="footer-note hidden" id="dash-footer">GhostSpy · Área reservada a clientes · <a href="/contato" style="color:inherit">Precisa de ajuda?</a></p>
+  <p class="footer-note hidden" id="dash-footer">GhostSpy · Strefa klienta · <a href="/contato" style="color:inherit">Potrzebujesz pomocy?</a></p>
 </div>
 </div>
 </div>
@@ -379,19 +379,19 @@ td.u-cell{display:flex;align-items:center;gap:8px}
 <nav class="bottom-nav hidden" id="bottom-nav">
   <button class="bn-item active nav-link" data-target="sec-overview">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-    Início
+    Start
   </button>
   <button class="bn-item nav-link" data-target="sec-contacts">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    Contactos
+    Kontakty
   </button>
   <button class="bn-item nav-link hidden" data-target="view-admin" id="bn-admin">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    Clientes
+    Klienci
   </button>
   <button class="bn-item" id="bn-logout">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-    Sair
+    Wyloguj
   </button>
 </nav>
 
@@ -401,7 +401,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(_){}
   var $ = function(id){ return document.getElementById(id); };
   var TOKEN_KEY = 'ghost_panel_token';
-  var DAY_LABELS = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+  var DAY_LABELS = ['Pon','Wt','Śr','Czw','Pt','Sob','Niedz'];
 
   function initials(str){
     str = String(str || '?').trim();
@@ -458,18 +458,18 @@ td.u-cell{display:flex;align-items:center;gap:8px}
   $('bn-logout').addEventListener('click', logout);
 
   function fmtMinutes(min){
-    if (min < 60) return 'há ' + min + ' min';
+    if (min < 60) return 'przed ' + min + ' min';
     var h = Math.floor(min/60);
-    return 'há ' + h + 'h';
+    return 'przed ' + h + 'h';
   }
 
   var TAG_CLASS = {
-    'Conversa recorrente': 't-chat',
-    'Chamada de vídeo': 't-chat',
-    'Novo seguidor suspeito': 't-follow',
-    'Troca de fotos': 't-follow',
-    'Perfil oculto': 't-hidden',
-    'Mensagem apagada': 't-hidden',
+    'Stały kontakt': 't-chat',
+    'Rozmowa wideo': 't-chat',
+    'Nowy podejrzany obserwujący': 't-follow',
+    'Wymiana zdjęć': 't-follow',
+    'Ukryty profil': 't-hidden',
+    'Usunięta wiadomość': 't-hidden',
   };
 
   function renderChart(values){
@@ -501,13 +501,13 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       $('setup-wrap').classList.remove('hidden');
       $('monitor-wrap').classList.add('hidden');
       $('p-live').className = 'live pending';
-      $('p-live-text').textContent = 'Por configurar';
+      $('p-live-text').textContent = 'Do skonfigurowania';
       return;
     }
     $('setup-wrap').classList.add('hidden');
     $('monitor-wrap').classList.remove('hidden');
     $('p-live').className = 'live';
-    $('p-live-text').textContent = 'A monitorizar';
+    $('p-live-text').textContent = 'Monitorowanie';
     $('p-avatar').textContent = initials(m.target_username);
 
     $('m-lastseen').textContent = fmtMinutes(m.last_seen_minutes_ago);
@@ -516,7 +516,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     countUp($('m-stories'), m.stories_viewed || 0);
 
     var riskScore = Math.min(100, (m.new_messages * 4) + (m.new_followers * 3) + (m.suspicious_contacts || []).length * 8);
-    var riskLabel = riskScore >= 66 ? 'Alto' : riskScore >= 33 ? 'Médio' : 'Baixo';
+    var riskLabel = riskScore >= 66 ? 'Wysoki' : riskScore >= 33 ? 'Średni' : 'Niski';
     $('risk-label').textContent = riskLabel;
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){ $('risk-fill').style.width = riskScore + '%'; });
@@ -537,7 +537,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
           '<div class="c-name">' + c.name + '</div>' +
           '<span class="c-tag ' + tagClass + '">' + c.tag + '</span>' +
         '</div>' +
-        '<div class="c-time">há ' + c.hours_ago + 'h</div>';
+        '<div class="c-time">przed ' + c.hours_ago + 'h</div>';
       list.appendChild(row);
     });
   }
@@ -551,7 +551,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       .then(function(data){
         showDashboard();
         $('dash-username').textContent = data.username;
-        $('p-plan').textContent = data.role === 'admin' ? 'Administrador' : 'Plano VIP';
+        $('p-plan').textContent = data.role === 'admin' ? 'Administrator' : 'Plan VIP';
         var displayName = (data.monitoring && data.monitoring.target_username) || data.username;
         renderMonitoring(data.monitoring, displayName);
 
@@ -565,12 +565,12 @@ td.u-cell{display:flex;align-items:center;gap:8px}
           data.customers.forEach(function(c, i){
             var tr = document.createElement('tr');
             tr.style.animationDelay = (i * 0.06) + 's';
-            var planLabel = (c.sku || '—').replace('core_discount', 'VIP (oferta)').replace('core_bump', 'VIP + Multi').replace('core', 'VIP');
+            var planLabel = (c.sku || '—').replace('core_discount', 'VIP (promocja)').replace('core_bump', 'VIP + Multi').replace('core', 'VIP');
             tr.innerHTML =
               '<td class="u-cell"><span class="mini-avatar">' + initials(c.username) + '</span>' + c.username + '</td>' +
               '<td>' + (c.target_username ? '@' + c.target_username : '—') + '</td>' +
               '<td><span class="plan-badge">' + planLabel + '</span></td>' +
-              '<td>' + (c.created_at ? new Date(c.created_at).toLocaleDateString('pt-PT') : '—') + '</td>';
+              '<td>' + (c.created_at ? new Date(c.created_at).toLocaleDateString('pl-PL') : '—') + '</td>';
             tbody.appendChild(tr);
           });
         } else {
@@ -597,7 +597,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     var btn = $('login-btn');
     btn.disabled = on;
     btn.classList.toggle('loading', on);
-    btn.querySelector('.btn-label').textContent = on ? 'A entrar...' : 'Entrar';
+    btn.querySelector('.btn-label').textContent = on ? 'Logowanie...' : 'Zaloguj się';
   }
 
   $('toggle-pw').addEventListener('click', function(){
@@ -611,7 +611,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
     var err = $('login-err');
     err.style.display = 'none';
     if (!username || !password){
-      err.textContent = 'Preencha utilizador e palavra-passe.';
+      err.textContent = 'Wypełnij login i hasło.';
       err.style.display = 'block';
       shakeFields();
       return;
@@ -627,7 +627,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       .then(function(res){
         if (!res.ok){
           setLoginLoading(false);
-          err.textContent = 'Utilizador ou palavra-passe inválidos.';
+          err.textContent = 'Nieprawidłowy login lub hasło.';
           err.style.display = 'block';
           shakeFields();
           return;
@@ -637,7 +637,7 @@ td.u-cell{display:flex;align-items:center;gap:8px}
       })
       .catch(function(){
         setLoginLoading(false);
-        err.textContent = 'Erro de ligação. Tente novamente.';
+        err.textContent = 'Błąd połączenia. Spróbuj ponownie.';
         err.style.display = 'block';
         shakeFields();
       });

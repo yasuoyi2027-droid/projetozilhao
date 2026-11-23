@@ -893,9 +893,233 @@ para obter acesso`,
             weeksAgo: "{{count}} sem",
         },
     },
-    i = { "pt-BR": p, en: f, es: v, "pt-PT": ptPT },
+    pl = {
+        common: {
+            loading: "Ładowanie...",
+            error: "Błąd",
+            retry: "Spróbuj ponownie",
+            close: "Zamknij",
+            back: "Wstecz",
+            now: "Teraz",
+            send: "Wyślij",
+            cancel: "Anuluj",
+            save: "Zapisz",
+            search: "Szukaj",
+            message: "Wiadomość",
+            messages: "Wiadomości",
+            camera: "Aparat",
+        },
+        meta: {
+            homeTitle: "GhostSpy | Uzyskaj dostęp teraz",
+            homeDescription:
+                "Dowiedz się, jak w prosty sposób śledzić profil na Instagramie i zobaczyć polubienia, obserwujących i aktywność. Analizuj interakcje i odkryj, co dzieje się na profilu.",
+            homeKeywords:
+                "śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+            feedTitle: "GhostSpy | Uzyskaj dostęp teraz",
+            feedDescription:
+                "Dowiedz się, jak w prosty sposób śledzić profil na Instagramie i zobaczyć polubienia, obserwujących i aktywność. Analizuj interakcje i odkryj, co dzieje się na profilu.",
+            feedKeywords:
+                "śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+            directTitle: "GhostSpy | Uzyskaj dostęp teraz",
+            directDescription:
+                "Dowiedz się, jak w prosty sposób śledzić profil na Instagramie i zobaczyć wiadomości, polubienia i aktywność. Analizuj interakcje i odkryj, co dzieje się na profilu.",
+            directKeywords:
+                "śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+            ctaTitle: "GhostSpy | Uzyskaj dostęp teraz",
+            ctaDescription:
+                "Dowiedz się, jak w prosty sposób śledzić profil na Instagramie i zobaczyć polubienia, obserwujących i aktywność. Analizuj interakcje i odkryj, co dzieje się na profilu.",
+            ctaKeywords:
+                "śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+        },
+        login: {
+            testingPassword: "Sprawdzanie hasła",
+            wrongPassword: "Nieprawidłowe hasło",
+            accountAccessed: "Pomyślnie zalogowano!",
+            loadingProfile: "Ładowanie profilu...",
+            redirecting: "Przekierowywanie...",
+        },
+        cloaker: {
+            checking: "Sprawdzanie dostępu...",
+            mobileOnly: {
+                title: "Dostęp tylko z telefonu",
+                message:
+                    "Ta zawartość jest dostępna tylko na urządzeniach mobilnych. Otwórz ją na swoim smartfonie.",
+            },
+            botDetected: {
+                title: "Dostęp zablokowany",
+                message:
+                    "Wykryliśmy, że używasz bota lub narzędzia automatycznego. Dostęp nie jest dozwolony.",
+            },
+            headlessBrowser: {
+                title: "Nieobsługiwana przeglądarka",
+                message:
+                    "Ta przeglądarka nie jest obsługiwana. Użyj Chrome lub Safari na telefonie, aby uzyskać dostęp.",
+            },
+            crawler: {
+                title: "Dostęp zablokowany",
+                message:
+                    "Roboty indeksujące i narzędzia tego typu nie są dozwolone na tej stronie.",
+            },
+            scraper: {
+                title: "Pobieranie niedozwolone",
+                message:
+                    "Narzędzia do pobierania stron nie są dozwolone. Otwórz stronę normalnie w przeglądarce telefonu.",
+            },
+            devtools: {
+                title: "Narzędzia deweloperskie",
+                message:
+                    "Ze względów bezpieczeństwa dostęp z otwartymi narzędziami deweloperskimi jest niedozwolony.",
+            },
+            iframe: {
+                title: "Wymagany bezpośredni dostęp",
+                message:
+                    "Nie można uzyskać dostępu do tej zawartości przez ramki (iframe). Otwórz ją bezpośrednio w przeglądarce.",
+            },
+            suspiciousBrowser: {
+                title: "Nierozpoznana przeglądarka",
+                message:
+                    "Użyj domyślnej przeglądarki telefonu (Chrome lub Safari), aby uzyskać dostęp do tej zawartości.",
+            },
+            automation: {
+                title: "Wykryto automatyzację",
+                message:
+                    "Narzędzia automatyzujące nie są dozwolone. Otwórz stronę ręcznie w przeglądarce telefonu.",
+            },
+        },
+        feed: {
+            allPostsSeen:
+                "Zobaczyłeś już wszystkie posty dostępne w darmowym podglądzie. Zostań członkiem VIP, aby zobaczyć wszystkie posty.",
+            becomeVIP: "Zostań VIP",
+            previewAvailableFor: "Podgląd dostępny przez",
+            previewDescription:
+                "Masz 10 minut na darmowe przetestowanie naszego narzędzia, ale aby odblokować wszystkie funkcje i uzyskać stały dostęp, musisz zostać członkiem VIP.",
+            notificationSentMessage: "wysłał(a) wiadomość",
+            restrictedContent: "Zawartość ograniczona",
+        },
+        direct: {
+            messagesHeader: "Wiadomości",
+            requests: "Prośby",
+            searchPlaceholder: "Zapytaj Meta AI lub wyszukaj",
+            yourNote: "Twoja notatka...",
+            note: "Notatka...",
+        },
+        chat: {
+            messagePlaceholder: "Wiadomość...",
+            failedToSend: "Nie udało się wysłać.",
+            learnMore: "Dowiedz się więcej",
+            audioVIPMessage: "Zostań członkiem VIP, aby włączyć dźwięk",
+            blockedContent: "Zawartość zablokowana",
+            sensitiveContent: "Treść wrażliwa",
+            blockedContentDescription:
+                "Aby odblokować ocenzurowane zdjęcia i filmy, musisz zostać członkiem VIP",
+            sensitiveContentDescription:
+                "To zdjęcie może zawierać nagość lub treści o charakterze seksualnym",
+            viewPhoto: "Zobacz zdjęcie",
+            becomeVIP: "Zostań VIP",
+            viewFullHistory: "Zobacz pełną historię",
+            viewReel: "Zobacz rolkę",
+        },
+        blockedPopup: {
+            title: "⚠︎ Akcja zablokowana",
+            description: `Zostań członkiem VIP GhostSpy
+aby uzyskać dostęp`,
+            ctaButton: "Uzyskaj dostęp VIP",
+            actionTexts: {
+                "Visualizar story": "do oglądania relacji",
+                "Adicionar story": "do dodawania relacji",
+                Curtir: "do polubień",
+                Comentar: "do komentowania",
+                Repostar: "do udostępniania",
+                Enviar: "do wysyłania",
+                Salvar: "do zapisywania",
+                Buscar: "do wyszukiwania",
+                "Adicionar conteúdo": "do dodawania treści",
+                Reels: "do rolek",
+                Perfil: "do profilu",
+                Notificações: "do powiadomień",
+                Mensagens: "do wiadomości",
+                "Mais opções": "do opcji",
+                Home: "do strony głównej",
+                "Meta AI": "do interakcji z Meta AI",
+                Câmera: "do aparatu",
+                "Nova mensagem": "do nowej wiadomości",
+                Pedidos: "do próśb o wiadomości",
+                "desbloquear essa conversa": "do odblokowania tej rozmowy",
+                "carregar mais mensagens": "do wczytywania kolejnych rozmów",
+                Conversa: "do rozmowy",
+                "Ver mídia bloqueada": "do zablokowanych treści",
+                "Ver localização em tempo real": "do lokalizacji w czasie rzeczywistym",
+                "Ver conteúdo restrito": "do treści ograniczonych",
+                "Enviar áudio": "do wysyłania audio",
+                Pesquisar: "do wyszukiwania",
+            },
+        },
+        landing: {
+            titleHtml:
+                'Co robi Twój/Twoja <span class="gradient-text" style="font-size:clamp(26.46px, 4.41vw, 39.69px)">Partner/Partnerka</span> na Instagramie?',
+            subtitleHtml:
+                'Poznaj prawdę o <span class="gradient-text font-semibold">dowolnej osobie</span>, uzyskując dostęp do jej Instagrama!',
+            spyNow: "Analizuj teraz",
+            inputPlaceholder: "Np: nazwa_partnera_10",
+            limitReached: "Limit osiągnięty",
+            usedFreeSearch: "Wykorzystałeś już darmowe wyszukiwanie, aby przeanalizować",
+            acquireVIP:
+                "Zdobądź dostęp VIP i uzyskaj pełny dostęp do Instagrama już teraz!",
+            unlockVIP: "Odblokuj dostęp VIP",
+            identityCompromised: "Twoja tożsamość może zostać ujawniona!",
+            identityWarning:
+                "może zostać powiadomiona o Twojej analizie. Tylko członkowie VIP mają gwarancję pełnej dyskrecji.",
+            confirmInstagram: "Potwierdź konto Instagram",
+            confirmQuestion: "Czy chcesz przeanalizować profil",
+            profilePicAlt: "Zdjęcie profilowe",
+            posts: "postów",
+            followers: "obserwujących",
+            following: "obserwowanych",
+            searchWarning:
+                "Limit tylko 1 wyszukiwania na urządzenie. Upewnij się, że nazwa użytkownika jest poprawna.",
+            correctAt: "Popraw @",
+            confirm: "Potwierdź",
+        },
+        cta: {
+            accessNow: "Uzyskaj pełny dostęp już teraz",
+            oneTimePayment: "jednorazowa płatność",
+            limitedOffer: "Oferta ograniczona",
+            securePayment: "Bezpieczna płatność",
+        },
+        notification: { sentAMessage: "wysłał(a) wiadomość" },
+        whitePage: {
+            title: "GhostSpy - Analizator Profili Instagram",
+            subtitle:
+                "Analizuj dowolny publiczny profil na Instagramie — narzędzie jest bezpieczne i nieograniczone. Wpisz nazwę użytkownika lub link do profilu, aby uzyskać wszystkie statystyki konta.",
+            analyze: "Analizuj",
+            profilesAnalyzed: "przeanalizowanych profili",
+            followersAndEngagement: "Obserwujący i wskaźnik zaangażowania",
+            postsAndStories: "Analiza postów i relacji",
+            engagement: "Zaangażowanie",
+            followers: "Obserwujący",
+            following: "Obserwowani",
+            posts: "Posty",
+            unlock: "Odblokuj",
+            recentPosts: "Najnowsze posty",
+            latestStories: "Najnowsze relacje",
+            showStories: "POKAŻ RELACJE",
+            free: "Za darmo",
+            premium: "Premium",
+            popular: "Popularne",
+            getAccess: "Uzyskaj Premium",
+            faqTitle: "Najczęściej zadawane pytania",
+        },
+        time: {
+            now: "Teraz",
+            minutesAgo: "{{count}} min",
+            hoursAgo: "{{count}} godz.",
+            daysAgo: "{{count}} dni",
+            weeksAgo: "{{count}} tyg.",
+        },
+    },
+    i = { "pt-BR": p, en: f, es: v, "pt-PT": ptPT, pl },
     n = "app_locale",
-    r = "pt-PT";
+    r = "pl";
 function b() {
     if (typeof window > "u") return r;
     const e = localStorage.getItem(n);

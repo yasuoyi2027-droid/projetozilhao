@@ -19,8 +19,8 @@ function mulberry32(seed) {
   };
 }
 
-const FIRST_NAMES = ['Ana', 'Bruno', 'Carla', 'Diogo', 'Filipa', 'Gonçalo', 'Inês', 'João', 'Mariana', 'Ricardo', 'Sofia', 'Tiago'];
-const CONTACT_TAGS = ['Conversa recorrente', 'Novo seguidor suspeito', 'Troca de fotos', 'Chamada de vídeo', 'Mensagem apagada', 'Perfil oculto'];
+const FIRST_NAMES = ['Anna', 'Bartek', 'Kasia', 'Dawid', 'Filip', 'Gosia', 'Agnieszka', 'Jakub', 'Marta', 'Rafał', 'Zofia', 'Tomasz'];
+const CONTACT_TAGS = ['Stały kontakt', 'Nowy podejrzany obserwujący', 'Wymiana zdjęć', 'Rozmowa wideo', 'Usunięta wiadomość', 'Ukryty profil'];
 
 function buildMonitoringData(seedKey, targetUsername) {
   const rnd = mulberry32(seedFrom(seedKey));
