@@ -499,7 +499,7 @@ function re({ reason: e, details: s }) {
                                 }),
                                 t.jsx("span", {
                                     className: "text-purple-300 font-medium",
-                                    children: "Como aceder",
+                                    children: "Jak uzyskać dostęp",
                                 }),
                             ],
                         }),
@@ -513,7 +513,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "1.",
                                         }),
-                                        "Abra a câmara do seu telemóvel",
+                                        "Otwórz aparat w swoim telefonie",
                                     ],
                                 }),
                                 t.jsxs("li", {
@@ -523,7 +523,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "2.",
                                         }),
-                                        "Leia o QR code abaixo",
+                                        "Zeskanuj poniższy kod QR",
                                     ],
                                 }),
                                 t.jsxs("li", {
@@ -533,7 +533,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "3.",
                                         }),
-                                        "Aceda ao link que aparecer",
+                                        "Wejdź na link, który się pojawi",
                                     ],
                                 }),
                             ],
@@ -558,7 +558,7 @@ function re({ reason: e, details: s }) {
                         }),
                         t.jsx("p", {
                             className: "text-xs text-gray-500 mt-2",
-                            children: "Ou copie o link e envie para o seu telemóvel",
+                            children: "Lub skopiuj link i wyślij go na swój telefon",
                         }),
                     ],
                 }),
@@ -567,7 +567,7 @@ function re({ reason: e, details: s }) {
                     className: "mt-8 pt-6 border-t border-gray-800",
                     children: t.jsx("p", {
                         className: "text-xs text-gray-600",
-                        children: "Protegido por GhostSpy Security",
+                        children: "Chronione przez GhostSpy Security",
                     }),
                 }),
             ],
