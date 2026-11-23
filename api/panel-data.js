@@ -32,6 +32,10 @@ function buildMonitoringData(seedKey, targetUsername) {
     return { name, tag, hours_ago: hoursAgo };
   }).sort((a, b) => a.hours_ago - b.hours_ago);
 
+  const activity7d = Array.from({ length: 7 }, () => 2 + Math.floor(rnd() * 18));
+  const storiesViewed = 3 + Math.floor(rnd() * 25);
+  const daysMonitored = 1 + Math.floor(rnd() * 14);
+
   return {
     target_username: targetUsername || null,
     status: targetUsername ? 'monitoring' : 'pending_setup',
@@ -39,6 +43,9 @@ function buildMonitoringData(seedKey, targetUsername) {
     new_followers: Math.floor(rnd() * 20),
     last_seen_minutes_ago: 1 + Math.floor(rnd() * 180),
     suspicious_contacts: suspiciousContacts,
+    activity_7d: activity7d,
+    stories_viewed: storiesViewed,
+    days_monitored: daysMonitored,
   };
 }
 
