@@ -2,8 +2,10 @@
 // Usa as env vars KV_REST_API_URL e KV_REST_API_TOKEN (criadas automaticamente
 // ao ligar uma Vercel KV store ao projeto).
 
-const BASE = process.env.KV_REST_API_URL;
-const TOKEN = process.env.KV_REST_API_TOKEN;
+// A integração Vercel Marketplace (Upstash) às vezes cria as envs com um prefixo
+// próprio (ex.: GHOST_SPY_KV_REST_API_URL) em vez do nome padrão KV_REST_API_URL.
+const BASE = process.env.KV_REST_API_URL || process.env.GHOST_SPY_KV_REST_API_URL;
+const TOKEN = process.env.KV_REST_API_TOKEN || process.env.GHOST_SPY_KV_REST_API_TOKEN;
 
 function assertConfigured() {
   if (!BASE || !TOKEN) {
