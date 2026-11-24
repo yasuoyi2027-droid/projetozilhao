@@ -213,7 +213,7 @@ function j() {
         return {
             isBlocked: !0,
             reason: "headless",
-            details: "Wykryto przeglądarkę headless",
+            details: __gsL("Wykryto przeglądarkę headless", "Navegador headless detectado", "Navegador headless detetado"),
             isMobile: !1,
             userAgent: e,
         };
@@ -221,7 +221,7 @@ function j() {
         return {
             isBlocked: !0,
             reason: "automation",
-            details: "Wykryto narzędzie do automatyzacji",
+            details: __gsL("Wykryto narzędzie do automatyzacji", "Herramienta de automatización detectada", "Ferramenta de automação detetada"),
             isMobile: !1,
             userAgent: e,
         };
@@ -229,7 +229,7 @@ function j() {
         return {
             isBlocked: !0,
             reason: "iframe",
-            details: "Dostęp przez iframe niedozwolony",
+            details: __gsL("Dostęp przez iframe niedozwolony", "Acceso por iframe no permitido", "Acesso por iframe não permitido"),
             isMobile: !1,
             userAgent: e,
         };
@@ -237,7 +237,7 @@ function j() {
         return {
             isBlocked: !0,
             reason: "webview_suspicious",
-            details: "Wykryto podejrzany WebView",
+            details: __gsL("Wykryto podejrzany WebView", "WebView sospechoso detectado", "WebView suspeito detetado"),
             isMobile: !1,
             userAgent: e,
         };
@@ -246,14 +246,14 @@ function j() {
         ? {
             isBlocked: !1,
             reason: null,
-            details: "Dostęp dozwolony",
+            details: __gsL("Dostęp dozwolony", "Acceso permitido", "Acesso permitido"),
             isMobile: !0,
             userAgent: e,
         }
         : {
             isBlocked: !1,
             reason: null,
-            details: "Dostęp dozwolony",
+            details: __gsL("Dostęp dozwolony", "Acceso permitido", "Acesso permitido"),
             isMobile: !0,
             userAgent: e,
         };

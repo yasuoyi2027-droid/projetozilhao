@@ -1,8 +1,24 @@
 ﻿<html lang="pl">
   <head>
-    <title>
-      GhostSpy | Aceder Agora
-    </title>
+    <title>GhostSpy</title>
+    <script>
+      // Define o locale e o <title> inicial conforme ?country=mx|pl.
+      // Roda antes do React para evitar flash de idioma errado na aba.
+      try {
+        var __gsCountry = new URLSearchParams(window.location.search).get('country');
+        var __gsIsMx = (__gsCountry === 'mx');
+        window.localStorage.setItem('app_locale', __gsIsMx ? 'es-MX' : 'pl');
+        document.documentElement.lang = __gsIsMx ? 'es-MX' : 'pl';
+        document.title = __gsIsMx ? 'GhostSpy | Obtén Acceso Ahora' : 'GhostSpy | Uzyskaj Dostęp';
+        // Atualiza <meta description> conforme locale para SEO / link preview
+        var __gsDesc = document.querySelector('meta[name="description"]');
+        if (__gsDesc) {
+          __gsDesc.setAttribute('content', __gsIsMx
+            ? 'Descubre cómo GhostSpy analiza perfiles de Instagram y muestra likes, conversaciones y actividades de forma 100% anónima.'
+            : 'Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo.');
+        }
+      } catch (_e) {}
+    </script>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
@@ -25,19 +41,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
-    <script>
-      // Define o locale conforme ?country=mx|pt|pl. Sem o parametro, forca
-      // sempre polones (nao herda o que ficou guardado de uma visita anterior
-      // a /?country=pt ou /?country=mx no mesmo navegador).
-      try {
-        var __gsCountry = new URLSearchParams(window.location.search).get('country');
-        if (__gsCountry === 'mx') {
-          window.localStorage.setItem('app_locale', 'es-MX');
-        } else {
-          window.localStorage.setItem('app_locale', 'pl');
-        }
-      } catch (_e) {}
-    </script>
     <script src="/assets/url-interceptor.js?v=20261120-imgfix"></script>
     <script>
       // Hostnames do gateway de checkout — o checkout-access-data.js anexa
