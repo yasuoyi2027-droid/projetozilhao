@@ -17,12 +17,12 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1693031462523056');
+fbq('init', '1016867001493227');
 fbq('track', 'PageView');
 fbq('track', 'ViewContent', {content_name:'Upsell Descoberta', content_ids:['ghostspy-descoberta'], value:249.00, currency:'MXN'});
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+src="https://www.facebook.com/tr?id=1016867001493227&ev=PageView&noscript=1" /></noscript>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -319,6 +319,20 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
       if (!currentId){ showErr('Respuesta inválida de la pasarela de pago.'); return; }
       var next = data.next_action || {};
       $('voucher-code').textContent = next.code || '—';
+
+      // Meta Pixel Purchase + dataLayer disparados na GERACAO do pagamento (nao na confirmacao).
+      // eventID = currentId para dedupe com o CAPI (server), que confirma de verdade no webhook.
+      try {
+        if (window.fbq){
+          fbq('track', 'Purchase', {
+            value: currentPrice, currency:'MXN',
+            content_name: currentCName,
+            content_ids: [currentCId],
+            content_type:'product'
+          }, { eventID: currentId });
+        }
+      } catch(_){}
+      pushPurchaseDataLayer(currentId, currentPrice);
       setStep('step-pending');
       startPolling();
     })
@@ -339,17 +353,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
           var st = res && res.status;
           if (st === 'succeeded' || st === 'paid'){
             clearInterval(pollTimer);
-            try {
-              if (window.fbq){
-                fbq('track', 'Purchase', {
-                  value: currentPrice, currency:'MXN',
-                  content_name: currentCName,
-                  content_ids: [currentCId],
-                  content_type:'product'
-                }, { eventID: currentId });
-              }
-            } catch(_){}
-            pushPurchaseDataLayer(currentId, currentPrice);
+            // Purchase do Meta Pixel ja foi disparado na geracao (ver fluxo de submissao acima).
             try { sessionStorage.setItem('upsell_mx_descoberta_paid','1'); } catch(_){}
             location.replace(nextUrl('descoberta_paid'));
           } else if (st === 'failed' || st === 'canceled'){

@@ -17,12 +17,12 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1693031462523056');
+fbq('init', '1016867001493227');
 fbq('track', 'PageView');
 fbq('track', 'InitiateCheckout');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+src="https://www.facebook.com/tr?id=1016867001493227&ev=PageView&noscript=1" /></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -359,6 +359,36 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
         $('voucher-code').textContent = next.code || '—';
         setStep('step-oxxo-pending');
       }
+
+      // Meta Pixel Purchase + dataLayer disparados na GERAÇÃO do SPEI/OXXO (não na confirmação).
+      // eventID = payment_id para dedupe com o CAPI (server), que confirma de verdade no webhook.
+      try {
+        var bumpOnGen = !!$('bump-cb').checked;
+        var discountOnGen = !!window.__discountOn;
+        var priceGen = discountOnGen ? 149.00 : (bumpOnGen ? 490.00 : 200.00);
+        var contentNameGen = discountOnGen ? 'GhostSpy VIP (Oferta Especial)' : (bumpOnGen ? 'GhostSpy VIP + Multi-Perfil' : 'GhostSpy VIP');
+        var contentIdGen   = discountOnGen ? 'ghostspy-vip-discount' : (bumpOnGen ? 'ghostspy-vip-multi' : 'ghostspy-vip');
+        if (window.fbq) {
+          fbq('track', 'Purchase', {
+            value: priceGen,
+            currency: 'MXN',
+            content_name: contentNameGen,
+            content_ids: [contentIdGen],
+            content_type: 'product'
+          }, { eventID: currentPaymentId });
+        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'purchase',
+          payment_id: currentPaymentId,
+          value: priceGen,
+          currency: 'MXN',
+          content_name: contentNameGen,
+          content_ids: [contentIdGen],
+          content_type: 'product',
+        });
+      } catch(_){}
+
       startPolling();
     })
     .catch(function(err){
@@ -417,33 +447,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 
   function onPaid(){
     stopPolling();
-
-    try {
-      var bumpOn = sessionStorage.getItem('checkout_mx_bump') === '1';
-      var discountOn = !!window.__discountOn;
-      var price = discountOn ? 149.00 : (bumpOn ? 490.00 : 200.00);
-      var contentName = discountOn ? 'GhostSpy VIP (Oferta Especial)' : (bumpOn ? 'GhostSpy VIP + Multi-Perfil' : 'GhostSpy VIP');
-      var contentId   = discountOn ? 'ghostspy-vip-discount' : (bumpOn ? 'ghostspy-vip-multi' : 'ghostspy-vip');
-      if (window.fbq) {
-        fbq('track', 'Purchase', {
-          value: price,
-          currency: 'MXN',
-          content_name: contentName,
-          content_ids: [contentId],
-          content_type: 'product'
-        }, { eventID: currentPaymentId });
-      }
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'purchase',
-        payment_id: currentPaymentId,
-        value: price,
-        currency: 'MXN',
-        content_name: contentName,
-        content_ids: [contentId],
-        content_type: 'product',
-      });
-    } catch(_){}
+    // Purchase do Meta Pixel já foi disparado na geração do SPEI/OXXO (ver fluxo de submissão acima).
 
     try {
       sessionStorage.setItem('checkout_mx_core_paid_id', currentPaymentId);
