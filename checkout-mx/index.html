@@ -97,7 +97,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 
     <div class="price">
       <div class="old" id="old-price">Antes $599.00 MXN</div>
-      <div class="now" id="now-price">$189.00 MXN</div>
+      <div class="now" id="now-price">$200.00 MXN</div>
     </div>
 
     <div class="method-toggle" id="method-toggle">
@@ -173,6 +173,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
         <label>CLABE</label>
         <input type="text" id="spei-clabe" readonly />
       </div>
+      <button type="button" class="copy-btn" id="copy-clabe-btn">Copiar CLABE</button>
       <div class="field">
         <label>Banco</label>
         <input type="text" id="spei-bank" readonly />
@@ -181,6 +182,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
         <label>Beneficiario</label>
         <input type="text" id="spei-ref" readonly />
       </div>
+      <button type="button" class="copy-btn" id="copy-beneficiary-btn">Copiar beneficiario</button>
       <p class="notes">Tu acceso se activa automáticamente en cuanto se confirme la transferencia.</p>
     </div>
   </div>
@@ -375,6 +377,22 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     } catch(_){}
   });
 
+  $('copy-clabe-btn').addEventListener('click', function(){
+    try {
+      navigator.clipboard.writeText($('spei-clabe').value);
+      $('copy-clabe-btn').textContent = '¡Copiado!';
+      setTimeout(function(){ $('copy-clabe-btn').textContent = 'Copiar CLABE'; }, 1500);
+    } catch(_){}
+  });
+
+  $('copy-beneficiary-btn').addEventListener('click', function(){
+    try {
+      navigator.clipboard.writeText($('spei-ref').value);
+      $('copy-beneficiary-btn').textContent = '¡Copiado!';
+      setTimeout(function(){ $('copy-beneficiary-btn').textContent = 'Copiar beneficiario'; }, 1500);
+    } catch(_){}
+  });
+
   // ---- Polling ao backend -----------------------------------------------
   function startPolling(){
     if (pollTimer) clearInterval(pollTimer);
@@ -403,7 +421,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     try {
       var bumpOn = sessionStorage.getItem('checkout_mx_bump') === '1';
       var discountOn = !!window.__discountOn;
-      var price = discountOn ? 149.00 : (bumpOn ? 479.00 : 189.00);
+      var price = discountOn ? 149.00 : (bumpOn ? 490.00 : 200.00);
       var contentName = discountOn ? 'GhostSpy VIP (Oferta Especial)' : (bumpOn ? 'GhostSpy VIP + Multi-Perfil' : 'GhostSpy VIP');
       var contentId   = discountOn ? 'ghostspy-vip-discount' : (bumpOn ? 'ghostspy-vip-multi' : 'ghostspy-vip');
       if (window.fbq) {
@@ -448,7 +466,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 
   // ---- Order bump ----------------------------------------------------------
   (function bumpToggle(){
-    var basePrice = 189.00;
+    var basePrice = 200.00;
     var bumpPrice = 290.00;
     var cb  = $('bump-cb');
     var box = $('bump-multi');

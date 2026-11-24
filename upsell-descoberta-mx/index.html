@@ -83,6 +83,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
 @keyframes sp{to{transform:rotate(360deg)}}
 .voucher-code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:20px;font-weight:800;letter-spacing:.04em;background:#F1F5F9;border:1.5px dashed var(--border);border-radius:14px;padding:14px;margin:10px 0 16px;word-break:break-all;color:var(--text)}
 .notes{color:var(--muted);font-size:11px;text-align:center;margin-top:14px;line-height:1.5}
+.copy-btn{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;font-family:inherit;font-weight:700;font-size:12px;color:var(--accent2);cursor:pointer;margin:0 0 14px}
 </style>
 </head>
 <body>
@@ -165,6 +166,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
       <h1 class="title">Paga en OXXO</h1>
       <p class="sub">Muestra este código en caja o cópialo en la app OXXO para desbloquear la reconstrucción.</p>
       <div class="voucher-code" id="voucher-code">----</div>
+      <button type="button" class="copy-btn" id="copy-btn">Copiar código</button>
       <p class="notes">Tu acceso se activa automáticamente en cuanto se confirme el pago.</p>
     </div>
   </div>
@@ -263,6 +265,18 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
   $('date-deleted').textContent = dateStr;
   $('date-row').textContent = dateStr;
 
+  function bindCopyBtn(){
+    var btn = document.getElementById('copy-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function(){
+      try {
+        navigator.clipboard.writeText($('voucher-code').textContent);
+        btn.textContent = '¡Copiado!';
+        setTimeout(function(){ btn.textContent = 'Copiar código'; }, 1500);
+      } catch(_){}
+    });
+  }
+  bindCopyBtn();
   function showErr(m){ var e=$('err-box'); e.textContent=m; e.classList.remove('hidden'); }
   function hideErr(){ $('err-box').classList.add('hidden'); }
 

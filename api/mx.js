@@ -12,8 +12,8 @@ const ID_RE = /^[0-9a-zA-Z_-]{6,100}$/;
 const TERMINAL = ['succeeded', 'paid', 'failed', 'canceled', 'refunded'];
 
 const SKUS = {
-  core: { id: 'ghostspy-vip', name: 'GhostSpy Acceso VIP', amount: 18900 },
-  core_bump: { id: 'ghostspy-vip-multi', name: 'GhostSpy VIP + Multi-Perfil (3 extra)', amount: 47900 },
+  core: { id: 'ghostspy-vip', name: 'GhostSpy Acceso VIP', amount: 20000 },
+  core_bump: { id: 'ghostspy-vip-multi', name: 'GhostSpy VIP + Multi-Perfil (3 extra)', amount: 49000 },
   core_discount: { id: 'ghostspy-vip-discount', name: 'GhostSpy VIP (Oferta Especial)', amount: 14900 },
   upsell_blindagem: { id: 'ghostspy-blindagem', name: 'GhostSpy — Blindaje de Confidencialidad', amount: 34900 },
   upsell_blindagem_discount: { id: 'ghostspy-blindagem-discount', name: 'GhostSpy — Blindaje (Última Oferta)', amount: 24900 },
