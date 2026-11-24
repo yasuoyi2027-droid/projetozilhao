@@ -182,10 +182,18 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1016867001493227');
+    try {
+      if ((window.localStorage.getItem('app_locale') || 'pl') === 'pl') {
+        fbq('init', '1006634175217088');
+      }
+    } catch (_e) {}
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1016867001493227&ev=PageView&noscript=1"
+    /></noscript>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1006634175217088&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel -->
 

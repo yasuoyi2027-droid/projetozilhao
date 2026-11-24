@@ -96,6 +96,15 @@ async function onPaid(data) {
 
       const res = await metaCapi.send([event]);
       console.log(`[zenith:${country}] Meta CAPI Purchase status=${res.status}`);
+
+      // Poland: send the same Purchase to the second pixel if configured.
+      if (country === 'pl' && process.env.META_PIXEL_ID_PL_B && process.env.META_CAPI_ACCESS_TOKEN_PL_B) {
+        const res2 = await metaCapi.send([event], {
+          pixelId: process.env.META_PIXEL_ID_PL_B,
+          accessToken: process.env.META_CAPI_ACCESS_TOKEN_PL_B,
+        });
+        console.log(`[zenith:${country}] Meta CAPI Purchase (pixel B) status=${res2.status}`);
+      }
     }
   } catch (e) {
     console.error(`[zenith:${country}] Meta CAPI failed:`, e.message);

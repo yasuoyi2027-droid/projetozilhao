@@ -59,12 +59,12 @@ function buildPurchase({
   return event;
 }
 
-async function send(events) {
-  if (!isConfigured()) return { status: 0, body: { skipped: 'not_configured' }, raw: '' };
+async function send(events, overrides) {
+  const pixelId = (overrides && overrides.pixelId) || process.env.META_PIXEL_ID;
+  const accessToken = (overrides && overrides.accessToken) || process.env.META_CAPI_ACCESS_TOKEN;
+  if (!pixelId || !accessToken) return { status: 0, body: { skipped: 'not_configured' }, raw: '' };
 
-  const pixelId = process.env.META_PIXEL_ID;
-  const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
-  const testEventCode = process.env.META_TEST_EVENT_CODE || null;
+  const testEventCode = (overrides && overrides.testEventCode) || process.env.META_TEST_EVENT_CODE || null;
 
   const payload = { data: events };
   if (testEventCode) payload.test_event_code = testEventCode;
