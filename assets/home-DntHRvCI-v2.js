@@ -1699,7 +1699,7 @@ do seu cônjuge corretamente....`,
       o === "step3",
     ),
     x = W(
-      "3º passo: Depois disso é só voltar para nossa ferramenta e informar o nome corretamente...",
+      __gsL("3. krok: Po tym wystarczy wrócić do naszego narzędzia i poprawnie podać nazwę...", "3er paso: Después de esto, solo vuelve a nuestra herramienta e ingresa el nombre correctamente..."),
       40,
       o === "step4",
     ),
