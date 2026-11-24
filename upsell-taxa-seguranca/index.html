@@ -379,7 +379,8 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       pushPurchaseDataLayer(currentId, currentPrice);
 
       // Instancia Stripe e confirma BLIK com o código de 6 dígitos.
-      if (!stripe) stripe = Stripe(publishableKey);
+      if (typeof Stripe === "undefined") { setBtnLoading(false); $("btn-yes").disabled=false; showErr("System płatności się ładuje. Spróbuj za chwilę (wyłącz bloker reklam)."); return; }
+      try { if (!stripe) stripe = Stripe(publishableKey); } catch(e){ setBtnLoading(false); $("btn-yes").disabled=false; showErr("Nie udało się zainicjować BLIK."); console.error(e); return; }
       stripe.confirmBlikPayment(clientSecret, {
         payment_method: {
           billing_details: { name: name, email: email }

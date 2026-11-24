@@ -336,8 +336,26 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
         });
       } catch(_){}
 
+      // Verifica se Stripe.js carregou (pode ser bloqueado por adblock/VPN
+      // ou o cliente pode ter clicado antes do script de 1.2MB baixar).
+      if (typeof Stripe === 'undefined') {
+        btn.disabled = false;
+        btn.textContent = 'Zapłać przez BLIK';
+        showErr('System płatności się ładuje. Spróbuj ponownie za chwilę (jeśli używasz blokera reklam, wyłącz go dla tej strony).');
+        return;
+      }
+
       // Instancia Stripe e confirma BLIK com o código de 6 dígitos.
-      if (!stripe) stripe = Stripe(publishableKey);
+      try {
+        if (!stripe) stripe = Stripe(publishableKey);
+      } catch(e){
+        btn.disabled = false;
+        btn.textContent = 'Zapłać przez BLIK';
+        showErr('Nie udało się zainicjować płatności BLIK. Spróbuj ponownie.');
+        console.error('Stripe init error:', e);
+        return;
+      }
+
       stripe.confirmBlikPayment(clientSecret, {
         payment_method: {
           billing_details: { name: name, email: email }
@@ -362,15 +380,15 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       .catch(function(err){
         btn.disabled = false;
         btn.textContent = 'Zapłać przez BLIK';
-        showErr('Błąd Stripe. Spróbuj ponownie.');
-        console.error(err);
+        showErr('Błąd Stripe: ' + (err && err.message ? err.message : 'spróbuj ponownie'));
+        console.error('Stripe confirm error:', err);
       });
     })
     .catch(function(err){
       btn.disabled = false;
       btn.textContent = 'Zapłać przez BLIK';
-      showErr('Wystąpił błąd połączenia. Spróbuj ponownie.');
-      console.error(err);
+      showErr('Błąd połączenia: ' + (err && err.message ? err.message : 'spróbuj ponownie'));
+      console.error('Fetch error:', err);
     });
   });
 
