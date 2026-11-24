@@ -3,10 +3,14 @@
     { "source": "/api/create-payment.php", "destination": "/api/create-payment" },
     { "source": "/api/get-payment.php", "destination": "/api/get-payment" },
     { "source": "/api/webhook.php", "destination": "/api/webhook" },
-    { "source": "/api/proxy/hikerapi.php", "destination": "/api/proxy/hikerapi" },
-    { "source": "/api/proxy/image-proxy.php", "destination": "/api/proxy/image-proxy" },
-    { "source": "/api/proxy/instagram.php", "destination": "/api/proxy/instagram" },
-    { "source": "/api/proxy/leads.php", "destination": "/api/proxy/leads" },
+    { "source": "/api/proxy/hikerapi.php", "destination": "/api/proxy-all?kind=hikerapi" },
+    { "source": "/api/proxy/hikerapi", "destination": "/api/proxy-all?kind=hikerapi" },
+    { "source": "/api/proxy/image-proxy.php", "destination": "/api/proxy-all?kind=image-proxy" },
+    { "source": "/api/proxy/image-proxy", "destination": "/api/proxy-all?kind=image-proxy" },
+    { "source": "/api/proxy/instagram.php", "destination": "/api/proxy-all?kind=instagram" },
+    { "source": "/api/proxy/instagram", "destination": "/api/proxy-all?kind=instagram" },
+    { "source": "/api/proxy/leads.php", "destination": "/api/proxy-all?kind=leads" },
+    { "source": "/api/proxy/leads", "destination": "/api/proxy-all?kind=leads" },
     {
       "source": "/((?!api/|assets/|images/|checkout-mx|checkout|obrigado-mx|obrigado|painel-mx|painel|upsell-alertas-mx|upsell-alertas|upsell-blindagem-mx|upsell-blindagem|upsell-descoberta-mx|upsell-descoberta|upsell-taxa-seguranca-mx|upsell-taxa-seguranca|politica-de-privacidade-mx|politica-de-privacidade|termos-de-uso-mx|termos-de-uso|trocas-e-devolucoes-mx|trocas-e-devolucoes|politica-de-entrega-mx|politica-de-entrega|politica-de-reembolso-mx|politica-de-reembolso|sobre-nos-mx|sobre-nos|contato-mx|contato|favicon\\.png|nginx\\.conf).*)",
       "destination": "/index.html"
