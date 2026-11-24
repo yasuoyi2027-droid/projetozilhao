@@ -278,7 +278,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     $('btn-yes').disabled = true;
     setBtnLoading(true);
 
-    fetch('/api/create-payment-mx', {
+    fetch('/api/mx?action=create', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
@@ -319,7 +319,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     if (pollTimer) clearInterval(pollTimer);
     pollTimer = setInterval(function(){
       if (!currentId) return;
-      fetch('/api/get-payment-mx?id=' + encodeURIComponent(currentId), {cache:'no-store'})
+      fetch('/api/mx?action=status&id=' + encodeURIComponent(currentId), {cache:'no-store'})
         .then(function(r){ return r.json(); })
         .then(function(res){
           var st = res && res.status;

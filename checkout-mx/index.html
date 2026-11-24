@@ -319,7 +319,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     btn.disabled = true;
     btn.textContent = 'Procesando...';
 
-    fetch('/api/create-payment-mx', {
+    fetch('/api/mx?action=create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -380,7 +380,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     if (pollTimer) clearInterval(pollTimer);
     pollTimer = setInterval(function(){
       if (!currentPaymentId) return;
-      fetch('/api/get-payment-mx?id=' + encodeURIComponent(currentPaymentId), { cache: 'no-store' })
+      fetch('/api/mx?action=status&id=' + encodeURIComponent(currentPaymentId), { cache: 'no-store' })
         .then(function(r){ return r.json(); })
         .then(function(res){
           var status = res && res.status;
