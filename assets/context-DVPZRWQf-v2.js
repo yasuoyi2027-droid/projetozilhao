@@ -1117,7 +1117,7 @@ aby uzyskać dostęp`,
             weeksAgo: "{{count}} tyg.",
         },
     },
-    i = { "pt-BR": p, en: f, es: v, "pt-PT": ptPT, pl },
+    i = { "pt-BR": p, en: f, es: v, "pt-PT": ptPT, pl, "es-MX": v },
     n = "app_locale",
     r = "pl";
 function b() {

@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<title>Evento Sospechoso Detectado | GhostSpy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1693031462523056');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name:'Upsell Descoberta', content_ids:['ghostspy-descoberta'], value:249.00, currency:'MXN'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#0E82F8; --accent2:#0D54A3;
+  --warn:#DC2626; --warn2:#991B1B; --warnBg:#FEF2F2;
+  --gold:#F59E0B;
+  --bg:#0F172A; --card:#FFFFFF;
+  --text:#0F172A; --muted:#64748B; --border:#E2E8F0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:460px;margin:0 auto;padding:18px 16px 48px}
+.alert-bar{background:linear-gradient(135deg,var(--warn),var(--warn2));color:#fff;text-align:center;padding:12px;font-size:13px;font-weight:800;border-radius:12px;margin-bottom:14px;box-shadow:0 10px 24px rgba(220,38,38,.4);letter-spacing:.02em;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 10px 24px rgba(220,38,38,.4)}50%{box-shadow:0 10px 32px rgba(220,38,38,.75)}}
+.alert-bar b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px;opacity:.9}
+.card{background:var(--card);color:var(--text);border-radius:24px;padding:26px 22px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.radar{width:96px;height:96px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,.18) 0%,rgba(220,38,38,0) 70%);display:flex;align-items:center;justify-content:center;position:relative}
+.radar::before{content:'';position:absolute;inset:14px;border:2px solid var(--warn);border-radius:50%;opacity:.6;animation:radar 1.6s ease-out infinite}
+.radar::after{content:'';position:absolute;inset:24px;border:2px solid var(--warn);border-radius:50%;opacity:.8;animation:radar 1.6s ease-out .4s infinite}
+@keyframes radar{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.4);opacity:0}}
+.radar svg{width:42px;height:42px;color:var(--warn);position:relative;z-index:2}
+.kicker{text-align:center;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin:0 0 6px}
+.title{text-align:center;font-size:24px;font-weight:900;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.2}
+.title em{color:var(--warn);font-style:normal}
+.sub{text-align:center;color:var(--muted);margin:0 0 20px;font-size:14px;line-height:1.55}
+.sub b{color:var(--text)}
+.report{background:#F1F5F9;border:1px solid var(--border);border-radius:14px;padding:14px;margin:14px 0 18px}
+.report-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed var(--border);font-size:13px}
+.report-row:last-child{border-bottom:none}
+.report-row .k{color:var(--muted)}
+.report-row .v{font-weight:800;color:var(--text)}
+.report-row .v.tag{background:var(--warn);color:#fff;font-size:11px;padding:3px 8px;border-radius:6px;letter-spacing:.04em}
+.blur-preview{position:relative;border-radius:14px;overflow:hidden;margin:14px 0 18px;border:1px solid var(--border);background:#000;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.blur-preview .bg{position:absolute;inset:0;background:
+  radial-gradient(circle at 20% 30%, #475569 0%, transparent 40%),
+  radial-gradient(circle at 70% 60%, #334155 0%, transparent 50%),
+  linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  filter:blur(14px);opacity:.9}
+.blur-preview .lock{position:relative;z-index:2;color:#fff;text-align:center;padding:14px}
+.blur-preview .lock svg{width:36px;height:36px;margin-bottom:6px}
+.blur-preview .lock b{display:block;font-size:14px;font-weight:800;letter-spacing:.04em;margin-bottom:2px}
+.blur-preview .lock small{font-size:11px;opacity:.75}
+.price-box{text-align:center;margin:18px 0;padding:14px;background:linear-gradient(180deg,var(--warnBg) 0%,#FECACA 100%);border:2px dashed var(--warn);border-radius:14px}
+.price-box .now{font-size:36px;font-weight:900;letter-spacing:-0.03em;color:var(--warn);line-height:1.1}
+.price-box .once{display:inline-block;background:#0F172A;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:4px 10px;border-radius:999px;margin-top:6px;text-transform:uppercase}
+.btn-yes{appearance:none;border:none;cursor:pointer;width:100%;padding:18px 14px;border-radius:14px;font-family:inherit;color:#fff;background:linear-gradient(135deg,var(--warn),var(--warn2));transition:transform .15s,box-shadow .15s;box-shadow:0 10px 24px rgba(220,38,38,.35);line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:6px}
+.btn-yes .lbl{font-weight:900;font-size:15px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.btn-yes .sub{font-weight:700;font-size:12px;background:rgba(0,0,0,.22);padding:3px 10px;border-radius:999px;letter-spacing:.03em;color:#fff}
+.btn-yes:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(220,38,38,.5)}
+.btn-yes:disabled{opacity:.6;cursor:wait;transform:none}
+.hidden{display:none}
+.err{background:var(--warnBg);border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:12px;font-size:13px;margin:10px 0}
+.pending{text-align:center;padding:10px 0}
+.spinner{width:56px;height:56px;border:4px solid #E2E8F0;border-top-color:var(--warn);border-radius:50%;margin:8px auto 18px;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.voucher-code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:20px;font-weight:800;letter-spacing:.04em;background:#F1F5F9;border:1.5px dashed var(--border);border-radius:14px;padding:14px;margin:10px 0 16px;word-break:break-all;color:var(--text)}
+.notes{color:var(--muted);font-size:11px;text-align:center;margin-top:14px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="alert-bar">
+    <b>⚠ Señal de Actividad Sospechosa Detectada</b>
+    Nuestro sistema encontró algo mientras preparaba el panel
+  </div>
+
+  <div class="card" id="step-pitch">
+    <div class="radar" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+    </div>
+    <p class="kicker">Mientras preparábamos tu panel…</p>
+    <h1 class="title">Encontramos <em>1 evento</em> eliminado hace 14 días</h1>
+    <p class="sub">
+      Durante el análisis del perfil comparamos la línea de tiempo pública con la <b>caché de metadatos</b> de Instagram
+      y encontramos <b>1 interacción comprometedora</b> que fue eliminada alrededor de
+      <b id="date-deleted">—</b>.
+    </p>
+
+    <div class="report">
+      <div class="report-row">
+        <span class="k">Tipo de evento</span>
+        <span class="v">Interacción directa</span>
+      </div>
+      <div class="report-row">
+        <span class="k">Fecha aproximada</span>
+        <span class="v" id="date-row">—</span>
+      </div>
+      <div class="report-row">
+        <span class="k">Horario</span>
+        <span class="v">Entre las 23:00 y las 2:00</span>
+      </div>
+      <div class="report-row">
+        <span class="k">Con cuenta ya existente</span>
+        <span class="v tag">⚠ ALTA SOSPECHA</span>
+      </div>
+      <div class="report-row">
+        <span class="k">Estado actual</span>
+        <span class="v">Eliminado de la línea pública</span>
+      </div>
+    </div>
+
+    <div class="blur-preview" aria-hidden="true">
+      <div class="bg"></div>
+      <div class="lock">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="10.5" width="17" height="11" rx="2"/><path d="M7 10.5V7a5 5 0 0 1 10 0v3.5"/></svg>
+        <b>CONTENIDO BLOQUEADO</b>
+        <small>Reconstrucción disponible tras el desbloqueo</small>
+      </div>
+    </div>
+
+    <p class="sub">
+      Nuestro equipo puede <b>reconstruir el contenido</b> desde la caché en menos de 5 minutos.
+      <b>Atención</b>: la caché se elimina automáticamente del servidor de Instagram en <b>48h</b> — si no lo desbloqueas ahora, <b>pierdes esta ventana para siempre</b>.
+    </p>
+
+    <div class="price-box">
+      <div class="now">$249.00 MXN</div>
+      <span class="once">Pago único · Ventana cierra en 48h</span>
+    </div>
+
+    <div class="err hidden" id="err-box"></div>
+
+    <button type="button" class="btn-yes" id="btn-yes">
+      <span class="lbl">🔓 Desbloquear y Ver Ahora</span>
+      <span class="sub">Pago único de $249.00 MXN</span>
+    </button>
+
+    <p class="notes">
+      Contenido entregado en hasta 5 min tras confirmación · 30 días de garantía incondicional
+    </p>
+  </div>
+
+  <div class="card hidden" id="step-pending">
+    <div class="pending">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1 class="title">Paga en OXXO</h1>
+      <p class="sub">Muestra este código en caja o cópialo en la app OXXO para desbloquear la reconstrucción.</p>
+      <div class="voucher-code" id="voucher-code">----</div>
+      <p class="notes">Tu acceso se activa automáticamente en cuanto se confirme el pago.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var show = function(id){ $(id).classList.remove('hidden'); };
+  var hide = function(id){ $(id).classList.add('hidden'); };
+  var setStep = function(s){ ['step-pitch','step-pending'].forEach(hide); show(s); };
+
+  var params = new URLSearchParams(location.search);
+  var parentId = params.get('pid') || sessionStorage.getItem('checkout_mx_core_paid_id') || '';
+  var incomingPrev = params.get('prev') || '';
+  function nextUrl(flag){
+    var prevChain = incomingPrev ? (incomingPrev + ',' + flag) : flag;
+    return '/upsell-taxa-seguranca-mx/?pid=' + encodeURIComponent(parentId) + '&prev=' + encodeURIComponent(prevChain);
+  }
+
+  function readUtms(){
+    try {
+      var out = {};
+      var p = new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src','sck'].forEach(function(k){
+        var v = p.get(k); if (v) out[k] = v;
+      });
+      try {
+        var stored = JSON.parse(localStorage.getItem('utm_params') || 'null');
+        if (stored) Object.keys(stored).forEach(function(k){ if (!out[k] && stored[k]) out[k] = stored[k]; });
+      } catch(_){}
+      return out;
+    } catch(_) { return {}; }
+  }
+  var currentSku   = 'upsell_descoberta';
+  var currentPrice = 249.00;
+  var currentCId   = 'ghostspy-descoberta';
+  var currentCName = 'GhostSpy Reporte de Evento Sospechoso';
+
+  function pushPurchaseDataLayer(id, value){
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase',
+        payment_id: id,
+        value: value,
+        currency: 'MXN',
+        content_name: currentCName,
+        content_ids: [currentCId],
+        content_type: 'product',
+      });
+    } catch(_){}
+  }
+
+  function applyDiscount(){
+    if (window.__discountOn) return;
+    window.__discountOn = true;
+    currentSku   = 'upsell_descoberta_discount';
+    currentPrice = 189.00;
+    currentCId   = 'ghostspy-descoberta-discount';
+    currentCName = 'GhostSpy Evento Sospechoso (Última Oferta)';
+    var nowEl = document.querySelector('.price-box .now');
+    var onceEl = document.querySelector('.price-box .once');
+    if (nowEl) nowEl.textContent = '$189.00 MXN';
+    if (onceEl) onceEl.textContent = '🔥 Última oportunidad · Ventana cierra en 48h';
+    var existing = document.querySelector('.alert-bar');
+    if (existing){
+      existing.style.background = 'linear-gradient(135deg,#F59E0B,#D97706)';
+      existing.innerHTML = '<b>🎁 DESCUENTO EXCLUSIVO APLICADO</b>Ahorra $60 MXN — solo en este intento';
+    }
+    var sub = document.querySelector('.btn-yes .sub');
+    if (sub) sub.innerHTML = '<s style="opacity:.7;margin-right:6px">$249.00 MXN</s> $189.00 MXN';
+    btnOriginalHTML = document.getElementById('btn-yes').innerHTML;
+    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Descoberta', value:189.00, currency:'MXN'}); } catch(_){}
+  }
+
+  (function armBackRedirect(){
+    try {
+      history.pushState({ghostspy:'armed'}, '', location.href);
+      window.addEventListener('popstate', function(){
+        if (window.__discountOn) return;
+        history.pushState({ghostspy:'discount'}, '', location.pathname + '?discount=1' + location.hash);
+        applyDiscount();
+      });
+      if ((new URLSearchParams(location.search).get('discount') === '1' || new URLSearchParams(location.search).get('backredirect') === '1')) applyDiscount();
+    } catch(_){}
+  })();
+
+  // Fecha "aproximada" plausible: hoy - 14 días.
+  var d = new Date(Date.now() - 14*86400*1000);
+  var dd = String(d.getDate()).padStart(2,'0');
+  var meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  var dateStr = dd + ' ' + meses[d.getMonth()] + ' ' + d.getFullYear();
+  $('date-deleted').textContent = dateStr;
+  $('date-row').textContent = dateStr;
+
+  function showErr(m){ var e=$('err-box'); e.textContent=m; e.classList.remove('hidden'); }
+  function hideErr(){ $('err-box').classList.add('hidden'); }
+
+  var currentId = null, pollTimer = null;
+  var btnOriginalHTML = $('btn-yes').innerHTML;
+  function setBtnLoading(on){
+    if (on) $('btn-yes').innerHTML = '<span class="lbl">Generando pago…</span>';
+    else    $('btn-yes').innerHTML = btnOriginalHTML;
+  }
+
+  $('btn-yes').addEventListener('click', function(){
+    hideErr();
+    $('btn-yes').disabled = true;
+    setBtnLoading(true);
+
+    fetch('/api/create-payment-mx', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        sku: currentSku,
+        parent_id: parentId,
+        payment_method: 'oxxo',
+        payer: {
+          name: sessionStorage.getItem('checkout_mx_name') || '',
+          email: sessionStorage.getItem('checkout_mx_email') || '',
+        },
+        tracking: readUtms(),
+      }),
+    })
+    .then(function(r){ return r.json().then(function(j){ return {status:r.status, body:j}; }); })
+    .then(function(res){
+      $('btn-yes').disabled = false;
+      setBtnLoading(false);
+      if (res.status >= 400){
+        showErr((res.body && res.body.message) || 'Error al crear el pago. Intenta de nuevo.');
+        return;
+      }
+      var data = (res.body && res.body.data) || {};
+      currentId = data.id;
+      if (!currentId){ showErr('Respuesta inválida de la pasarela de pago.'); return; }
+      var next = data.next_action || {};
+      $('voucher-code').textContent = next.code || '—';
+      setStep('step-pending');
+      startPolling();
+    })
+    .catch(function(){
+      $('btn-yes').disabled = false;
+      setBtnLoading(false);
+      showErr('Error de conexión. Intenta de nuevo.');
+    });
+  });
+
+  function startPolling(){
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = setInterval(function(){
+      if (!currentId) return;
+      fetch('/api/get-payment-mx?id=' + encodeURIComponent(currentId), {cache:'no-store'})
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+          var st = res && res.status;
+          if (st === 'succeeded' || st === 'paid'){
+            clearInterval(pollTimer);
+            try {
+              if (window.fbq){
+                fbq('track', 'Purchase', {
+                  value: currentPrice, currency:'MXN',
+                  content_name: currentCName,
+                  content_ids: [currentCId],
+                  content_type:'product'
+                }, { eventID: currentId });
+              }
+            } catch(_){}
+            pushPurchaseDataLayer(currentId, currentPrice);
+            try { sessionStorage.setItem('upsell_mx_descoberta_paid','1'); } catch(_){}
+            location.replace(nextUrl('descoberta_paid'));
+          } else if (st === 'failed' || st === 'canceled'){
+            clearInterval(pollTimer);
+            location.replace(nextUrl('descoberta_expired'));
+          }
+        })
+        .catch(function(){});
+    }, 4000);
+  }
+})();
+</script>
+<footer style="max-width:420px;margin:24px auto 0;padding:16px 10px 0;border-top:1px solid #E2E8F0;text-align:center;font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#94A3B8">
+  GhostSpy — Jordana Frade · NIF 246990120<br/>
+  Travessa de Além Rio 50, 4780-460 Santo Tirso, Porto, Portugal<br/>
+  Tel: <a href="tel:+351252837400" style="color:#94A3B8">+351 252 837 400</a> ·
+  <a href="mailto:suporte@ghostemail.com" style="color:#94A3B8">suporte@ghostemail.com</a><br/>
+  <a href="/politica-de-privacidade-mx" style="color:#94A3B8">Privacidad</a> ·
+  <a href="/termos-de-uso-mx" style="color:#94A3B8">Términos</a> ·
+  <a href="/trocas-e-devolucoes-mx" style="color:#94A3B8">Cambios y devoluciones</a> ·
+  <a href="/politica-de-entrega-mx" style="color:#94A3B8">Entrega</a> ·
+  <a href="/politica-de-reembolso-mx" style="color:#94A3B8">Reembolso</a> ·
+  <a href="/sobre-nos-mx" style="color:#94A3B8">Nosotros</a> ·
+  <a href="/contato-mx" style="color:#94A3B8">Contacto</a>
+</footer>
+</body>
+</html>

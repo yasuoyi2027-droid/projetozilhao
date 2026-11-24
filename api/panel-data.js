@@ -22,12 +22,17 @@ function mulberry32(seed) {
 const FIRST_NAMES = ['Anna', 'Bartek', 'Kasia', 'Dawid', 'Filip', 'Gosia', 'Agnieszka', 'Jakub', 'Marta', 'Rafał', 'Zofia', 'Tomasz'];
 const CONTACT_TAGS = ['Stały kontakt', 'Nowy podejrzany obserwujący', 'Wymiana zdjęć', 'Rozmowa wideo', 'Usunięta wiadomość', 'Ukryty profil'];
 
-function buildMonitoringData(seedKey, targetUsername) {
+const FIRST_NAMES_MX = ['Ana', 'Carlos', 'Karla', 'David', 'Felipe', 'Gabriela', 'Alejandra', 'Jacobo', 'Marta', 'Rafael', 'Sofía', 'Tomás'];
+const CONTACT_TAGS_MX = ['Contacto frecuente', 'Nuevo seguidor sospechoso', 'Intercambio de fotos', 'Videollamada', 'Mensaje eliminado', 'Perfil oculto'];
+
+function buildMonitoringData(seedKey, targetUsername, country) {
+  const names = country === 'mx' ? FIRST_NAMES_MX : FIRST_NAMES;
+  const tags = country === 'mx' ? CONTACT_TAGS_MX : CONTACT_TAGS;
   const rnd = mulberry32(seedFrom(seedKey));
   const suspiciousCount = 2 + Math.floor(rnd() * 4);
   const suspiciousContacts = Array.from({ length: suspiciousCount }, () => {
-    const name = FIRST_NAMES[Math.floor(rnd() * FIRST_NAMES.length)];
-    const tag = CONTACT_TAGS[Math.floor(rnd() * CONTACT_TAGS.length)];
+    const name = names[Math.floor(rnd() * names.length)];
+    const tag = tags[Math.floor(rnd() * tags.length)];
     const hoursAgo = 1 + Math.floor(rnd() * 72);
     return { name, tag, hours_ago: hoursAgo };
   }).sort((a, b) => a.hours_ago - b.hours_ago);
@@ -75,7 +80,7 @@ module.exports = async function handler(req, res) {
     const base = {
       username: account.username,
       role: account.role,
-      monitoring: buildMonitoringData(account.id, account.target_username),
+      monitoring: buildMonitoringData(account.id, account.target_username, account.country),
     };
 
     if (account.role === 'admin') {
@@ -86,7 +91,7 @@ module.exports = async function handler(req, res) {
         target_username: a.target_username || null,
         sku: a.sku,
         created_at: a.created_at,
-        monitoring: buildMonitoringData(a.id, a.target_username),
+        monitoring: buildMonitoringData(a.id, a.target_username, a.country),
       }));
     }
 

@@ -16,6 +16,16 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
+    <script>
+      // Define o locale es-MX (fluxo México/Zenith) quando chega via ?country=mx,
+      // persistindo em localStorage para a sessão toda (ate o utilizador mudar).
+      try {
+        var __gsCountry = new URLSearchParams(window.location.search).get('country');
+        if (__gsCountry === 'mx') {
+          window.localStorage.setItem('app_locale', 'es-MX');
+        }
+      } catch (_e) {}
+    </script>
     <script src="/assets/url-interceptor.js?v=20261120-imgfix"></script>
     <script>
       // Hostnames do gateway de checkout — o checkout-access-data.js anexa

@@ -12,9 +12,17 @@ function ne() {
   return a || null;
 }
 function ae(s) {
-  // Checkout no próprio domínio — integração CHECKOUT ALFAIABOEMIA (MBWay + Multibanco).
+  // Checkout no próprio domínio — integração CHECKOUT ALFAIABOEMIA (MBWay + Multibanco)
+  // ou, para o fluxo México (locale es-MX), ZENITH (OXXO/SPEI, MXN) em /checkout-mx/.
   // A página /checkout/ aceita UTMs via query (já anexadas abaixo) e o preço via ?price=XX.XX.
-  const r = "/checkout/",
+  const isMx = (function () {
+    try {
+      return window.localStorage.getItem("app_locale") === "es-MX";
+    } catch (_e) {
+      return false;
+    }
+  })();
+  const r = isMx ? "/checkout-mx/" : "/checkout/",
     a = K(),
     i = new URLSearchParams();
   (a.utm_source && i.set("utm_source", a.utm_source),

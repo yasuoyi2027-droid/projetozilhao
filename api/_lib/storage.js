@@ -1,6 +1,6 @@
 const { kvGet, kvSet } = require('./kv');
 
-const ID_RE = /^[0-9a-f-]{32,}$/i;
+const ID_RE = /^[0-9a-zA-Z_-]{6,100}$/;
 
 async function save(paymentId, data) {
   if (!ID_RE.test(paymentId)) throw new Error('Invalid payment id');

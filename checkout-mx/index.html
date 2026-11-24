@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<title>Finalizar compra | GhostSpy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1693031462523056');
+fbq('track', 'PageView');
+fbq('track', 'InitiateCheckout');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#0E82F8; --accent2:#0D54A3; --bg:#F8FAFC; --card:#FFFFFF;
+  --text:#0F172A; --muted:#64748B; --border:#E2E8F0; --success:#10B981; --error:#EF4444;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:420px;margin:0 auto;padding:24px 16px 48px}
+.logo{display:flex;justify-content:center;margin-bottom:20px}
+.logo img{width:120px;height:auto;object-fit:contain}
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:24px 22px;box-shadow:0 10px 30px rgba(15,23,42,0.06)}
+.title{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin:0 0 6px;text-align:center}
+.sub{color:var(--muted);text-align:center;margin:0 0 20px;font-size:14px}
+.price{text-align:center;margin:0 0 22px}
+.price .old{color:var(--muted);text-decoration:line-through;font-size:14px;margin-bottom:4px}
+.price .now{font-size:34px;font-weight:800;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.method-banner{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:14px;margin-bottom:18px}
+.method-banner .m-logo{flex:0 0 72px;width:72px;height:44px;object-fit:contain;display:block;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;background:#F1F5F9;border-radius:10px;color:var(--accent2)}
+.method-banner strong{display:block;font-weight:700;font-size:15px;margin-bottom:2px;color:var(--text)}
+.method-banner small{color:var(--muted);font-size:12px}
+.method-toggle{display:flex;gap:8px;margin-bottom:16px}
+.method-toggle button{flex:1;border:1.5px solid var(--border);background:#fff;border-radius:12px;padding:10px;font-family:inherit;font-weight:700;font-size:13px;color:var(--muted);cursor:pointer;transition:all .15s}
+.method-toggle button.on{border-color:var(--accent);color:var(--accent2);background:#EFF6FF}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.field input{width:100%;border:1.5px solid var(--border);background:#fff;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s}
+.field input:focus{border-color:var(--accent)}
+.btn{appearance:none;border:none;cursor:pointer;width:100%;padding:16px;border-radius:14px;font-family:inherit;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));letter-spacing:.02em;transition:transform .15s,box-shadow .15s;margin-top:4px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(14,130,248,.3)}
+.btn:disabled{opacity:.55;cursor:wait;transform:none;box-shadow:none}
+.notes{color:var(--muted);font-size:12px;text-align:center;margin-top:14px}
+.notes b{color:var(--text)}
+.err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:12px;font-size:13px;margin-bottom:12px}
+.hidden{display:none}
+.pending{text-align:center}
+.spinner{width:56px;height:56px;border:4px solid #E2E8F0;border-top-color:var(--accent);border-radius:50%;margin:8px auto 18px;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.voucher-code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:22px;font-weight:800;letter-spacing:.04em;background:#F1F5F9;border:1.5px dashed var(--border);border-radius:14px;padding:16px;margin:10px 0 16px;word-break:break-all;color:var(--text)}
+.copy-btn{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;font-family:inherit;font-weight:700;font-size:12px;color:var(--accent2);cursor:pointer;margin-bottom:14px}
+.steps{text-align:left;font-size:13px;color:var(--muted);padding-left:18px;margin:0 0 16px;line-height:1.6}
+.steps li{margin-bottom:6px}
+.success{text-align:center}
+.success .tick{width:72px;height:72px;border-radius:50%;background:var(--success);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:12px}
+.secure{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:12px;margin-top:14px}
+.secure svg{width:14px;height:14px}
+.bump{position:relative;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;border:2px dashed #F59E0B;background:linear-gradient(180deg,#FFFBEB 0%,#FEF3C7 100%);border-radius:14px;padding:18px 14px 14px;margin:18px 0 4px;cursor:pointer;transition:all .18s ease;user-select:none}
+.bump:hover{border-color:#D97706}
+.bump.on{border-color:#10B981;border-style:solid;background:linear-gradient(180deg,#ECFDF5 0%,#D1FAE5 100%)}
+.bump input[type=checkbox]{grid-column:1;grid-row:1 / span 3;justify-self:center;align-self:start;margin-top:2px;width:22px;height:22px;accent-color:#10B981;cursor:pointer}
+.bump-badge{position:absolute;top:-10px;left:12px;background:#F59E0B;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 10px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.bump.on .bump-badge{background:#10B981}
+.bump-title{grid-column:2;font-weight:800;font-size:14px;color:var(--text);margin:0 0 3px;line-height:1.25}
+.bump-desc{grid-column:2;color:var(--muted);font-size:12px;margin:0 0 6px;line-height:1.35}
+.bump-price{grid-column:2;font-size:13px;font-weight:700;color:#D97706;line-height:1.35}
+.bump.on .bump-price{color:#059669}
+.bump-price s{color:var(--muted);font-weight:500;margin-right:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">
+    <img src="/images/logos/ghostspy-logo.png" alt="GhostSpy" onerror="this.style.display='none'" />
+  </div>
+
+  <!-- ETAPA 1: Formulário -->
+  <div class="card" id="step-form">
+    <h1 class="title">Finalizar compra</h1>
+    <p class="sub">Pago seguro con <b>OXXO</b> o <b>SPEI</b></p>
+
+    <div class="price">
+      <div class="old" id="old-price">Antes $599.00 MXN</div>
+      <div class="now" id="now-price">$189.00 MXN</div>
+    </div>
+
+    <div class="method-toggle" id="method-toggle">
+      <button type="button" data-method="oxxo" class="on">OXXO</button>
+      <button type="button" data-method="spei">Transferencia SPEI</button>
+    </div>
+
+    <div class="method-banner" id="method-banner">
+      <span class="m-logo">OXXO</span>
+      <span>
+        <strong>Pago en tienda OXXO</strong>
+        <small>Genera tu código y paga en cualquier sucursal</small>
+      </span>
+    </div>
+
+    <form id="pay-form" autocomplete="on" novalidate>
+      <div class="field">
+        <label>Nombre completo</label>
+        <input name="name" type="text" placeholder="Juan Pérez" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input name="email" type="email" placeholder="tu@correo.com" autocomplete="email" required />
+      </div>
+
+      <label class="bump" id="bump-multi">
+        <span class="bump-badge">Oferta única</span>
+        <input type="checkbox" id="bump-cb" />
+        <div class="bump-title">➕ Analiza 3 perfiles más — un amigo cercano, un ex, un compañero sospechoso</div>
+        <p class="bump-desc">Al precio de 1, revisa hasta 3 perfiles adicionales. Disponible solo ahora, no volverá a aparecer.</p>
+        <div class="bump-price"><s>$1,068.00 MXN</s> por solo <b>+$290.00 MXN</b> (ahorras $778.00 MXN)</div>
+      </label>
+
+      <div class="err hidden" id="err-box"></div>
+
+      <button type="submit" class="btn" id="submit-btn">Generar pago</button>
+
+      <p class="notes">
+        <b>30 días de garantía incondicional</b>
+      </p>
+      <div class="secure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg>
+        Pago seguro · SSL
+      </div>
+    </form>
+  </div>
+
+  <!-- ETAPA 2: Voucher OXXO -->
+  <div class="card hidden" id="step-oxxo-pending">
+    <div class="pending">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1 class="title">Paga en OXXO</h1>
+      <p class="sub">Muestra este código en caja o cópialo en la app OXXO.</p>
+      <div class="voucher-code" id="voucher-code">----</div>
+      <button type="button" class="copy-btn" id="copy-btn">Copiar código</button>
+      <ol class="steps">
+        <li>Acude a cualquier tienda OXXO</li>
+        <li>Indica que harás un pago de servicio</li>
+        <li>Muestra el código de barras o dilo en caja</li>
+        <li>Paga en efectivo el monto exacto</li>
+      </ol>
+      <p class="notes">Tu acceso se activa automáticamente en cuanto se confirme el pago (puede tardar unos minutos).</p>
+    </div>
+  </div>
+
+  <!-- ETAPA 3: SPEI pendente -->
+  <div class="card hidden" id="step-spei-pending">
+    <div class="pending">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1 class="title">Transfiere por SPEI</h1>
+      <p class="sub">Realiza la transferencia desde tu banco con estos datos:</p>
+      <div class="field">
+        <label>CLABE</label>
+        <input type="text" id="spei-clabe" readonly />
+      </div>
+      <div class="field">
+        <label>Banco</label>
+        <input type="text" id="spei-bank" readonly />
+      </div>
+      <div class="field">
+        <label>Beneficiario</label>
+        <input type="text" id="spei-ref" readonly />
+      </div>
+      <p class="notes">Tu acceso se activa automáticamente en cuanto se confirme la transferencia.</p>
+    </div>
+  </div>
+
+  <!-- ETAPA 4: Sucesso -->
+  <div class="card hidden" id="step-success">
+    <div class="success">
+      <div class="tick">✓</div>
+      <h1 class="title">¡Pago confirmado!</h1>
+      <p class="sub">Acceso inmediato desbloqueado.</p>
+      <p class="notes">Tu acceso VIP ya está activo. Abriendo panel…</p>
+    </div>
+  </div>
+
+  <!-- ETAPA 5: Falhou -->
+  <div class="card hidden" id="step-expired">
+    <h1 class="title" style="color:var(--error)">Pago no confirmado</h1>
+    <p class="sub">Hubo un problema con el pago. Puedes intentarlo de nuevo.</p>
+    <button type="button" class="btn" onclick="location.reload()">Intentar de nuevo</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var currentPaymentId = null;
+  var pollTimer = null;
+  var selectedMethod = 'oxxo';
+
+  function $(id){ return document.getElementById(id); }
+  function show(id){ $(id).classList.remove('hidden'); }
+  function hide(id){ $(id).classList.add('hidden'); }
+  function setStep(step){
+    ['step-form','step-oxxo-pending','step-spei-pending','step-success','step-expired']
+      .forEach(function(s){ hide(s); });
+    show(step);
+  }
+  function showErr(msg){
+    var el = $('err-box');
+    el.textContent = msg;
+    el.classList.remove('hidden');
+  }
+  function hideErr(){ $('err-box').classList.add('hidden'); }
+
+  function readUtms(){
+    try {
+      var p = new URLSearchParams(location.search);
+      var out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','src','sck'].forEach(function(k){
+        var v = p.get(k);
+        if (v) out[k] = v;
+      });
+      try {
+        var stored = JSON.parse(localStorage.getItem('utm_params') || 'null');
+        if (stored && typeof stored === 'object'){
+          Object.keys(stored).forEach(function(k){
+            if (!out[k] && stored[k]) out[k] = stored[k];
+          });
+        }
+      } catch(_){}
+      return out;
+    } catch(_) { return {}; }
+  }
+
+  function getTargetUsername(){
+    try {
+      var stored = JSON.parse(localStorage.getItem('instagram_profile') || '{}');
+      var u = stored.username || localStorage.getItem('espionado_username') || '';
+      return String(u).replace(/^@+/, '').trim() || null;
+    } catch(_){ return null; }
+  }
+
+  // ---- Toggle de método ---------------------------------------------------
+  (function methodToggle(){
+    var buttons = $('method-toggle').querySelectorAll('button');
+    buttons.forEach(function(b){
+      b.addEventListener('click', function(){
+        buttons.forEach(function(x){ x.classList.remove('on'); });
+        b.classList.add('on');
+        selectedMethod = b.getAttribute('data-method');
+        var banner = $('method-banner');
+        if (selectedMethod === 'spei'){
+          banner.innerHTML = '<span class="m-logo">SPEI</span><span><strong>Transferencia SPEI</strong><small>Paga desde la app de tu banco</small></span>';
+        } else {
+          banner.innerHTML = '<span class="m-logo">OXXO</span><span><strong>Pago en tienda OXXO</strong><small>Genera tu código y paga en cualquier sucursal</small></span>';
+        }
+      });
+    });
+  })();
+
+  // ---- Submissão ---------------------------------------------------------
+  $('pay-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    hideErr();
+
+    var name = (document.querySelector('[name=name]').value || '').trim();
+    var email = (document.querySelector('[name=email]').value || '').trim();
+    if (!name){
+      showErr('Ingresa tu nombre completo.');
+      return;
+    }
+    if (!email || email.indexOf('@') === -1){
+      showErr('Ingresa un correo electrónico válido.');
+      return;
+    }
+
+    function getCookie(name){
+      try {
+        var m = document.cookie.match('(?:^|;\\s*)' + name + '=([^;]+)');
+        return m ? decodeURIComponent(m[1]) : null;
+      } catch(_){ return null; }
+    }
+
+    var bumpOn = !!$('bump-cb').checked;
+    var discountOn = !!window.__discountOn;
+    var sku = discountOn ? 'core_discount' : (bumpOn ? 'core_bump' : 'core');
+
+    var body = {
+      sku: sku,
+      payment_method: selectedMethod,
+      payer: { name: name, email: email },
+      tracking: readUtms(),
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+      target_username: getTargetUsername(),
+    };
+
+    try {
+      sessionStorage.setItem('checkout_mx_name', name);
+      sessionStorage.setItem('checkout_mx_email', email);
+      sessionStorage.setItem('checkout_mx_bump', bumpOn ? '1' : '0');
+    } catch(_){}
+
+    var btn = $('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Procesando...';
+
+    fetch('/api/create-payment-mx', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    .then(function(r){
+      return r.json().then(function(j){ return { status: r.status, body: j }; });
+    })
+    .then(function(res){
+      btn.disabled = false;
+      btn.textContent = 'Generar pago';
+
+      if (res.status >= 400){
+        var msg = (res.body && res.body.message)
+          || (res.body && res.body.gateway && res.body.gateway.message)
+          || 'Error al procesar el pago. Revisa tus datos e intenta de nuevo.';
+        showErr(msg);
+        return;
+      }
+
+      var data = (res.body && res.body.data) || {};
+      currentPaymentId = data.id;
+      if (!currentPaymentId){
+        showErr('Respuesta inválida de la pasarela de pago.');
+        return;
+      }
+
+      var next = data.next_action || {};
+      if (selectedMethod === 'spei'){
+        var details = next.details || {};
+        $('spei-clabe').value = details.clabe || '—';
+        $('spei-bank').value = details.bankName || 'SPEI';
+        $('spei-ref').value = details.beneficiary || '—';
+        setStep('step-spei-pending');
+      } else {
+        $('voucher-code').textContent = next.code || '—';
+        setStep('step-oxxo-pending');
+      }
+      startPolling();
+    })
+    .catch(function(err){
+      btn.disabled = false;
+      btn.textContent = 'Generar pago';
+      showErr('Ocurrió un error de conexión. Intenta de nuevo.');
+      console.error(err);
+    });
+  });
+
+  $('copy-btn').addEventListener('click', function(){
+    try {
+      navigator.clipboard.writeText($('voucher-code').textContent);
+      $('copy-btn').textContent = '¡Copiado!';
+      setTimeout(function(){ $('copy-btn').textContent = 'Copiar código'; }, 1500);
+    } catch(_){}
+  });
+
+  // ---- Polling ao backend -----------------------------------------------
+  function startPolling(){
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = setInterval(function(){
+      if (!currentPaymentId) return;
+      fetch('/api/get-payment-mx?id=' + encodeURIComponent(currentPaymentId), { cache: 'no-store' })
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+          var status = res && res.status;
+          if (status === 'succeeded' || status === 'paid') {
+            onPaid();
+          } else if (status === 'failed' || status === 'canceled') {
+            onExpired();
+          }
+        })
+        .catch(function(){ /* silêncio; tenta de novo */ });
+    }, 4000);
+  }
+  function stopPolling(){
+    if (pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+  }
+
+  function onPaid(){
+    stopPolling();
+
+    try {
+      var bumpOn = sessionStorage.getItem('checkout_mx_bump') === '1';
+      var discountOn = !!window.__discountOn;
+      var price = discountOn ? 149.00 : (bumpOn ? 479.00 : 189.00);
+      var contentName = discountOn ? 'GhostSpy VIP (Oferta Especial)' : (bumpOn ? 'GhostSpy VIP + Multi-Perfil' : 'GhostSpy VIP');
+      var contentId   = discountOn ? 'ghostspy-vip-discount' : (bumpOn ? 'ghostspy-vip-multi' : 'ghostspy-vip');
+      if (window.fbq) {
+        fbq('track', 'Purchase', {
+          value: price,
+          currency: 'MXN',
+          content_name: contentName,
+          content_ids: [contentId],
+          content_type: 'product'
+        }, { eventID: currentPaymentId });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase',
+        payment_id: currentPaymentId,
+        value: price,
+        currency: 'MXN',
+        content_name: contentName,
+        content_ids: [contentId],
+        content_type: 'product',
+      });
+    } catch(_){}
+
+    try {
+      sessionStorage.setItem('checkout_mx_core_paid_id', currentPaymentId);
+      location.replace('/upsell-blindagem-mx/?pid=' + encodeURIComponent(currentPaymentId));
+    } catch(_){
+      setStep('step-success');
+    }
+  }
+  function onExpired(){
+    stopPolling();
+    setStep('step-expired');
+  }
+
+  // ---- Preços da query (?price=X&old=Y) -----------------------------------
+  (function hydratePrice(){
+    var p = new URLSearchParams(location.search);
+    if (p.get('price')) $('now-price').textContent = '$' + p.get('price') + ' MXN';
+    if (p.get('old'))   $('old-price').textContent = 'Antes $' + p.get('old') + ' MXN';
+  })();
+
+  // ---- Order bump ----------------------------------------------------------
+  (function bumpToggle(){
+    var basePrice = 189.00;
+    var bumpPrice = 290.00;
+    var cb  = $('bump-cb');
+    var box = $('bump-multi');
+    var nowEl = $('now-price');
+    function render(){
+      var on = cb.checked;
+      box.classList.toggle('on', on);
+      var total = (on ? basePrice + bumpPrice : basePrice).toFixed(2);
+      nowEl.textContent = '$' + total + ' MXN';
+    }
+    cb.addEventListener('change', render);
+    box.addEventListener('click', function(ev){
+      if (ev.target.tagName !== 'INPUT'){ cb.checked = !cb.checked; render(); }
+    });
+    render();
+  })();
+
+  // ---- Back-redirect: aplica desconto ------------------------------------
+  function applyDiscount(){
+    if (window.__discountOn) return;
+    window.__discountOn = true;
+    var cb = $('bump-cb');
+    if (cb && cb.checked) cb.checked = false;
+    try { sessionStorage.setItem('checkout_mx_bump', '0'); } catch(_){}
+    $('now-price').textContent = '$149.00 MXN';
+    var old = $('old-price'); if (old) old.textContent = 'Antes $149.00 MXN';
+    var bump = $('bump-multi'); if (bump) bump.style.display = 'none';
+    if (!document.getElementById('discount-banner')){
+      var b = document.createElement('div');
+      b.id = 'discount-banner';
+      b.style.cssText = 'background:linear-gradient(135deg,#DC2626,#991B1B);color:#fff;text-align:center;padding:12px;font-size:13px;font-weight:800;border-radius:12px;margin-bottom:14px;box-shadow:0 10px 24px rgba(220,38,38,.35);letter-spacing:.02em';
+      b.innerHTML = '🔥 <b>ÚLTIMA OPORTUNIDAD A $149.00 MXN</b><br><span style="font-size:11px;font-weight:600;opacity:.9">Esta pantalla no volverá a aparecer en esta sesión</span>';
+      var wrap = document.querySelector('.wrap');
+      var firstCard = wrap.querySelector('.card');
+      wrap.insertBefore(b, firstCard);
+    }
+    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Core', value:149.00, currency:'MXN'}); } catch(_){}
+  }
+
+  (function armBackRedirect(){
+    try {
+      history.pushState({ghostspy:'armed'}, '', location.href);
+      window.addEventListener('popstate', function(){
+        if (window.__discountOn) return;
+        var qs = location.search ? (location.search + '&') : '?';
+        history.pushState({ghostspy:'discount'}, '', location.pathname + qs + 'discount=1' + location.hash);
+        applyDiscount();
+      });
+      if ((new URLSearchParams(location.search).get('discount') === '1' || new URLSearchParams(location.search).get('backredirect') === '1')) applyDiscount();
+    } catch(_){}
+  })();
+})();
+</script>
+<footer style="max-width:420px;margin:24px auto 0;padding:16px 10px 0;border-top:1px solid #E2E8F0;text-align:center;font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#94A3B8">
+  GhostSpy — Jordana Frade · NIF 246990120<br/>
+  Travessa de Além Rio 50, 4780-460 Santo Tirso, Porto, Portugal<br/>
+  Tel: <a href="tel:+351252837400" style="color:#94A3B8">+351 252 837 400</a> ·
+  <a href="mailto:suporte@ghostemail.com" style="color:#94A3B8">suporte@ghostemail.com</a><br/>
+  <a href="/politica-de-privacidade-mx" style="color:#94A3B8">Privacidad</a> ·
+  <a href="/termos-de-uso-mx" style="color:#94A3B8">Términos</a> ·
+  <a href="/trocas-e-devolucoes-mx" style="color:#94A3B8">Cambios y devoluciones</a> ·
+  <a href="/politica-de-entrega-mx" style="color:#94A3B8">Entrega</a> ·
+  <a href="/politica-de-reembolso-mx" style="color:#94A3B8">Reembolso</a> ·
+  <a href="/sobre-nos-mx" style="color:#94A3B8">Nosotros</a> ·
+  <a href="/contato-mx" style="color:#94A3B8">Contacto</a>
+</footer>
+</body>
+</html>
