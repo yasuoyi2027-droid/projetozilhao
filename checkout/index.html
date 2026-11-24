@@ -183,6 +183,11 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   var countdownTimer = null;
   var stripe = null;
 
+  // Diagnóstico: loga ciclo de vida do Stripe.js
+  window.addEventListener('load', function(){
+    console.log('[GhostSpy] page loaded. typeof Stripe =', typeof Stripe);
+  });
+
   function $(id){ return document.getElementById(id); }
   function show(id){ $(id).classList.remove('hidden'); }
   function hide(id){ $(id).classList.add('hidden'); }
@@ -269,15 +274,29 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     btn.disabled = true;
     btn.textContent = 'Przetwarzanie...';
 
+    // Verifica Stripe.js ANTES de enviar — evita gerar venda na Zenith se o cliente
+    // não vai conseguir confirmar depois (bloqueador, firewall, etc.).
+    if (typeof Stripe === 'undefined') {
+      btn.disabled = false;
+      btn.textContent = 'Zapłać przez BLIK';
+      showErr('System płatności się jeszcze ładuje. Poczekaj 3 sekundy i kliknij ponownie. Jeśli to się powtarza, oznacza że js.stripe.com jest zablokowany przez Twoją sieć/przeglądarkę.');
+      console.error('[GhostSpy] Stripe is undefined. Check network tab for js.stripe.com');
+      return;
+    }
+
+    console.log('[GhostSpy] submitting payment, sku=', sku);
+
     fetch('/api/pl?action=create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
     .then(function(r){
+      console.log('[GhostSpy] /api/pl?action=create status:', r.status);
       return r.json().then(function(j){ return { status: r.status, body: j }; });
     })
     .then(function(res){
+      console.log('[GhostSpy] response data.id:', res.body && res.body.data && res.body.data.id);
       if (res.status >= 400){
         btn.disabled = false;
         btn.textContent = 'Zapłać przez BLIK';
