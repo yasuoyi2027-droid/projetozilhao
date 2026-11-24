@@ -4,14 +4,13 @@
   'use strict';
 
   var SHOWN_KEY = 'gs_ip_alert_shown_v1';
-  var ARMED_ROUTES = ['/checkout', '/checkout/'];
+  function getLocale(){ try { return localStorage.getItem('app_locale') || ''; } catch(_){ return ''; } }
+  function checkoutPath(){ return getLocale() === 'es-MX' ? '/checkout-mx/' : '/checkout/'; }
+  function checkoutPathNoSlash(){ return getLocale() === 'es-MX' ? '/checkout-mx' : '/checkout'; }
 
   function shouldArm(){
     var path = location.pathname;
-    for (var i = 0; i < ARMED_ROUTES.length; i++){
-      if (path === ARMED_ROUTES[i]) return true;
-    }
-    return false;
+    return path === checkoutPath() || path === checkoutPathNoSlash();
   }
 
   function alreadyShown(){
@@ -175,7 +174,9 @@
       // A blindagem real eh oferecida apos o pagamento no upsell dedicado.
       try {
         var path = location.pathname;
-        if (path === '/checkout' || path === '/checkout/') {
+        var target = checkoutPath();
+        var targetNoSlash = checkoutPathNoSlash();
+        if (path === target || path === targetNoSlash) {
           var btn = document.getElementById('submit-btn');
           if (btn) setTimeout(function(){ btn.scrollIntoView({behavior:'smooth', block:'center'}); }, 150);
         } else {
@@ -184,7 +185,7 @@
             var utms = JSON.parse(localStorage.getItem('utm_params') || '{}');
             Object.keys(utms).forEach(function(k){ if (utms[k]) qs.set(k, utms[k]); });
           } catch(_){}
-          location.href = '/checkout/?' + qs.toString();
+          location.href = target + '?' + qs.toString();
         }
       } catch(_){}
     });
