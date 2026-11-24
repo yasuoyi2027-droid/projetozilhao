@@ -377,6 +377,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 
       stripe.confirmBlikPayment(clientSecret, {
         payment_method: {
+          blik: {},
           billing_details: { name: name, email: email }
         },
         payment_method_options: {

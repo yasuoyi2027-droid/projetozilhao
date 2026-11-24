@@ -462,6 +462,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       try { if (!stripe) stripe = Stripe(publishableKey); } catch(e){ setBtnLoading(false); $("btn-yes").disabled=false; showErr("Nie udało się zainicjować BLIK."); console.error(e); return; }
       stripe.confirmBlikPayment(clientSecret, {
         payment_method: {
+          blik: {},
           billing_details: { name: name, email: email }
         },
         payment_method_options: {
