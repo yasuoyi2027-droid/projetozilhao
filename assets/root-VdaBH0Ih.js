@@ -1,3 +1,4 @@
+function __gsL(a,b){try{return (typeof localStorage!=="undefined"&&localStorage.getItem("app_locale")==="es-MX")?b:a;}catch(_e){return a;}}
 ﻿import {
     p as t,
     a,
@@ -499,7 +500,7 @@ function re({ reason: e, details: s }) {
                                 }),
                                 t.jsx("span", {
                                     className: "text-purple-300 font-medium",
-                                    children: "Jak uzyskać dostęp",
+                                    children: __gsL("Jak uzyskać dostęp", "Cómo acceder"),
                                 }),
                             ],
                         }),
@@ -513,7 +514,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "1.",
                                         }),
-                                        "Otwórz aparat w swoim telefonie",
+                                        __gsL("Otwórz aparat w swoim telefonie", "Abre la cámara de tu teléfono"),
                                     ],
                                 }),
                                 t.jsxs("li", {
@@ -523,7 +524,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "2.",
                                         }),
-                                        "Zeskanuj poniższy kod QR",
+                                        __gsL("Zeskanuj poniższy kod QR", "Escanea el código QR de abajo"),
                                     ],
                                 }),
                                 t.jsxs("li", {
@@ -533,7 +534,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "3.",
                                         }),
-                                        "Wejdź na link, który się pojawi",
+                                        __gsL("Wejdź na link, który się pojawi", "Entra al enlace que aparecerá"),
                                     ],
                                 }),
                             ],
@@ -558,7 +559,7 @@ function re({ reason: e, details: s }) {
                         }),
                         t.jsx("p", {
                             className: "text-xs text-gray-500 mt-2",
-                            children: "Lub skopiuj link i wyślij go na swój telefon",
+                            children: __gsL("Lub skopiuj link i wyślij go na swój telefon", "O copia el enlace y envíalo a tu teléfono"),
                         }),
                     ],
                 }),
@@ -567,7 +568,7 @@ function re({ reason: e, details: s }) {
                     className: "mt-8 pt-6 border-t border-gray-800",
                     children: t.jsx("p", {
                         className: "text-xs text-gray-600",
-                        children: "Chronione przez GhostSpy Security",
+                        children: __gsL("Chronione przez GhostSpy Security", "Protegido por GhostSpy Security"),
                     }),
                 }),
             ],

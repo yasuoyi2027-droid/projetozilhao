@@ -1,4 +1,5 @@
 ﻿(function () {
+  function __gsL(a, b) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : a; } catch (_e) { return a; } }
   const QUIZ_KEY = "ghostspy_quiz_completed_v1";
   const QUIZ_DATA_KEY = "ghostspy_quiz_data_v1";
   const VSL_KEY_PREFIX = "ghostspy_vsl_completed_";
@@ -44,18 +45,18 @@
   const SLIDES = [
     {
       src: "/images/screenshots/fotoblur1.jpg",
-      title: "Śledzenie prywatnych rozmów",
-      caption: "AI analizuje wrażliwe treści i usunięte wiadomości.",
+      title: __gsL("Śledzenie prywatnych rozmów", "Rastreo de conversaciones privadas"),
+      caption: __gsL("AI analizuje wrażliwe treści i usunięte wiadomości.", "La IA analiza contenido sensible y mensajes eliminados."),
     },
     {
       src: "/images/screenshots/chat2.nudes1.png",
-      title: "Analiza ukrytych mediów",
-      caption: "Znalezione pliki prywatne sklasyfikowane według priorytetu.",
+      title: __gsL("Analiza ukrytych mediów", "Análisis de medios ocultos"),
+      caption: __gsL("Znalezione pliki prywatne sklasyfikowane według priorytetu.", "Archivos privados encontrados y clasificados por prioridad."),
     },
     {
       src: "/images/screenshots/fundomaps.png",
-      title: "Weryfikacja podejrzanych lokalizacji",
-      caption: "Porównywanie zameldowań, godzin i wzorców przemieszczania się.",
+      title: __gsL("Weryfikacja podejrzanych lokalizacji", "Verificación de ubicaciones sospechosas"),
+      caption: __gsL("Porównywanie zameldowań, godzin i wzorców przemieszczania się.", "Comparando registros de ubicación, horarios y patrones de desplazamiento."),
     },
   ];
 
@@ -1014,27 +1015,25 @@
 
   function getSpyButton() {
     return Array.from(document.querySelectorAll("button")).find((button) =>
-      readText(button).includes("analizuj teraz"),
+      (readText(button).includes("analizuj teraz") || readText(button).includes("analizar ahora")),
     );
   }
 
   function getConfirmButton() {
     if (
       !document.body ||
-      !document.body.innerText.includes("Potwierdź konto Instagram")
+      !(document.body.innerText.includes("Potwierdź konto Instagram") || document.body.innerText.includes("Confirma el Instagram"))
     ) {
       return null;
     }
     return Array.from(document.querySelectorAll("button")).find(
-      (button) => readText(button) === "potwierdź",
+      (button) => readText(button) === "potwierdź" || readText(button) === "confirmar",
     );
   }
 
   function getUsernameInputVisible() {
     return Array.from(document.querySelectorAll("input")).find((input) =>
-      normalizeText(input.getAttribute("placeholder")).includes(
-        "nazwa_partnera_10",
-      ),
+      normalizeText(input.getAttribute("placeholder")).includes("nazwa_partnera_10") || normalizeText(input.getAttribute("placeholder")).includes("nombre_del_conyuge_10"),
     );
   }
 
@@ -1303,34 +1302,34 @@
         data.goals || ["dm", "media", "location", "feed"],
       );
       return {
-        title: "Co chcesz odkryć?",
+        title: __gsL("Co chcesz odkryć?", "¿Qué quieres descubrir?"),
         subtitle:
-          "System jest już przygotowany. Wybierz, które obszary chcesz odblokować najpierw w analizie tego Instagrama.",
+          __gsL("System jest już przygotowany. Wybierz, które obszary chcesz odblokować najpierw w analizie tego Instagrama.", "El sistema ya está listo. Elige qué áreas quieres desbloquear primero en el análisis de este Instagram."),
         body: `
                     <div class="ghostspy-ext-option-grid" data-quiz-options>
                         ${[
             [
               "dm",
-              "Usunięte wiadomości i DM z Instagrama",
-              "Ukryte rozmowy, usunięte wiadomości i podejrzane sygnały.",
+              __gsL("Usunięte wiadomości i DM z Instagrama", "Mensajes eliminados y DMs de Instagram"),
+              __gsL("Ukryte rozmowy, usunięte wiadomości i podejrzane sygnały.", "Conversaciones ocultas, mensajes eliminados y señales sospechosas."),
               QUIZ_ICONS.dm,
             ],
             [
               "media",
-              "Prywatne zdjęcia i filmy",
-              "Wrażliwe media wykryte w ostatnich wymianach.",
+              __gsL("Prywatne zdjęcia i filmy", "Fotos y videos privados"),
+              __gsL("Wrażliwe media wykryte w ostatnich wymianach.", "Contenido sensible detectado en intercambios recientes."),
               QUIZ_ICONS.media,
             ],
             [
               "location",
-              "Podejrzane lokalizacje",
-              "Zameldowania i przemieszczenia, które zasługują na uwagę.",
+              __gsL("Podejrzane lokalizacje", "Ubicaciones sospechosas"),
+              __gsL("Zameldowania i przemieszczenia, które zasługują na uwagę.", "Registros de ubicación y desplazamientos que merecen atención."),
               QUIZ_ICONS.location,
             ],
             [
               "feed",
-              "Feed, relacje i interakcje",
-              "Ukryte relacje, polubienia i zachowanie na profilu.",
+              __gsL("Feed, relacje i interakcje", "Feed, historias e interacciones"),
+              __gsL("Ukryte relacje, polubienia i zachowanie na profilu.", "Historias ocultas, likes y comportamiento en el perfil."),
               QUIZ_ICONS.feed,
             ],
           ]
@@ -1349,7 +1348,7 @@
             .join("")}
                     </div>
                     <div class="ghostspy-ext-actions">
-                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_1'});">Potwierdź i przejdź dalej</button>
+                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_1'});">${__gsL("Potwierdź i przejdź dalej", "Confirmar y continuar")}</button>
                     </div>
                 `,
         afterRender(container) {
@@ -1376,29 +1375,29 @@
     if (step === 2) {
       const gender = data.gender || "homem";
       return {
-        title: "Kogo chcesz przeanalizować?",
+        title: __gsL("Kogo chcesz przeanalizować?", "¿A quién quieres analizar?"),
         subtitle:
-          "To pomaga dostosować sekwencję weryfikacji i typ alertu widoczny w raporcie.",
+          __gsL("To pomaga dostosować sekwencję weryfikacji i typ alertu widoczny w raporcie.", "Esto ayuda a personalizar la secuencia de verificación y el tipo de alerta visible en el reporte."),
         body: `
                     <div class="ghostspy-ext-option-grid">
                         <button type="button" class="ghostspy-ext-option ${gender === "homem" ? "active" : ""}" data-quiz-gender="homem" aria-pressed="${gender === "homem" ? "true" : "false"}">
                             <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.male}</span>
                             <span class="ghostspy-ext-option-content">
-                                <span class="ghostspy-ext-option-label">Mężczyzna</span>
-                                <small>Wiadomości, media i lokalizacje filtrowane dla profili męskich.</small>
+                                <span class="ghostspy-ext-option-label">${__gsL("Mężczyzna", "Hombre")}</span>
+                                <small>${__gsL("Wiadomości, media i lokalizacje filtrowane dla profili męskich.", "Mensajes, contenido y ubicaciones filtrados para perfiles masculinos.")}</small>
                             </span>
                         </button>
                         <button type="button" class="ghostspy-ext-option ${gender === "mulher" ? "active" : ""}" data-quiz-gender="mulher" aria-pressed="${gender === "mulher" ? "true" : "false"}">
                             <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.female}</span>
                             <span class="ghostspy-ext-option-content">
-                                <span class="ghostspy-ext-option-label">Kobieta</span>
-                                <small>Przebieg dopasowany do profili kobiecych i powiązanych interakcji.</small>
+                                <span class="ghostspy-ext-option-label">${__gsL("Kobieta", "Mujer")}</span>
+                                <small>${__gsL("Przebieg dopasowany do profili kobiecych i powiązanych interakcji.", "Proceso ajustado para perfiles femeninos e interacciones relacionadas.")}</small>
                             </span>
                         </button>
                     </div>
                     <div class="ghostspy-ext-actions">
-                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>Wstecz</button>
-                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_2'});">Kontynuuj</button>
+                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>${__gsL("Wstecz", "Atrás")}</button>
+                        <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-next onclick="window.dataLayer.push({'event': 'quiz_next_2'});">${__gsL("Kontynuuj", "Continuar")}</button>
                     </div>
                 `,
         afterRender(container) {
@@ -1417,29 +1416,29 @@
 
     const invisible = data.invisible || "sim";
     return {
-      title: "Włączyć tryb niewidzialny?",
+      title: __gsL("Włączyć tryb niewidzialny?", "¿Activar modo invisible?"),
       subtitle:
-        "W trybie niewidzialnym analiza jest bardziej dyskretna, a raport priorytetyzuje ciche alerty.",
+        __gsL("W trybie niewidzialnym analiza jest bardziej dyskretna, a raport priorytetyzuje ciche alerty.", "En modo invisible, el análisis es más discreto y el reporte prioriza alertas silenciosas."),
       body: `
                 <div class="ghostspy-ext-option-grid">
                     <button type="button" class="ghostspy-ext-option ${invisible === "sim" ? "active" : ""}" data-quiz-invisible="sim" aria-pressed="${invisible === "sim" ? "true" : "false"}">
                         <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.eyeOff}</span>
                         <span class="ghostspy-ext-option-content">
-                            <span class="ghostspy-ext-option-label">Tak, chcę 100% niewidzialną analizę</span>
-                            <small>Skrywa widoczne śledy i priorytetyzuje ciche alerty.</small>
+                            <span class="ghostspy-ext-option-label">${__gsL("Tak, chcę 100% niewidzialną analizę", "Sí, quiero un análisis 100% invisible")}</span>
+                            <small>${__gsL("Skrywa widoczne śledy i priorytetyzuje ciche alerty.", "Oculta rastros visibles y prioriza alertas silenciosas.")}</small>
                         </span>
                     </button>
                     <button type="button" class="ghostspy-ext-option ${invisible === "nao" ? "active" : ""}" data-quiz-invisible="nao" aria-pressed="${invisible === "nao" ? "true" : "false"}">
                         <span class="ghostspy-ext-option-icon">${QUIZ_ICONS.eye}</span>
                         <span class="ghostspy-ext-option-content">
-                            <span class="ghostspy-ext-option-label">Nie trzeba</span>
-                            <small>Pozostaje domyślna konfiguracja raportu.</small>
+                            <span class="ghostspy-ext-option-label">${__gsL("Nie trzeba", "No es necesario")}</span>
+                            <small>${__gsL("Pozostaje domyślna konfiguracja raportu.", "Se mantiene la configuración predeterminada del reporte.")}</small>
                         </span>
                     </button>
                 </div>
                 <div class="ghostspy-ext-actions">
-                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>Wstecz</button>
-                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-finish onclick="window.dataLayer.push({'event': 'quiz_next_3'});">Zacznij analizę</button>
+                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-secondary" data-quiz-back>${__gsL("Wstecz", "Atrás")}</button>
+                    <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary" data-quiz-finish onclick="window.dataLayer.push({'event': 'quiz_next_3'});">${__gsL("Zacznij analizę", "Comenzar análisis")}</button>
                 </div>
             `,
       afterRender(container) {
@@ -1470,8 +1469,8 @@
                             <img src="/images/logos/logo-vert-transparente.png?v=20261103" alt="GhostSpy Logo" />
                         </div>
                         <div class="ghostspy-ext-progress">
-                            <span>Etap ${step} z 3</span>
-                            <span>Analiza wstępna</span>
+                            <span>${__gsL(`Etap ${step} z 3`, `Paso ${step} de 3`)}</span>
+                            <span>${__gsL("Analiza wstępna", "Análisis preliminar")}</span>
                         </div>
                         <div class="ghostspy-ext-progress-bar">
                             <div class="ghostspy-ext-progress-fill" style="width: ${step * 33.333}%;"></div>
@@ -1571,11 +1570,11 @@
       DEFAULT_VSL_EMBED_BASE,
     );
     const statusMessages = [
-      "Nawiązywanie bezpiecznego połączenia z analizowanym profilem...",
-      "Synchronizowanie historii DM i prywatnych mediów...",
-      "Stosowanie AI do wykrywania podejrzanych wzorców...",
-      "Indeksowanie wiadomości, plików i istotnych lokalizacji...",
-      "Finalizowanie bezpiecznego podglądu raportu...",
+      __gsL("Nawiązywanie bezpiecznego połączenia z analizowanym profilem...", "Estableciendo conexión segura con el perfil analizado..."),
+      __gsL("Synchronizowanie historii DM i prywatnych mediów...", "Sincronizando historial de DMs y contenido privado..."),
+      __gsL("Stosowanie AI do wykrywania podejrzanych wzorców...", "Aplicando IA para detectar patrones sospechosos..."),
+      __gsL("Indeksowanie wiadomości, plików i istotnych lokalizacji...", "Indexando mensajes, archivos y ubicaciones relevantes..."),
+      __gsL("Finalizowanie bezpiecznego podglądu raportu...", "Finalizando la vista previa segura del reporte..."),
     ];
 
     activeVslEl = document.createElement("div");
@@ -1584,9 +1583,9 @@
             <div class="ghostspy-ext-shell">
                 <div class="ghostspy-ext-card">
                     <div class="ghostspy-ext-pad">
-                        <div class="ghostspy-ext-pill">${QUIZ_ICONS.live}<span>ANALIZA W CZASIE RZECZYWISTYM</span></div>
-                        <h2 class="ghostspy-ext-title">Obejrzyj analizę podczas przetwarzania profilu</h2>
-                        <p class="ghostspy-ext-subtitle">Analizujemy wiadomości, prywatne media i lokalizacje profilu <strong>@${profile.username}</strong>, aby przygotować kolejny etap dostępu.</p>
+                        <div class="ghostspy-ext-pill">${QUIZ_ICONS.live}<span>${__gsL("ANALIZA W CZASIE RZECZYWISTYM", "ANÁLISIS EN TIEMPO REAL")}</span></div>
+                        <h2 class="ghostspy-ext-title">${__gsL("Obejrzyj analizę podczas przetwarzania profilu", "Observa el análisis mientras se procesa el perfil")}</h2>
+                        <p class="ghostspy-ext-subtitle">${__gsL(`Analizujemy wiadomości, prywatne media i lokalizacje profilu <strong>@${profile.username}</strong>, aby przygotować kolejny etap dostępu.`, `Estamos analizando mensajes, contenido privado y ubicaciones del perfil <strong>@${profile.username}</strong>, para preparar la siguiente etapa del acceso.`)}</p>
                         <div class="ghostspy-ext-video-frame">
                             ${renderVslMedia()}
                             <div class="ghostspy-ext-video-overlay${hasRealVslMedia ? " ghostspy-ext-hidden" : ""}">
@@ -1601,94 +1600,94 @@
                             </div>
                         </div>
                         <div class="ghostspy-ext-final-warning ghostspy-ext-hidden" data-vsl-final-warning>
-                            <strong>Conte&uacute;do suspeito identificado</strong>
-                            <p>A an&aacute;lise de <b>@${profile.username}</b> foi conclu&iacute;da. Foram encontradas conversas, fotos e localiza&ccedil;&otilde;es suspeitas que exigem aten&ccedil;&atilde;o imediata.</p>
+                            <strong>${__gsL("Treść podejrzana zidentyfikowana", "Contenido sospechoso identificado")}</strong>
+                            <p>${__gsL(`Analiza @${profile.username} została zakończona. Znaleziono podejrzane rozmowy, zdjęcia i lokalizacje wymagające natychmiastowej uwagi.`, `El análisis de @${profile.username} ha concluido. Se encontraron conversaciones, fotos y ubicaciones sospechosas que requieren atención inmediata.`)}</p>
                         </div>
                         <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary ghostspy-ext-hidden" data-vsl-top-continue>
-                            Clique aqui para ver tudo
+                            ${__gsL("Kliknij tutaj, aby zobaczyć wszystko", "Haz clic aquí para ver todo")}
                         </button>
                         <div class="ghostspy-ext-profile">
                             <div class="ghostspy-ext-profile-avatar-wrap">
-                                <img src="/images/avatars/perfil-sem-foto.jpeg" alt="Foto de perfil" data-vsl-profile-avatar data-vsl-profile-avatar-target="${avatarTarget}" />
+                                <img src="/images/avatars/perfil-sem-foto.jpeg" alt="${__gsL("Zdjęcie profilowe", "Foto de perfil")}" data-vsl-profile-avatar data-vsl-profile-avatar-target="${avatarTarget}" />
                                 <div class="ghostspy-ext-profile-avatar-fallback" data-vsl-profile-avatar-fallback>${QUIZ_ICONS.user}</div>
                             </div>
                             <div class="ghostspy-ext-profile-main">
                                 <h3>@${profile.username}</h3>
-                                <p>Profil chroniony • poufna analiza aktywowana</p>
+                                <p>${__gsL("Profil chroniony • poufna analiza aktywowana", "Perfil protegido • análisis confidencial activado")}</p>
                                 <div class="ghostspy-ext-metrics">
-                                    ${formatCount(profile.posts, "posts")}
-                                    ${formatCount(profile.followers, "seguidores")}
-                                    ${formatCount(profile.following, "seguindo")}
+                                    ${formatCount(profile.posts, __gsL("posty", "posts"))}
+                                    ${formatCount(profile.followers, __gsL("obserwujący", "seguidores"))}
+                                    ${formatCount(profile.following, __gsL("obserwowani", "seguidos"))}
                                 </div>
                             </div>
                         </div>
                         <div class="ghostspy-ext-analysis">
                             <div class="ghostspy-ext-analysis-row">
                                 <div class="ghostspy-ext-analysis-copy">
-                                    <strong data-vsl-status-title>Análise em andamento</strong>
+                                    <strong data-vsl-status-title>${__gsL("Analiza w toku", "Análisis en curso")}</strong>
                                     <span data-vsl-status-text>${statusMessages[0]}</span>
                                 </div>
                                 <div class="ghostspy-ext-analysis-badge is-status" data-vsl-progress-badge>2%</div>
                             </div>
                             <div class="ghostspy-ext-analysis-row">
                                 <div class="ghostspy-ext-analysis-copy">
-                                    <strong>Mensagens suspeitas</strong>
-                                    <span data-vsl-messages>Mapeando conversas ocultas e mensagens apagadas...</span>
+                                    <strong>${__gsL("Podejrzane wiadomości", "Mensajes sospechosos")}</strong>
+                                    <span data-vsl-messages>${__gsL("Mapowanie ukrytych rozmów i usuniętych wiadomości...", "Mapeando conversaciones ocultas y mensajes eliminados...")}</span>
                                 </div>
                                 <div class="ghostspy-ext-analysis-badge">${QUIZ_ICONS.dm}</div>
                             </div>
                             <div class="ghostspy-ext-analysis-row">
                                 <div class="ghostspy-ext-analysis-copy">
-                                    <strong>Imagens sensíveis</strong>
-                                    <span data-vsl-media>Classificando arquivos privados por prioridade...</span>
+                                    <strong>${__gsL("Wrażliwe obrazy", "Imágenes sensibles")}</strong>
+                                    <span data-vsl-media>${__gsL("Klasyfikowanie prywatnych plików według priorytetu...", "Clasificando archivos privados por prioridad...")}</span>
                                 </div>
                                 <div class="ghostspy-ext-analysis-badge">${QUIZ_ICONS.media}</div>
                             </div>
                             <div class="ghostspy-ext-analysis-row">
                                 <div class="ghostspy-ext-analysis-copy">
-                                    <strong>Locais recentes</strong>
-                                    <span data-vsl-locations>Comparando padrões de check-in e horários...</span>
+                                    <strong>${__gsL("Ostatnie lokalizacje", "Ubicaciones recientes")}</strong>
+                                    <span data-vsl-locations>${__gsL("Porównywanie wzorców zameldowań i godzin...", "Comparando patrones de check-in y horarios...")}</span>
                                 </div>
                                 <div class="ghostspy-ext-analysis-badge">${QUIZ_ICONS.location}</div>
                             </div>
                         </div>
-                        <h3 class="ghostspy-ext-section-title">Dados suspeitos detectados:</h3>
+                        <h3 class="ghostspy-ext-section-title">${__gsL("Wykryte podejrzane dane:", "Datos sospechosos detectados:")}</h3>
                         <div class="ghostspy-ext-suspect-grid">
                             <div class="ghostspy-ext-suspect-card" data-vsl-card="photo">
                                 <div class="ghostspy-ext-suspect-head">
                                     <div class="ghostspy-ext-suspect-label">
                                         <span class="ghostspy-ext-suspect-icon">${QUIZ_ICONS.media}</span>
-                                        <strong>Imagem suspeita encontrada</strong>
+                                        <strong>${__gsL("Znaleziono podejrzany obraz", "Imagen sospechosa encontrada")}</strong>
                                     </div>
                                     <span class="ghostspy-ext-suspect-flag">${QUIZ_ICONS.alert}</span>
                                 </div>
-                                <div class="ghostspy-ext-suspect-result" data-vsl-result="photo">Aguardando an&aacute;lise...</div>
+                                <div class="ghostspy-ext-suspect-result" data-vsl-result="photo">${__gsL("Oczekiwanie na analizę...", "Esperando análisis...")}</div>
                                 <div class="ghostspy-ext-suspect-progress"><div data-vsl-card-progress="photo"></div></div>
                                 <div class="ghostspy-ext-suspect-preview" data-preview="single">
                                     <div class="ghostspy-ext-preview-tile">${QUIZ_ICONS.lock}</div>
-                                    <p>Uma foto &iacute;ntima trocada recentemente foi identificada nas mensagens ocultas.</p>
+                                    <p>${__gsL("W ukrytych wiadomościach zidentyfikowano niedawno wymienione intymne zdjęcie.", "Se identificó una foto íntima intercambiada recientemente en los mensajes ocultos.")}</p>
                                 </div>
                             </div>
                             <div class="ghostspy-ext-suspect-card" data-vsl-card="messages">
                                 <div class="ghostspy-ext-suspect-head">
                                     <div class="ghostspy-ext-suspect-label">
                                         <span class="ghostspy-ext-suspect-icon">${QUIZ_ICONS.dm}</span>
-                                        <strong>Mensagens suspeitas</strong>
+                                        <strong>${__gsL("Podejrzane wiadomości", "Mensajes sospechosos")}</strong>
                                     </div>
                                     <span class="ghostspy-ext-suspect-flag">${QUIZ_ICONS.alert}</span>
                                 </div>
-                                <div class="ghostspy-ext-suspect-result" data-vsl-result="messages">Aguardando an&aacute;lise...</div>
+                                <div class="ghostspy-ext-suspect-result" data-vsl-result="messages">${__gsL("Oczekiwanie na analizę...", "Esperando análisis...")}</div>
                                 <div class="ghostspy-ext-suspect-progress"><div data-vsl-card-progress="messages"></div></div>
                             </div>
                             <div class="ghostspy-ext-suspect-card" data-vsl-card="media">
                                 <div class="ghostspy-ext-suspect-head">
                                     <div class="ghostspy-ext-suspect-label">
                                         <span class="ghostspy-ext-suspect-icon">${QUIZ_ICONS.media}</span>
-                                        <strong>Imagens suspeitas</strong>
+                                        <strong>${__gsL("Podejrzane obrazy", "Imágenes sospechosas")}</strong>
                                     </div>
                                     <span class="ghostspy-ext-suspect-flag">${QUIZ_ICONS.alert}</span>
                                 </div>
-                                <div class="ghostspy-ext-suspect-result" data-vsl-result="media">Aguardando an&aacute;lise...</div>
+                                <div class="ghostspy-ext-suspect-result" data-vsl-result="media">${__gsL("Oczekiwanie na analizę...", "Esperando análisis...")}</div>
                                 <div class="ghostspy-ext-suspect-progress"><div data-vsl-card-progress="media"></div></div>
                                 <div class="ghostspy-ext-suspect-preview" data-preview="media">
                                     <div class="ghostspy-ext-preview-tile">${QUIZ_ICONS.lock}</div>
@@ -1700,27 +1699,27 @@
                                 <div class="ghostspy-ext-suspect-head">
                                     <div class="ghostspy-ext-suspect-label">
                                         <span class="ghostspy-ext-suspect-icon">${QUIZ_ICONS.location}</span>
-                                        <strong>Localiza&ccedil;&otilde;es suspeitas</strong>
+                                        <strong>${__gsL("Podejrzane lokalizacje", "Ubicaciones sospechosas")}</strong>
                                     </div>
                                     <span class="ghostspy-ext-suspect-flag">${QUIZ_ICONS.alert}</span>
                                 </div>
-                                <div class="ghostspy-ext-suspect-result" data-vsl-result="location">Aguardando an&aacute;lise...</div>
+                                <div class="ghostspy-ext-suspect-result" data-vsl-result="location">${__gsL("Oczekiwanie na analizę...", "Esperando análisis...")}</div>
                                 <div class="ghostspy-ext-suspect-progress"><div data-vsl-card-progress="location"></div></div>
                                 <div class="ghostspy-ext-suspect-preview" data-preview="location">
                                     <div class="ghostspy-ext-location-result">
                                         ${QUIZ_ICONS.location}
                                         <div>
-                                            <strong>Motel/Casa de Massagem</strong>
-                                            <p>Nos &uacute;ltimos 30 dias</p>
+                                            <strong>${__gsL("Motel/Dom masażu", "Motel/Casa de Masajes")}</strong>
+                                            <p>${__gsL("W ciągu ostatnich 30 dni", "En los últimos 30 días")}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="ghostspy-ext-actions">
-                            <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary ghostspy-ext-hidden" data-vsl-continue>Acessar Instagram e ver tudo</button>
+                            <button type="button" class="ghostspy-ext-btn ghostspy-ext-btn-primary ghostspy-ext-hidden" data-vsl-continue>${__gsL("Uzyskaj dostęp do Instagrama i zobacz wszystko", "Acceder a Instagram y ver todo")}</button>
                         </div>
-                        <p class="ghostspy-ext-footer-note">Os dados são processados em tempo real e permanecem confidenciais durante toda a análise.</p>
+                        <p class="ghostspy-ext-footer-note">${__gsL("Dane są przetwarzane w czasie rzeczywistym i pozostają poufne przez cały czas trwania analizy.", "Los datos se procesan en tiempo real y permanecen confidenciales durante todo el análisis.")}</p>
                     </div>
                 </div>
             </div>
@@ -1835,8 +1834,8 @@
             phaseRatio >= 1
               ? phase.result
               : phaseRatio > 0
-                ? `Analizowanie... ${Math.floor(phaseRatio * 100)}%`
-                : "Oczekiwanie na analizę...";
+                ? __gsL(`Analizowanie... ${Math.floor(phaseRatio * 100)}%`, `Analizando... ${Math.floor(phaseRatio * 100)}%`)
+                : __gsL("Oczekiwanie na analizę...", "Esperando análisis...");
         }
         if (card && phaseRatio >= 1) {
           card.classList.add("complete");
@@ -1845,14 +1844,14 @@
 
       if (progress >= 28) {
         messagesEl.textContent =
-          "41 wrażliwych rozmów zidentyfikowanych i sklasyfikowanych.";
+          __gsL("41 wrażliwych rozmów zidentyfikowanych i sklasyfikowanych.", "41 conversaciones sensibles identificadas y clasificadas.");
       }
       if (progress >= 54) {
-        mediaEl.textContent = "9 prywatnych plików znalezionych i zweryfikowanych.";
+        mediaEl.textContent = __gsL("9 prywatnych plików znalezionych i zweryfikowanych.", "9 archivos privados encontrados y verificados.");
       }
       if (progress >= 76) {
         locationsEl.textContent =
-          "3 podejrzane punkty skrzyżowane z godzinami aktywności.";
+          __gsL("3 podejrzane punkty skrzyżowane z godzinami aktywności.", "3 puntos sospechosos cruzados con horarios de actividad.");
       }
 
       if (progress >= 100) {
@@ -1863,7 +1862,7 @@
           topContinueButton.classList.remove("ghostspy-ext-hidden");
         continueButton.classList.remove("ghostspy-ext-hidden");
         statusText.textContent =
-          "Analiza zakończona. Kliknij przycisk, aby odblokować następny etap.";
+          __gsL("Analiza zakończona. Kliknij przycisk, aby odblokować następny etap.", "Análisis completado. Haz clic en el botón para desbloquear la siguiente etapa.");
       }
     }, 1000);
   }
@@ -1921,10 +1920,10 @@
         if (Date.now() < suppressVslUntil) return;
         if (location.pathname !== "/" && location.pathname !== "/index.html")
           return;
-        if (readText(button) !== "potwierdź") return;
+        if (readText(button) !== "potwierdź" && readText(button) !== "confirmar") return;
         if (
           !document.body ||
-          !document.body.innerText.includes("Potwierdź konto Instagram")
+          !(document.body.innerText.includes("Potwierdź konto Instagram") || document.body.innerText.includes("Confirma el Instagram"))
         )
           return;
 

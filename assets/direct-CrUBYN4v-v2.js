@@ -5,6 +5,7 @@ import { B as $ } from "./BlockedPopup-RPTI6beX.js";
 import { P as W } from "./PreviewBanner-DpTiVZze.js";
 import { d as Z, c as J } from "./api-bupDNBJY-v2.js";
 import "./utm-ClCK1WqV.js";
+function __gsL(a, b) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : a; } catch (_e) { return a; } }
 function V({ username: t, onCameraClick: i, onNewMessageClick: s }) {
   const r = E(),
     [c] = L(),
@@ -354,7 +355,7 @@ function X({ title: t, artist: i }) {
               children: [
                 e.jsx("title", {
                   children:
-                    "Ikona przedstawiająca fale dźwiękowe z trzema wertykalnymi słupkami, które pulsująco zmieniają wysokość",
+                    __gsL("Ikona przedstawiająca fale dźwiękowe z trzema wertykalnymi słupkami, które pulsująco zmieniają wysokość", "Icono que representa ondas de sonido con tres barras verticales que cambian de altura de forma pulsante"),
                 }),
                 e.jsx("rect", {
                   height: "30",
@@ -1015,16 +1016,16 @@ function ae({
 }
 function ge({ }) {
   return [
-    { title: "GhostSpy | Uzyskaj Dostęp Teraz" },
+    { title: __gsL("GhostSpy | Uzyskaj Dostęp Teraz", "GhostSpy | Obtén Acceso Ahora") },
     {
       name: "description",
       content:
-        "Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.",
+        __gsL("Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.", "Descubre cómo rastrear un perfil de Instagram y ver likes, seguidores y actividades de forma sencilla. Analiza interacciones y descubre qué pasa en el perfil."),
     },
     {
       name: "keywords",
       content:
-        "ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+        __gsL("ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram", "ghostspy, ghost spy, ghostspy website, rastrear instagram, ver likes instagram, espiar pareja instagram, ver actividad instagram, rastrear perfil instagram"),
     },
   ];
 }
@@ -1064,12 +1065,12 @@ function ne(t) {
 function oe(t, i) {
   const s = [],
     r = [
-      "Opowiedz nowości",
-      "Lenistwo Dzisiaj 🥱🥱",
-      "Chęć na trójkącik 😈",
+      __gsL("Opowiedz nowości", "Cuéntame las novedades"),
+      __gsL("Lenistwo Dzisiaj 🥱🥱", "Flojera Hoy 🥱🥱"),
+      __gsL("Chęć na trójkącik 😈", "Ganas de un trío 😈"),
       re(),
-      "ktoś?? #nuda",
-      "Już nie mogę wytrzymać!",
+      __gsL("ktoś?? #nuda", "alguien?? #aburrido"),
+      __gsL("Już nie mogę wytrzymać!", "¡Ya no aguanto más!"),
       "👀",
     ],
     c = [
@@ -1139,7 +1140,7 @@ function oe(t, i) {
         displayName: "Swi*******",
         profilePic: "/images/screenshots/StorySwing.png",
         hasStory: !0,
-        label: "Chęć na trójkącik 😈",
+        label: __gsL("Chęć na trójkącik 😈", "Ganas de un trío 😈"),
       }));
   });
   let h = null;
@@ -1239,7 +1240,7 @@ function le(t, i) {
     "🔥🔥",
     "Enviado",
     "Enviado segunda-feira",
-    "Pyszny/a jesteś 😈 😈",
+    __gsL("Pyszny/a jesteś 😈 😈", "Qué rico/a eres 😈 😈"),
     "Curtiu sua mensagem",
     "Enviado quinta-feira",
     "Ah sim entendi",

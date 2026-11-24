@@ -1,3 +1,4 @@
+function __gsL(a,b){try{return (typeof localStorage!=="undefined"&&localStorage.getItem("app_locale")==="es-MX")?b:a;}catch(_e){return a;}}
 import { a as t, p as e, w as Z, z as Q } from "./chunk-EPOLDU6W-CkoexLYk.js";
 import { M as X } from "./MatrixCanvas-gBTz1CWi.js";
 import { u as $ } from "./context-DVPZRWQf-v2.js";
@@ -239,7 +240,7 @@ function pe({ visible: n }) {
               color: "#475569",
               whiteSpace: "nowrap",
             },
-            children: "Bez Hasła",
+            children: __gsL("Bez Hasła", "Sin Contraseña"),
           }),
         ],
       }),
@@ -270,7 +271,7 @@ function pe({ visible: n }) {
               color: "#475569",
               whiteSpace: "nowrap",
             },
-            children: "Testuj Bezpłatnie",
+            children: __gsL("Testuj Bezpłatnie", "Prueba Gratis"),
           }),
         ],
       }),
@@ -292,20 +293,20 @@ function V(n) {
     ? r.length < 5
       ? {
         valid: !1,
-        error: "Nazwa użytkownika musi mieć co najmniej 5 znaków!",
+        error: __gsL("Nazwa użytkownika musi mieć co najmniej 5 znaków!", "¡El nombre de usuario debe tener al menos 5 caracteres!"),
       }
       : /^[a-zA-Z0-9_.-]+$/.test(r)
         ? /[a-zA-Z]/.test(r)
           ? { valid: !0 }
           : {
             valid: !1,
-            error: "Nazwa użytkownika musi zawierać co najmniej 1 literę!",
+            error: __gsL("Nazwa użytkownika musi zawierać co najmniej 1 literę!", "¡El nombre de usuario debe contener al menos 1 letra!"),
           }
         : {
           valid: !1,
-          error: "Nazwa użytkownika może zawierać tylko litery, cyfry, _, . i -",
+          error: __gsL("Nazwa użytkownika może zawierać tylko litery, cyfry, _, . i -", "El nombre de usuario solo puede contener letras, números, _, . y -"),
         }
-    : { valid: !1, error: "Wpisz prawidłową nazwę użytkownika!" };
+    : { valid: !1, error: __gsL("Wpisz prawidłową nazwę użytkownika!", "¡Escribe un nombre de usuario válido!") };
 }
 function K(n) {
   return n
@@ -318,13 +319,13 @@ function K(n) {
 }
 function ge() {
   return [
-    "niedziela",
-    "poniedziałek",
-    "wtorek",
-    "środa",
-    "czwartek",
-    "piątek",
-    "sobota",
+    __gsL("niedziela", "domingo"),
+    __gsL("poniedziałek", "lunes"),
+    __gsL("wtorek", "martes"),
+    __gsL("środa", "miércoles"),
+    __gsL("czwartek", "jueves"),
+    __gsL("piątek", "viernes"),
+    __gsL("sobota", "sábado"),
   ][new Date().getDay()];
 }
 function he({ visible: n, initialValue: r = 81455 }) {
@@ -377,7 +378,7 @@ function he({ visible: n, initialValue: r = 81455 }) {
             target: "_blank",
             rel: "noopener",
             style: { color: "#0E82F8", textDecoration: "none" },
-            children: "Polityka Prywatności",
+            children: __gsL("Polityka Prywatności", "Política de Privacidad"),
           }),
           " · ",
           e.jsx("a", {
@@ -567,7 +568,7 @@ function ye({
       (I(!0),
         a(!1),
         k(
-          'Wpisz nazwę użytkownika osoby, którą chcesz przeanalizować, bez znaku "@"',
+          __gsL('Wpisz nazwę użytkownika osoby, którą chcesz przeanalizować, bez znaku "@"', 'Escribe el nombre de usuario de la persona que quieres analizar, sin el símbolo "@"'),
         ));
     }, []),
     g = '<span class="typing-cursor">|</span>',
@@ -819,7 +820,7 @@ function ve({ isOpen: n, onClose: r, onConfirm: o, profile: y }) {
                         children: [
                           e.jsx("img", {
                             src: y.profile_pic_url,
-                            alt: "Zdjęcie profilowe",
+                            alt: __gsL("Zdjęcie profilowe", "Foto de perfil"),
                             className: "w-full h-full object-cover",
                             onLoad: () => f(!0),
                             onError: () => {
@@ -1130,7 +1131,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                         letterSpacing: "1px",
                         fontSize: "12px",
                       },
-                      placeholder: "Hasło",
+                      placeholder: __gsL("Hasło", "Contraseña"),
                       type: "text",
                       value: M(b),
                     }),
@@ -1148,7 +1149,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                         "absolute top-full left-0 right-0 pt-1 text-center",
                       children: e.jsx("p", {
                         className: "text-xs text-red-500 animate-fade-in",
-                        children: "Wprowadzone hasło jest nieprawidłowe.",
+                        children: __gsL("Wprowadzone hasło jest nieprawidłowe.", "La contraseña ingresada es incorrecta."),
                       }),
                     }),
                   ],
@@ -1218,7 +1219,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                             style: { color: "#0F172A" },
                             children:
                               i === "testing"
-                                ? "Łamanie szyfrowania konta"
+                                ? __gsL("Łamanie szyfrowania konta", "Descifrando la cuenta")
                                 : i === "redirecting"
                                   ? "A carregar o feed do Instagram"
                                   : "Criptografia quebrada com sucesso!",
@@ -1230,8 +1231,8 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
                               i === "testing"
                                 ? `${y.login.testingPassword}...`
                                 : i === "redirecting"
-                                  ? "Przekierowywanie do profilu..."
-                                  : "Dostęp do konta odblokowany!",
+                                  ? __gsL("Przekierowywanie do profilu...", "Redirigiendo al perfil...")
+                                  : __gsL("Dostęp do konta odblokowany!", "¡Acceso a la cuenta desbloqueado!"),
                           }),
                         ],
                       }),
@@ -1305,7 +1306,7 @@ function be({ username: n, onComplete: r, onFetchData: o }) {
               children: [
                 e.jsx("span", {
                   className: "text-sm text-gray-400",
-                  children: "Nie masz konta?",
+                  children: __gsL("Nie masz konta?", "¿No tienes una cuenta?"),
                 }),
                 e.jsx("a", {
                   href: "#",
@@ -1675,7 +1676,7 @@ function we({ isOpen: n, onClose: r }) {
   const [o, y] = t.useState("intro"),
     [b, N] = t.useState(!1),
     f = t.useRef(null),
-    h = W("Szybki samouczek....", 50, n && o === "intro"),
+    h = W(__gsL("Szybki samouczek....", "Tutorial rápido...."), 50, n && o === "intro"),
     i = W(
       `Veja como pegar o nome de usuário
 do seu cônjuge corretamente....`,
@@ -1683,17 +1684,17 @@ do seu cônjuge corretamente....`,
       h.done,
     ),
     c = W(
-      "1. krok: Otwórz aplikację Instagram i wejdź na profil swojego partnera/partnerki....",
+      __gsL("1. krok: Otwórz aplikację Instagram i wejdź na profil swojego partnera/partnerki....", "1er paso: Abre la aplicación de Instagram y entra al perfil de tu pareja...."),
       40,
       o === "step1",
     ),
     j = W(
-      "2. krok: Skopiuj nazwę użytkownika, która pojawi się na górze profilu Twojego partnera/partnerki, przy strzałce powrotu....",
+      __gsL("2. krok: Skopiuj nazwę użytkownika, która pojawi się na górze profilu Twojego partnera/partnerki, przy strzałce powrotu....", "2do paso: Copia el nombre de usuario que aparecerá en la parte superior del perfil de tu pareja, junto a la flecha de regreso...."),
       40,
       o === "step2",
     ),
     d = W(
-      "Uwaga: Nie mylić z nazwą profilu, to nie jest ta nazwa, którą używamy w GhostSpy!",
+      __gsL("Uwaga: Nie mylić z nazwą profilu, to nie jest ta nazwa, którą używamy w GhostSpy!", "Atención: No confundir con el nombre del perfil, ese no es el nombre que usamos en GhostSpy!"),
       40,
       o === "step3",
     ),
@@ -1702,7 +1703,7 @@ do seu cônjuge corretamente....`,
       40,
       o === "step4",
     ),
-    a = W("Powodzenia i używaj z umiarem! 😉", 40, o === "step5"),
+    a = W(__gsL("Powodzenia i używaj z umiarem! 😉", "¡Buena suerte y úsalo con moderación! 😉"), 40, o === "step5"),
     m = t.useCallback(() => {
       y((u) => {
         const _ = [
@@ -2029,7 +2030,7 @@ const Le = Z(function () {
             ) {
               if (
                 (i(
-                  `Już wyszukałeś/aś profil <strong>@${S.previousUsername}</strong>. Osiągnięto limit 1 wyszukiwania na urządzenie.`,
+                  __gsL(`Już wyszukałeś/aś profil <strong>@${S.previousUsername}</strong>. Osiągnięto limit 1 wyszukiwania na urządzenie.`, `Ya buscaste el perfil <strong>@${S.previousUsername}</strong>. Se alcanzó el límite de 1 búsqueda por dispositivo.`),
                 ),
                   f(!1),
                   p(!0),
@@ -2052,7 +2053,7 @@ const Le = Z(function () {
             console.warn("IP status check failed, continuing:", S);
           }
         const s = await ne(g);
-        if (!s) throw new Error("Profil nie znaleziony");
+        if (!s) throw new Error(__gsL("Profil nie znaleziony", "Perfil no encontrado"));
         const l = {
           username: s.username,
           full_name: s.full_name || "",
@@ -2068,17 +2069,17 @@ const Le = Z(function () {
         };
         (x(l), b("confirm"));
       } catch (s) {
-        const l = s instanceof Error ? s.message : "Nieznany błąd";
-        l.includes("nie znaleziony") || l.includes("404") || l.includes("500")
+        const l = s instanceof Error ? s.message : __gsL("Nieznany błąd", "Error desconocido");
+        l.includes("nie znaleziony") || l.includes("no encontrado") || l.includes("404") || l.includes("500")
           ? i(
-            'Użytkownik nie znaleziony. Sprawdź, czy nazwa użytkownika jest prawidłowa. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>',
+            __gsL('Użytkownik nie znaleziony. Sprawdź, czy nazwa użytkownika jest prawidłowa. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>', 'Usuario no encontrado. Verifica que el nombre de usuario sea correcto. <a href="#" style="color: #38BDF8; text-decoration: underline;">¿Dudas? Haz clic aquí</a>'),
           )
           : l.includes("timeout") || l.includes("abort")
             ? i(
-              'Przekroczono czas. Spróbuj ponownie. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>',
+              __gsL('Przekroczono czas. Spróbuj ponownie. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>', 'Tiempo agotado. Intenta de nuevo. <a href="#" style="color: #38BDF8; text-decoration: underline;">¿Dudas? Haz clic aquí</a>'),
             )
             : i(
-              `Błąd podczas wyszukiwania profilu: ${l}. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>`,
+              __gsL(`Błąd podczas wyszukiwania profilu: ${l}. <a href="#" style="color: #38BDF8; text-decoration: underline;">Masz pytania? Kliknij tutaj</a>`, `Error al buscar el perfil: ${l}. <a href="#" style="color: #38BDF8; text-decoration: underline;">¿Dudas? Haz clic aquí</a>`),
             );
       } finally {
         f(!1);

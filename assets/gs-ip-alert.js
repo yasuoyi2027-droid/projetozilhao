@@ -72,7 +72,32 @@
     if (document.getElementById('gs-ip-root')) return;
     var root = document.createElement('div');
     root.id = 'gs-ip-root';
-    root.innerHTML = [
+    
+  function __gsIsMx(){ try { return localStorage.getItem('app_locale') === 'es-MX'; } catch(_e){ return false; } }
+  function __gsTranslate(html){
+    if (!__gsIsMx()) return html;
+    var map = [
+      ['⚠ Alert bezpieczeństwa', '⚠ Alerta de Seguridad'],
+      ['Twój IP i lokalizacja zostały <em>ujawnione</em>', 'Tu IP y ubicación han sido <em>expuestas</em>'],
+      ['Wykrywanie w czasie rzeczywistym podczas analizy profilu', 'Detección en tiempo real durante el análisis del perfil'],
+      ['Wykryty IP', 'IP Detectada'],
+      ['Wykrywanie<span class="gs-dots">', 'Detectando<span class="gs-dots">'],
+      ['Lokalizacja', 'Ubicación'],
+      ['Urządzenie', 'Dispositivo'],
+      ['>Status<', '>Estado<'],
+      ['UJAWNIONY', 'EXPUESTO'],
+      ['Analizowana osoba zobaczy Twoje konto w "kto wyświetlił Twój profil", gdy otworzy Instagram.', 'La persona analizada verá tu cuenta en "quién vio tu perfil" cuando abra Instagram.'],
+      ['Aktywuj Ochronę teraz, aby zamaskować IP i usunąć wszystkie śledy, zanim ona wejdzie do aplikacji.', 'Activa la Protección ahora para enmascarar tu IP y borrar todo rastro antes de que ella entre a la app.'],
+      ['Pozostały czas na ochronę', 'Tiempo restante para proteger'],
+      ['🛡 Aktywuj Ochronę Teraz', '🛡 Activar Protección Ahora'],
+      ['Chroni IP · Usuwa śledy · Poufne', 'Protege IP · Elimina rastros · Confidencial'],
+      ['Warstwa ochrony wojskowej · Pełna poufność gwarantowana', 'Capa de protección militar · Confidencialidad total garantizada'],
+    ];
+    for (var i = 0; i < map.length; i++) html = html.split(map[i][0]).join(map[i][1]);
+    return html;
+  }
+
+    root.innerHTML = __gsTranslate([
       '<div id="gs-ip-overlay"></div>',
       '<div id="gs-ip-dialog" role="dialog" aria-modal="true" aria-labelledby="gs-ip-title">',
       '  <div class="gs-ip-siren" aria-hidden="true">',
@@ -113,7 +138,7 @@
       '  </button>',
       '  <p class="gs-ip-footnote">Warstwa ochrony wojskowej · Pełna poufność gwarantowana</p>',
       '</div>'
-    ].join('');
+    ].join(''));
     document.body.appendChild(root);
 
     var dots = root.querySelectorAll('.gs-dots');
@@ -178,15 +203,15 @@
   function detectUa(){
     try {
       var ua = navigator.userAgent || '';
-      var dev = 'Nieznane';
+      var dev = __gsIsMx() ? 'Desconocido' : 'Nieznane';
       if (/iPhone/.test(ua)) dev = 'iPhone · iOS';
       else if (/iPad/.test(ua)) dev = 'iPad · iOS';
       else if (/Android/.test(ua)) dev = 'Android';
-      else if (/Mac/.test(ua)) dev = 'macOS · Komputer';
-      else if (/Windows/.test(ua)) dev = 'Windows · Komputer';
+      else if (/Mac/.test(ua)) dev = __gsIsMx() ? 'macOS · Escritorio' : 'macOS · Komputer';
+      else if (/Windows/.test(ua)) dev = __gsIsMx() ? 'Windows · Escritorio' : 'Windows · Komputer';
       else if (/Linux/.test(ua)) dev = 'Linux';
       return dev;
-    } catch(_){ return 'Nieznane'; }
+    } catch(_){ return __gsIsMx() ? 'Desconocido' : 'Nieznane'; }
   }
 
   function revealData(data){

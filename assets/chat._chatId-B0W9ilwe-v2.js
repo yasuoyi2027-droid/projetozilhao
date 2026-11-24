@@ -4,6 +4,7 @@ import { u as be } from "./context-DVPZRWQf-v2.js";
 import { B as Re } from "./BlockedPopup-RPTI6beX.js";
 import { k as ae, d as Fe, c as $e } from "./api-bupDNBJY-v2.js";
 import "./utm-ClCK1WqV.js";
+function __gsL(a, b) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : a; } catch (_e) { return a; } }
 function ke() {
     const t = [];
     for (let a = 0; a < 30; a++) t.push(Math.floor(Math.random() * 21) + 12);
@@ -20,13 +21,13 @@ const Ve = {
             id: "1",
             type: "date",
             direction: "system",
-            content: "3 dni temu, 11:12",
+            content: __gsL("3 dni temu, 11:12", "hace 3 días, 11:12"),
         },
         {
             id: "2",
             type: "text",
             direction: "received",
-            content: "Hej, kochanie",
+            content: __gsL("Hej, kochanie", "Hola, cariño"),
         },
         {
             id: "3",
@@ -82,7 +83,7 @@ const Ve = {
             direction: "sent",
             content: "Oii bb",
             replyTo: "Amor",
-            replyLabel: "Odpowiedziałeś/aś",
+            replyLabel: __gsL("Odpowiedziałeś/aś", "Respondiste"),
         },
         {
             id: "17",
@@ -117,7 +118,7 @@ const Ve = {
             direction: "received",
             content: "Não",
             replyTo: "Na sua prima?",
-            replyLabel: "odpowiedział(a) Tobie",
+            replyLabel: __gsL("odpowiedział(a) Tobie", "te respondió"),
         },
         {
             id: "25",
@@ -177,7 +178,7 @@ const Ve = {
                 direction: "system",
                 callType: "video",
                 callStatus: "missed",
-                content: "Nieodebrana rozmowa wideo",
+                content: __gsL("Nieodebrana rozmowa wideo", "Videollamada perdida"),
             },
             { id: "3", type: "text", direction: "sent", content: "Net tá ruim" },
             { id: "4", type: "text", direction: "sent", content: "To no 4G" },
@@ -197,14 +198,14 @@ const Ve = {
                 direction: "system",
                 callType: "video",
                 callStatus: "ended",
-                content: "Rozmowa wideo zakończona",
+                content: __gsL("Rozmowa wideo zakończona", "Videollamada finalizada"),
                 callTimeId: "callTime3",
             },
             {
                 id: "8",
                 type: "text",
                 direction: "sent",
-                content: "Pysznieeeeeeeeee",
+                content: __gsL("Pysznieeeeeeeeee", "Riquisimooooo"),
             },
             { id: "9", type: "text", direction: "sent", content: "🤤🤤🤤" },
             {
@@ -266,7 +267,7 @@ const Ve = {
                 id: "21",
                 type: "text",
                 direction: "sent",
-                content: "Nie mogę się już doczekać, już jadę",
+                content: __gsL("Nie mogę się już doczekać, już jadę", "Ya no aguanto, ya voy para allá"),
             },
             {
                 id: "22",
@@ -278,13 +279,13 @@ const Ve = {
                 id: "23",
                 type: "text",
                 direction: "sent",
-                content: "Nie mogę się doczekać",
+                content: __gsL("Nie mogę się doczekać", "No puedo esperar"),
             },
             {
                 id: "24",
                 type: "text",
                 direction: "sent",
-                content: "Nic więcej się nie dzieje ok",
+                content: __gsL("Nic więcej się nie dzieje ok", "Ya no pasa nada más ok"),
                 reaction: "👍🏻",
             },
         ],
@@ -326,7 +327,7 @@ const Ve = {
                 id: "5",
                 type: "text",
                 direction: "received",
-                content: "To szkoda wyrzucać to wszystko",
+                content: __gsL("To szkoda wyrzucać to wszystko", "Es una lástima tirar todo esto"),
             },
             {
                 id: "6",
@@ -376,7 +377,7 @@ const Ve = {
                 id: "13",
                 type: "text",
                 direction: "received",
-                content: "Dziś mija miesiąc od naszego ostatniego pocałunku",
+                content: __gsL("Dziś mija miesiąc od naszego ostatniego pocałunku", "Hoy se cumple un mes de nuestro último beso"),
             },
             {
                 id: "14",
@@ -389,7 +390,7 @@ const Ve = {
                 id: "15",
                 type: "date",
                 direction: "system",
-                content: "2 dni temu, 18:45",
+                content: __gsL("2 dni temu, 18:45", "hace 2 días, 18:45"),
             },
             {
                 id: "16",
@@ -419,7 +420,7 @@ const Ve = {
                 id: "21",
                 type: "text",
                 direction: "received",
-                content: "Czemu już mi nie odpisujesz?????",
+                content: __gsL("Czemu już mi nie odpisujesz?????", "¿Por qué ya no me respondes?????"),
             },
             {
                 id: "22",
@@ -449,7 +450,7 @@ const Ve = {
                 id: "5",
                 type: "date",
                 direction: "system",
-                content: "2 dni temu, 09:31",
+                content: __gsL("2 dni temu, 09:31", "hace 2 días, 09:31"),
             },
             {
                 id: "6",
@@ -469,7 +470,7 @@ const Ve = {
                 id: "9",
                 type: "text",
                 direction: "sent",
-                content: "Przepraszam za to",
+                content: __gsL("Przepraszam za to", "Perdón por eso"),
             },
             {
                 id: "10",
@@ -685,7 +686,7 @@ function Ge() {
 }
 function Xe() {
     return e.jsxs("svg", {
-        "aria-label": "Rozmowa głosowa",
+        "aria-label": __gsL("Rozmowa głosowa", "Llamada de voz"),
         fill: "currentColor",
         height: "24",
         role: "img",
@@ -693,7 +694,7 @@ function Xe() {
         width: "24",
         style: { filter: "brightness(0) invert(1)" },
         children: [
-            e.jsx("title", { children: "Rozmowa głosowa" }),
+            e.jsx("title", { children: __gsL("Rozmowa głosowa", "Llamada de voz") }),
             e.jsx("path", {
                 d: "M18.227 22.912c-4.913 0-9.286-3.627-11.486-5.828C4.486 14.83.731 10.291.921 5.231a3.289 3.289 0 0 1 .908-2.138 17.116 17.116 0 0 1 1.865-1.71 2.307 2.307 0 0 1 3.004.174 13.283 13.283 0 0 1 3.658 5.325 2.551 2.551 0 0 1-.19 1.941l-.455.853a.463.463 0 0 0-.024.387 7.57 7.57 0 0 0 4.077 4.075.455.455 0 0 0 .386-.024l.853-.455a2.548 2.548 0 0 1 1.94-.19 13.278 13.278 0 0 1 5.326 3.658 2.309 2.309 0 0 1 .174 3.003 17.319 17.319 0 0 1-1.71 1.866 3.29 3.29 0 0 1-2.138.91 10.27 10.27 0 0 1-.368.006Zm-13.144-20a.27.27 0 0 0-.167.054A15.121 15.121 0 0 0 3.28 4.47a1.289 1.289 0 0 0-.36.836c-.161 4.301 3.21 8.34 5.235 10.364s6.06 5.403 10.366 5.236a1.284 1.284 0 0 0 .835-.36 15.217 15.217 0 0 0 1.504-1.637.324.324 0 0 0-.047-.41 11.62 11.62 0 0 0-4.457-3.119.545.545 0 0 0-.411.044l-.854.455a2.452 2.452 0 0 1-2.071.116 9.571 9.571 0 0 1-5.189-5.188 2.457 2.457 0 0 1 .115-2.071l.456-.855a.544.544 0 0 0 .043-.41 11.629 11.629 0 0 0-3.118-4.458.36.36 0 0 0-.244-.1Z",
             }),
@@ -963,8 +964,8 @@ function it({
                         className: "image-fullscreen-subtext",
                         children:
                             u === "blocked"
-                                ? "Aby odblokować ocenzurowane zdjęcia i filmy, musisz być członkiem VIP"
-                                : "Ten obraz może zawierać nagość i wyraźne treści seksualne",
+                                ? __gsL("Aby odblokować ocenzurowane zdjęcia i filmy, musisz być członkiem VIP", "Para desbloquear fotos y videos censurados, debes ser miembro VIP")
+                                : __gsL("Ten obraz może zawierać nagość i wyraźne treści seksualne", "Esta imagen puede contener desnudez y contenido sexual explícito"),
                     }),
                 ],
             }),
@@ -1062,7 +1063,7 @@ function nt({
             e.jsx("button", {
                 type: "button",
                 className: `audio-recebido-play-btn ${Y ? "listened" : ""}`,
-                "aria-label": u ? "Wstrzymaj audio" : "Odtwórz audio",
+                "aria-label": u ? __gsL("Wstrzymaj audio", "Pausar audio") : __gsL("Odtwórz audio", "Reproducir audio"),
                 onClick: se,
                 children: e.jsx("i", {
                     className: `fas ${u ? "fa-pause" : "fa-play"}`,
@@ -1103,18 +1104,18 @@ function nt({
                             setTimeout(() => {
                                 (R("failed"),
                                     setTimeout(() => {
-                                        c("Transkrybuj audio");
+                                        c(__gsL("Transkrybuj audio", "Transcribir audio"));
                                     }, 300));
                             }, 1500));
                 },
                 style: { cursor: S === "idle" ? "pointer" : "default" },
                 children: [
-                    S === "idle" && "Zobacz transkrypcję",
+                    S === "idle" && __gsL("Zobacz transkrypcję", "Ver transcripción"),
                     S === "transcribing" && "Transcrevendo...",
                     S === "failed" &&
                     e.jsxs(e.Fragment, {
                         children: [
-                            "Nie udało się transkrybować wiadomości.",
+                            __gsL("Nie udało się transkrybować wiadomości.", "No se pudo transcribir el mensaje."),
                             e.jsx("br", {}),
                             "Requer acesso VIP",
                         ],
@@ -1535,7 +1536,7 @@ const ct = {
             id: "bh8",
             direction: "sent",
             type: "text",
-            content: "To wpadnij wtedy ",
+            content: __gsL("To wpadnij wtedy ", "Entonces ven "),
             blurredPart: "** ** * ** ****",
         },
         {
@@ -1578,7 +1579,7 @@ const ct = {
             id: "bh4",
             direction: "received",
             type: "text",
-            content: "Zrobimy połączenie ",
+            content: __gsL("Zrobimy połączenie ", "Hagamos una llamada "),
             blurredPart: "** ** ** **",
         },
         { id: "bh5", direction: "sent", type: "text", content: "Agoraaa??" },
@@ -1859,7 +1860,7 @@ function lt({ msg: t }) {
                             e.jsx("button", {
                                 type: "button",
                                 className: "audio-recebido-play-btn",
-                                "aria-label": "Odtwórz audio",
+                                "aria-label": __gsL("Odtwórz audio", "Reproducir audio"),
                                 disabled: !0,
                                 children: e.jsx("i", { className: "fas fa-play" }),
                             }),
@@ -2016,7 +2017,7 @@ function ut({ config: t }) {
                     "quarta feira",
                     "quinta feira",
                     "sexta feira",
-                    "sobota",
+                    __gsL("sobota", "sábado"),
                 ][o.getDay()],
                 A = new Date();
             A.setDate(A.getDate() - 27);
@@ -2275,7 +2276,7 @@ function ut({ config: t }) {
                                     e.jsx("button", {
                                         type: "button",
                                         className: "chat-avatar-btn",
-                                        "aria-label": "Awatar użytkownika",
+                                        "aria-label": __gsL("Awatar użytkownika", "Avatar de usuario"),
                                         children: e.jsx("span", {
                                             className: "chat-avatar-gradient",
                                             children: e.jsx("span", {
@@ -2441,7 +2442,7 @@ function ut({ config: t }) {
                                     children: [
                                         e.jsx("div", {
                                             className: "input-action-icon",
-                                            onClick: () => L("Wyślij audio"),
+                                            onClick: () => L(__gsL("Wyślij audio", "Enviar audio")),
                                             children: e.jsxs("svg", {
                                                 "aria-label": "Clipe de voz",
                                                 className: "input-icon-img",
@@ -2496,7 +2497,7 @@ function ut({ config: t }) {
                                             className: "input-action-icon",
                                             onClick: () => L("Enviar foto"),
                                             children: e.jsxs("svg", {
-                                                "aria-label": "Dodaj zdjęcie lub film",
+                                                "aria-label": __gsL("Dodaj zdjęcie lub film", "Agregar foto o video"),
                                                 className: "input-icon-img",
                                                 fill: "currentColor",
                                                 height: "22",
@@ -2505,7 +2506,7 @@ function ut({ config: t }) {
                                                 width: "22",
                                                 children: [
                                                     e.jsx("title", {
-                                                        children: "Dodaj zdjęcie lub film",
+                                                        children: __gsL("Dodaj zdjęcie lub film", "Agregar foto o video"),
                                                     }),
                                                     e.jsx("path", {
                                                         d: "M6.549 5.013A1.557 1.557 0 1 0 8.106 6.57a1.557 1.557 0 0 0-1.557-1.557Z",
@@ -2801,7 +2802,7 @@ function ut({ config: t }) {
                                     strokeWidth: "2",
                                 }),
                             }),
-                            "Usuń dla siebie",
+                            __gsL("Usuń dla siebie", "Eliminar para ti"),
                         ],
                     }),
                     e.jsxs("div", {
@@ -2891,16 +2892,16 @@ function ut({ config: t }) {
 }
 function gt({ params: t }) {
     return [
-        { title: "GhostSpy | Uzyskaj Dostęp Teraz" },
+        { title: __gsL("GhostSpy | Uzyskaj Dostęp Teraz", "GhostSpy | Obtén Acceso Ahora") },
         {
             name: "description",
             content:
-                "Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.",
+                __gsL("Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.", "Descubre cómo rastrear un perfil de Instagram y ver likes, seguidores y actividades de forma sencilla. Analiza interacciones y descubre qué pasa en el perfil."),
         },
         {
             name: "keywords",
             content:
-                "ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+                __gsL("ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram", "ghostspy, ghost spy, ghostspy website, rastrear instagram, ver likes instagram, espiar pareja instagram, ver actividad instagram, rastrear perfil instagram"),
         },
     ];
 }

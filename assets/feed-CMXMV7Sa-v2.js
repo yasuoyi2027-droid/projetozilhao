@@ -6,6 +6,7 @@ import { P as Me } from "./PreviewBanner-DpTiVZze.js";
 import { B as Le } from "./BlockedPopup-RPTI6beX.js";
 import "./random-Bp_wQn4x.js";
 import "./utm-ClCK1WqV.js";
+function __gsL(a, b) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : a; } catch (_e) { return a; } }
 function Ae({
   isHidden: s,
   unreadMessages: g,
@@ -1208,17 +1209,17 @@ function Ye({ }) {
   return [
     {
       title:
-        "GhostSpy | Uzyskaj Dostęp Teraz",
+        __gsL("GhostSpy | Uzyskaj Dostęp Teraz", "GhostSpy | Obtén Acceso Ahora"),
     },
     {
       name: "description",
       content:
-        "Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.",
+        __gsL("Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.", "Descubre cómo rastrear un perfil de Instagram y ver likes, seguidores y actividades de forma sencilla. Analiza interacciones y descubre qué pasa en el perfil."),
     },
     {
       name: "keywords",
       content:
-        "ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+        __gsL("ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram", "ghostspy, ghost spy, ghostspy website, rastrear instagram, ver likes instagram, espiar pareja instagram, ver actividad instagram, rastrear perfil instagram"),
     },
   ];
 }
@@ -2059,7 +2060,7 @@ const Ge = Se(function () {
                     flex: 1,
                   },
                   children: [
-                    "Zobaczyłeś/aś wszystkie publikacje dostępne w darmowej wersji próbnej, zostań członkiem VIP, aby zobaczyć wszystkie posty.",
+                    __gsL("Zobaczyłeś/aś wszystkie publikacje dostępne w darmowej wersji próbnej, zostań członkiem VIP, aby zobaczyć wszystkie posty.", "Ya viste todas las publicaciones disponibles en la vista previa gratuita, hazte miembro VIP para ver todos los posts."),
                     " ",
                     e.jsx("span", {
                       onClick: () => {
@@ -2086,7 +2087,7 @@ const Ge = Se(function () {
                       "flex flex-col items-center justify-center py-12 gap-4",
                     children: e.jsx("p", {
                       className: "text-gray-400 text-sm",
-                      children: "Nie znaleziono żadnej publikacji",
+                      children: __gsL("Nie znaleziono żadnej publikacji", "No se encontró ninguna publicación"),
                     }),
                   })
                   : e.jsxs(e.Fragment, {
