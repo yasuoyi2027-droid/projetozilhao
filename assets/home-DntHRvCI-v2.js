@@ -1909,17 +1909,17 @@ function Ee({ }) {
   return [
     {
       title:
-        "GhostSpy | Uzyskaj Dostęp Teraz",
+        __gsL("GhostSpy | Uzyskaj Dostęp Teraz", "GhostSpy | Obtén Acceso Ahora"),
     },
     {
       name: "description",
       content:
-        "Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo. Wejdź na ghostspy.website.",
+        __gsL("Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo. Wejdź na ghostspy.website.", "Descubre cómo GhostSpy analiza perfiles de Instagram y muestra likes, conversaciones y actividades de forma 100% anónima. Entra a ghostspy.website."),
     },
     {
       name: "keywords",
       content:
-        "ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram",
+        __gsL("ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram", "ghostspy, ghost spy, ghostspy website, rastrear instagram, ver likes instagram, espiar pareja instagram, ver actividad instagram, rastrear perfil instagram"),
     },
   ];
 }
