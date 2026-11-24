@@ -5,9 +5,23 @@
       // Define o locale e o <title> inicial conforme ?country=mx|pl.
       // Roda antes do React para evitar flash de idioma errado na aba.
       try {
+        // Locale STICKY: só muda se a URL trouxer ?country= explicito;
+        // caso contrário mantém o que já está no localStorage (navegação
+        // SPA entre /, /cta, /feed, etc. perde os query params e NÃO pode
+        // resetar o idioma pra polaco).
         var __gsCountry = new URLSearchParams(window.location.search).get('country');
-        var __gsIsMx = (__gsCountry === 'mx');
-        window.localStorage.setItem('app_locale', __gsIsMx ? 'es-MX' : 'pl');
+        var __gsStored = window.localStorage.getItem('app_locale');
+        var __gsLocale;
+        if (__gsCountry === 'mx') __gsLocale = 'es-MX';
+        else if (__gsCountry === 'pl') __gsLocale = 'pl';
+        else if (__gsStored === 'es-MX' || __gsStored === 'pl') __gsLocale = __gsStored;
+        else {
+          // Fallback no primeiro acesso a um subpath sem ?country=: idioma do browser
+          var __gsNavLang = ((navigator && navigator.language) || '').toLowerCase();
+          __gsLocale = __gsNavLang.indexOf('es') === 0 ? 'es-MX' : 'pl';
+        }
+        window.localStorage.setItem('app_locale', __gsLocale);
+        var __gsIsMx = (__gsLocale === 'es-MX');
         document.documentElement.lang = __gsIsMx ? 'es-MX' : 'pl';
         document.title = __gsIsMx ? 'GhostSpy | Obtén Acceso Ahora' : 'GhostSpy | Uzyskaj Dostęp';
         // Atualiza <meta description> conforme locale para SEO / link preview
