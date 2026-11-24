@@ -25,9 +25,12 @@ const CONTACT_TAGS = ['Stały kontakt', 'Nowy podejrzany obserwujący', 'Wymiana
 const FIRST_NAMES_MX = ['Ana', 'Carlos', 'Karla', 'David', 'Felipe', 'Gabriela', 'Alejandra', 'Jacobo', 'Marta', 'Rafael', 'Sofía', 'Tomás'];
 const CONTACT_TAGS_MX = ['Contacto frecuente', 'Nuevo seguidor sospechoso', 'Intercambio de fotos', 'Videollamada', 'Mensaje eliminado', 'Perfil oculto'];
 
+const FIRST_NAMES_PT = ['Ana', 'Bruno', 'Carla', 'Diogo', 'Filipa', 'Gonçalo', 'Inês', 'João', 'Mariana', 'Ricardo', 'Sofia', 'Tiago'];
+const CONTACT_TAGS_PT = ['Conversa recorrente', 'Novo seguidor suspeito', 'Troca de fotos', 'Chamada de vídeo', 'Mensagem apagada', 'Perfil oculto'];
+
 function buildMonitoringData(seedKey, targetUsername, country) {
-  const names = country === 'mx' ? FIRST_NAMES_MX : FIRST_NAMES;
-  const tags = country === 'mx' ? CONTACT_TAGS_MX : CONTACT_TAGS;
+  const names = country === 'mx' ? FIRST_NAMES_MX : country === 'pt' ? FIRST_NAMES_PT : FIRST_NAMES;
+  const tags = country === 'mx' ? CONTACT_TAGS_MX : country === 'pt' ? CONTACT_TAGS_PT : CONTACT_TAGS;
   const rnd = mulberry32(seedFrom(seedKey));
   const suspiciousCount = 2 + Math.floor(rnd() * 4);
   const suspiciousContacts = Array.from({ length: suspiciousCount }, () => {

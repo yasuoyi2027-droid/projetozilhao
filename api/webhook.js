@@ -130,6 +130,7 @@ async function onPaymentPaid(data) {
         name: (created.payer || {}).name || null,
         email: payerEmail,
         sku,
+        country: l.country || null,
         created_at: new Date().toISOString(),
       };
       await accounts.saveAccount(paymentId, account);

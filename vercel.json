@@ -12,7 +12,7 @@
     { "source": "/api/proxy/leads.php", "destination": "/api/proxy-all?kind=leads" },
     { "source": "/api/proxy/leads", "destination": "/api/proxy-all?kind=leads" },
     {
-      "source": "/((?!api/|assets/|images/|checkout-mx|checkout|obrigado-mx|obrigado|painel-mx|painel|upsell-alertas-mx|upsell-alertas|upsell-blindagem-mx|upsell-blindagem|upsell-descoberta-mx|upsell-descoberta|upsell-taxa-seguranca-mx|upsell-taxa-seguranca|politica-de-privacidade-mx|politica-de-privacidade|termos-de-uso-mx|termos-de-uso|trocas-e-devolucoes-mx|trocas-e-devolucoes|politica-de-entrega-mx|politica-de-entrega|politica-de-reembolso-mx|politica-de-reembolso|sobre-nos-mx|sobre-nos|contato-mx|contato|favicon\\.png|nginx\\.conf).*)",
+      "source": "/((?!api/|assets/|images/|checkout-mx|checkout-pt|checkout|obrigado-mx|obrigado-pt|obrigado|painel-mx|painel-pt|painel|upsell-alertas-mx|upsell-alertas-pt|upsell-alertas|upsell-blindagem-mx|upsell-blindagem-pt|upsell-blindagem|upsell-descoberta-mx|upsell-descoberta-pt|upsell-descoberta|upsell-taxa-seguranca-mx|upsell-taxa-seguranca-pt|upsell-taxa-seguranca|politica-de-privacidade-mx|politica-de-privacidade-pt|politica-de-privacidade|termos-de-uso-mx|termos-de-uso-pt|termos-de-uso|trocas-e-devolucoes-mx|trocas-e-devolucoes-pt|trocas-e-devolucoes|politica-de-entrega-mx|politica-de-entrega-pt|politica-de-entrega|politica-de-reembolso-mx|politica-de-reembolso-pt|politica-de-reembolso|sobre-nos-mx|sobre-nos-pt|sobre-nos|contato-mx|contato-pt|contato|favicon\\.png|nginx\\.conf).*)",
       "destination": "/index.html"
     }
   ]

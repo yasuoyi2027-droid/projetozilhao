@@ -17,12 +17,16 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
     <script>
-      // Define o locale es-MX (fluxo México/Zenith) quando chega via ?country=mx,
-      // persistindo em localStorage para a sessão toda (ate o utilizador mudar).
+      // Define o locale conforme ?country=mx|pt|pl, persistindo em localStorage
+      // para a sessão toda (ate o utilizador mudar).
       try {
         var __gsCountry = new URLSearchParams(window.location.search).get('country');
         if (__gsCountry === 'mx') {
           window.localStorage.setItem('app_locale', 'es-MX');
+        } else if (__gsCountry === 'pt') {
+          window.localStorage.setItem('app_locale', 'pt-PT');
+        } else if (__gsCountry === 'pl') {
+          window.localStorage.setItem('app_locale', 'pl');
         }
       } catch (_e) {}
     </script>

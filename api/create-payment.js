@@ -155,10 +155,19 @@ module.exports = async function handler(req, res) {
           } catch (e) {}
         }
 
+        var siteCountry = input.site_country === 'pt' ? 'pt' : null;
+        if (!siteCountry && parentId) {
+          try {
+            const local = await loadParent();
+            siteCountry = local.country || null;
+          } catch (e) {}
+        }
+
         await storage.save(data.id, {
           id: data.id,
           status: data.status || 'pending',
           sku,
+          country: siteCountry,
           parent_id: parentId || null,
           created: Object.assign({}, data, { tracking: trackOut, phone, target_username: targetUsername }),
           user_context: userContext,

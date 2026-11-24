@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<title>Obrigado! | GhostSpy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1693031462523056');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1693031462523056&ev=PageView&noscript=1" /></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#0E82F8; --accent2:#0D54A3;
+  --bg:#F8FAFC; --card:#FFFFFF;
+  --text:#0F172A; --muted:#64748B; --border:#E2E8F0;
+  --success:#10B981;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:460px;margin:0 auto;padding:28px 16px 48px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:30px 22px;box-shadow:0 10px 30px rgba(15,23,42,.06);text-align:center}
+.tick{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,var(--success),#059669);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 14px 30px rgba(16,185,129,.35);animation:pop .4s ease-out}
+@keyframes pop{0%{transform:scale(.4)}60%{transform:scale(1.1)}100%{transform:scale(1)}}
+.title{font-size:28px;font-weight:900;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.15}
+.sub{color:var(--muted);margin:0 0 20px;font-size:15px;line-height:1.55}
+.sub b{color:var(--text)}
+.enter-btn{display:block;width:100%;box-sizing:border-box;margin:18px 0 6px;padding:16px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:900;font-size:15px;text-decoration:none;letter-spacing:.03em;text-transform:uppercase;transition:transform .15s,box-shadow .15s;box-shadow:0 10px 24px rgba(14,130,248,.3)}
+.enter-btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(14,130,248,.4)}
+.summary{text-align:left;background:#F8FAFC;border:1px solid var(--border);border-radius:14px;padding:14px;margin:18px 0}
+.summary h3{font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+.summary ul{list-style:none;margin:0;padding:0}
+.summary li{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed var(--border);font-size:14px}
+.summary li:last-child{border-bottom:none}
+.summary li .name{color:var(--text);font-weight:600}
+.summary li .value{color:var(--success);font-weight:800}
+.summary li.off .name{color:var(--muted);text-decoration:line-through}
+.summary li.off .value{color:var(--muted);font-weight:500}
+.total{display:flex;justify-content:space-between;padding-top:10px;margin-top:6px;border-top:2px solid var(--text);font-weight:900;font-size:16px}
+.steps{text-align:left;margin:20px 0 0}
+.steps h3{font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+.step{display:flex;gap:10px;padding:10px 0;align-items:flex-start}
+.step .num{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.step .tx{flex:1;font-size:13px;color:var(--muted);line-height:1.5}
+.step .tx b{color:var(--text)}
+.notes{color:var(--muted);font-size:12px;text-align:center;margin-top:22px;line-height:1.5}
+.notes b{color:var(--text)}
+.creds{text-align:left;background:#EFF6FF;border:1px solid #DCE8FB;border-radius:14px;padding:14px 16px;margin:18px 0}
+.creds h3{font-size:12.5px;font-weight:800;color:var(--accent2);letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px}
+.creds .line{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:4px 0}
+.creds .line b{font-family:ui-monospace,monospace;letter-spacing:.02em}
+.creds p{font-size:11.5px;color:var(--muted);margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h1 class="title">Está tudo pronto!</h1>
+    <p class="sub">Compra confirmada. O seu acesso VIP está activo neste dispositivo.</p>
+
+    <div id="creds-box" class="creds" style="display:none">
+      <h3>O seu acesso ao painel</h3>
+      <div class="line"><span>Utilizador</span><b id="creds-user">—</b></div>
+      <div class="line"><span>Palavra-passe</span><b id="creds-pass">—</b></div>
+      <p>Guarde estes dados — vai precisar deles para entrar novamente no painel.</p>
+    </div>
+
+    <a id="enter-btn" href="/painel-pt" class="enter-btn">Entrar no painel agora →</a>
+
+    <div class="summary">
+      <h3>Resumo da sua compra</h3>
+      <ul id="summary-list">
+        <li>
+          <span class="name">GhostSpy Acesso VIP</span>
+          <span class="value">✓ Entregue</span>
+        </li>
+        <li class="off" id="row-bump">
+          <span class="name">+ Análise de 3 perfis extra</span>
+          <span class="value">—</span>
+        </li>
+        <li class="off" id="row-blindagem">
+          <span class="name">Blindagem de Confidencialidade</span>
+          <span class="value">—</span>
+        </li>
+        <li class="off" id="row-descoberta">
+          <span class="name">Relatório de Evento Suspeito</span>
+          <span class="value">—</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="steps">
+      <h3>Como funciona agora</h3>
+      <div class="step">
+        <div class="num">1</div>
+        <div class="tx"><b>Acesso imediato</b> — o painel já está desbloqueado neste dispositivo. Toque em <b>Entrar no painel</b> acima.</div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="tx">Veja <b>interações, mensagens, seguidores suspeitos</b> e toda a atividade do perfil analisado.</div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="tx">Precisa de ajuda? Contacte-nos no <b>suporte@ghostspy.site</b> — resposta em até 2h.</div>
+      </div>
+    </div>
+
+    <p class="notes">
+      30 dias de garantia incondicional · Suporte <b>suporte@ghostspy.site</b>
+    </p>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var p = new URLSearchParams(location.search);
+
+  // Busca o login/senha gerados automaticamente na compra (via ?pid=<payment_id>).
+  (function loadCredentials(){
+    var pid = p.get('pid') || sessionStorage.getItem('checkout_core_paid_id');
+    if (!pid) return;
+    fetch('/api/get-credentials?id=' + encodeURIComponent(pid), { cache: 'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(creds){
+        if (!creds || !creds.username) return;
+        document.getElementById('creds-user').textContent = creds.username;
+        document.getElementById('creds-pass').textContent = creds.password;
+        document.getElementById('creds-box').style.display = 'block';
+        var enterBtn = document.getElementById('enter-btn');
+        enterBtn.href = '/painel-pt?u=' + encodeURIComponent(creds.username) + '&p=' + encodeURIComponent(creds.password);
+      })
+      .catch(function(){});
+  })();
+
+  var bumpOn = sessionStorage.getItem('checkout_bump') === '1';
+  if (bumpOn){
+    var r = document.getElementById('row-bump');
+    r.classList.remove('off');
+    r.querySelector('.value').textContent = '✓ Entregue';
+    r.querySelector('.value').style.color = '#10B981';
+  }
+
+  // Marca os upsells que foram pagos (via query ?prev=blindagem_paid etc.).
+  var prev = (p.get('prev') || '').split(',');
+  function markPaid(rowId){
+    var r = document.getElementById(rowId);
+    if (!r) return;
+    r.classList.remove('off');
+    r.querySelector('.value').textContent = '✓ Entregue';
+    r.querySelector('.value').style.color = '#10B981';
+  }
+  // Marca de acordo com localStorage persistente (as páginas de upsell podem deixar bandeiras).
+  try {
+    if (sessionStorage.getItem('upsell_blindagem_paid') === '1') markPaid('row-blindagem');
+    if (sessionStorage.getItem('upsell_descoberta_paid') === '1') markPaid('row-descoberta');
+  } catch(_){}
+
+  // Limpa estado da sessão depois do obrigado.
+  try {
+    ['checkout_phone','checkout_country_code','checkout_bump','checkout_core_paid_id',
+     'upsell_blindagem_paid','upsell_descoberta_paid']
+      .forEach(function(k){ sessionStorage.removeItem(k); });
+  } catch(_){}
+})();
+</script>
+<footer style="max-width:420px;margin:24px auto 0;padding:16px 10px 0;border-top:1px solid #E2E8F0;text-align:center;font-family:Inter,system-ui,sans-serif;font-size:11px;line-height:1.6;color:#94A3B8">
+  GhostSpy — Jordana Frade · NIF 246990120<br/>
+  Travessa de Além Rio, 50, 4780-460 Santo Tirso, Porto, Portugal<br/>
+  Tel: <a href="tel:+351252837400" style="color:#94A3B8">+351 252 837 400</a> ·
+  <a href="mailto:suporte@ghostemail.com" style="color:#94A3B8">suporte@ghostemail.com</a><br/>
+  <a href="/politica-de-privacidade-pt" style="color:#94A3B8">Privacidade</a> ·
+  <a href="/termos-de-uso-pt" style="color:#94A3B8">Termos</a> ·
+  <a href="/trocas-e-devolucoes-pt" style="color:#94A3B8">Trocas e Devoluções</a> ·
+  <a href="/politica-de-entrega-pt" style="color:#94A3B8">Entrega</a> ·
+  <a href="/politica-de-reembolso-pt" style="color:#94A3B8">Reembolso</a> ·
+  <a href="/sobre-nos-pt" style="color:#94A3B8">Sobre Nós</a> ·
+  <a href="/contato-pt" style="color:#94A3B8">Contato</a>
+</footer>
+</body>
+</html>
