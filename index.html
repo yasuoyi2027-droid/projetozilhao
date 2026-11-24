@@ -33,8 +33,6 @@
         var __gsCountry = new URLSearchParams(window.location.search).get('country');
         if (__gsCountry === 'mx') {
           window.localStorage.setItem('app_locale', 'es-MX');
-        } else if (__gsCountry === 'pt') {
-          window.localStorage.setItem('app_locale', 'pt-PT');
         } else {
           window.localStorage.setItem('app_locale', 'pl');
         }

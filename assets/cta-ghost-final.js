@@ -14,7 +14,7 @@ function ne() {
   return a || null;
 }
 function ae(s) {
-  // Checkout no próprio domínio — integração CHECKOUT ALFAIABOEMIA (MBWay + Multibanco)
+  // Checkout no próprio domínio — Zenith (BLIK para PL, OXXO/SPEI para MX)
   // para Polónia (pl) e Portugal (pt-PT, em /checkout-pt/), ou ZENITH (OXXO/SPEI,
   // MXN) para o fluxo México (locale es-MX) em /checkout-mx/.
   // A página /checkout/ aceita UTMs via query (já anexadas abaixo) e o preço via ?price=XX.XX.
