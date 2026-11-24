@@ -1073,22 +1073,28 @@ function oe(t, i) {
       __gsL("Już nie mogę wytrzymać!", "¡Ya no aguanto más!", "Já não aguento mais!"),
       "👀",
     ],
-    c = [
-      { title: "Coração Partido (Ao Vivo)", artist: "Grupo Menos É Mais" },
-      {
-        title: "365 Dias (Vida Mansa)",
-        artist: "MC Marks, MC Ryan SP, MC Jvila, MC Bruno MS, MC Magal",
-      },
-      { title: "APT.", artist: "Rosé & Bruno Mars" },
-      { title: "What's I've Done", artist: "Link Park" },
-      {
-        title: "Oh Garota Eu Quero Você Só Pra Mim",
-        artist: "Oruam, Zé Felipe, MC Tuto, MC Rodrigo Do CN",
-      },
-    ];
+    c = (function(){
+      try {
+        var __loc = localStorage.getItem("app_locale") || "pl";
+        if (__loc === "es-MX") return [
+          { title: "Flowers", artist: "Miley Cyrus" },
+          { title: "Qué Agonía", artist: "Yuridia & Ángela Aguilar" },
+          { title: "APT.", artist: "Rosé & Bruno Mars" },
+          { title: "La Diabla", artist: "Xavi" },
+          { title: "Hasta Que Salga el Sol", artist: "Don Omar" },
+        ];
+      } catch(_) {}
+      return [
+        { title: "Coração Partido (Ao Vivo)", artist: "Grupo Menos É Mais" },
+        { title: "365 Dias (Vida Mansa)", artist: "MC Marks, MC Ryan SP, MC Jvila, MC Bruno MS, MC Magal" },
+        { title: "APT.", artist: "Rosé & Bruno Mars" },
+        { title: "What's I've Done", artist: "Link Park" },
+        { title: "Oh Garota Eu Quero Você Só Pra Mim", artist: "Oruam, Zé Felipe, MC Tuto, MC Rodrigo Do CN" },
+      ];
+    })();
   s.push({
     username: t?.username || "user",
-    displayName: "Sua nota",
+    displayName: __gsL("Twoja notka", "Tu nota", "A tua nota"),
     profilePic: t?.profile_pic_url || "/images/avatars/perfil-sem-foto.jpeg",
     hasStory: !1,
     isOwn: !0,
