@@ -5,7 +5,7 @@ import { B as $ } from "./BlockedPopup-RPTI6beX.js";
 import { P as W } from "./PreviewBanner-DpTiVZze.js";
 import { d as Z, c as J } from "./api-bupDNBJY-v2.js";
 import "./utm-ClCK1WqV.js";
-function __gsL(a, b) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : a; } catch (_e) { return a; } }
+function __gsL(a, b, c) { try { var l = typeof localStorage !== "undefined" && localStorage.getItem("app_locale"); if (l === "es-MX") return b; if (l === "pt-PT") return c || a; return a; } catch (_e) { return a; } }
 function V({ username: t, onCameraClick: i, onNewMessageClick: s }) {
   const r = E(),
     [c] = L(),
@@ -355,7 +355,7 @@ function X({ title: t, artist: i }) {
               children: [
                 e.jsx("title", {
                   children:
-                    __gsL("Ikona przedstawiająca fale dźwiękowe z trzema wertykalnymi słupkami, które pulsująco zmieniają wysokość", "Icono que representa ondas de sonido con tres barras verticales que cambian de altura de forma pulsante"),
+                    __gsL("Ikona przedstawiająca fale dźwiękowe z trzema wertykalnymi słupkami, które pulsująco zmieniają wysokość", "Icono que representa ondas de sonido con tres barras verticales que cambian de altura de forma pulsante", "Ícone representando ondas sonoras com três barras verticais que mudam de altura de maneira pulsante"),
                 }),
                 e.jsx("rect", {
                   height: "30",
@@ -1016,16 +1016,16 @@ function ae({
 }
 function ge({ }) {
   return [
-    { title: __gsL("GhostSpy | Uzyskaj Dostęp Teraz", "GhostSpy | Obtén Acceso Ahora") },
+    { title: __gsL("GhostSpy | Uzyskaj Dostęp Teraz", "GhostSpy | Obtén Acceso Ahora", "GhostSpy | Acesse Agora") },
     {
       name: "description",
       content:
-        __gsL("Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.", "Descubre cómo rastrear un perfil de Instagram y ver likes, seguidores y actividades de forma sencilla. Analiza interacciones y descubre qué pasa en el perfil."),
+        __gsL("Odkryj, jak śledzić profil na Instagramie i zobacz polubienia, obserwujących i aktywności w prosty sposób. Analizuj interakcje i odkryj, co się dzieje na profilu.", "Descubre cómo rastrear un perfil de Instagram y ver likes, seguidores y actividades de forma sencilla. Analiza interacciones y descubre qué pasa en el perfil.", "Descubra como espionar um perfil no Instagram e ver curtidas, seguidores e atividades de forma simples. Analise interações e descubra o que acontece no perfil."),
     },
     {
       name: "keywords",
       content:
-        __gsL("ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram", "ghostspy, ghost spy, ghostspy website, rastrear instagram, ver likes instagram, espiar pareja instagram, ver actividad instagram, rastrear perfil instagram"),
+        __gsL("ghostspy, ghost spy, ghostspy website, śledzić instagram, zobacz polubienia instagram, szpiegować partnera instagram, zobacz aktywność instagram, śledzić profil instagram", "ghostspy, ghost spy, ghostspy website, rastrear instagram, ver likes instagram, espiar pareja instagram, ver actividad instagram, rastrear perfil instagram", "ghostspy, ghost spy, ghostspy website, espionar instagram, ver curtidas instagram, espionar cônjuge instagram, ver atividades instagram, espionar perfil instagram"),
     },
   ];
 }
@@ -1065,12 +1065,12 @@ function ne(t) {
 function oe(t, i) {
   const s = [],
     r = [
-      __gsL("Opowiedz nowości", "Cuéntame las novedades"),
-      __gsL("Lenistwo Dzisiaj 🥱🥱", "Flojera Hoy 🥱🥱"),
-      __gsL("Chęć na trójkącik 😈", "Ganas de un trío 😈"),
+      __gsL("Opowiedz nowości", "Cuéntame las novedades", "Conte as novidades"),
+      __gsL("Lenistwo Dzisiaj 🥱🥱", "Flojera Hoy 🥱🥱", "Preguiça Hoje 🥱🥱"),
+      __gsL("Chęć na trójkącik 😈", "Ganas de un trío 😈", "O vontde fudê a 3 😈"),
       re(),
-      __gsL("ktoś?? #nuda", "alguien?? #aburrido"),
-      __gsL("Już nie mogę wytrzymać!", "¡Ya no aguanto más!"),
+      __gsL("ktoś?? #nuda", "alguien?? #aburrido", "alguém?? #tedio"),
+      __gsL("Już nie mogę wytrzymać!", "¡Ya no aguanto más!", "Já não aguento mais!"),
       "👀",
     ],
     c = [
@@ -1140,7 +1140,7 @@ function oe(t, i) {
         displayName: "Swi*******",
         profilePic: "/images/screenshots/StorySwing.png",
         hasStory: !0,
-        label: __gsL("Chęć na trójkącik 😈", "Ganas de un trío 😈"),
+        label: __gsL("Chęć na trójkącik 😈", "Ganas de un trío 😈", "O vontde fudê a 3 😈"),
       }));
   });
   let h = null;
@@ -1240,7 +1240,7 @@ function le(t, i) {
     "🔥🔥",
     "Enviado",
     "Enviado segunda-feira",
-    __gsL("Pyszny/a jesteś 😈 😈", "Qué rico/a eres 😈 😈"),
+    __gsL("Pyszny/a jesteś 😈 😈", "Qué rico/a eres 😈 😈", "Delícia você 😈 😈"),
     "Curtiu sua mensagem",
     "Enviado quinta-feira",
     "Ah sim entendi",

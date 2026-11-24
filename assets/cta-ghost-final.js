@@ -1,7 +1,7 @@
 ﻿const BF_TAPE = "<div class=\"bf-tape b\"><b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> </div><div class=\"bf-tape\"><b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> <b>BLACK</b> FRIDAY <i>●</i> </div>";
 const BF_BADGE = "<svg class=\"bf-badge\" viewBox=\"0 0 120 120\" aria-label=\"Black Friday\"><defs><linearGradient id=\"bfr\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ff4040\"/><stop offset=\"1\" stop-color=\"#a30000\"/></linearGradient><linearGradient id=\"bfd\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#2b2b2b\"/><stop offset=\"1\" stop-color=\"#050505\"/></linearGradient></defs><polygon points=\"60.0,2.0 72.4,22.0 94.1,13.1 92.4,36.5 115.2,42.1 100.0,60.0 115.2,77.9 92.4,83.5 94.1,106.9 72.4,98.0 60.0,118.0 47.6,98.0 25.9,106.9 27.6,83.5 4.8,77.9 20.0,60.0 4.8,42.1 27.6,36.5 25.9,13.1 47.6,22.0\" fill=\"url(#bfr)\"/><polygon points=\"60.0,12.0 70.2,28.6 88.2,21.2 86.7,40.6 105.7,45.2 93.0,60.0 105.7,74.8 86.7,79.4 88.2,98.8 70.2,91.4 60.0,108.0 49.8,91.4 31.8,98.8 33.3,79.4 14.3,74.8 27.0,60.0 14.3,45.2 33.3,40.6 31.8,21.2 49.8,28.6\" fill=\"url(#bfd)\"/><g font-family=\"Arial Black,Impact,sans-serif\" font-weight=\"900\" font-size=\"21\" text-anchor=\"middle\" transform=\"rotate(-8 60 60)\"><text x=\"60\" y=\"56\" fill=\"#000\" stroke=\"#000\" stroke-width=\"4\" stroke-linejoin=\"round\">BLACK</text><text x=\"60\" y=\"56\" fill=\"#fff\">BLACK</text><text x=\"60\" y=\"80\" fill=\"#000\" stroke=\"#000\" stroke-width=\"4\" stroke-linejoin=\"round\">FRIDAY</text><text x=\"60\" y=\"80\" fill=\"#fff\">FRIDAY</text></g></svg>";
 
-function __gsL(a, b) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : a; } catch (_e) { return a; } }
+function __gsL(a, b, c) { try { return (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "es-MX") ? b : (typeof localStorage !== "undefined" && localStorage.getItem("app_locale") === "pt-PT") ? (c || a) : a; } catch (_e) { return a; } }
 import { w as H, a as t, p as e } from "./chunk-EPOLDU6W-CkoexLYk.js";
 import { M as G } from "./MatrixCanvas-gBTz1CWi.js";
 import { g as K } from "./utm-ClCK1WqV.js";
@@ -45,12 +45,12 @@ function te({ }) {
   return [
     {
       title:
-        __gsL("GhostSpy | Uzyskaj Dostęp", "GhostSpy | Obtén Acceso Ahora"),
+        __gsL("GhostSpy | Uzyskaj Dostęp", "GhostSpy | Obtén Acceso Ahora", "GhostSpy | Aceder Agora"),
     },
     {
       name: "description",
       content:
-        __gsL("Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo.", "Descubre cómo GhostSpy analiza perfiles de Instagram y muestra me gusta, conversaciones y actividades de forma 100% anónima."),
+        __gsL("Odkryj, jak GhostSpy analizuje profile na Instagramie i pokazuje polubienia, rozmowy i aktywności w 100% anonimowo.", "Descubre cómo GhostSpy analiza perfiles de Instagram y muestra me gusta, conversaciones y actividades de forma 100% anónima.", "Descubra como o GhostSpy analisa perfis no Instagram e mostra gostos, conversas e atividades de forma 100% anónima."),
     },
     {
       name: "keywords",
@@ -140,10 +140,10 @@ const X = 600 * 1e3,
       }, []),
       t.useEffect(() => {
         const a = [
-          { text: __gsL("Tęsknię za wczorajszą nocą 🔥", "Extraño lo de anoche 🔥"), isSent: !1 },
-          { text: __gsL("A tak... kiedy się znowu zobaczymy?", "Oye... ¿cuándo nos vemos otra vez?"), isSent: !0 },
-          { text: __gsL("Dziś o 23:00, w zwykłym miejscu? 😏", "Hoy a las 11pm, en el lugar de siempre? 😏"), isSent: !1 },
-          { text: __gsL("Idealnie. Usuń po przeczytaniu 🤫", "Perfecto. Bórralo después de leer 🤫"), isSent: !0 },
+          { text: __gsL("Tęsknię za wczorajszą nocą 🔥", "Extraño lo de anoche 🔥", "Saudades de ontem à noite 🔥"), isSent: !1 },
+          { text: __gsL("A tak... kiedy się znowu zobaczymy?", "Oye... ¿cuándo nos vemos otra vez?", "Também... quando nos vemos de novo?"), isSent: !0 },
+          { text: __gsL("Dziś o 23:00, w zwykłym miejscu? 😏", "Hoy a las 11pm, en el lugar de siempre? 😏", "Hoje às 23h, no sítio do costume? 😏"), isSent: !1 },
+          { text: __gsL("Idealnie. Usuń po przeczytaniu 🤫", "Perfecto. Bórralo después de leer 🤫", "Perfeito. Apaga depois de ler 🤫"), isSent: !0 },
         ];
         let i = !0;
         const r = [],
@@ -219,28 +219,28 @@ const X = 600 * 1e3,
       O = t.useMemo(() => ae(o), [o]),
       $ = [
         {
-          q: __gsL("Czy to narzędzie naprawdę działa?", "¿De verdad funciona esta herramienta?"),
-          a: __gsL("Tak! GhostSpy wykorzystuje zaawansowaną technologię, aby uzyskać dostęp do danych z Instagrama w sposób całkowicie niewidoczny. Tysiące użytkowników już potwierdziło skuteczność tego narzędzia.", "¡Sí! GhostSpy utiliza tecnología avanzada para acceder a los datos de Instagram de forma completamente invisible. Miles de usuarios ya confirmaron la eficacia de esta herramienta."),
+          q: __gsL("Czy to narzędzie naprawdę działa?", "¿De verdad funciona esta herramienta?", "A ferramenta funciona mesmo?"),
+          a: __gsL("Tak! GhostSpy wykorzystuje zaawansowaną technologię, aby uzyskać dostęp do danych z Instagrama w sposób całkowicie niewidoczny. Tysiące użytkowników już potwierdziło skuteczność tego narzędzia.", "¡Sí! GhostSpy utiliza tecnología avanzada para acceder a los datos de Instagram de forma completamente invisible. Miles de usuarios ya confirmaron la eficacia de esta herramienta.", "Sim! O GhostSpy utiliza tecnologia avançada para aceder aos dados do Instagram de forma completamente invisível. Milhares de utilizadores já confirmaram a eficácia da ferramenta."),
         },
         {
-          q: __gsL("Czy ta osoba dowie się, że analizowałem jej profil?", "¿Esa persona se dará cuenta de que analicé su perfil?"),
-          a: __gsL("Nie! Dostęp jest w 100% niewidoczny. Osoba nie otrzymuje żadnego powiadomienia i nie ma żadnych śladów, że przeglądałeś jej profil.", "¡No! El acceso es 100% invisible. La persona no recibe ninguna notificación y no queda ningún rastro de que revisaste su perfil."),
+          q: __gsL("Czy ta osoba dowie się, że analizowałem jej profil?", "¿Esa persona se dará cuenta de que analicé su perfil?", "A pessoa vai saber que analisei o perfil dela?"),
+          a: __gsL("Nie! Dostęp jest w 100% niewidoczny. Osoba nie otrzymuje żadnego powiadomienia i nie ma żadnych śladów, że przeglądałeś jej profil.", "¡No! El acceso es 100% invisible. La persona no recibe ninguna notificación y no queda ningún rastro de que revisaste su perfil.", "Não! O acesso é 100% invisível. A pessoa não recebe qualquer notificação e não há rastos de que visualizou o perfil dela."),
         },
         {
-          q: __gsL("Działa na profilach prywatnych?", "¿Funciona en perfiles privados?"),
-          a: __gsL("Tak! GhostSpy działa na każdym typie profilu, w tym na profilach prywatnych, zweryfikowanych kontach i profilach biznesowych.", "¡Sí! GhostSpy funciona en cualquier tipo de perfil, incluyendo perfiles privados, cuentas verificadas y perfiles comerciales."),
+          q: __gsL("Działa na profilach prywatnych?", "¿Funciona en perfiles privados?", "Funciona em perfis privados?"),
+          a: __gsL("Tak! GhostSpy działa na każdym typie profilu, w tym na profilach prywatnych, zweryfikowanych kontach i profilach biznesowych.", "¡Sí! GhostSpy funciona en cualquier tipo de perfil, incluyendo perfiles privados, cuentas verificadas y perfiles comerciales.", "Sim! O GhostSpy funciona em qualquer tipo de perfil, incluindo perfis privados, contas verificadas e perfis comerciais."),
         },
         {
-          q: __gsL("Czy muszę coś instalować?", "¿Necesito instalar algo?"),
-          a: __gsL("Nie! GhostSpy działa całkowicie w chmurze. Wystarczy wejść przez przeglądarkę, bez pobierania czy instalowania czegokolwiek na urządzeniu.", "¡No! GhostSpy funciona completamente en la nube. Solo necesitas entrar desde el navegador, sin descargar ni instalar nada en tu dispositivo."),
+          q: __gsL("Czy muszę coś instalować?", "¿Necesito instalar algo?", "Preciso de instalar alguma coisa?"),
+          a: __gsL("Nie! GhostSpy działa całkowicie w chmurze. Wystarczy wejść przez przeglądarkę, bez pobierania czy instalowania czegokolwiek na urządzeniu.", "¡No! GhostSpy funciona completamente en la nube. Solo necesitas entrar desde el navegador, sin descargar ni instalar nada en tu dispositivo.", "Não! O GhostSpy funciona totalmente na nuvem. Só precisa de aceder pelo navegador, sem transferir nem instalar nada no seu dispositivo."),
         },
         {
-          q: __gsL("Jak działa gwarancja?", "¿Cómo funciona la garantía?"),
-          a: __gsL("Oferujemy 30-dniową gwarancję. Jeśli nie będziesz zadowolony, zwrócimy 100% Twoich pieniędzy, bez pytań.", "Ofrecemos una garantía de 30 días. Si no quedas satisfecho, te devolvemos el 100% de tu dinero, sin preguntas."),
+          q: __gsL("Jak działa gwarancja?", "¿Cómo funciona la garantía?", "Como funciona a garantia?"),
+          a: __gsL("Oferujemy 30-dniową gwarancję. Jeśli nie będziesz zadowolony, zwrócimy 100% Twoich pieniędzy, bez pytań.", "Ofrecemos una garantía de 30 días. Si no quedas satisfecho, te devolvemos el 100% de tu dinero, sin preguntas.", "Oferecemos garantia de 30 dias. Se não ficar satisfeito, devolvemos 100% do seu dinheiro, sem perguntas."),
         },
         {
-          q: __gsL("Jak długo mam dostęp?", "¿Por cuánto tiempo tengo acceso?"),
-          a: __gsL("Dostęp jest dożywotni! Po zakupie możesz używać narzędzia na zawsze, bez abonamentów i odnowień.", "¡El acceso es de por vida! Una vez comprado, puedes usar la herramienta para siempre, sin mensualidades ni renovaciones."),
+          q: __gsL("Jak długo mam dostęp?", "¿Por cuánto tiempo tengo acceso?", "Quanto tempo tenho acesso?"),
+          a: __gsL("Dostęp jest dożywotni! Po zakupie możesz używać narzędzia na zawsze, bez abonamentów i odnowień.", "¡El acceso es de por vida! Una vez comprado, puedes usar la herramienta para siempre, sin mensualidades ni renovaciones.", "O acesso é vitalício! Depois de adquirido, pode usar a ferramenta para sempre, sem mensalidades nem renovações."),
         },
       ],
       F = [
@@ -248,7 +248,7 @@ const X = 600 * 1e3,
           name: "joaopires_pt",
           time: "3h",
           avatar: "/images/avatars/avatar-depoimento-1.jpg",
-          text: __gsL("Myślałam, że to oszustwo, ale i tak przetestowałam. Zapłaciłam i w 3 minuty dostałam dostęp. Wszystko było tam: DM-y, zdjęcia, które usuwał, nawet lokalizacja działała. Warte każdego grosza.", "Pensé que era un fraude pero lo probé de todos modos. Pagué y en 3 minutos ya tenía acceso. Todo estaba ahí: DMs, fotos que él borraba, hasta la ubicación funcionaba. Valió cada peso."),
+          text: __gsL("Myślałam, że to oszustwo, ale i tak przetestowałam. Zapłaciłam i w 3 minuty dostałam dostęp. Wszystko było tam: DM-y, zdjęcia, które usuwał, nawet lokalizacja działała. Warte każdego grosza.", "Pensé que era un fraude pero lo probé de todos modos. Pagué y en 3 minutos ya tenía acceso. Todo estaba ahí: DMs, fotos que él borraba, hasta la ubicación funcionaba. Valió cada peso.", "Achei que era aldrabice mas testei na mesma. Paguei e em 3 min recebi o acesso. Estava tudo lá: directs, fotos que ele apagava, até a localização funcionou. Valeu cada cêntimo."),
         },
         {
           name: "ritamartins_34",
@@ -260,7 +260,7 @@ const X = 600 * 1e3,
           name: "carlos_mendes",
           time: "1d",
           avatar: "/images/avatars/avatar-depoimento-3.jpg",
-          text: __gsL("W pełnej wersji przetestowałam z @ mojego chłopaka i zobaczyłam ogrom rzeczy. Lokalizacja, skrywane zdjęcia, nawet usunięte rozmowy. Było tak, jak pokazywali.", "En la versión completa lo probé con el @ de mi novio y vi muchísimas cosas. Ubicación, fotos escondidas, hasta conversaciones borradas. Fue exactamente como lo mostraban."),
+          text: __gsL("W pełnej wersji przetestowałam z @ mojego chłopaka i zobaczyłam ogrom rzeczy. Lokalizacja, skrywane zdjęcia, nawet usunięte rozmowy. Było tak, jak pokazywali.", "En la versión completa lo probé con el @ de mi novio y vi muchísimas cosas. Ubicación, fotos escondidas, hasta conversaciones borradas. Fue exactamente como lo mostraban.", "Na versão completa testei com o @ do meu namorado e vi imensa coisa. Localização, fotos escondidas, até conversas apagadas. Foi exatamente como mostraram."),
         },
       ],
       D = [
@@ -284,13 +284,13 @@ const X = 600 * 1e3,
                   children: [
                     e.jsx("strong", {
                       style: { fontWeight: 900 },
-                      children: __gsL("Dokończ zakup teraz!", "¡Termina tu compra ahora!"),
+                      children: __gsL("Dokończ zakup teraz!", "¡Termina tu compra ahora!", "Finalize a sua compra agora!"),
                     }),
                     e.jsx("br", {}),
                     e.jsx("span", {
                       style: { display: "inline-block", marginTop: "3px" },
                       children:
-                        __gsL("Nie wychodź i nie odświeżaj tej strony, analizy nie można powtórzyć.", "No salgas ni recargues esta página, el análisis no se puede repetir."),
+                        __gsL("Nie wychodź i nie odświeżaj tej strony, analizy nie można powtórzyć.", "No salgas ni recargues esta página, el análisis no se puede repetir.", "Não saia nem recarregue esta página, a análise não pode ser feita novamente."),
                     }),
                   ],
                 })
@@ -299,7 +299,7 @@ const X = 600 * 1e3,
                     e.jsxs("strong", {
                       style: { fontWeight: 900 },
                       children: [
-                        __gsL("Dokończ zakup w", "Termina tu compra en"),
+                        __gsL("Dokończ zakup w", "Termina tu compra en", "Finalize a sua compra em"),
                         " ",
                         e.jsx("span", { id: "countdown", children: E }),
                       ],
@@ -308,7 +308,7 @@ const X = 600 * 1e3,
                     e.jsxs("span", {
                       style: { display: "inline-block", marginTop: "3px" },
                       children: [
-                        __gsL("Gdy licznik dojdzie do zera, nigdy więcej nie będzie można uzyskać dostępu do Instagrama ", "Cuando el contador llegue a cero, nunca más podrás acceder al Instagram de "),
+                        __gsL("Gdy licznik dojdzie do zera, nigdy więcej nie będzie można uzyskać dostępu do Instagrama ", "Cuando el contador llegue a cero, nunca más podrás acceder al Instagram de ", "Quando o cronómetro chegar a zero, nunca mais será possível aceder ao Instagram de "),
                         l,
                         ".",
                       ],
@@ -329,7 +329,7 @@ const X = 600 * 1e3,
                 className: "cta-timer-button",
                 onClick: B,
                 style: { whiteSpace: "nowrap" },
-                children: ["Desbloquear", e.jsx("br", {}), __gsL("Uzyskaj Dostęp Teraz", "Obtener Acceso Ahora")],
+                children: ["Desbloquear", e.jsx("br", {}), __gsL("Uzyskaj Dostęp Teraz", "Obtener Acceso Ahora", "Acesso Agora")],
               }),
             }),
           ],
@@ -342,19 +342,19 @@ const X = 600 * 1e3,
               children: [
                 e.jsx("img", {
                   src: "/images/logos/ghostspy-logo.png?v=20261103-blue",
-                  alt: __gsL("Logo GhostSpy", "Logo de GhostSpy"),
+                  alt: __gsL("Logo GhostSpy", "Logo de GhostSpy", "GhostSpy Logo"),
                 }),
                 e.jsxs("h1", {
                   className: "cta-main-title",
                   children: [
-                    __gsL("Największe narzędzie", "La herramienta más grande"),
+                    __gsL("Największe narzędzie", "La herramienta más grande", "A maior ferramenta"),
                     e.jsx("br", {}),
-                    __gsL("do ", "de "),
+                    __gsL("do ", "de ", "de "),
                     e.jsx("span", {
                       className: "cta-gradient",
-                      children: __gsL("śledzenia", "rastreo"),
+                      children: __gsL("śledzenia", "rastreo", "Investigação"),
                     }),
-                    __gsL(" w Polsce", " en México"),
+                    __gsL(" w Polsce", " en México", " de Portugal"),
                   ],
                 }),
               ],
@@ -391,7 +391,7 @@ const X = 600 * 1e3,
                       children: [
                         e.jsx("h2", {
                           className: "cta-profile-card-username",
-                          children: n?.full_name || o || __gsL("Osoba Analizowana", "Persona Analizada"),
+                          children: n?.full_name || o || __gsL("Osoba Analizowana", "Persona Analizada", "Pessoa Investigada"),
                         }),
                         e.jsxs("p", {
                           className: "cta-profile-card-name",
@@ -410,7 +410,7 @@ const X = 600 * 1e3,
                                 }),
                                 e.jsxs("span", {
                                   className: "cta-profile-card-stat-label",
-                                  children: [" ", __gsL("publikacji", "publicaciones")],
+                                  children: [" ", __gsL("publikacji", "publicaciones", "publicações")],
                                 }),
                               ],
                             }),
@@ -423,7 +423,7 @@ const X = 600 * 1e3,
                                 }),
                                 e.jsxs("span", {
                                   className: "cta-profile-card-stat-label",
-                                  children: [" ", __gsL("obserwujących", "seguidores")],
+                                  children: [" ", __gsL("obserwujących", "seguidores", "seguidores")],
                                 }),
                               ],
                             }),
@@ -436,7 +436,7 @@ const X = 600 * 1e3,
                                 }),
                                 e.jsxs("span", {
                                   className: "cta-profile-card-stat-label",
-                                  children: [" ", __gsL("obserwowanych", "seguidos")],
+                                  children: [" ", __gsL("obserwowanych", "seguidos", "a seguir")],
                                 }),
                               ],
                             }),
@@ -460,14 +460,14 @@ const X = 600 * 1e3,
                 children: [
                   e.jsx("strong", {
                     className: "cta-badge-title",
-                    children: __gsL("Analiza zakończona w 100%!", "¡Análisis completado al 100%!"),
+                    children: __gsL("Analiza zakończona w 100%!", "¡Análisis completado al 100%!", "Análise 100% concluída!"),
                   }),
                   " ",
                   "🥳",
                   e.jsx("br", {}),
                   e.jsx("span", {
                     className: "cta-badge-line-1",
-                    children: __gsL("Zdobądź dostęp VIP i uzyskaj", "Obtén acceso VIP y consigue"),
+                    children: __gsL("Zdobądź dostęp VIP i uzyskaj", "Obtén acceso VIP y consigue", "Adquira o seu acesso VIP e tenha"),
                   }),
                   e.jsx("br", {}),
                   e.jsx("span", {
@@ -517,14 +517,14 @@ const X = 600 * 1e3,
                             }),
                             e.jsxs("h3", {
                               className: "cta-feature-title",
-                              children: [__gsL("Zobacz treści ", "Ver Contenidos de "), l],
+                              children: [__gsL("Zobacz treści ", "Ver Contenidos de ", "Veja Conteúdos de "), l],
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            __gsL("Zobacz wszystkie otrzymane treści i", "Mira todo el contenido recibido y"),
+                            __gsL("Zobacz wszystkie otrzymane treści i", "Mira todo el contenido recibido y", "Veja todos os conteúdos recebidos e"),
                             e.jsx("br", {}),
                             "enviados, incluindo itens apagados.",
                           ],
@@ -545,7 +545,7 @@ const X = 600 * 1e3,
                                 cursor: "pointer",
                               }
                               : { cursor: "pointer" },
-                            onClick: () => g(__gsL("Zobacz zablokowane media", "Ver medios bloqueados")),
+                            onClick: () => g(__gsL("Zobacz zablokowane media", "Ver medios bloqueados", "Ver mídia bloqueada")),
                             children: [
                               e.jsx("img", {
                                 src: s.src,
@@ -625,18 +625,18 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("h3", {
                               className: "cta-feature-title",
-                              children: __gsL("Lokalizacja w czasie rzeczywistym", "Ubicación en tiempo real"),
+                              children: __gsL("Lokalizacja w czasie rzeczywistym", "Ubicación en tiempo real", "Localização em tempo real"),
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            __gsL("Zobacz, gdzie ", "Mira dónde "),
+                            __gsL("Zobacz, gdzie ", "Mira dónde ", "Veja onde "),
                             l,
-                            __gsL(" jest teraz i", " está ahora y"),
+                            __gsL(" jest teraz i", " está ahora y", " está agora e"),
                             e.jsx("br", {}),
-                            __gsL("ostatnie miejsca, w których była/był.", "los últimos lugares que visitó."),
+                            __gsL("ostatnie miejsca, w których była/był.", "los últimos lugares que visitó.", "os últimos locais por onde passou."),
                           ],
                         }),
                       ],
@@ -674,7 +674,7 @@ const X = 600 * 1e3,
                             children: [
                               e.jsx("div", {
                                 className: "cta-location-name",
-                                children: __gsL("Aktualna Lokalizacja", "Ubicación Actual"),
+                                children: __gsL("Aktualna Lokalizacja", "Ubicación Actual", "Localização Atual"),
                               }),
                               e.jsxs("p", {
                                 className: "cta-profile-card-name",
@@ -684,7 +684,7 @@ const X = 600 * 1e3,
                                 type: "button",
                                 className: "cta-message-system-btn",
                                 onClick: () =>
-                                  g(__gsL("Zobacz lokalizację w czasie rzeczywistym", "Ver ubicación en tiempo real")),
+                                  g(__gsL("Zobacz lokalizację w czasie rzeczywistym", "Ver ubicación en tiempo real", "Ver localização em tempo real")),
                                 children: "Ver",
                               }),
                             ],
@@ -725,18 +725,18 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("h3", {
                               className: "cta-feature-title",
-                              children: __gsL("Ukryte relacje i posty", "Historias y publicaciones ocultas"),
+                              children: __gsL("Ukryte relacje i posty", "Historias y publicaciones ocultas", "Stories e posts ocultos"),
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            __gsL('Zobacz relacje z "Najlepszych Przyjaciół" i', 'Mira historias de "Mejores Amigos" y'),
+                            __gsL('Zobacz relacje z "Najlepszych Przyjaciół" i', 'Mira historias de "Mejores Amigos" y', 'Veja stories de "Melhores Amigos" e'),
                             e.jsx("br", {}),
-                            __gsL("publikacje, które ", "publicaciones que "),
+                            __gsL("publikacje, które ", "publicaciones que ", "publicações que "),
                             l,
-                            __gsL(" skrył/a przed Tobą.", " te ocultó."),
+                            __gsL(" skrył/a przed Tobą.", " te ocultó.", " escondeu de si."),
                           ],
                         }),
                       ],
@@ -747,7 +747,7 @@ const X = 600 * 1e3,
                         e.jsxs("div", {
                           className: "cta-story-item",
                           "data-image": "cf1.png",
-                          onClick: () => g(__gsL("Zobacz treść ograniczoną", "Ver contenido restringido")),
+                          onClick: () => g(__gsL("Zobacz treść ograniczoną", "Ver contenido restringido", "Ver conteúdo restrito")),
                           style: { cursor: "pointer" },
                           children: [
                             e.jsxs("svg", {
@@ -774,14 +774,14 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("p", {
                               className: "cta-story-text",
-                              children: __gsL("Treść ograniczona", "Contenido restringido"),
+                              children: __gsL("Treść ograniczona", "Contenido restringido", "Conteúdo restrito"),
                             }),
                           ],
                         }),
                         e.jsxs("div", {
                           className: "cta-story-item",
                           "data-image": "cf2.png",
-                          onClick: () => g(__gsL("Zobacz treść ograniczoną", "Ver contenido restringido")),
+                          onClick: () => g(__gsL("Zobacz treść ograniczoną", "Ver contenido restringido", "Ver conteúdo restrito")),
                           style: { cursor: "pointer" },
                           children: [
                             e.jsxs("svg", {
@@ -808,7 +808,7 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("p", {
                               className: "cta-story-text",
-                              children: __gsL("Treść ograniczona", "Contenido restringido"),
+                              children: __gsL("Treść ograniczona", "Contenido restringido", "Conteúdo restrito"),
                             }),
                           ],
                         }),
@@ -840,17 +840,17 @@ const X = 600 * 1e3,
                             }),
                             e.jsx("h3", {
                               className: "cta-feature-title",
-                              children: __gsL("Wiadomości Direct", "Mensajes Directos"),
+                              children: __gsL("Wiadomości Direct", "Mensajes Directos", "Mensagens do Direct"),
                             }),
                           ],
                         }),
                         e.jsxs("p", {
                           className: "cta-feature-desc",
                           children: [
-                            __gsL("Zobacz dosłownie wszystkie wiadomości od", "Mira literalmente todos los mensajes de"),
+                            __gsL("Zobacz dosłownie wszystkie wiadomości od", "Mira literalmente todos los mensajes de", "Veja literalmente todas as mensagens de"),
                             e.jsx("br", {}),
                             l,
-                            __gsL(", w tym wiadomości tymczasowe.", ", incluyendo mensajes temporales."),
+                            __gsL(", w tym wiadomości tymczasowe.", ", incluyendo mensajes temporales.", ", incluindo mensagens temporárias."),
                           ],
                         }),
                       ],
@@ -1005,7 +1005,7 @@ const X = 600 * 1e3,
                   className: "cta-tool-logo cta-tool-logo-big",
                   children: e.jsx("img", {
                     src: "/images/logos/ghostspy-logo.png?v=20261103-blue",
-                    alt: __gsL("Logo GhostSpy", "Logo de GhostSpy"),
+                    alt: __gsL("Logo GhostSpy", "Logo de GhostSpy", "GhostSpy Logo"),
                   }),
                 }),
                 e.jsxs("div", {
@@ -1054,9 +1054,9 @@ const X = 600 * 1e3,
                             className: "cta-pricing-note-track",
                             children: [
                               [
-                                __gsL("Jednorazowa płatność", "Pago único"),
-                                __gsL("Natychmiastowy dostęp", "Acceso inmediato"),
-                                __gsL("Bezpieczna płatność", "Pago seguro"),
+                                __gsL("Jednorazowa płatność", "Pago único", "Pagamento único"),
+                                __gsL("Natychmiastowy dostęp", "Acceso inmediato", "Acesso imediato"),
+                                __gsL("Bezpieczna płatność", "Pago seguro", "Pagamento seguro"),
                                 "30 dias de garantia",
                               ].map((s, a) =>
                                 e.jsxs(
@@ -1084,9 +1084,9 @@ const X = 600 * 1e3,
                                 ),
                               ),
                               [
-                                __gsL("Jednorazowa płatność", "Pago único"),
-                                __gsL("Natychmiastowy dostęp", "Acceso inmediato"),
-                                __gsL("Bezpieczna płatność", "Pago seguro"),
+                                __gsL("Jednorazowa płatność", "Pago único", "Pagamento único"),
+                                __gsL("Natychmiastowy dostęp", "Acceso inmediato", "Acesso imediato"),
+                                __gsL("Bezpieczna płatność", "Pago seguro", "Pagamento seguro"),
                                 "30 dias de garantia",
                               ].map((s, a) =>
                                 e.jsxs(
@@ -1138,7 +1138,7 @@ const X = 600 * 1e3,
                           }),
                         }),
                         e.jsxs("span", {
-                          children: [__gsL("Wszystkie wiadomości Direct od ", "Todos los mensajes Directos de "), l],
+                          children: [__gsL("Wszystkie wiadomości Direct od ", "Todos los mensajes Directos de ", "Todas as mensagens do direct de "), l],
                         }),
                       ],
                     }),
@@ -1158,7 +1158,7 @@ const X = 600 * 1e3,
                         }),
                         e.jsx("span", {
                           children:
-                            __gsL("Wszystkie zdjęcia bez cenzury (w tym usunięte)", "Todas las fotos sin censura (incluyendo borradas)"),
+                            __gsL("Wszystkie zdjęcia bez cenzury (w tym usunięte)", "Todas las fotos sin censura (incluyendo borradas)", "Todas as fotos sem censura (incluindo apagadas)"),
                         }),
                       ],
                     }),
@@ -1178,7 +1178,7 @@ const X = 600 * 1e3,
                         }),
                         e.jsx("span", {
                           children:
-                            __gsL("Lokalizacja w czasie rzeczywistym i miejsca, w których była/był", "Ubicación en tiempo real y lugares que visitó"),
+                            __gsL("Lokalizacja w czasie rzeczywistym i miejsca, w których była/był", "Ubicación en tiempo real y lugares que visitó", "Localização em tempo real e locais onde esteve"),
                         }),
                       ],
                     }),
@@ -1198,9 +1198,9 @@ const X = 600 * 1e3,
                         }),
                         e.jsxs("span", {
                           children: [
-                            __gsL("Alert zawsze, gdy ", "Alerta siempre que "),
+                            __gsL("Alert zawsze, gdy ", "Alerta siempre que ", "Alerta sempre que "),
                             l,
-                            __gsL(" wejdzie w interakcję z kimś", " interactúe con alguien"),
+                            __gsL(" wejdzie w interakcję z kimś", " interactúe con alguien", " interagir com alguém"),
                           ],
                         }),
                       ],
@@ -1220,7 +1220,7 @@ const X = 600 * 1e3,
                           }),
                         }),
                         e.jsx("span", {
-                          children: __gsL("2 bónus surpresa avaliados em €45,00", "2 bonos sorpresa valorados en $499 MXN"),
+                          children: __gsL("2 bónus surpresa avaliados em €45,00", "2 bonos sorpresa valorados en $499 MXN", "2 bónus surpresa avaliados em €45,00"),
                         }),
                       ],
                     }),
@@ -1247,11 +1247,11 @@ const X = 600 * 1e3,
                   children: [
                     e.jsx("span", {
                       className: "cta-pricing-cta-main",
-                      children: __gsL("Uzyskaj dostęp do wszystkiego już teraz", "Obtén acceso a todo ahora mismo"),
+                      children: __gsL("Uzyskaj dostęp do wszystkiego już teraz", "Obtén acceso a todo ahora mismo", "Aceder a tudo agora mesmo"),
                     }),
                     e.jsx("span", {
                       className: "cta-pricing-cta-sub",
-                      children: __gsL("Dostęp odblokowany w mniej niż 2 minuty", "Acceso desbloqueado en menos de 2 minutos"),
+                      children: __gsL("Dostęp odblokowany w mniej niż 2 minuty", "Acceso desbloqueado en menos de 2 minutos", "Acesso libertado em menos de 2 minutos"),
                     }),
                   ],
                 }),
@@ -1277,7 +1277,7 @@ const X = 600 * 1e3,
                 e.jsxs("h2", {
                   className: "cta-testimonials-title",
                   children: [
-                    __gsL("Zobacz, co mówią ludzie", "Mira lo que dice la gente"),
+                    __gsL("Zobacz, co mówią ludzie", "Mira lo que dice la gente", "Veja o que dizem as pessoas"),
                     e.jsx("br", {}),
                     "que usam o ",
                     e.jsx("span", {
@@ -1376,9 +1376,9 @@ const X = 600 * 1e3,
                 }),
                 e.jsxs("span", {
                   children: [
-                    __gsL("Uzyskane informacje są ", "La información obtenida es "),
-                    e.jsx("strong", { children: __gsL("wyjątkowo wrażliwe", "extremadamente sensible") }),
-                    __gsL(". Używaj z odpowiedzialnością.", ". Úsala con responsabilidad."),
+                    __gsL("Uzyskane informacje są ", "La información obtenida es ", "As informações acedidas são "),
+                    e.jsx("strong", { children: __gsL("wyjątkowo wrażliwe", "extremadamente sensible", "extremamente sensíveis") }),
+                    __gsL(". Używaj z odpowiedzialnością.", ". Úsala con responsabilidad.", ". Use com responsabilidade."),
                   ],
                 }),
               ],
@@ -1388,7 +1388,7 @@ const X = 600 * 1e3,
               children: [
                 e.jsx("h2", {
                   className: "cta-faq-new-title",
-                  children: __gsL("Często Zadawane Pytania", "Preguntas Frecuentes"),
+                  children: __gsL("Często Zadawane Pytania", "Preguntas Frecuentes", "Perguntas Frequentes"),
                 }),
                 e.jsx("div", {
                   className: "cta-faq-new-list",
@@ -1437,12 +1437,12 @@ const X = 600 * 1e3,
                         d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
                       }),
                     }),
-                    __gsL("30-dniowa Gwarancja", "Garantía de 30 Días"),
+                    __gsL("30-dniowa Gwarancja", "Garantía de 30 Días", "Garantia de 30 Dias"),
                   ],
                 }),
                 e.jsx("p", {
                   children:
-                    __gsL("Przetestuj bez ryzyka! Jeśli nie spodoba Ci się lub z jakiegoś powodu nie będzie Ci odpowiadać, zwrócimy 100% Twoich pieniędzy.", "¡Pruébalo sin riesgo! Si no te gusta o por alguna razón no te funciona, te devolvemos el 100% de tu dinero."),
+                    __gsL("Przetestuj bez ryzyka! Jeśli nie spodoba Ci się lub z jakiegoś powodu nie będzie Ci odpowiadać, zwrócimy 100% Twoich pieniędzy.", "¡Pruébalo sin riesgo! Si no te gusta o por alguna razón no te funciona, te devolvemos el 100% de tu dinero.", "Teste sem risco! Se não gostar ou por algum motivo não se adaptar, devolvemos 100% do seu dinheiro."),
                 }),
               ],
             }),
