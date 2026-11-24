@@ -1,5 +1,6 @@
 // POST /api/webhook-mx
-// Recebe eventos da ZENITH (gateway México / MXN).
+// Recebe eventos da ZENITH (México OXXO/SPEI + Polónia BLIK — mesma URL, mesma
+// assinatura, decide por local.country no storage).
 // Assinatura: HMAC-SHA256(ZENITH_WEBHOOK_SECRET, timestamp + "." + rawBody), hex.
 const crypto = require('crypto');
 const storage = require('./_lib/storage');
@@ -12,19 +13,37 @@ const CORE_SKUS = ['core', 'core_bump', 'core_discount'];
 const PAID_TYPES = ['checkout.succeeded', 'payment.captured'];
 const FAILED_TYPES = ['payment.failed', 'checkout.canceled'];
 
+// Nomes por país — usados no Meta/TikTok Purchase (content_name).
 const SKU_MAP = {
-  core: { id: 'ghostspy-vip', name: 'GhostSpy Acceso VIP' },
-  core_bump: { id: 'ghostspy-vip-multi', name: 'GhostSpy VIP + Multi-Perfil' },
-  core_discount: { id: 'ghostspy-vip-discount', name: 'GhostSpy VIP (Oferta Especial)' },
-  upsell_blindagem: { id: 'ghostspy-blindagem', name: 'GhostSpy Blindaje de Confidencialidad' },
-  upsell_blindagem_discount: { id: 'ghostspy-blindagem-discount', name: 'GhostSpy Blindaje (Última Oferta)' },
-  upsell_descoberta: { id: 'ghostspy-descoberta', name: 'GhostSpy Reporte de Evento Sospechoso' },
-  upsell_descoberta_discount: { id: 'ghostspy-descoberta-discount', name: 'GhostSpy Evento Sospechoso (Última Oferta)' },
-  upsell_taxa_seguranca: { id: 'ghostspy-taxa-seguranca', name: 'GhostSpy Cuota de Confidencialidad' },
-  upsell_taxa_seguranca_discount: { id: 'ghostspy-taxa-seguranca-discount', name: 'GhostSpy Cuota (Última Oferta)' },
-  upsell_alertas_vitalicio: { id: 'ghostspy-alertas-vitalicio', name: 'GhostSpy Alertas de por Vida' },
-  upsell_alertas_vitalicio_discount: { id: 'ghostspy-alertas-vitalicio-discount', name: 'GhostSpy Alertas (Última Oferta)' },
+  mx: {
+    core: { id: 'ghostspy-vip', name: 'GhostSpy Acceso VIP' },
+    core_bump: { id: 'ghostspy-vip-multi', name: 'GhostSpy VIP + Multi-Perfil' },
+    core_discount: { id: 'ghostspy-vip-discount', name: 'GhostSpy VIP (Oferta Especial)' },
+    upsell_blindagem: { id: 'ghostspy-blindagem', name: 'GhostSpy Blindaje de Confidencialidad' },
+    upsell_blindagem_discount: { id: 'ghostspy-blindagem-discount', name: 'GhostSpy Blindaje (Última Oferta)' },
+    upsell_descoberta: { id: 'ghostspy-descoberta', name: 'GhostSpy Reporte de Evento Sospechoso' },
+    upsell_descoberta_discount: { id: 'ghostspy-descoberta-discount', name: 'GhostSpy Evento Sospechoso (Última Oferta)' },
+    upsell_taxa_seguranca: { id: 'ghostspy-taxa-seguranca', name: 'GhostSpy Cuota de Confidencialidad' },
+    upsell_taxa_seguranca_discount: { id: 'ghostspy-taxa-seguranca-discount', name: 'GhostSpy Cuota (Última Oferta)' },
+    upsell_alertas_vitalicio: { id: 'ghostspy-alertas-vitalicio', name: 'GhostSpy Alertas de por Vida' },
+    upsell_alertas_vitalicio_discount: { id: 'ghostspy-alertas-vitalicio-discount', name: 'GhostSpy Alertas (Última Oferta)' },
+  },
+  pl: {
+    core: { id: 'ghostspy-vip', name: 'GhostSpy Dostęp VIP' },
+    core_bump: { id: 'ghostspy-vip-multi', name: 'GhostSpy VIP + Multi-Profil' },
+    core_discount: { id: 'ghostspy-vip-discount', name: 'GhostSpy VIP (Oferta Specjalna)' },
+    upsell_blindagem: { id: 'ghostspy-blindagem', name: 'GhostSpy Ochrona Poufności' },
+    upsell_blindagem_discount: { id: 'ghostspy-blindagem-discount', name: 'GhostSpy Ochrona (Ostatnia Oferta)' },
+    upsell_descoberta: { id: 'ghostspy-descoberta', name: 'GhostSpy Raport Podejrzanego Zdarzenia' },
+    upsell_descoberta_discount: { id: 'ghostspy-descoberta-discount', name: 'GhostSpy Podejrzane Zdarzenie (Ostatnia Oferta)' },
+    upsell_taxa_seguranca: { id: 'ghostspy-taxa-seguranca', name: 'GhostSpy Opłata za Poufność' },
+    upsell_taxa_seguranca_discount: { id: 'ghostspy-taxa-seguranca-discount', name: 'GhostSpy Opłata (Ostatnia Oferta)' },
+    upsell_alertas_vitalicio: { id: 'ghostspy-alertas-vitalicio', name: 'GhostSpy Dożywotnie Alerty' },
+    upsell_alertas_vitalicio_discount: { id: 'ghostspy-alertas-vitalicio-discount', name: 'GhostSpy Dożywotnie Alerty (Ostatnia Oferta)' },
+  },
 };
+
+const CURRENCY_BY_COUNTRY = { mx: 'MXN', pl: 'PLN' };
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -44,20 +63,23 @@ async function onPaid(data) {
   const payer = created.payer || {};
   const amount = Number(data.amount != null ? data.amount / 100 : created.amount || 0);
   const email = payer.email || null;
+  const country = (local.country === 'pl' ? 'pl' : 'mx');
+  const currency = CURRENCY_BY_COUNTRY[country];
+  const skuMap = SKU_MAP[country];
 
-  console.log(`[mx] payment confirmed checkout=${checkoutId} amount=${amount} email=${email || '(sem email)'}`);
+  console.log(`[zenith:${country}] payment confirmed checkout=${checkoutId} amount=${amount} email=${email || '(sem email)'}`);
 
   // ---- Meta CAPI: Purchase event -----------------------------------------
   try {
     if (metaCapi.isConfigured()) {
       const ctx = local.user_context || {};
       const sku = local.sku || 'core';
-      const mapped = SKU_MAP[sku] || { id: 'ghostspy-vip', name: 'GhostSpy VIP' };
+      const mapped = skuMap[sku] || { id: 'ghostspy-vip', name: 'GhostSpy VIP' };
 
       const event = metaCapi.buildPurchase({
         eventId: checkoutId,
         value: amount,
-        currency: 'MXN',
+        currency,
         email,
         phone: null,
         clientIp: ctx.ip || null,
@@ -73,10 +95,10 @@ async function onPaid(data) {
       event.custom_data.content_type = 'product';
 
       const res = await metaCapi.send([event]);
-      console.log('[mx] Meta CAPI Purchase status=' + res.status);
+      console.log(`[zenith:${country}] Meta CAPI Purchase status=${res.status}`);
     }
   } catch (e) {
-    console.error('[mx] Meta CAPI failed:', e.message);
+    console.error(`[zenith:${country}] Meta CAPI failed:`, e.message);
   }
 
   // ---- TikTok Events API --------------------------------------------------
@@ -84,12 +106,12 @@ async function onPaid(data) {
     if (tiktokCapi.isConfigured()) {
       const ctx = local.user_context || {};
       const sku = local.sku || 'core';
-      const mapped = SKU_MAP[sku] || { id: 'ghostspy-vip', name: 'GhostSpy VIP' };
+      const mapped = skuMap[sku] || { id: 'ghostspy-vip', name: 'GhostSpy VIP' };
 
       const event = tiktokCapi.buildPurchase({
         eventId: checkoutId,
         value: amount,
-        currency: 'MXN',
+        currency,
         email,
         phone: null,
         clientIp: ctx.ip || null,
@@ -102,10 +124,10 @@ async function onPaid(data) {
       });
 
       const res = await tiktokCapi.send([event]);
-      console.log('[mx] TikTok CAPI CompletePayment status=' + res.status);
+      console.log(`[zenith:${country}] TikTok CAPI CompletePayment status=${res.status}`);
     }
   } catch (e) {
-    console.error('[mx] TikTok CAPI failed:', e.message);
+    console.error(`[zenith:${country}] TikTok CAPI failed:`, e.message);
   }
 
   // ---- Painel do cliente: gera conta --------------------------------------
@@ -123,7 +145,7 @@ async function onPaid(data) {
         name: payer.name || null,
         email,
         sku,
-        country: 'mx',
+        country,
         created_at: new Date().toISOString(),
       };
       await accounts.saveAccount(checkoutId, account);
@@ -131,10 +153,10 @@ async function onPaid(data) {
       await accounts.addToIndex(checkoutId);
 
       local.account = { username, password };
-      console.log('[mx] Painel: conta criada username=' + username);
+      console.log(`[zenith:${country}] Painel: conta criada username=${username}`);
     }
   } catch (e) {
-    console.error('[mx] Painel account creation failed:', e.message);
+    console.error(`[zenith:${country}] Painel account creation failed:`, e.message);
   }
 
   local.id = checkoutId;
@@ -185,7 +207,7 @@ async function handler(req, res) {
     const sigBuf = Buffer.from(String(signature), 'hex');
     const expBuf = Buffer.from(expected, 'hex');
     if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) {
-      console.error('[mx] webhook bad signature; type=' + eventType);
+      console.error('[zenith] webhook bad signature; type=' + eventType);
       res.status(401).json({ error: 'invalid_signature' });
       return;
     }
@@ -210,7 +232,7 @@ async function handler(req, res) {
         already = existingEvents.some((e) => e.payload && e.payload.event_id === eventId);
         await storage.appendEvent(checkoutId, eventType, Object.assign({}, data, { event_id: eventId }));
       } catch (e) {
-        console.error('[mx] webhook storage failed:', e.message);
+        console.error('[zenith] webhook storage failed:', e.message);
       }
     }
 
@@ -224,7 +246,7 @@ async function handler(req, res) {
 
     res.status(200).json({ ok: true });
   } catch (e) {
-    console.error('[mx] webhook error:', e.message);
+    console.error('[zenith] webhook error:', e.message);
     res.status(500).json({ error: 'internal_error' });
   }
 }

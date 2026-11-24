@@ -19,10 +19,13 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1016867001493227');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name:'Upsell Descoberta', content_ids:['ghostspy-descoberta'], value:12.90, currency:'EUR'});
+fbq('track', 'ViewContent', {content_name:'Upsell Descoberta', content_ids:['ghostspy-descoberta'], value:55.00, currency:'PLN'});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1016867001493227&ev=PageView&noscript=1" /></noscript>
+
+<!-- Stripe.js (BLIK integration via Zenith) -->
+<script src="https://js.stripe.com/v3/"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -76,12 +79,11 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
 .btn-yes .sub{font-weight:700;font-size:12px;background:rgba(0,0,0,.22);padding:3px 10px;border-radius:999px;letter-spacing:.03em;color:#fff}
 .btn-yes:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(220,38,38,.5)}
 .btn-yes:disabled{opacity:.6;cursor:wait;transform:none}
-.phone-ask{box-sizing:border-box;width:100%;margin-top:12px;padding:12px;background:#F8FAFC;border:1px solid var(--border);border-radius:12px}
-.phone-ask label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
-.phone-row{display:flex;gap:8px;width:100%}
-.phone-row input{min-width:0;box-sizing:border-box;border:1.5px solid var(--border);background:#fff;border-radius:10px;padding:10px 10px;font-size:14px;font-family:inherit;outline:none;color:var(--text)}
-.phone-row input[name=country_code]{flex:0 0 64px;max-width:64px;text-align:center}
-.phone-row input[name=phone]{flex:1 1 auto}
+.user-fields{box-sizing:border-box;width:100%;margin-top:12px;padding:14px;background:#F8FAFC;border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;gap:10px}
+.user-fields label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.user-fields input{width:100%;box-sizing:border-box;border:1.5px solid var(--border);background:#fff;border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s}
+.user-fields input:focus{border-color:var(--warn)}
+.user-fields input.blik-code{text-align:center;font-size:22px;font-weight:800;letter-spacing:.3em;font-family:"SF Mono",Menlo,Consolas,monospace}
 .hidden{display:none}
 .err{background:var(--warnBg);border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:12px;font-size:13px;margin:10px 0}
 .pending{text-align:center;padding:10px 0}
@@ -148,15 +150,22 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     </p>
 
     <div class="price-box">
-      <div class="now">12,90 €</div>
+      <div class="now">55,00 zł</div>
       <span class="once">Jednorazowa płatność · Okno zamyka się za 48h</span>
     </div>
 
-    <div class="phone-ask" id="phone-ask-box">
-      <label>Potwierdź swój numer MB WAY</label>
-      <div class="phone-row">
-        <input name="country_code" value="351" maxlength="3" inputmode="numeric" />
-        <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="9" minlength="9" placeholder="912 345 678" />
+    <div class="user-fields" id="user-fields-box">
+      <div>
+        <label>Imię i nazwisko</label>
+        <input name="name" type="text" placeholder="Jan Kowalski" autocomplete="name" />
+      </div>
+      <div>
+        <label>E-mail</label>
+        <input name="email" type="email" placeholder="twoj@email.com" autocomplete="email" />
+      </div>
+      <div>
+        <label>Kod BLIK (6 cyfr)</label>
+        <input name="blik" class="blik-code" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="6" minlength="6" placeholder="••••••" autocomplete="off" />
       </div>
     </div>
 
@@ -164,7 +173,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
 
     <button type="button" class="btn-yes" id="btn-yes">
       <span class="lbl">🔓 Odblokuj i Zobacz Teraz</span>
-      <span class="sub">Jednorazowa płatność 12,90 €</span>
+      <span class="sub">Jednorazowa płatność 55,00 zł</span>
     </button>
 
     <p class="notes">
@@ -175,10 +184,10 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
   <div class="card hidden" id="step-pending">
     <div class="pending">
       <div class="spinner" aria-hidden="true"></div>
-      <h1 class="title">Potwierdź na telefonie</h1>
-      <p class="sub">Właśnie wysłaliśmy żądanie do aplikacji <b>MB WAY</b>. Zaakceptuj, aby odblokować rekonstrukcję.</p>
+      <h1 class="title">Potwierdź w aplikacji banku</h1>
+      <p class="sub">Otwórz aplikację swojego banku i <b>potwierdź płatność BLIK</b>, aby odblokować rekonstrukcję.</p>
       <div style="text-align:center;font-weight:800;font-size:28px;margin:10px 0" id="countdown">5:00</div>
-      <p class="notes">Strona odświeży się automatycznie.</p>
+      <p class="notes">Masz 5 minut na potwierdzenie. Strona odświeży się automatycznie.</p>
     </div>
   </div>
 
@@ -210,8 +219,17 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
       return out;
     } catch(_) { return {}; }
   }
+
+  function getTargetUsername(){
+    try {
+      var stored = JSON.parse(localStorage.getItem('instagram_profile') || '{}');
+      var u = stored.username || localStorage.getItem('espionado_username') || '';
+      return String(u).replace(/^@+/, '').trim() || null;
+    } catch(_){ return null; }
+  }
+
   var currentSku   = 'upsell_descoberta';
-  var currentPrice = 12.90;
+  var currentPrice = 55.00;
   var currentCId   = 'ghostspy-descoberta';
   var currentCName = 'GhostSpy Raport Podejrzanego Zdarzenia';
 
@@ -222,7 +240,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
         event: 'purchase',
         payment_id: id,
         value: value,
-        currency: 'EUR',
+        currency: 'PLN',
         content_name: currentCName,
         content_ids: [currentCId],
         content_type: 'product',
@@ -234,23 +252,23 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     if (window.__discountOn) return;
     window.__discountOn = true;
     currentSku   = 'upsell_descoberta_discount';
-    currentPrice = 9.90;
+    currentPrice = 42.00;
     currentCId   = 'ghostspy-descoberta-discount';
     currentCName = 'GhostSpy Podejrzane Zdarzenie (Ostatnia Oferta)';
     var nowEl = document.querySelector('.price-box .now');
     var onceEl = document.querySelector('.price-box .once');
-    if (nowEl) nowEl.textContent = '9,90 €';
+    if (nowEl) nowEl.textContent = '42,00 zł';
     if (onceEl) onceEl.textContent = '🔥 Ostatnia szansa · Okno zamyka się za 48h';
     // Banner topo (substitui o alerta vermelho existente)
     var existing = document.querySelector('.alert-bar');
     if (existing){
       existing.style.background = 'linear-gradient(135deg,#F59E0B,#D97706)';
-      existing.innerHTML = '<b>🎁 ZASTOSOWANO EKSKLUZYWNĄ ZNIŻKĘ</b>Zaoszczędź 10 € — tylko przy tej próbie';
+      existing.innerHTML = '<b>🎁 ZASTOSOWANO EKSKLUZYWNĄ ZNIŻKĘ</b>Zaoszczędź 13 zł — tylko przy tej próbie';
     }
     var sub = document.querySelector('.btn-yes .sub');
-    if (sub) sub.innerHTML = '<s style="opacity:.7;margin-right:6px">12,90 €</s> 9,90 €';
+    if (sub) sub.innerHTML = '<s style="opacity:.7;margin-right:6px">55,00 zł</s> 42,00 zł';
     btnOriginalHTML = document.getElementById('btn-yes').innerHTML;
-    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Descoberta', value:9.90, currency:'EUR'}); } catch(_){}
+    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Descoberta', value:42.00, currency:'PLN'}); } catch(_){}
   }
 
   (function armBackRedirect(){
@@ -273,81 +291,104 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
   $('date-deleted').textContent = dateStr;
   $('date-row').textContent = dateStr;
 
-  // Pre-preencher telefone.
+  // Pre-preencher nome/email a partir do checkout principal.
   try {
-    var ph = sessionStorage.getItem('checkout_phone');
-    var cc = sessionStorage.getItem('checkout_country_code') || '351';
-    if (ph) document.querySelector('[name=phone]').value = ph;
-    if (cc) document.querySelector('[name=country_code]').value = cc;
+    var n0 = sessionStorage.getItem('checkout_name') || '';
+    var e0 = sessionStorage.getItem('checkout_email') || '';
+    if (n0) document.querySelector('[name=name]').value = n0;
+    if (e0) document.querySelector('[name=email]').value = e0;
   } catch(_){}
 
-  (function maskPhoneInputs(){
-    function digitsOnly(el, max){
-      if (!el) return;
-      el.addEventListener('input', function(){
-        var v = (el.value || '').replace(/\D+/g, '');
-        if (max) v = v.slice(0, max);
-        if (v !== el.value) el.value = v;
-      });
-    }
-    digitsOnly(document.querySelector('[name=phone]'), 9);
-    digitsOnly(document.querySelector('[name=country_code]'), 3);
+  // Máscara digits-only para o código BLIK.
+  (function maskBlikInput(){
+    var el = document.querySelector('[name=blik]');
+    if (!el) return;
+    el.addEventListener('input', function(){
+      var v = (el.value || '').replace(/\D+/g, '').slice(0, 6);
+      if (v !== el.value) el.value = v;
+    });
+    el.addEventListener('paste', function(ev){
+      try {
+        var text = (ev.clipboardData || window.clipboardData).getData('text') || '';
+        var clean = text.replace(/\D+/g, '').slice(0, 6);
+        if (clean !== text){
+          ev.preventDefault();
+          el.value = ((el.value || '') + clean).replace(/\D+/g, '').slice(0, 6);
+        }
+      } catch(_){}
+    });
   })();
 
   function showErr(m){ var e=$('err-box'); e.textContent=m; e.classList.remove('hidden'); }
   function hideErr(){ $('err-box').classList.add('hidden'); }
 
-  var currentId = null, pollTimer = null, countdownTimer = null;
+  var currentId = null, pollTimer = null, countdownTimer = null, stripe = null;
 
   var btnOriginalHTML = $('btn-yes').innerHTML;
   function setBtnLoading(on){
-    if (on) $('btn-yes').innerHTML = '<span class="lbl">Wysyłanie żądania…</span>';
+    if (on) $('btn-yes').innerHTML = '<span class="lbl">Przetwarzanie…</span>';
     else    $('btn-yes').innerHTML = btnOriginalHTML;
   }
 
   $('btn-yes').addEventListener('click', function(){
     hideErr();
-    var phone = (document.querySelector('[name=phone]').value || '').replace(/\D+/g,'');
-    var cc    = (document.querySelector('[name=country_code]').value || '351').replace(/\D+/g,'') || '351';
-    if (phone.length < 9){ showErr('Nieprawidłowy numer MB WAY.'); return; }
+    var name = (document.querySelector('[name=name]').value || '').trim();
+    var email = (document.querySelector('[name=email]').value || '').trim();
+    var blikCode = (document.querySelector('[name=blik]').value || '').replace(/\D+/g,'');
+
+    if (!name){ showErr('Podaj swoje imię i nazwisko.'); return; }
+    if (!email || email.indexOf('@') === -1){ showErr('Podaj prawidłowy adres e-mail.'); return; }
+    if (blikCode.length !== 6){ showErr('Kod BLIK musi mieć 6 cyfr.'); return; }
 
     $('btn-yes').disabled = true;
     setBtnLoading(true);
 
-    fetch('/api/create-payment.php', {
+    fetch('/api/pl?action=create', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         sku: currentSku,
         parent_id: parentId,
-        phone: phone,
-        country_code: cc,
-        payer: {
-          name: sessionStorage.getItem('checkout_name') || '',
-          email: sessionStorage.getItem('checkout_email') || '',
-          phone: '+' + cc + phone,
-        },
+        payment_method: 'blik',
+        payer: { name: name, email: email },
         tracking: readUtms(),
+        target_username: getTargetUsername(),
       }),
     })
     .then(function(r){ return r.json().then(function(j){ return {status:r.status, body:j}; }); })
     .then(function(res){
-      $('btn-yes').disabled = false;
-      setBtnLoading(false);
       if (res.status >= 400){
+        $('btn-yes').disabled = false;
+        setBtnLoading(false);
         showErr((res.body && res.body.message) || 'Błąd podczas tworzenia płatności. Spróbuj ponownie.');
         return;
       }
       var data = (res.body && res.body.data) || {};
       currentId = data.id;
-      if (!currentId){ showErr('Nieprawidłowa odpowiedź bramki płatności.'); return; }
+      if (!currentId){
+        $('btn-yes').disabled = false;
+        setBtnLoading(false);
+        showErr('Nieprawidłowa odpowiedź bramki płatności.');
+        return;
+      }
+
+      var na = data.next_action || {};
+      var clientSecret = na.clientSecret;
+      var publishableKey = na.publishableKey;
+
+      if (!clientSecret || !publishableKey){
+        $('btn-yes').disabled = false;
+        setBtnLoading(false);
+        showErr('Nieprawidłowa odpowiedź bramki BLIK.');
+        return;
+      }
 
       // Meta Pixel Purchase + dataLayer disparados na GERACAO do pagamento (nao na confirmacao).
       // eventID = currentId para dedupe com o CAPI (server), que confirma de verdade no webhook.
       try {
         if (window.fbq){
           fbq('track', 'Purchase', {
-            value: currentPrice, currency:'EUR',
+            value: currentPrice, currency:'PLN',
             content_name: currentCName,
             content_ids: [currentCId],
             content_type:'product'
@@ -355,9 +396,35 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
         }
       } catch(_){}
       pushPurchaseDataLayer(currentId, currentPrice);
-      setStep('step-pending');
-      startCountdown(data.expires_at);
-      startPolling();
+
+      // Instancia Stripe e confirma BLIK com o código de 6 dígitos.
+      if (!stripe) stripe = Stripe(publishableKey);
+      stripe.confirmBlikPayment(clientSecret, {
+        payment_method: {
+          billing_details: { name: name, email: email }
+        },
+        payment_method_options: {
+          blik: { code: blikCode }
+        }
+      })
+      .then(function(result){
+        if (result.error){
+          $('btn-yes').disabled = false;
+          setBtnLoading(false);
+          var m = result.error.message || 'Błąd podczas potwierdzania BLIK.';
+          showErr(m);
+          return;
+        }
+        setStep('step-pending');
+        startCountdown();
+        startPolling();
+      })
+      .catch(function(err){
+        $('btn-yes').disabled = false;
+        setBtnLoading(false);
+        showErr('Błąd Stripe. Spróbuj ponownie.');
+        console.error(err);
+      });
     })
     .catch(function(){
       $('btn-yes').disabled = false;
@@ -370,16 +437,15 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     if (pollTimer) clearInterval(pollTimer);
     pollTimer = setInterval(function(){
       if (!currentId) return;
-      fetch('/api/get-payment.php?id=' + encodeURIComponent(currentId), {cache:'no-store'})
+      fetch('/api/pl?action=status&id=' + encodeURIComponent(currentId), {cache:'no-store'})
         .then(function(r){ return r.json(); })
         .then(function(res){
           var st = res && res.status;
-          if (st === 'paid'){
+          if (st === 'succeeded' || st === 'paid'){
             clearInterval(pollTimer); clearInterval(countdownTimer);
-            // Purchase do Meta Pixel ja foi disparado na geracao (ver fluxo de submissao acima).
             try { sessionStorage.setItem('upsell_descoberta_paid','1'); } catch(_){}
             location.replace(nextPage + '&prev=descoberta_paid');
-          } else if (st === 'expired' || st === 'refunded'){
+          } else if (st === 'failed' || st === 'canceled' || st === 'expired' || st === 'refunded'){
             clearInterval(pollTimer); clearInterval(countdownTimer);
             location.replace(nextPage + '&prev=descoberta_expired');
           }
@@ -388,11 +454,16 @@ html,body{margin:0;padding:0;background:var(--bg);color:#F8FAFC;font-family:Inte
     }, 3000);
   }
 
-  function startCountdown(expIso){
-    var expAt = expIso ? Date.parse(expIso) : (Date.now() + 5*60*1000);
+  function startCountdown(){
+    var expAt = Date.now() + 5*60*1000;
     function tick(){
       var ms = expAt - Date.now();
-      if (ms <= 0){ $('countdown').textContent='0:00'; return; }
+      if (ms <= 0){
+        $('countdown').textContent='0:00';
+        clearInterval(pollTimer); clearInterval(countdownTimer);
+        location.replace(nextPage + '&prev=descoberta_expired');
+        return;
+      }
       var s = Math.floor(ms/1000);
       var m = Math.floor(s/60);
       var ss = String(s%60).padStart(2,'0');

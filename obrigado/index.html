@@ -138,7 +138,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   (function loadCredentials(){
     var pid = p.get('pid') || sessionStorage.getItem('checkout_core_paid_id');
     if (!pid) return;
-    fetch('/api/get-credentials?id=' + encodeURIComponent(pid), { cache: 'no-store' })
+    fetch('/api/pl?action=credentials&id=' + encodeURIComponent(pid), { cache: 'no-store' })
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(creds){
         if (!creds || !creds.username) return;

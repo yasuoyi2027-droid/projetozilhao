@@ -23,6 +23,10 @@ fbq('track', 'InitiateCheckout');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1016867001493227&ev=PageView&noscript=1" /></noscript>
+
+<!-- Stripe.js (BLIK integration via Zenith) -->
+<script src="https://js.stripe.com/v3/"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -42,17 +46,15 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .price{text-align:center;margin:0 0 22px}
 .price .old{color:var(--muted);text-decoration:line-through;font-size:14px;margin-bottom:4px}
 .price .now{font-size:34px;font-weight:800;letter-spacing:-0.03em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.mbway-banner{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:14px;margin-bottom:18px}
-.mbway-banner .m-logo{flex:0 0 72px;width:72px;height:44px;object-fit:contain;display:block}
-.mbway-banner strong{display:block;font-weight:700;font-size:15px;margin-bottom:2px;color:var(--text)}
-.mbway-banner small{color:var(--muted);font-size:12px}
+.method-banner{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:14px;margin-bottom:18px}
+.method-banner .m-logo{flex:0 0 72px;width:72px;height:44px;object-fit:contain;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1A1A1A,#2A2A2A);color:#fff;border-radius:10px;font-weight:900;font-size:16px;letter-spacing:.06em}
+.method-banner strong{display:block;font-weight:700;font-size:15px;margin-bottom:2px;color:var(--text)}
+.method-banner small{color:var(--muted);font-size:12px}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
 .field input{width:100%;border:1.5px solid var(--border);background:#fff;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s}
 .field input:focus{border-color:var(--accent)}
-.phone-row{display:flex;gap:8px}
-.phone-row input[name=country_code]{flex:0 0 72px;text-align:center}
-.phone-row input[name=phone]{flex:1}
+.field input.blik-code{text-align:center;font-size:24px;font-weight:800;letter-spacing:.3em;font-family:"SF Mono",Menlo,Consolas,monospace}
 .btn{appearance:none;border:none;cursor:pointer;width:100%;padding:16px;border-radius:14px;font-family:inherit;font-weight:800;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));letter-spacing:.02em;transition:transform .15s,box-shadow .15s;margin-top:4px}
 .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(14,130,248,.3)}
 .btn:disabled{opacity:.55;cursor:wait;transform:none;box-shadow:none}
@@ -60,7 +62,6 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .notes b{color:var(--text)}
 .err{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:12px;font-size:13px;margin-bottom:12px}
 .hidden{display:none}
-/* Pending screen */
 .pending{text-align:center}
 .spinner{width:56px;height:56px;border:4px solid #E2E8F0;border-top-color:var(--accent);border-radius:50%;margin:8px auto 18px;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -70,7 +71,6 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 .success .tick{width:72px;height:72px;border-radius:50%;background:var(--success);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:12px}
 .secure{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:12px;margin-top:14px}
 .secure svg{width:14px;height:14px}
-/* Order bump — layout em grid para a checkbox e textos ficarem alinhados sem overflow do badge. */
 .bump{position:relative;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;border:2px dashed #F59E0B;background:linear-gradient(180deg,#FFFBEB 0%,#FEF3C7 100%);border-radius:14px;padding:18px 14px 14px;margin:18px 0 4px;cursor:pointer;transition:all .18s ease;user-select:none}
 .bump:hover{border-color:#D97706}
 .bump.on{border-color:#10B981;border-style:solid;background:linear-gradient(180deg,#ECFDF5 0%,#D1FAE5 100%)}
@@ -90,31 +90,36 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     <img src="/images/logos/ghostspy-logo.png" alt="GhostSpy" onerror="this.style.display='none'" />
   </div>
 
-  <!-- ETAPA 1: Formulário MB WAY -->
+  <!-- ETAPA 1: Formulário -->
   <div class="card" id="step-form">
     <h1 class="title">Finalizacja zakupu</h1>
-    <p class="sub">Płatność błyskawiczna <b>MB WAY</b></p>
+    <p class="sub">Płatność błyskawiczna <b>BLIK</b></p>
 
     <div class="price">
-      <div class="old" id="old-price">Zamiast 59,90 €</div>
-      <div class="now" id="now-price">€9,90</div>
+      <div class="old" id="old-price">Zamiast 259,00 zł</div>
+      <div class="now" id="now-price">42,00 zł</div>
     </div>
 
-    <div class="mbway-banner">
-      <img class="m-logo" src="/images/logos/mbway.png" alt="MB WAY" />
+    <div class="method-banner">
+      <span class="m-logo">BLIK</span>
       <span>
-        <strong>MB WAY</strong>
+        <strong>Płatność BLIK</strong>
         <small>Natychmiastowe potwierdzenie w aplikacji banku</small>
       </span>
     </div>
 
     <form id="pay-form" autocomplete="on" novalidate>
       <div class="field">
-        <label>Numer MB WAY</label>
-        <div class="phone-row">
-          <input name="country_code" value="351" maxlength="3" inputmode="numeric" aria-label="Numer kierunkowy" />
-          <input name="phone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="9" minlength="9" placeholder="912 345 678" autocomplete="tel-national" required />
-        </div>
+        <label>Imię i nazwisko</label>
+        <input name="name" type="text" placeholder="Jan Kowalski" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label>E-mail</label>
+        <input name="email" type="email" placeholder="twoj@email.com" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label>Kod BLIK (6 cyfr)</label>
+        <input name="blik" class="blik-code" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="6" minlength="6" placeholder="••••••" autocomplete="off" required />
       </div>
 
       <label class="bump" id="bump-multi">
@@ -122,12 +127,12 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
         <input type="checkbox" id="bump-cb" />
         <div class="bump-title">➕ Przeanalizuj jeszcze 3 profile — bliskiego przyjaciela, byłego/byłą, podejrzanego współpracownika</div>
         <p class="bump-desc">W cenie 1, sprawdź do 3 dodatkowych profili. Dostępne tylko teraz, nigdy więcej się nie pojawi.</p>
-        <div class="bump-price"><s>55,80 €</s> za jedyne <b>+14,90 €</b> (oszczędzasz 40,90 €)</div>
+        <div class="bump-price"><s>240,00 zł</s> za jedyne <b>+65,00 zł</b> (oszczędzasz 175,00 zł)</div>
       </label>
 
       <div class="err hidden" id="err-box"></div>
 
-      <button type="submit" class="btn" id="submit-btn">Zapłać przez MB WAY</button>
+      <button type="submit" class="btn" id="submit-btn">Zapłać przez BLIK</button>
 
       <p class="notes">
         <b>30 dni gwarancji bezwarunkowej</b>
@@ -139,18 +144,18 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     </form>
   </div>
 
-  <!-- ETAPA 2: MBWay pendente -->
-  <div class="card hidden" id="step-mbway-pending">
+  <!-- ETAPA 2: BLIK pendente (push no app do banco) -->
+  <div class="card hidden" id="step-blik-pending">
     <div class="pending">
       <div class="spinner" aria-hidden="true"></div>
-      <h1 class="title">Potwierdź na telefonie</h1>
-      <p class="sub">Otwórz aplikację <b>MB WAY</b> i potwierdź płatność.</p>
-      <div class="countdown" id="mbway-countdown">5:00</div>
+      <h1 class="title">Potwierdź w aplikacji banku</h1>
+      <p class="sub">Otwórz aplikację swojego banku i <b>potwierdź płatność BLIK</b>.</p>
+      <div class="countdown" id="blik-countdown">5:00</div>
       <p class="notes">Masz 5 minut na potwierdzenie. Strona odświeży się automatycznie.</p>
     </div>
   </div>
 
-  <!-- ETAPA 4: Sucesso -->
+  <!-- ETAPA 3: Sucesso -->
   <div class="card hidden" id="step-success">
     <div class="success">
       <div class="tick">✓</div>
@@ -160,7 +165,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     </div>
   </div>
 
-  <!-- ETAPA 5: Expirou -->
+  <!-- ETAPA 4: Expirou/falhou -->
   <div class="card hidden" id="step-expired">
     <h1 class="title" style="color:var(--error)">Płatność wygasła</h1>
     <p class="sub">Sesja wygasła. Możesz spróbować ponownie.</p>
@@ -176,13 +181,13 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   var currentPaymentId = null;
   var pollTimer = null;
   var countdownTimer = null;
+  var stripe = null;
 
-  // ---- UI helpers --------------------------------------------------------
   function $(id){ return document.getElementById(id); }
   function show(id){ $(id).classList.remove('hidden'); }
   function hide(id){ $(id).classList.add('hidden'); }
   function setStep(step){
-    ['step-form','step-mbway-pending','step-success','step-expired']
+    ['step-form','step-blik-pending','step-success','step-expired']
       .forEach(function(s){ hide(s); });
     show(step);
   }
@@ -193,7 +198,6 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   }
   function hideErr(){ $('err-box').classList.add('hidden'); }
 
-  // ---- UTMs do URL (lidos uma vez) ---------------------------------------
   function readUtms(){
     try {
       var p = new URLSearchParams(location.search);
@@ -202,7 +206,6 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
         var v = p.get(k);
         if (v) out[k] = v;
       });
-      // Fallback: ler do localStorage (o site principal guarda-as)
       try {
         var stored = JSON.parse(localStorage.getItem('utm_params') || 'null');
         if (stored && typeof stored === 'object'){
@@ -215,24 +218,26 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     } catch(_) { return {}; }
   }
 
-  // ---- Submissão ---------------------------------------------------------
+  function getTargetUsername(){
+    try {
+      var stored = JSON.parse(localStorage.getItem('instagram_profile') || '{}');
+      var u = stored.username || localStorage.getItem('espionado_username') || '';
+      return String(u).replace(/^@+/, '').trim() || null;
+    } catch(_){ return null; }
+  }
+
   $('pay-form').addEventListener('submit', function(e){
     e.preventDefault();
     hideErr();
 
-    var phone = (document.querySelector('[name=phone]').value || '').replace(/\D+/g,'');
-    if (phone.length !== 9){
-      showErr('Numer MB WAY musi mieć 9 cyfr.');
-      return;
-    }
-    var countryCode = (document.querySelector('[name=country_code]').value || '351').replace(/\D+/g,'') || '351';
+    var name = (document.querySelector('[name=name]').value || '').trim();
+    var email = (document.querySelector('[name=email]').value || '').trim();
+    var blikCode = (document.querySelector('[name=blik]').value || '').replace(/\D+/g,'');
 
-    // Sem captura de nome/email — identifica o cliente pelo número MB WAY.
-    var phoneId = countryCode + phone;
-    var name  = 'Klient ' + phone.substring(0, 3) + '***';
-    var email = 'mbway' + phoneId + '@ghostspy.site';
+    if (!name){ showErr('Podaj swoje imię i nazwisko.'); return; }
+    if (!email || email.indexOf('@') === -1){ showErr('Podaj prawidłowy adres e-mail.'); return; }
+    if (blikCode.length !== 6){ showErr('Kod BLIK musi mieć 6 cyfr.'); return; }
 
-    // Cookies do Meta Pixel (para enviar ao backend e matchar no CAPI).
     function getCookie(name){
       try {
         var m = document.cookie.match('(?:^|;\\s*)' + name + '=([^;]+)');
@@ -244,30 +249,17 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     var discountOn = !!window.__discountOn;
     var sku = discountOn ? 'core_discount' : (bumpOn ? 'core_bump' : 'core');
 
-    // Perfil do Instagram que está a ser "analisado" no funil (usado no painel pós-compra).
-    function getTargetUsername(){
-      try {
-        var stored = JSON.parse(localStorage.getItem('instagram_profile') || '{}');
-        var u = stored.username || localStorage.getItem('espionado_username') || '';
-        return String(u).replace(/^@+/, '').trim() || null;
-      } catch(_){ return null; }
-    }
-
     var body = {
       sku: sku,
-      phone: phone,
-      country_code: countryCode,
-      payer: { name: name, email: email, phone: '+' + countryCode + phone },
+      payment_method: 'blik',
+      payer: { name: name, email: email },
       tracking: readUtms(),
       fbp: getCookie('_fbp'),
       fbc: getCookie('_fbc'),
       target_username: getTargetUsername(),
     };
 
-    // Guarda dados para uso nos upsells (telefone + dados pessoais).
     try {
-      sessionStorage.setItem('checkout_phone', phone);
-      sessionStorage.setItem('checkout_country_code', countryCode);
       sessionStorage.setItem('checkout_name', name);
       sessionStorage.setItem('checkout_email', email);
       sessionStorage.setItem('checkout_bump', bumpOn ? '1' : '0');
@@ -277,7 +269,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     btn.disabled = true;
     btn.textContent = 'Przetwarzanie...';
 
-    fetch('/api/create-payment.php', {
+    fetch('/api/pl?action=create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -286,10 +278,9 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       return r.json().then(function(j){ return { status: r.status, body: j }; });
     })
     .then(function(res){
-      btn.disabled = false;
-      btn.textContent = 'Zapłać przez MB WAY';
-
       if (res.status >= 400){
+        btn.disabled = false;
+        btn.textContent = 'Zapłać przez BLIK';
         var msg = (res.body && res.body.message)
           || (res.body && res.body.gateway && res.body.gateway.message)
           || 'Błąd płatności. Sprawdź dane i spróbuj ponownie.';
@@ -300,24 +291,34 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       var data = (res.body && res.body.data) || {};
       currentPaymentId = data.id;
       if (!currentPaymentId){
+        btn.disabled = false;
+        btn.textContent = 'Zapłać przez BLIK';
         showErr('Nieprawidłowa odpowiedź bramki płatności.');
         return;
       }
 
-      sessionStorage.setItem('checkout_email', email);
+      var na = data.next_action || {};
+      var clientSecret = na.clientSecret;
+      var publishableKey = na.publishableKey;
 
-      // Meta Pixel Purchase + dataLayer disparados na GERAÇÃO do MB WAY (não na confirmação).
-      // eventID = payment_id para dedupe com o CAPI (server), que confirma de verdade no webhook.
+      if (!clientSecret || !publishableKey){
+        btn.disabled = false;
+        btn.textContent = 'Zapłać przez BLIK';
+        showErr('Nieprawidłowa odpowiedź bramki BLIK.');
+        return;
+      }
+
+      // Meta Pixel Purchase + dataLayer disparados na GERAÇÃO do BLIK.
       try {
         var bumpOnGen = !!$('bump-cb').checked;
         var discountOnGen = !!window.__discountOn;
-        var priceGen = discountOnGen ? 9.90 : (bumpOnGen ? 24.80 : 9.90);
+        var priceGen = discountOnGen ? 42.00 : (bumpOnGen ? 107.00 : 42.00);
         var contentNameGen = discountOnGen ? 'GhostSpy VIP (Oferta Specjalna)' : (bumpOnGen ? 'GhostSpy VIP + Multi-Profil' : 'GhostSpy VIP');
         var contentIdGen   = discountOnGen ? 'ghostspy-vip-discount' : (bumpOnGen ? 'ghostspy-vip-multi' : 'ghostspy-vip');
         if (window.fbq) {
           fbq('track', 'Purchase', {
             value: priceGen,
-            currency: 'EUR',
+            currency: 'PLN',
             content_name: contentNameGen,
             content_ids: [contentIdGen],
             content_type: 'product'
@@ -328,20 +329,46 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
           event: 'purchase',
           payment_id: currentPaymentId,
           value: priceGen,
-          currency: 'EUR',
+          currency: 'PLN',
           content_name: contentNameGen,
           content_ids: [contentIdGen],
           content_type: 'product',
         });
       } catch(_){}
 
-      setStep('step-mbway-pending');
-      startMbwayCountdown(data.expires_at);
-      startPolling();
+      // Instancia Stripe e confirma BLIK com o código de 6 dígitos.
+      if (!stripe) stripe = Stripe(publishableKey);
+      stripe.confirmBlikPayment(clientSecret, {
+        payment_method: {
+          billing_details: { name: name, email: email }
+        },
+        payment_method_options: {
+          blik: { code: blikCode }
+        }
+      })
+      .then(function(result){
+        if (result.error){
+          btn.disabled = false;
+          btn.textContent = 'Zapłać przez BLIK';
+          var m = result.error.message || 'Błąd podczas potwierdzania BLIK.';
+          showErr(m);
+          return;
+        }
+        // BLIK confirmed submission — push notification agora chega no banco.
+        setStep('step-blik-pending');
+        startBlikCountdown();
+        startPolling();
+      })
+      .catch(function(err){
+        btn.disabled = false;
+        btn.textContent = 'Zapłać przez BLIK';
+        showErr('Błąd Stripe. Spróbuj ponownie.');
+        console.error(err);
+      });
     })
     .catch(function(err){
       btn.disabled = false;
-      btn.textContent = 'Zapłać przez MB WAY';
+      btn.textContent = 'Zapłać przez BLIK';
       showErr('Wystąpił błąd połączenia. Spróbuj ponownie.');
       console.error(err);
     });
@@ -352,13 +379,13 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     if (pollTimer) clearInterval(pollTimer);
     pollTimer = setInterval(function(){
       if (!currentPaymentId) return;
-      fetch('/api/get-payment.php?id=' + encodeURIComponent(currentPaymentId), { cache: 'no-store' })
+      fetch('/api/pl?action=status&id=' + encodeURIComponent(currentPaymentId), { cache: 'no-store' })
         .then(function(r){ return r.json(); })
         .then(function(res){
           var status = res && res.status;
-          if (status === 'paid'){
+          if (status === 'succeeded' || status === 'paid'){
             onPaid();
-          } else if (status === 'expired' || status === 'refunded'){
+          } else if (status === 'failed' || status === 'canceled' || status === 'expired' || status === 'refunded'){
             onExpired();
           }
         })
@@ -372,9 +399,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   function onPaid(){
     stopPolling();
     stopCountdown();
-    // Purchase do Meta Pixel já foi disparado na geração do MB WAY (ver fluxo de submissão acima).
-
-    // Redireciona para o primeiro upsell (Blindagem). O pid do core vai como parent_id.
+    // Purchase do Meta Pixel já foi disparado na geração do BLIK.
     try {
       sessionStorage.setItem('checkout_core_paid_id', currentPaymentId);
       location.replace('/upsell-blindagem/?pid=' + encodeURIComponent(currentPaymentId));
@@ -388,21 +413,21 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     setStep('step-expired');
   }
 
-  // ---- Countdown MB WAY --------------------------------------------------
-  function startMbwayCountdown(expiresAtIso){
+  // ---- Countdown BLIK ---------------------------------------------------
+  function startBlikCountdown(){
     stopCountdown();
-    var expiresAt = expiresAtIso ? Date.parse(expiresAtIso) : (Date.now() + 5*60*1000);
+    var expiresAt = Date.now() + 5*60*1000;
     function tick(){
       var ms = expiresAt - Date.now();
       if (ms <= 0){
-        $('mbway-countdown').textContent = '0:00';
+        $('blik-countdown').textContent = '0:00';
         onExpired();
         return;
       }
       var s = Math.floor(ms/1000);
       var m = Math.floor(s/60);
       var ss = String(s%60).padStart(2,'0');
-      var el = $('mbway-countdown');
+      var el = $('blik-countdown');
       el.textContent = m + ':' + ss;
       el.classList.toggle('danger', s < 60);
     }
@@ -413,17 +438,17 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     if (countdownTimer){ clearInterval(countdownTimer); countdownTimer = null; }
   }
 
-  // ---- Preços da query (?price=17.90&old=59.90) --------------------------
+  // ---- Preços da query (?price=XX.XX&old=YY.YY) -------------------------
   (function hydratePrice(){
     var p = new URLSearchParams(location.search);
-    if (p.get('price')) $('now-price').textContent = p.get('price').replace('.',',') + ' €';
-    if (p.get('old'))   $('old-price').textContent = 'Zamiast ' + p.get('old').replace('.',',') + ' €';
+    if (p.get('price')) $('now-price').textContent = p.get('price').replace('.',',') + ' zł';
+    if (p.get('old'))   $('old-price').textContent = 'Zamiast ' + p.get('old').replace('.',',') + ' zł';
   })();
 
-  // ---- Order bump: atualiza preço e visual ao alternar o checkbox --------
+  // ---- Order bump --------------------------------------------------------
   (function bumpToggle(){
-    var basePrice = 9.90;
-    var bumpPrice = 14.90;
+    var basePrice = 42.00;
+    var bumpPrice = 65.00;
     var cb  = $('bump-cb');
     var box = $('bump-multi');
     var nowEl = $('now-price');
@@ -431,7 +456,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
       var on = cb.checked;
       box.classList.toggle('on', on);
       var total = (on ? basePrice + bumpPrice : basePrice).toFixed(2).replace('.', ',');
-      nowEl.textContent = total + ' €';
+      nowEl.textContent = total + ' zł';
     }
     cb.addEventListener('change', render);
     box.addEventListener('click', function(ev){
@@ -440,55 +465,46 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
     render();
   })();
 
-  // ---- Input masking: só dígitos nos campos de MB WAY --------------------
-  (function maskPhoneInputs(){
-    function digitsOnly(el, max){
-      el.addEventListener('input', function(){
-        var v = (el.value || '').replace(/\D+/g, '');
-        if (max) v = v.slice(0, max);
-        if (v !== el.value) el.value = v;
-      });
-      // Bloqueia colar valores com caracteres não-numéricos.
-      el.addEventListener('paste', function(ev){
-        try {
-          var text = (ev.clipboardData || window.clipboardData).getData('text') || '';
-          var clean = text.replace(/\D+/g, '');
-          if (clean !== text){
-            ev.preventDefault();
-            var v = ((el.value || '') + clean).replace(/\D+/g, '');
-            if (max) v = v.slice(0, max);
-            el.value = v;
-          }
-        } catch(_){}
-      });
-    }
-    digitsOnly(document.querySelector('[name=phone]'), 9);
-    digitsOnly(document.querySelector('[name=country_code]'), 3);
+  // ---- Input masking ----------------------------------------------------
+  (function maskBlikInput(){
+    var el = document.querySelector('[name=blik]');
+    if (!el) return;
+    el.addEventListener('input', function(){
+      var v = (el.value || '').replace(/\D+/g, '').slice(0, 6);
+      if (v !== el.value) el.value = v;
+    });
+    el.addEventListener('paste', function(ev){
+      try {
+        var text = (ev.clipboardData || window.clipboardData).getData('text') || '';
+        var clean = text.replace(/\D+/g, '').slice(0, 6);
+        if (clean !== text){
+          ev.preventDefault();
+          el.value = ((el.value || '') + clean).replace(/\D+/g, '').slice(0, 6);
+        }
+      } catch(_){}
+    });
   })();
 
-  // ---- Back-redirect: aplica desconto €9,90 ao clicar voltar ------------
+  // ---- Back-redirect: aplica desconto ao clicar voltar ------------------
   function applyDiscount(){
     if (window.__discountOn) return;
     window.__discountOn = true;
-    // Preco core cai para 14,90 (desativa o bump para simplificar).
     var cb = $('bump-cb');
     if (cb && cb.checked) cb.checked = false;
     try { sessionStorage.setItem('checkout_bump', '0'); } catch(_){}
-    $('now-price').textContent = '9,90 €';
-    var old = $('old-price'); if (old) old.textContent = 'Zamiast 9,90 €';
-    // Esconde o bump.
+    $('now-price').textContent = '42,00 zł';
+    var old = $('old-price'); if (old) old.textContent = 'Zamiast 42,00 zł';
     var bump = $('bump-multi'); if (bump) bump.style.display = 'none';
-    // Banner de desconto no topo do card.
     if (!document.getElementById('discount-banner')){
       var b = document.createElement('div');
       b.id = 'discount-banner';
       b.style.cssText = 'background:linear-gradient(135deg,#DC2626,#991B1B);color:#fff;text-align:center;padding:12px;font-size:13px;font-weight:800;border-radius:12px;margin-bottom:14px;box-shadow:0 10px 24px rgba(220,38,38,.35);letter-spacing:.02em';
-      b.innerHTML = '🔥 <b>OSTATNIA SZANSA NA 9,90 €</b><br><span style="font-size:11px;font-weight:600;opacity:.9">Ten ekran nie pojawi się ponownie w tej sesji</span>';
+      b.innerHTML = '🔥 <b>OSTATNIA SZANSA NA 42,00 zł</b><br><span style="font-size:11px;font-weight:600;opacity:.9">Ten ekran nie pojawi się ponownie w tej sesji</span>';
       var wrap = document.querySelector('.wrap');
       var firstCard = wrap.querySelector('.card');
       wrap.insertBefore(b, firstCard);
     }
-    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Core', value:9.90, currency:'EUR'}); } catch(_){}
+    try { if (window.fbq) fbq('trackCustom', 'BackRedirectDiscount', {name:'Core', value:42.00, currency:'PLN'}); } catch(_){}
   }
 
   (function armBackRedirect(){
