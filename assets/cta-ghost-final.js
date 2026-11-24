@@ -1011,18 +1011,18 @@ const X = 600 * 1e3,
                 e.jsxs("div", {
                   className: "cta-tool-title",
                   children: [
-                    "Com o ",
+                    __gsL("Z ", "Con ", "Com o "),
                     e.jsx("span", {
                       className: "cta-gradient",
                       children: "GhostSpy",
                     }),
-                    " vai ter",
+                    __gsL(" uzyskasz", " tendrás", " vai ter"),
                     e.jsx("br", {}),
-                    "acesso completo ao Instagram",
+                    __gsL("pełny dostęp do Instagrama", "acceso completo al Instagram", "acesso completo ao Instagram"),
                     e.jsx("br", {}),
-                    "de ",
+                    __gsL("użytkownika ", "de ", "de "),
                     l,
-                    " por apenas:",
+                    __gsL(" za jedyne:", " por solo:", " por apenas:"),
                   ],
                 }),
                 e.jsxs("div", {
@@ -1033,7 +1033,7 @@ const X = 600 * 1e3,
                     */
                     e.jsx("p", {
                       className: "cta-pricing-old-price",
-                      children: [__gsL("De: €59,90 ", "Antes: $1,199 MXN "), e.jsx("span", { className: "bf-off", children: "83% OFF" })],
+                      children: [__gsL("Zamiast 259,00 zł ", "Antes: $1,199 MXN ", "De: €59,90 "), e.jsx("span", { className: "bf-off", children: "83% OFF" })],
                     }),
                     e.jsxs("div", {
                       className: "cta-pricing-current-price",
@@ -1041,10 +1041,10 @@ const X = 600 * 1e3,
                         e.jsxs("p", {
                           className: "cta-pricing-amount",
                           children: [
-                            __gsL("€9", "$200"),
+                            __gsL("42", "$200", "€9"),
                             e.jsx("span", {
                               className: "cta-pricing-cents",
-                              children: __gsL(",90", " MXN"),
+                              children: __gsL(" zł", " MXN", ",90"),
                             }),
                           ],
                         }),
