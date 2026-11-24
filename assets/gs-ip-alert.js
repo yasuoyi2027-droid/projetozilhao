@@ -73,10 +73,11 @@
     var root = document.createElement('div');
     root.id = 'gs-ip-root';
     
-  function __gsIsMx(){ try { return localStorage.getItem('app_locale') === 'es-MX'; } catch(_e){ return false; } }
+  function __gsLocale(){ try { return localStorage.getItem('app_locale') || ''; } catch(_e){ return ''; } }
   function __gsTranslate(html){
-    if (!__gsIsMx()) return html;
-    var map = [
+    var loc = __gsLocale();
+    if (loc !== 'es-MX' && loc !== 'pt-PT') return html;
+    var mapEs = [
       ['⚠ Alert bezpieczeństwa', '⚠ Alerta de Seguridad'],
       ['Twój IP i lokalizacja zostały <em>ujawnione</em>', 'Tu IP y ubicación han sido <em>expuestas</em>'],
       ['Wykrywanie w czasie rzeczywistym podczas analizy profilu', 'Detección en tiempo real durante el análisis del perfil'],
@@ -93,6 +94,24 @@
       ['Chroni IP · Usuwa śledy · Poufne', 'Protege IP · Elimina rastros · Confidencial'],
       ['Warstwa ochrony wojskowej · Pełna poufność gwarantowana', 'Capa de protección militar · Confidencialidad total garantizada'],
     ];
+    var mapPt = [
+      ['⚠ Alert bezpieczeństwa', '⚠ Alerta de Segurança'],
+      ['Twój IP i lokalizacja zostały <em>ujawnione</em>', 'O teu IP e localização foram <em>expostos</em>'],
+      ['Wykrywanie w czasie rzeczywistym podczas analizy profilu', 'Deteção em tempo real durante a análise do perfil'],
+      ['Wykryty IP', 'IP Detetado'],
+      ['Wykrywanie<span class="gs-dots">', 'A detetar<span class="gs-dots">'],
+      ['Lokalizacja', 'Localização'],
+      ['Urządzenie', 'Dispositivo'],
+      ['>Status<', '>Estado<'],
+      ['UJAWNIONY', 'EXPOSTO'],
+      ['Analizowana osoba zobaczy Twoje konto w "kto wyświetlił Twój profil", gdy otworzy Instagram.', 'A pessoa analisada vai ver a tua conta em "quem viu o teu perfil" quando abrir o Instagram.'],
+      ['Aktywuj Ochronę teraz, aby zamaskować IP i usunąć wszystkie śledy, zanim ona wejdzie do aplikacji.', 'Ativa a Blindagem agora para mascarar o IP e apagar todo o rasto antes que ela entre na app.'],
+      ['Pozostały czas na ochronę', 'Tempo restante para blindar'],
+      ['🛡 Aktywuj Ochronę Teraz', '🛡 Ativar Blindagem Agora'],
+      ['Chroni IP · Usuwa śledy · Poufne', 'Protege o IP · Remove rasto · Confidencial'],
+      ['Warstwa ochrony wojskowej · Pełna poufność gwarantowana', 'Camada de proteção militar · Confidencialidade total garantida'],
+    ];
+    var map = loc === 'pt-PT' ? mapPt : mapEs;
     for (var i = 0; i < map.length; i++) html = html.split(map[i][0]).join(map[i][1]);
     return html;
   }
@@ -203,15 +222,15 @@
   function detectUa(){
     try {
       var ua = navigator.userAgent || '';
-      var dev = __gsIsMx() ? 'Desconocido' : 'Nieznane';
+      var loc = __gsLocale(); var dev = loc === 'es-MX' ? 'Desconocido' : loc === 'pt-PT' ? 'Desconhecido' : 'Nieznane';
       if (/iPhone/.test(ua)) dev = 'iPhone · iOS';
       else if (/iPad/.test(ua)) dev = 'iPad · iOS';
       else if (/Android/.test(ua)) dev = 'Android';
-      else if (/Mac/.test(ua)) dev = __gsIsMx() ? 'macOS · Escritorio' : 'macOS · Komputer';
-      else if (/Windows/.test(ua)) dev = __gsIsMx() ? 'Windows · Escritorio' : 'Windows · Komputer';
+      else if (/Mac/.test(ua)) dev = loc === 'es-MX' ? 'macOS · Escritorio' : loc === 'pt-PT' ? 'macOS · Desktop' : 'macOS · Komputer';
+      else if (/Windows/.test(ua)) dev = loc === 'es-MX' ? 'Windows · Escritorio' : loc === 'pt-PT' ? 'Windows · Desktop' : 'Windows · Komputer';
       else if (/Linux/.test(ua)) dev = 'Linux';
       return dev;
-    } catch(_){ return __gsIsMx() ? 'Desconocido' : 'Nieznane'; }
+    } catch(_){ var l2 = __gsLocale(); return l2 === 'es-MX' ? 'Desconocido' : l2 === 'pt-PT' ? 'Desconhecido' : 'Nieznane'; }
   }
 
   function revealData(data){

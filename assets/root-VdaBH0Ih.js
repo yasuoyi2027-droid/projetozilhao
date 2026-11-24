@@ -1,4 +1,4 @@
-function __gsL(a,b){try{return (typeof localStorage!=="undefined"&&localStorage.getItem("app_locale")==="es-MX")?b:a;}catch(_e){return a;}}
+function __gsL(a,b,c){try{var l=typeof localStorage!=="undefined"&&localStorage.getItem("app_locale");if(l==="es-MX")return b;if(l==="pt-PT")return c||a;return a;}catch(_e){return a;}}
 ﻿import {
     p as t,
     a,
@@ -500,7 +500,7 @@ function re({ reason: e, details: s }) {
                                 }),
                                 t.jsx("span", {
                                     className: "text-purple-300 font-medium",
-                                    children: __gsL("Jak uzyskać dostęp", "Cómo acceder"),
+                                    children: __gsL("Jak uzyskać dostęp", "Cómo acceder", "Como aceder"),
                                 }),
                             ],
                         }),
@@ -514,7 +514,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "1.",
                                         }),
-                                        __gsL("Otwórz aparat w swoim telefonie", "Abre la cámara de tu teléfono"),
+                                        __gsL("Otwórz aparat w swoim telefonie", "Abre la cámara de tu teléfono", "Abre a câmara do teu telemóvel"),
                                     ],
                                 }),
                                 t.jsxs("li", {
@@ -524,7 +524,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "2.",
                                         }),
-                                        __gsL("Zeskanuj poniższy kod QR", "Escanea el código QR de abajo"),
+                                        __gsL("Zeskanuj poniższy kod QR", "Escanea el código QR de abajo", "Lê o código QR abaixo"),
                                     ],
                                 }),
                                 t.jsxs("li", {
@@ -534,7 +534,7 @@ function re({ reason: e, details: s }) {
                                             className: "text-purple-400 font-semibold",
                                             children: "3.",
                                         }),
-                                        __gsL("Wejdź na link, który się pojawi", "Entra al enlace que aparecerá"),
+                                        __gsL("Wejdź na link, który się pojawi", "Entra al enlace que aparecerá", "Acede ao link que aparecer"),
                                     ],
                                 }),
                             ],
@@ -559,7 +559,7 @@ function re({ reason: e, details: s }) {
                         }),
                         t.jsx("p", {
                             className: "text-xs text-gray-500 mt-2",
-                            children: __gsL("Lub skopiuj link i wyślij go na swój telefon", "O copia el enlace y envíalo a tu teléfono"),
+                            children: __gsL("Lub skopiuj link i wyślij go na swój telefon", "O copia el enlace y envíalo a tu teléfono", "Ou copia o link e envia-o para o teu telemóvel"),
                         }),
                     ],
                 }),
@@ -568,7 +568,7 @@ function re({ reason: e, details: s }) {
                     className: "mt-8 pt-6 border-t border-gray-800",
                     children: t.jsx("p", {
                         className: "text-xs text-gray-600",
-                        children: __gsL("Chronione przez GhostSpy Security", "Protegido por GhostSpy Security"),
+                        children: __gsL("Chronione przez GhostSpy Security", "Protegido por GhostSpy Security", "Protegido por GhostSpy Security"),
                     }),
                 }),
             ],

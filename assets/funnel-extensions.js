@@ -1015,14 +1015,14 @@
 
   function getSpyButton() {
     return Array.from(document.querySelectorAll("button")).find((button) =>
-      (readText(button).includes("analizuj teraz") || readText(button).includes("analizar ahora")),
+      (readText(button).includes("analizuj teraz") || readText(button).includes("analizar ahora") || readText(button).includes("analisar agora")),
     );
   }
 
   function getConfirmButton() {
     if (
       !document.body ||
-      !(document.body.innerText.includes("Potwierdź konto Instagram") || document.body.innerText.includes("Confirma el Instagram"))
+      !(document.body.innerText.includes("Potwierdź konto Instagram") || document.body.innerText.includes("Confirma el Instagram") || document.body.innerText.includes("Confirme o Instagram"))
     ) {
       return null;
     }
@@ -1033,7 +1033,7 @@
 
   function getUsernameInputVisible() {
     return Array.from(document.querySelectorAll("input")).find((input) =>
-      normalizeText(input.getAttribute("placeholder")).includes("nazwa_partnera_10") || normalizeText(input.getAttribute("placeholder")).includes("nombre_del_conyuge_10"),
+      normalizeText(input.getAttribute("placeholder")).includes("nazwa_partnera_10") || normalizeText(input.getAttribute("placeholder")).includes("nombre_del_conyuge_10") || normalizeText(input.getAttribute("placeholder")).includes("nomedoconjuge_10"),
     );
   }
 
@@ -1923,7 +1923,7 @@
         if (readText(button) !== "potwierdź" && readText(button) !== "confirmar") return;
         if (
           !document.body ||
-          !(document.body.innerText.includes("Potwierdź konto Instagram") || document.body.innerText.includes("Confirma el Instagram"))
+          !(document.body.innerText.includes("Potwierdź konto Instagram") || document.body.innerText.includes("Confirma el Instagram") || document.body.innerText.includes("Confirme o Instagram"))
         )
           return;
 
