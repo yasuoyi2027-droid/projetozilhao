@@ -1030,7 +1030,7 @@ const X = 600 * 1e3,
                     */
                     e.jsx("p", {
                       className: "cta-pricing-old-price",
-                      children: ["De: €59,90 ", e.jsx("span", { className: "bf-off", children: "83% OFF" })],
+                      children: [__gsL("De: €59,90 ", "Antes: $1,199 MXN "), e.jsx("span", { className: "bf-off", children: "83% OFF" })],
                     }),
                     e.jsxs("div", {
                       className: "cta-pricing-current-price",
@@ -1038,10 +1038,10 @@ const X = 600 * 1e3,
                         e.jsxs("p", {
                           className: "cta-pricing-amount",
                           children: [
-                            "€9",
+                            __gsL("€9", "$200"),
                             e.jsx("span", {
                               className: "cta-pricing-cents",
-                              children: ",90",
+                              children: __gsL(",90", " MXN"),
                             }),
                           ],
                         }),
@@ -1217,7 +1217,7 @@ const X = 600 * 1e3,
                           }),
                         }),
                         e.jsx("span", {
-                          children: "2 bónus surpresa avaliados em €45,00",
+                          children: __gsL("2 bónus surpresa avaliados em €45,00", "2 bonos sorpresa valorados en $499 MXN"),
                         }),
                       ],
                     }),
